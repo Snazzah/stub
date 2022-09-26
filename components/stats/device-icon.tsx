@@ -1,0 +1,94 @@
+import { Apple, Chrome, Safari } from 'components/shared/icons/devices';
+
+import BlurImage from '@/components/shared/blur-image';
+import { DeviceTabs } from '@/lib/stats';
+
+import { Discord, Twitter } from '../shared/icons';
+import DuckDuckGo from '../shared/icons/device/duckduckgo';
+import Insomnia from '../shared/icons/device/insomnia';
+
+export default function DeviceIcon({ display, tab, className }: { display: string; tab: DeviceTabs; className: string }) {
+  if (display === 'Bot') {
+    return <img alt={display} src={`https://avatars.dicebear.com/api/bottts/dub.svg`} className={className} />;
+  }
+  if (tab === 'device') {
+    return (
+      <BlurImage
+        src={
+          display === 'Desktop'
+            ? `https://faisalman.github.io/ua-parser-js/images/types/default.png`
+            : `https://faisalman.github.io/ua-parser-js/images/types/${display}.png`
+        }
+        alt={display}
+        width={20}
+        height={20}
+        sizes="10vw"
+        className={className}
+      />
+    );
+  } else if (tab === 'browser') {
+    if (display === 'Chrome') {
+      return <Chrome className={className} />;
+    } else if (display === 'Safari' || display === 'Mobile Safari') {
+      return <Safari className={className} />;
+    } else {
+      return (
+        <BlurImage
+          src={`https://faisalman.github.io/ua-parser-js/images/browsers/${display.toLowerCase()}.png`}
+          alt={display}
+          width={20}
+          height={20}
+          className={className}
+        />
+      );
+    }
+  } else if (tab === 'os') {
+    if (display === 'Mac OS') {
+      return <BlurImage src="/static/icons/macos.png" alt={display} width={20} height={20} className={className} />;
+    } else if (display === 'iOS') {
+      return <Apple className={className} />;
+    } else {
+      return (
+        <BlurImage
+          src={`https://faisalman.github.io/ua-parser-js/images/os/${display.toLowerCase()}.png`}
+          alt={display}
+          width={20}
+          height={20}
+          className={className}
+        />
+      );
+    }
+  } else if (tab === 'bot') {
+    if (display === 'Insomnia Request') {
+      return <Insomnia className={className} />;
+    } else if (display === 'Twitter Bot') {
+      return <Twitter className={`${className} text-twitter`} />;
+    } else if (display === 'Discord Bot') {
+      return <Discord className={`${className} text-discord`} />;
+    } else if (display === 'Yandex Bot') {
+      return (
+        <BlurImage
+          src="https://faisalman.github.io/ua-parser-js/images/browsers/yandex.png"
+          alt={display}
+          width={20}
+          height={20}
+          className={className}
+        />
+      );
+    } else if (display === 'DuckDuckGo Bot') {
+      return <DuckDuckGo className={className} />;
+    }
+
+    return <img alt={display} src={`https://avatars.dicebear.com/api/bottts/${display}.svg`} className={className} />;
+  } else {
+    return (
+      <BlurImage
+        src="https://faisalman.github.io/ua-parser-js/images/companies/default.png"
+        alt={display}
+        width={20}
+        height={20}
+        className={className}
+      />
+    );
+  }
+}

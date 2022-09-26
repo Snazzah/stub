@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:
+  # PosgresQL database
+  postgres:
+    image: postgres:13-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: stub
+      POSTGRES_USER: stub
+      POSTGRES_DB: stub
+    volumes:
+      - "pg_data:/var/lib/postgresql/data"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U stub -d stub"]
+      interval: "10s"
+      timeout: "5s"
+      retries: 5
+      start_period: "5s"
+
+  # Redis server
+  redis:
+    image: eqalpha/keydb
+    restart: unless-stopped
+    command: [keydb-server, --save, '60', '1']
+    healthcheck:
+      test: ["CMD-SHELL", "keydb-cli ping | grep PONG"]
+      interval: 1s
+      timeout: 3s
+      retries: 5
+      start_period: "5s"
+    volumes:
+      - "redis_data:/data"
+
+  # App
+  app:
+    image: ghcr.io/Snazzah/stub:latest
+    env_file: .env
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "wget --no-verbose --tries=1 -O- http://localhost:3000/api/health",
+        ]
+      interval: "10s"
+      timeout: "5s"
+      retries: 5
+      start_period: "5s"
+
+volumes:
+  pg_data:
+  redis_data:
