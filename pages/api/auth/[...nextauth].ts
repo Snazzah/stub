@@ -59,6 +59,8 @@ const providers: Provider[] = [
 
 if (providers.length === 0) console.log('!!! No provider options were given!');
 
+const REFRESH_SESSION_TTL = 1000 * 60; // 1 minute
+
 export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/login',
@@ -106,21 +108,29 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      const user = await prisma.user.findUnique({
-        where: {
-          id: token.sub
-        }
-      });
-      if (!user) throw new Error('User does not exist');
-      session.user = {
-        id: token.sub,
-        ...session.user,
-        name: user.name,
-        email: user.email,
-        picture: user.image,
-        superadmin: user.superadmin,
-        type: user.type
-      };
+      if (!session.user?.refreshAfter || session.user?.refreshAfter < Date.now()) {
+        const user = await prisma.user.findUnique({
+          where: {
+            id: token.sub
+          }
+        });
+        if (!user) throw new Error('User does not exist');
+        session.user = {
+          id: token.sub,
+          ...session.user,
+          name: user.name,
+          email: user.email,
+          picture: user.image,
+          superadmin: user.superadmin,
+          type: user.type,
+          refreshAfter: Date.now() + REFRESH_SESSION_TTL
+        };
+      } else {
+        session.user = {
+          id: token.sub,
+          ...session.user
+        };
+      }
       return session;
     }
   }
