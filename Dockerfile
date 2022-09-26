@@ -39,6 +39,7 @@ COPY --from=deps /deps/node_modules ./node_modules
 COPY --from=builder /build/.next ./.next
 COPY --from=builder /build/public ./public
 COPY --from=builder /build/server ./server
+COPY --from=builder /build/prisma ./prisma
 
 USER node
 ENV NODE_ENV production
