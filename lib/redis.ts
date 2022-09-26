@@ -84,13 +84,7 @@ export async function checkIfKeyExists(hostname: string, key: string) {
  * Get the links associated with a project
  **/
 export async function getLinksForProject(slug: string): Promise<LinkProps[]> {
-  /*
-    This function is used to get all links for a project.
-
-    Only applicable for dub.sh:
-      - If a username is provided, it will only return links for that user.
-        Otherwise, it will return all links for the project.
-  */
+  /* This function is used to get all links for a project. */
   const keys = await redis.zrange(`${slug}:links:timestamps`, 0, -1, 'REV');
   if (!keys || keys.length === 0) return []; // no links for this project
   const linkObjects = await redis.hmget(`${slug}:links`, ...keys).then((r) => r.map((l) => JSON.parse(l)));

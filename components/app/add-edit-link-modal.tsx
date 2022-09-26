@@ -214,7 +214,7 @@ function AddEditLinkModal({
                 type="url"
                 required
                 className="border-gray-300 text-gray-900 placeholder-gray-300 focus:border-gray-500 focus:ring-gray-500 block w-full rounded-md focus:outline-none sm:text-sm"
-                placeholder="https://github.com/steven-tey/dub"
+                placeholder="https://github.com/Snazzah/stub"
                 value={url}
                 onChange={(e) => {
                   setData({ ...data, url: e.target.value });

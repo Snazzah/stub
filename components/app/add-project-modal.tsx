@@ -68,7 +68,7 @@ function AddProjectModalHelper({
     <Modal showModal={showAddProjectModal} setShowModal={setShowAddProjectModal}>
       <div className="inline-block w-full max-w-md overflow-hidden align-middle transition-all transform bg-white shadow-xl rounded-2xl">
         <div className="flex flex-col justify-center items-center space-y-3 sm:px-16 px-4 pt-8 py-4 border-b border-gray-200">
-          <BlurImage src={`/static/logo.png`} alt={'dub.sh'} className="w-10 h-10 rounded-full border border-gray-200" width={20} height={20} />
+          <BlurImage src="/static/logo.png" alt="Stub" className="w-10 h-10 rounded-full border border-gray-200" width={20} height={20} />
           <h3 className="font-medium text-lg">Add a new project</h3>
         </div>
 
@@ -192,20 +192,11 @@ function AddProjectModalHelper({
                 </div>
               )}
             </div>
-            {domainError &&
-              (domainError === 'Domain is already in use.' ? (
-                <p className="mt-2 text-sm text-red-600" id="domain-error">
-                  Domain is already in use.{' '}
-                  <a className="underline" href="mailto:steven@dub.sh?subject=My Domain Is Already In Use">
-                    Contact us
-                  </a>{' '}
-                  if you'd like to use this domain for your project.
-                </p>
-              ) : (
-                <p className="mt-2 text-sm text-red-600" id="domain-error">
-                  {domainError}
-                </p>
-              ))}
+            {domainError && (
+              <p className="mt-2 text-sm text-red-600" id="domain-error">
+                {domainError}
+              </p>
+            )}
           </div>
 
           <button

@@ -109,20 +109,11 @@ function EditDomainModal({
                 </div>
               )}
             </div>
-            {domainError &&
-              (domainError === 'Domain is already in use.' ? (
-                <p className="mt-2 text-sm text-red-600" id="domain-error">
-                  Domain is already in use.{' '}
-                  <a className="underline" href="mailto:steven@dub.sh?subject=My Domain Is Already In Use">
-                    Contact us
-                  </a>{' '}
-                  if you'd like to use this domain for your project.
-                </p>
-              ) : (
-                <p className="mt-2 text-sm text-red-600" id="domain-error">
-                  {domainError}
-                </p>
-              ))}
+            {domainError && (
+              <p className="mt-2 text-sm text-red-600" id="domain-error">
+                {domainError}
+              </p>
+            )}
           </div>
 
           <div>

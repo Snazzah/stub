@@ -9,7 +9,7 @@ import Insomnia from '../shared/icons/device/insomnia';
 
 export default function DeviceIcon({ display, tab, className }: { display: string; tab: DeviceTabs; className: string }) {
   if (display === 'Bot') {
-    return <img alt={display} src={`https://avatars.dicebear.com/api/bottts/dub.svg`} className={className} />;
+    return <img alt={display} src="https://avatars.dicebear.com/api/bottts/dub.svg" className={className} />;
   }
   if (tab === 'device') {
     return (
