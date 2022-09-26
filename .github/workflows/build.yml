@@ -12,9 +12,13 @@ on:
       - "public/**"
       - "styles/**"
       - ".github/workflows/build.yml"
+      - ".eslintrc.*"
+      - "middleware.ts"
+      - "middleware.ts"
       - ".dockerignore"
-      - "Dockerfile"
+      - "*.config.js"
       - "package.json"
+      - "tsconfig.json"
       - "yarn.lock"
     branches:
       - 'master'

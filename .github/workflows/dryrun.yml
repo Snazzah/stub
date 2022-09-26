@@ -1,0 +1,52 @@
+name: Dryrun
+on:
+  push:
+    paths:
+      - "components/**"
+      - "pages/**"
+      - "utils/**"
+      - "lib/**"
+      - "server/**"
+      - "scripts/**"
+      - "prisma/**"
+      - "public/**"
+      - "styles/**"
+      - ".github/workflows/dryrun.yml"
+      - ".eslintrc.*"
+      - "middleware.ts"
+      - "middleware.ts"
+      - ".dockerignore"
+      - "*.config.js"
+      - "package.json"
+      - "tsconfig.json"
+      - "yarn.lock"
+    branches:
+      - '*'
+      - '!master'
+    tags:
+      - '!*'
+  pull_request:
+    tags:
+      - '!*'
+    branches:
+      - '*'
+  workflow_dispatch:
+
+env:
+  TEST_TAG: snazzah/stub:test
+
+jobs:
+  build-docker-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          tags: ${{ env.TEST_TAG }}
