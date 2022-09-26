@@ -2,21 +2,18 @@
   <img src="/public/static/logo.svg" alt="logo" height=100 />
 
   # Stub
-</div>
-
-<center>
 
   A self-hostable modified fork of [Dub](https://github.com/steven-tey/dub): An open-source link shortener.
 
-</center>
+</div>
 
-<center>
+<div align="center">
   <a href="#introduction"><strong>Introduction</strong></a> ·
   <a href="#why-a-fork-of-dub"><strong>Why a fork?</strong></a> ·
   <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
   <a href="#deploy-your-own"><strong>Deploy your Own</strong></a> ·
   <a href="#contributing"><strong>Contributing</strong></a>
-</center>
+</div>
 <br/>
 
 ## Introduction

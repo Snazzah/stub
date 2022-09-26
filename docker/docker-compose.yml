@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # PosgresQL database
+  # PosgreSQL database
   postgres:
     image: postgres:13-alpine
     restart: unless-stopped
@@ -34,7 +34,7 @@ services:
 
   # App
   app:
-    image: ghcr.io/Snazzah/stub:latest
+    image: ghcr.io/snazzah/stub:latest
     env_file: .env
     restart: unless-stopped
     depends_on:
