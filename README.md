@@ -98,4 +98,4 @@ docker-compose logs -f
 
 ## License
 
-Just like Dub, Stub is open-source under the GNU Affero General Public License Version 3 (AGPLv3) or any later version. You can [find it here](https://github.com/Snazzah/stub/blob/main/LICENSE.md).
+Just like Dub, Stub is open-source under the GNU Affero General Public License Version 3 (AGPLv3) or any later version. You can [find it here](https://github.com/Snazzah/stub/blob/master/LICENSE.md).
