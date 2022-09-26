@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "formulahendry.auto-rename-tag",
+    "mikestead.dotenv",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "prisma.prisma",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg",
+    "bradlc.vscode-tailwindcss",
+    "Gruntfuggly.todo-tree"
+  ]
+}
