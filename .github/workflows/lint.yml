@@ -1,0 +1,38 @@
+name: ESLint
+on:
+  push:
+    branches:
+      - "*"
+      - "!gh-pages"
+    paths:
+      - "**/*.ts"
+      - "**/*.tsx"
+      - ".eslintrc.*"
+      - ".github/workflows/lint.yml"
+      - "package.json"
+      - "yarn.lock"
+  pull_request:
+    tags:
+      - '!*'
+    branches:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint source code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Node v16
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run ESLint
+        run: yarn lint
