@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next';
-import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
 
@@ -13,7 +12,6 @@ interface Props {
 
 export default function Login({ providers }: Props) {
   const [signInClicked, setSignInClicked] = useState(false);
-  const [noSuchAccount, setNoSuchAccount] = useState(false);
   const [email, setEmail] = useState('');
   const [buttonText, setButtonText] = useState('Send magic link');
 
@@ -80,27 +78,15 @@ export default function Login({ providers }: Props) {
               onSubmit={async (e) => {
                 e.preventDefault();
                 setSignInClicked(true);
-                fetch('/api/auth/account-exists', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ email })
-                }).then(async (res) => {
-                  const { exists } = await res.json();
-                  if (exists) {
-                    signIn('email', {
-                      email,
-                      redirect: false
-                    }).then((res) => {
-                      setSignInClicked(false);
-                      if (res?.ok && !res?.error) {
-                        setButtonText('Email sent - check your inbox!');
-                      } else {
-                        setButtonText('Error sending email - try again?');
-                      }
-                    });
+                signIn('email', {
+                  email,
+                  redirect: false
+                }).then((res) => {
+                  setSignInClicked(false);
+                  if (res?.ok && !res?.error) {
+                    setButtonText('Email sent - check your inbox!');
                   } else {
-                    setNoSuchAccount(true);
-                    setSignInClicked(false);
+                    setButtonText(`Error sending email - ${res.error}`);
                   }
                 });
               }}
@@ -112,10 +98,7 @@ export default function Login({ providers }: Props) {
                 placeholder="Email Address"
                 autoComplete="email"
                 required
-                onChange={(e) => {
-                  setNoSuchAccount(false);
-                  setEmail(e.target.value);
-                }}
+                onChange={(e) => setEmail(e.target.value)}
                 className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-black focus:border-black sm:text-sm"
               />
               <button
@@ -131,23 +114,7 @@ export default function Login({ providers }: Props) {
             </form>
           </>
         )}
-        {noSuchAccount ? (
-          <p className="text-red-500 text-sm">
-            No such account.{' '}
-            <Link href="/register">
-              <a className="text-red-600 font-semibold">Sign up</a>
-            </Link>{' '}
-            instead?
-          </p>
-        ) : (
-          <p className="text-gray-600 text-sm">
-            Don't have an account?{' '}
-            <Link href="/register">
-              <a className="text-gray-800 font-semibold">Sign up</a>
-            </Link>{' '}
-            for free.
-          </p>
-        )}
+        <p className="text-gray-600 text-sm">Don't have an account? Using any of the sign-in above methods will make an account for you!</p>
       </div>
     </div>
   );

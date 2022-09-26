@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 
+// TODO probably change this matcher, it's not used for linking anymore
+
 export const config = {
   matcher: [
     /*
@@ -14,7 +16,7 @@ export const config = {
   ]
 };
 
-const loginPages = ['/login', '/register', '/login/error'];
+const loginPages = ['/login', '/login/error'];
 
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
