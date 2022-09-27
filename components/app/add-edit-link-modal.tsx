@@ -5,7 +5,7 @@ import { mutate } from 'swr';
 import { useDebounce } from 'use-debounce';
 
 import BlurImage from '@/components/shared/blur-image';
-import { AlertCircleFill, ChevronRight, LoadingCircle, LoadingDots } from '@/components/shared/icons';
+import { AlertCircleFill, ChevronRight, LoadingCircle, LoadingDots, Star } from '@/components/shared/icons';
 import Modal from '@/components/shared/modal';
 import useProject from '@/lib/swr/use-project';
 import { LinkProps } from '@/lib/types';
@@ -175,7 +175,7 @@ function AddEditLinkModal({
                 id="key"
                 required
                 autoFocus={false}
-                pattern="[a-zA-Z0-9\-/]+"
+                pattern="[a-zA-Z0-9\-/]+|:index"
                 className={`${
                   keyExistsError
                     ? 'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500'
@@ -196,6 +196,14 @@ function AddEditLinkModal({
                 </div>
               )}
             </div>
+            {key === ':index' && (
+              <div className="mt-1 text-xs border border-yellow-600 rounded bg-yellow-400/25 px-2 py-1 flex items-center gap-2" id="index-highlight">
+                <Star className="w-4 h-4 flex-none text-amber-400 drop-shadow" />
+                <span className="text-gray-700">
+                  Using <b>:index</b> as a key will allow redirects from <b>{domain}</b>!
+                </span>
+              </div>
+            )}
             {keyExistsError && (
               <p className="mt-2 text-sm text-red-600" id="key-error">
                 Short link is already in use.

@@ -46,7 +46,7 @@ export function nFormatter(num: number, digits?: number) {
 
 export function linkConstructor({ key, domain, pretty }: { key: string; domain: string; pretty?: boolean }) {
   const localhost = /^(?:[a-z0-9-]+\.)*localhost(?::\d{1,6})?$/.test(domain);
-  const link = `http${!localhost ? 's' : ''}://${domain}/${key}`;
+  const link = `http${!localhost ? 's' : ''}://${domain}${key === ':index' ? '' : `/${decodeURIComponent(key)}`}`;
 
   return pretty ? link.replace(/^https?:\/\//, '') : link;
 }

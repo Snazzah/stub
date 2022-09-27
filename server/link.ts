@@ -59,10 +59,10 @@ const RATELIMIT_USES = 10;
 const RATELIMIT_EXPIRY = 60000;
 
 export default async function handleLink(req: IncomingMessage, res: ServerResponse) {
-  const { hostname, key } = parseUrl(req);
+  const { hostname, key: linkKey } = parseUrl(req);
 
-  // TODO allow for index links
-  if (!hostname || !key) return false;
+  const key = linkKey || ':index';
+  if (!hostname) return false;
 
   // Get the IP
   let ip = req.socket.remoteAddress ?? '127.0.0.1';
@@ -100,7 +100,6 @@ export default async function handleLink(req: IncomingMessage, res: ServerRespon
       .setHeader('X-RateLimit-Reset', Math.ceil(cooldown.cooldown.expires / 1000));
     res.statusCode = 429;
     res.end('You are requesting a bit too often, try again later.');
-    // TODO add a rate limit page
   }
   return true;
 }

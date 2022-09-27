@@ -40,7 +40,7 @@ export default function AppLayout({ children, pageTitle }: { children: ReactNode
                   <>
                     <Divider className="h-8 w-8 mr-3 text-gray-200 sm:block hidden" />
                     <Link href={`/p/${slug}/link/${encodeURIComponent(key)}`}>
-                      <a className="text-sm font-medium sm:block hidden">{encodeURIComponent(key)}</a>
+                      <a className="text-sm font-medium sm:block hidden">{key}</a>
                     </Link>
                   </>
                 )}

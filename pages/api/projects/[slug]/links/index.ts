@@ -11,7 +11,7 @@ export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse,
   } else if (req.method === 'POST') {
     const { key, url, title, description, image } = req.body;
     if (!url) return res.status(400).json({ error: 'Missing url' });
-    if (!key || !/^[a-zA-Z0-9\-/]+$/.test(key)) return res.status(400).json({ error: 'Invalid key' });
+    if (!key || !/^(?:[a-zA-Z0-9\-/]+|:index)$/.test(key)) return res.status(400).json({ error: 'Invalid key' });
     const response = await addLink(project.domain, url, key, { title, description, image });
     if (response === null) {
       return res.status(400).json({ error: 'Key already exists' });

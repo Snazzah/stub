@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { withProjectAuth } from '@/lib/auth';
-import { redis } from '@/lib/redis';
+import { checkIfKeyExists, redis } from '@/lib/redis';
 import { intervalData, IntervalProps, processData, RawStatsProps } from '@/lib/stats';
 
 export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project) => {
@@ -10,7 +10,7 @@ export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse,
       key: string;
       interval: IntervalProps;
     };
-    const keyExists = await redis.exists(`${project.domain}:clicks:${key}`);
+    const keyExists = Boolean(await checkIfKeyExists(project.domain, key));
     if (!keyExists) return res.status(404).json({ error: 'Link does not exist' });
     const start = Date.now() - intervalData[interval || '7d'].milliseconds;
     const end = Date.now();

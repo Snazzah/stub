@@ -22,6 +22,7 @@ export { default as LoadingDots } from './loading-dots';
 export { default as Logo } from './logo';
 export { default as PlusCircle } from './plus-circle';
 export { default as QuestionCircle } from './question-circle';
+export { default as Star } from './star';
 export { default as Tick } from './tick';
 export { default as Twitter } from './twitter';
 export { default as UploadCloud } from './upload-cloud';
