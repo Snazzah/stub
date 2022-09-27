@@ -1,11 +1,9 @@
-import { Apple, Chrome, Safari } from 'components/shared/icons/devices';
+import { Apple, Chrome, DuckDuckGo, Insomnia, Safari } from 'components/shared/icons/devices';
 
 import BlurImage from '@/components/shared/blur-image';
 import { DeviceTabs } from '@/lib/stats';
 
 import { Discord, Twitter } from '../shared/icons';
-import DuckDuckGo from '../shared/icons/device/duckduckgo';
-import Insomnia from '../shared/icons/device/insomnia';
 
 export default function DeviceIcon({ display, tab, className }: { display: string; tab: DeviceTabs; className: string }) {
   if (display === 'Bot') {
