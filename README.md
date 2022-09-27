@@ -76,20 +76,20 @@ After creating a project, you can make sure that domain is being pointed from th
 npx degit github:Snazzah/stub/docker stub-docker
 cd stub-docker
 # Fill out the .env variables
-docker-compose up -d
+docker compose up -d
 ```
 
 #### Upgrading docker containers
 You can do this by sticking with the existing docker-compose and just pull the latest images and then restart:
 ```sh
 # Fetch latest versions of the images
-docker-compose pull
+docker compose pull
 # Stop and destroy the containers
-docker-compose down
+docker compose down
 # Spawn new containers in the background
-docker-compose up -d
+docker compose up -d
 # Follow the logs during upgrade
-docker-compose logs -f
+docker compose logs -f
 ```
 ## Contributing
 
