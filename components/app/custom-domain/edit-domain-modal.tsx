@@ -89,6 +89,7 @@ function EditDomainModal({
                 id="key"
                 required
                 autoFocus={false}
+                pattern="[a-zA-Z0-9\-.]+"
                 className={`${
                   domainError
                     ? 'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500'
