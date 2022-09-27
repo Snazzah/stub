@@ -12,7 +12,7 @@ export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse,
     };
     const keyExists = Boolean(await checkIfKeyExists(project.domain, key));
     if (!keyExists) return res.status(404).json({ error: 'Link does not exist' });
-    const start = Date.now() - intervalData[interval || '7d'].milliseconds;
+    const start = Date.now() - intervalData[interval || '24h'].milliseconds;
     const end = Date.now();
     const response = await redis
       .zrange(`${project.domain}:clicks:${key}`, start, end, 'BYSCORE')

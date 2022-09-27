@@ -22,7 +22,7 @@ export default function Toggle({
 }) {
   const router = useRouter();
 
-  const currentInterval = (interval as IntervalProps) || '7d';
+  const currentInterval = (interval as IntervalProps) || '24h';
 
   const atTop = useScroll(80) || atModalTop;
   return (

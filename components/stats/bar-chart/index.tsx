@@ -40,7 +40,7 @@ const BarChart = ({ data, isValidating, screenWidth }: { data: StatsProps['click
   }, [screenWidth]);
 
   const router = useRouter();
-  const interval = (router.query.interval as IntervalProps) || '7d';
+  const interval = (router.query.interval as IntervalProps) || '24h';
 
   const xScale = useMemo(() => {
     return scaleBand({
