@@ -3,18 +3,15 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { withProjectAuth } from '@/lib/auth';
 import { deleteLink, editLink } from '@/lib/redis';
 
-export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse) => {
-  const { domain, key: oldKey } = req.query as {
-    domain: string;
-    key: string;
-  };
+export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project) => {
+  const { key: oldKey } = req.query as { key: string };
 
   if (req.method === 'PUT') {
     const { key, url, title, timestamp, description, image } = req.body;
     if (!key || !url || !title || !timestamp) {
       return res.status(400).json({ error: 'Missing key or url or title or timestamp' });
     }
-    const response = await editLink(domain, oldKey, key, {
+    const response = await editLink(project.domain, oldKey, key, {
       url,
       title,
       timestamp,
@@ -26,7 +23,7 @@ export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse)
     }
     return res.status(200).json(response);
   } else if (req.method === 'DELETE') {
-    const response = await Promise.all([deleteLink(domain, oldKey)]);
+    const response = await deleteLink(project.domain, oldKey);
     return res.status(200).json(response);
   } else {
     res.setHeader('Allow', ['POST', 'DELETE']);
