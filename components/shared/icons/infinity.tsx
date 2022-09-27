@@ -1,4 +1,4 @@
-export default function InfinityIcon({ className }: { className: string }) {
+export default function InfinityIcon({ className }: { className?: string }) {
   return (
     <svg
       fill="none"

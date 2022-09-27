@@ -1,4 +1,4 @@
-export default function Divider({ className }: { className: string }) {
+export default function Divider({ className }: { className?: string }) {
   return (
     <svg
       fill="none"

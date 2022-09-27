@@ -1,4 +1,4 @@
-export default function Link({ className }: { className: string }) {
+export default function Link({ className }: { className?: string }) {
   return (
     <svg
       fill="none"

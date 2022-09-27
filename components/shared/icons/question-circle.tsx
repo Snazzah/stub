@@ -1,4 +1,4 @@
-export default function QuestionCircle({ className }: { className: string }) {
+export default function QuestionCircle({ className }: { className?: string }) {
   return (
     <svg
       fill="none"

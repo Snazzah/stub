@@ -1,4 +1,4 @@
-export default function Airplay({ className }: { className: string }) {
+export default function Airplay({ className }: { className?: string }) {
   return (
     <svg
       fill="none"

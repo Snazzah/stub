@@ -1,4 +1,4 @@
-export default function X({ className }: { className: string }) {
+export default function X({ className }: { className?: string }) {
   return (
     <svg
       fill="none"

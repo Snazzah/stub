@@ -1,4 +1,4 @@
-export default function Drag({ className }: { className: string }) {
+export default function Drag({ className }: { className?: string }) {
   return (
     <svg
       fill="currentColor"

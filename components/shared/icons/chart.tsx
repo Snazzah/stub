@@ -1,4 +1,4 @@
-export default function Chart({ className }: { className: string }) {
+export default function Chart({ className }: { className?: string }) {
   return (
     <svg
       fill="none"
