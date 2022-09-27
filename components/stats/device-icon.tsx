@@ -1,9 +1,9 @@
-import { Apple, Chrome, DuckDuckGo, Insomnia, Safari } from 'components/shared/icons/devices';
+import { Apple, Baidu, Bing, Chrome, DuckDuckGo, Google, Insomnia, LinkedIn, Safari, Slack, Telegram } from 'components/shared/icons/devices';
 
 import BlurImage from '@/components/shared/blur-image';
 import { DeviceTabs } from '@/lib/stats';
 
-import { Discord, Twitter } from '../shared/icons';
+import { Discord, Facebook, Twitter } from '../shared/icons';
 
 export default function DeviceIcon({ display, tab, className }: { display: string; tab: DeviceTabs; className: string }) {
   if (display === 'Bot') {
@@ -75,6 +75,20 @@ export default function DeviceIcon({ display, tab, className }: { display: strin
       );
     } else if (display === 'DuckDuckGo Bot') {
       return <DuckDuckGo className={className} />;
+    } else if (display === 'Google Bot') {
+      return <Google className={className} />;
+    } else if (display === 'Telegram Bot') {
+      return <Telegram className={className} />;
+    } else if (display === 'Slack Bot') {
+      return <Slack className={className} />;
+    } else if (display === 'LinkedIn Bot') {
+      return <LinkedIn className={className} />;
+    } else if (display === 'Baidu Bot') {
+      return <Baidu className={`${className} text-blue-700`} />;
+    } else if (display === 'Facebook Bot') {
+      return <Facebook className={className} />;
+    } else if (display === 'Bing Bot') {
+      return <Bing className={className} />;
     }
 
     return <img alt={display} src={`https://avatars.dicebear.com/api/bottts/${display}.svg`} className={className} />;
