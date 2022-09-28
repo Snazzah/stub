@@ -3,5 +3,8 @@
   "extends": ["github>Snazzah/renovate-config"],
   "nvm": {
     "enabled": false
+  },
+  "dockerfile": {
+    "enabled": false
   }
 }
