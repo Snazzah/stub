@@ -67,12 +67,9 @@ export default async function handleLink(req: IncomingMessage, res: ServerRespon
   // Get the IP
   let ip = req.socket.remoteAddress ?? '127.0.0.1';
   if (process.env.TRUST_PROXY === 'true') {
-    if (req.headers['cf-connecting-ip'])
-      ip = Array.isArray(req.headers['cf-connecting-ip']) ? req.headers['cf-connecting-ip'][0] : req.headers['cf-connecting-ip'];
-    else if (process.env.TRUST_PROXY_HEADER && req.headers[process.env.TRUST_PROXY_HEADER])
-      ip = Array.isArray(req.headers[process.env.TRUST_PROXY_HEADER])
-        ? req.headers[process.env.TRUST_PROXY_HEADER][0]
-        : (req.headers[process.env.TRUST_PROXY_HEADER] as string);
+    const proxyHeader = process.env.TRUST_PROXY_HEADER ?? 'cf-connecting-ip';
+    if (proxyHeader && req.headers[proxyHeader])
+      ip = Array.isArray(req.headers[proxyHeader]) ? req.headers[proxyHeader][0] : (req.headers[proxyHeader] as string);
   }
 
   const cooldown = await processCooldown(`stub_${ip}`, RATELIMIT_EXPIRY, RATELIMIT_USES);
