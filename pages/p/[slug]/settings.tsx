@@ -1,12 +1,15 @@
 import AppLayout from 'components/layout/app';
 import ErrorPage from 'next/error';
+import { useSession } from 'next-auth/react';
 
 import CustomDomain from '@/components/app/custom-domain';
+import ProjectDangerZone from '@/components/app/danger-zone/project';
 import MaxWidthWrapper from '@/components/shared/max-width-wrapper';
 import useProject from '@/lib/swr/use-project';
 
 export default function ProjectLinks() {
-  const { project, error } = useProject();
+  const { project, error, user } = useProject();
+  const { data: session } = useSession();
 
   // handle error page
   if (error && error.status === 404) {
@@ -25,6 +28,7 @@ export default function ProjectLinks() {
       <MaxWidthWrapper>
         <div className="py-10 grid gap-5">
           <CustomDomain />
+          {(user?.role === 'owner' || session?.user?.superadmin) && <ProjectDangerZone />}
         </div>
       </MaxWidthWrapper>
     </AppLayout>

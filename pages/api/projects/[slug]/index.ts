@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { getSession } from '@/lib/auth';
 import prisma from '@/lib/prisma';
+import { deleteProject } from '@/lib/redis';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const session = await getSession(req, res);
@@ -44,8 +45,34 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // PUT /api/projects/[slug] – edit a project
   } else if (req.method === 'PUT') {
     return res.status(200).send('TODO');
+    // DELETE /api/projects/[slug] – delete a project
+  } else if (req.method === 'DELETE') {
+    const project = await prisma.project.findFirst({
+      where: {
+        slug
+      },
+      include: {
+        users: {
+          where: {
+            userId: session.user.id
+          },
+          select: {
+            role: true
+          }
+        }
+      }
+    });
+    if (!project || !project.users.length) return res.status(404).json({ error: 'Project not found' });
+    if (project.users[0].role !== 'owner' && !session.user.superadmin) return res.status(401).json({ error: 'Missing permissions' });
+    await Promise.all([
+      deleteProject(project.domain),
+      prisma.project.delete({
+        where: { id: project.id }
+      })
+    ]);
+    return res.status(204).end();
   } else {
-    res.setHeader('Allow', ['GET', 'PUT']);
+    res.setHeader('Allow', ['GET', 'PUT', 'DELETE']);
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
 }

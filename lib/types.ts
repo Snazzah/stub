@@ -19,7 +19,7 @@ export interface ProjectProps {
 }
 
 export interface ProjectUserProps {
-  role: 'member';
+  role: 'member' | 'owner';
 }
 
 export interface ProjectResponseProps {
