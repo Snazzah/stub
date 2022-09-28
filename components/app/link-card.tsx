@@ -50,8 +50,8 @@ export default function LinkCard({ props }: { props: LinkProps }) {
           src={`https://logo.clearbit.com/${urlHostname}`}
           alt={urlHostname}
           className="w-10 h-10 rounded-full border border-gray-200"
-          width={20}
-          height={20}
+          width={40}
+          height={40}
         />
         <div>
           <div className="flex items-center space-x-2">

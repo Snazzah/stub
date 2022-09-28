@@ -5,7 +5,7 @@ import { mutate } from 'swr';
 import { useDebounce } from 'use-debounce';
 
 import BlurImage from '@/components/shared/blur-image';
-import { AlertCircleFill, ChevronRight, LoadingCircle, LoadingDots, Star } from '@/components/shared/icons';
+import { AlertCircleFill, ChevronRight, LoadingCircle, LoadingDots, Logo, Star } from '@/components/shared/icons';
 import Modal from '@/components/shared/modal';
 import useProject from '@/lib/swr/use-project';
 import { LinkProps } from '@/lib/types';
@@ -55,7 +55,7 @@ function AddEditLinkModal({
       };
     } else {
       return {
-        avatar: '/static/logo.png',
+        avatar: null,
         copy: 'Add a new link'
       };
     }
@@ -121,7 +121,11 @@ function AddEditLinkModal({
     <Modal showModal={showAddEditLinkModal} setShowModal={setShowAddEditLinkModal}>
       <div className="inline-block w-full max-w-md overflow-hidden align-middle transition-all transform bg-white shadow-xl rounded-2xl">
         <div className="flex flex-col justify-center items-center space-y-3 sm:px-16 px-4 pt-8 py-4 border-b border-gray-200">
-          <BlurImage src={heroProps.avatar} alt={heroProps.copy} className="w-10 h-10 rounded-full border border-gray-200" width={20} height={20} />
+          {heroProps.avatar ? (
+            <BlurImage src={heroProps.avatar} alt={heroProps.copy} className="w-10 h-10 rounded-full border border-gray-200" width={40} height={40} />
+          ) : (
+            <Logo className="w-10 h-10" />
+          )}
           <h3 className="font-medium text-lg">{heroProps.copy}</h3>
         </div>
 
