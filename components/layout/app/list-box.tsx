@@ -50,17 +50,21 @@ export default function ListBox() {
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full rounded-lg bg-white hover:bg-gray-100 py-1.5 pl-3 pr-10 text-left focus:outline-none text-sm active:scale-95 transition-all duration-75">
             <div className="flex justify-start items-center space-x-3">
-              <BlurImage
-                src={
-                  selected.slug === '/'
-                    ? session?.user?.image || `https://avatars.dicebear.com/api/micah/${session?.user?.email}.svg`
-                    : `https://avatar.tobi.sh/${selected.slug}`
-                }
-                alt={selected.name}
-                className="w-8 h-8 flex-shrink-0 rounded-full overflow-hidden border border-gray-300"
-                width={48}
-                height={48}
-              />
+              {selected.slug === '/' ? (
+                <img
+                  alt={session?.user?.email || 'Avatar for logged in user'}
+                  src={session?.user?.image || `https://avatars.dicebear.com/api/micah/${session?.user?.email}.svg`}
+                  className="w-8 h-8 flex-shrink-0 rounded-full overflow-hidden border border-gray-300"
+                />
+              ) : (
+                <BlurImage
+                  src={`https://avatar.tobi.sh/${selected.slug}`}
+                  alt={selected.name}
+                  className="w-8 h-8 flex-shrink-0 rounded-full overflow-hidden border border-gray-300"
+                  width={48}
+                  height={48}
+                />
+              )}
               <span className="block truncate font-medium">{selected.name}</span>
             </div>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
