@@ -21,6 +21,7 @@ function DeleteLinkModal({
   const router = useRouter();
   const { slug } = router.query;
   const [deleting, setDeleting] = useState(false);
+  const [inputText, setInputText] = useState('');
   const { project: { domain } = {} } = useProject();
   const urlHostname = props?.url ? new URL(props.url).hostname : null;
 
@@ -40,8 +41,8 @@ function DeleteLinkModal({
             src={`https://logo.clearbit.com/${urlHostname}`}
             alt={urlHostname}
             className="w-10 h-10 rounded-full border border-gray-200"
-            width={20}
-            height={20}
+            width={40}
+            height={40}
           />
           <h3 className="font-medium text-lg">Delete {shortlink}</h3>
           <p className="text-sm text-gray-500">Warning: Deleting this link will remove all of its stats. This action cannot be undone.</p>
@@ -79,14 +80,16 @@ function DeleteLinkModal({
                 required
                 autoFocus={false}
                 className="border-gray-300 text-gray-900 placeholder-gray-300 focus:border-gray-500 focus:ring-gray-500 pr-10 block w-full rounded-md focus:outline-none sm:text-sm"
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
               />
             </div>
           </div>
 
           <button
-            disabled={deleting}
+            disabled={deleting || inputText !== shortlink}
             className={`${
-              deleting
+              deleting || inputText !== shortlink
                 ? 'cursor-not-allowed bg-gray-100 border-gray-200 text-gray-400'
                 : 'bg-red-600 hover:bg-white hover:text-red-600 border-red-600 text-white'
             } flex justify-center items-center w-full text-sm h-10 rounded-md border transition-all focus:outline-none`}
