@@ -9,6 +9,7 @@ import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import TwitterProvider from 'next-auth/providers/twitter';
 
+import { getUser } from '@/lib/cache';
 import prisma, { getAppSettings } from '@/lib/prisma';
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
@@ -106,11 +107,7 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
     async session({ session, token }) {
-      const user = await prisma.user.findUnique({
-        where: {
-          id: token.sub
-        }
-      });
+      const user = await getUser(token.sub);
       if (!user) throw new Error('User does not exist');
       session.user = {
         id: token.sub,
