@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # ---- Builder ----
-FROM node:16-alpine AS builder
+FROM node:18-alpine AS builder
 
 RUN mkdir /build
 WORKDIR /build
@@ -15,7 +15,7 @@ RUN yarn generate
 RUN yarn build
 
 # ---- Dependencies ----
-FROM node:16-alpine AS deps
+FROM node:18-alpine AS deps
 
 WORKDIR /deps
 
@@ -27,7 +27,7 @@ RUN yarn generate
 RUN yarn preload-geolite
 
 # ---- Runner ----
-FROM node:16-alpine
+FROM node:18-alpine
 
 RUN apk add dumb-init
 
