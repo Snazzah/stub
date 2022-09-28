@@ -52,12 +52,12 @@ export default function AdminAuthentication({ appSettings, providers }: { appSet
       </div>
       <div className="border-b border-gray-200 my-8" />
       <div className="flex flex-col gap-8 px-10">
-        <div className="flex justify-between">
+        <div className="flex justify-between flex-wrap gap-4">
           <div className="flex flex-col gap-1">
             <h2 className="font-medium text-gray-800">Allow New Users</h2>
             <p className="text-gray-500 text-sm">If this is disabled, new users trying to sign up will not be accepted.</p>
           </div>
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-4 items-center flex-row-reverse sm:flex-row">
             <span className="text-sm text-gray-500">
               Sign-ups are{' '}
               <span className={appSettings.allowNewUsers ? 'text-green-700' : 'text-red-700'}>

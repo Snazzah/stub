@@ -18,7 +18,7 @@ export default function ProjectLinks() {
 
   return (
     <AppLayout pageTitle={`Project Settings${project ? ` - ${project.name}` : ''}`}>
-      <div className="h-36 flex items-center bg-white border-b border-gray-200">
+      <div className="h-20 md:h-36 flex items-center bg-white border-b border-gray-200">
         <MaxWidthWrapper>
           <div className="flex justify-between items-center">
             <h1 className="text-2xl text-gray-600">Project Settings</h1>
