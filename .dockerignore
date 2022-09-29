@@ -4,4 +4,7 @@
 .vscode
 node_modules
 Dockerfile
-.docker-compose.yml
+docker-compose.yml
+.next
+.env
+docker.env

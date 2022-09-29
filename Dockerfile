@@ -40,6 +40,7 @@ COPY --chown=node:node --from=builder /build/.next ./.next
 COPY --chown=node:node --from=builder /build/public ./public
 COPY --from=builder /build/server ./server
 COPY --from=builder /build/prisma ./prisma
+COPY --from=builder /build/next.config.js ./
 
 USER node
 ENV NODE_ENV production
