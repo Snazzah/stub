@@ -69,7 +69,7 @@ From here, you can launch the app with `yarn start` and launch the router with `
 
 If you have filled in the `STUB_ADMIN_EMAIL` environment variable and logged in with your authentication provider of choice, you should see a [shield next to your profile picture](https://get.snaz.in/4oXYvT9.png) showing that you are a superadmin, and can create projects. If not, you can run `yarn manage set-superadmin something@example.com` to set that user with that e-mail as a superadmin.
 
-After creating a project, you can make sure that domain is being pointed from the router port (default `3001`, can be set from `ROUTER_PORT`) and you can check your [project settings](https://get.snaz.in/7bkV41c.png) to confirm if that domain works.
+After creating a project, you can make sure that domain is being pointed to the router's port (default `3001`, can be set from `ROUTER_PORT`) and you can check your [project settings](https://get.snaz.in/7bkV41c.png) to confirm if that domain works.
 
 ### Docker
 ```sh
