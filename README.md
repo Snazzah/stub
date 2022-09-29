@@ -22,12 +22,12 @@ Stub is a heavily modified fork of [Dub](https://github.com/steven-tey/dub): An 
 > **Warning** This is still a work in progress. For a single-user instance, this works fine. User management doesn't exist yet.
 
 ## Why a fork of Dub?
-Dub relies a lot on serverless services (Vercel, Upstash) and wasn't all that good to self-host on your own server. Stub serves to have a nice link shortener like Dub that can be hosted on your own server.
+Dub relies a lot on serverless services (Vercel, Upstash) and wasn't all that good to self-host on your own server. There was also some hardcoded domains to `dub.sh` which wouldn't work when self-hosting. Stub serves to have a nice link shortener like Dub that can be hosted on your own server.
 
 ## Differences
-- References to separate plans and Stripe was removed.
+- Stripe and Plausible modules were removed.
 - `@upstash/redis` was replaced with `ioredis`, which caused a bit of problems and I ended up restructuring link routing like in the next point.
-- Dub uses Next.js middleware to route links, but the middleware itself is limited to edge functionality, which wouldn't work for Redis outside of Upstash's Redis client (which is just calling endpoints). The router was insteda made into a separate node HTTP server hosted on a separate port (default `3001`). This can also allow for index links in the future.
+- Dub uses Next.js middleware to route links, but the middleware itself is limited to edge functionality, which wouldn't work for Redis outside of Upstash's Redis client (which is just calling endpoints). The router was *instead* made into a separate node HTTP server hosted on a separate port (default `3001`). This also allows for index links with no hassle. (Using `:index` as a key lets you create an index link!)
 - Users now have types, with users being able to be [superadmins](https://get.snaz.in/4oXYvT9.png), or regular admins that can create projects. By default, users cannot create projects and will have to be invited to other projects by managers. This system is somewhat similar to Weblate.
   - Superadmins have control of instance-wide settings, like enabling or disabling new users, or limiting new users to certain e-mails. ([example](https://get.snaz.in/3wPaYvt.png))
 - Stub supports more login methods other than magic link e-mails, like Discord or GitHub OAuth logins.
