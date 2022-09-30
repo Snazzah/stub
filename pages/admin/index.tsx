@@ -9,7 +9,7 @@ import { getSession } from '@/lib/auth';
 import { AppSettingsProps } from '@/lib/types';
 import { availableProviders, fetcher } from '@/lib/utils';
 
-export default function Admin({ appVersion, providers }: { appVersion: string; providers: string[] }) {
+export default function Admin({ appVersion, providers, rev }: { appVersion: string; providers: string[]; rev: string }) {
   const { data } = useSWR<AppSettingsProps>('/api/app-settings', fetcher);
 
   return (
@@ -18,7 +18,7 @@ export default function Admin({ appVersion, providers }: { appVersion: string; p
         {data && (
           <div className="py-10 grid gap-5">
             <AdminRegister appSettings={data} providers={providers} />
-            <AdminInformation appVersion={appVersion} appId={data.appId} />
+            <AdminInformation appVersion={appVersion} appId={data.appId} appRevision={rev} />
           </div>
         )}
       </MaxWidthWrapper>
@@ -29,5 +29,5 @@ export default function Admin({ appVersion, providers }: { appVersion: string; p
 export const getServerSideProps: GetServerSideProps = async function ({ req, res }) {
   const session = await getSession(req, res);
   if (!session?.user?.superadmin) return { redirect: { destination: '/' }, props: {} };
-  return { props: { session, appVersion: process.env.npm_package_version, providers: availableProviders } };
+  return { props: { session, appVersion: process.env.npm_package_version, rev: process.env.GIT_REVISION, providers: availableProviders } };
 };
