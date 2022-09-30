@@ -13,7 +13,7 @@ export default function Tooltip({ children, content }: { children: ReactNode; co
           className="animate-slide-up-fade inline-flex items-center rounded-md px-4 py-2.5 z-20 bg-white border border-gray-200 drop-shadow-lg"
         >
           <TooltipPrimitive.Arrow className="fill-current text-white" />
-          {typeof content === 'string' ? <span className="block text-sm text-center text-gray-700 max-w-xs">{content}</span> : content}
+          {typeof content === 'string' ? <span className="block text-sm text-center text-gray-700 max-w-xs drop-shadow-lg">{content}</span> : content}
           <TooltipPrimitive.Arrow className="fill-current text-white" />
         </TooltipPrimitive.Content>
       </TooltipPrimitive.Root>
