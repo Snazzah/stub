@@ -9,7 +9,6 @@ import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import TwitterProvider from 'next-auth/providers/twitter';
 
-import { getUser } from '@/lib/cache';
 import prisma, { getAppSettings } from '@/lib/prisma';
 
 const PRODUCTION = process.env.NODE_ENV === 'production';
@@ -67,7 +66,6 @@ export const authOptions: NextAuthOptions = {
   },
   providers,
   adapter: PrismaAdapter(prisma),
-  session: { strategy: 'jwt' },
   cookies: {
     sessionToken: {
       name: `${PRODUCTION ? '__Secure-' : ''}next-auth.session-token`,
@@ -106,15 +104,12 @@ export const authOptions: NextAuthOptions = {
 
       return token;
     },
-    async session({ session, token }) {
-      const user = await getUser(token.sub);
-      if (!user) throw new Error('User does not exist');
+    async session({ session, user }) {
       session.user = {
-        id: token.sub,
         ...session.user,
+        id: user.id,
         name: user.name,
         email: user.email,
-        picture: user.image,
         superadmin: user.superadmin,
         type: user.type
       };

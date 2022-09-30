@@ -1,4 +1,4 @@
-import { GetServerSidePropsContext, NextApiRequest, NextApiResponse } from 'next';
+import { GetServerSideProps, GetServerSidePropsContext, NextApiRequest, NextApiResponse } from 'next';
 import { unstable_getServerSession } from 'next-auth/next';
 
 import prisma from '@/lib/prisma';
@@ -15,6 +15,15 @@ declare module 'next-auth' {
       superadmin?: boolean;
       type?: string | null;
     };
+  }
+
+  interface User {
+    email?: string | null;
+    id?: string | null;
+    name?: string | null;
+    picture?: string | null;
+    superadmin?: boolean;
+    type?: string | null;
   }
 }
 
@@ -75,3 +84,9 @@ const withProjectAuth =
   };
 
 export { withProjectAuth };
+
+export const serverSidePropsAuth: GetServerSideProps = async ({ req, res }) => {
+  const session = await getSession(req, res);
+  if (!session?.user) return { redirect: { destination: '/login' }, props: {} };
+  return { props: { session } };
+};

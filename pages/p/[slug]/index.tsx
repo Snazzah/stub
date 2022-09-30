@@ -4,6 +4,7 @@ import ErrorPage from 'next/error';
 import { useAddEditLinkModal } from '@/components/app/add-edit-link-modal';
 import LinksContainer from '@/components/app/links-container';
 import MaxWidthWrapper from '@/components/shared/max-width-wrapper';
+import { serverSidePropsAuth } from '@/lib/auth';
 import useProject from '@/lib/swr/use-project';
 
 export default function ProjectLinks() {
@@ -31,3 +32,5 @@ export default function ProjectLinks() {
     </AppLayout>
   );
 }
+
+export const getServerSideProps = serverSidePropsAuth;

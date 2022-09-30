@@ -1,9 +1,10 @@
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
 
 import Meta from '@/components/layout/meta';
 import { Discord, Facebook, Github, Google, LoadingDots, Twitter } from '@/components/shared/icons';
+import { getSession } from '@/lib/auth';
 import { availableProviders } from '@/lib/utils';
 
 interface Props {
@@ -120,9 +121,8 @@ export default function Login({ providers }: Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async function () {
-  return {
-    props: { providers: availableProviders },
-    revalidate: 3600
-  };
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  const session = await getSession(req, res);
+  if (session?.user) return { redirect: { destination: '/' }, props: {} };
+  return { props: { providers: availableProviders } };
 };

@@ -1,7 +1,5 @@
 import AppLayout from 'components/layout/app';
-import Router from 'next/router';
 import { useSession } from 'next-auth/react';
-import { useEffect } from 'react';
 import useSWR from 'swr';
 
 import { useAddProjectModal } from '@/components/app/add-project-modal';
@@ -9,17 +7,14 @@ import NoProjectsPlaceholder from '@/components/app/no-projects-placeholder';
 import ProjectCard from '@/components/app/project-card';
 import ProjectCardPlaceholder from '@/components/app/project-card-placeholder';
 import MaxWidthWrapper from '@/components/shared/max-width-wrapper';
+import { serverSidePropsAuth } from '@/lib/auth';
 import { ProjectProps } from '@/lib/types';
 import { fetcher } from '@/lib/utils';
 
 export default function App() {
-  const { data, error } = useSWR<ProjectProps[]>(`/api/projects`, fetcher);
+  const { data } = useSWR<ProjectProps[]>('/api/projects', fetcher);
   const { setShowAddProjectModal, AddProjectModal } = useAddProjectModal({});
   const { data: session } = useSession();
-
-  useEffect(() => {
-    if (error && error.message === 'Unauthorized') Router.replace('/login');
-  }, [error]);
 
   return (
     <AppLayout pageTitle="My Projects">
@@ -55,3 +50,5 @@ export default function App() {
     </AppLayout>
   );
 }
+
+export const getServerSideProps = serverSidePropsAuth;

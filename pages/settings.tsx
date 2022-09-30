@@ -1,4 +1,5 @@
 import AppLayout from '@/components/layout/app';
+import { serverSidePropsAuth } from '@/lib/auth';
 
 export default function Settings() {
   return (
@@ -7,3 +8,5 @@ export default function Settings() {
     </AppLayout>
   );
 }
+
+export const getServerSideProps = serverSidePropsAuth;

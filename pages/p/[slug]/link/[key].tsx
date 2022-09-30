@@ -2,6 +2,7 @@ import ErrorPage from 'next/error';
 
 import AppLayout from '@/components/layout/app';
 import Stats from '@/components/stats';
+import { serverSidePropsAuth } from '@/lib/auth';
 import useProject from '@/lib/swr/use-project';
 
 export default function StatsPage() {
@@ -12,3 +13,5 @@ export default function StatsPage() {
 
   return <AppLayout pageTitle="Link Stats">{project && <Stats domain={project.domain} />}</AppLayout>;
 }
+
+export const getServerSideProps = serverSidePropsAuth;

@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/react';
 import CustomDomain from '@/components/app/custom-domain';
 import ProjectDangerZone from '@/components/app/danger-zone/project';
 import MaxWidthWrapper from '@/components/shared/max-width-wrapper';
+import { serverSidePropsAuth } from '@/lib/auth';
 import useProject from '@/lib/swr/use-project';
 
 export default function ProjectLinks() {
@@ -34,3 +35,5 @@ export default function ProjectLinks() {
     </AppLayout>
   );
 }
+
+export const getServerSideProps = serverSidePropsAuth;
