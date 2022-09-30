@@ -19,7 +19,7 @@
     "lint:fix": "eslint . --fix",
     "generate": "prisma generate",
     "migrate": "prisma migrate deploy",
-    "preload-geolite": "node -e \"import('geolite2-redist').then(geolite => geolite.downloadDbs())\""
+    "preload-geolite": "node -e \"import('geolite2-redist').then(geolite => geolite.downloadDbs({ dbList: ['GeoLite2-City'] }))\""
   },
   "dependencies": {
     "@headlessui/react": "1.7.2",
