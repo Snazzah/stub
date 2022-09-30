@@ -34,7 +34,7 @@ RUN apk add dumb-init
 WORKDIR /app
 
 ARG BUILD_GIT_REV
-ENV GIT_COMMIT=$BUILD_GIT_REV
+ENV GIT_REVISION=$BUILD_GIT_REV
 
 COPY --from=builder /build/package.json ./package.json
 COPY --from=builder /build/yarn.lock ./yarn.lock
