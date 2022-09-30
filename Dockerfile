@@ -9,6 +9,7 @@ ENV GIT_REVISION=${GIT_REVISION}
 RUN mkdir /build
 WORKDIR /build
 
+RUN chown root.root .
 COPY package.json .
 COPY yarn.lock .
 RUN yarn install --frozen-lockfile
@@ -22,6 +23,7 @@ FROM node:16-alpine AS deps
 
 WORKDIR /deps
 
+RUN chown root.root .
 COPY package.json .
 COPY yarn.lock .
 COPY ./prisma .
