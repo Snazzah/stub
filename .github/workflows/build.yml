@@ -65,4 +65,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            BUILD_GIT_REV=${{ github.sha }}
+            GIT_REVISION=${{ github.sha }}

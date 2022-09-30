@@ -3,6 +3,9 @@
 # ---- Builder ----
 FROM node:16-alpine AS builder
 
+ARG GIT_REVISION
+ENV GIT_REVISION=${GIT_REVISION}
+
 RUN mkdir /build
 WORKDIR /build
 
@@ -33,8 +36,8 @@ RUN apk add dumb-init
 
 WORKDIR /app
 
-ARG BUILD_GIT_REV
-ENV GIT_REVISION=$BUILD_GIT_REV
+ARG GIT_REVISION
+ENV GIT_REVISION=${GIT_REVISION}
 
 COPY --from=builder /build/package.json ./package.json
 COPY --from=builder /build/yarn.lock ./yarn.lock
