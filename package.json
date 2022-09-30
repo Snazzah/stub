@@ -33,7 +33,7 @@
     "@visx/responsive": "2.10.0",
     "@visx/shape": "2.12.2",
     "@visx/tooltip": "2.10.0",
-    "dotenv": "16.0.2",
+    "dotenv": "16.0.3",
     "framer-motion": "7.4.0",
     "geolite2-redist": "3.0.3",
     "ioredis": "5.2.3",
