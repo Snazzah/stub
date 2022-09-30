@@ -1295,10 +1295,10 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-dotenv@16.0.2:
-  version "16.0.2"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.2.tgz#0b0f8652c016a3858ef795024508cddc4bffc5bf"
-  integrity sha512-JvpYKUmzQhYoIFgK2MOnF3bciIZoItIIoryihy0rIA+H4Jy0FmgyKYAHCTN98P5ybGSJcIFbh6QKeJdtZd1qhA==
+dotenv@16.0.3:
+  version "16.0.3"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
+  integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
 
 electron-to-chromium@^1.4.251:
   version "1.4.256"
@@ -1798,10 +1798,10 @@ fraction.js@^4.2.0:
   resolved "https://registry.npmjs.org/fraction.js/-/fraction.js-4.2.0.tgz"
   integrity sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==
 
-framer-motion@7.4.0:
-  version "7.4.0"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.4.0.tgz#318c52a76517f9f854aa4a298c292be04941521b"
-  integrity sha512-tcvL5L1cASYjIeBG6mQHhzfndm7MdyHjOwqIdOzOetIVa1yUqeYMufAoljgqg69XFgsgZet+c4iuSuFF+Vgbjg==
+framer-motion@7.5.0:
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-7.5.0.tgz#e61864f9423f8b24ee5d6539e77c5d6571ee5f31"
+  integrity sha512-uz42xPsO5VmoRrT0Q2I1UZBvQ+Px0Is2c+7mum2z/UhC9m2Q1/2DmSR82ncc5qRtO/4OerNEm473ktOEX3unRg==
   dependencies:
     "@motionone/dom" "10.13.1"
     framesync "6.1.2"
