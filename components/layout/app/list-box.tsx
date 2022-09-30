@@ -42,9 +42,7 @@ export default function ListBox() {
       <Listbox
         value={selected}
         onChange={(e) => {
-          if (e.slug !== 'Add a new project') {
-            router.push(`/${e.slug}`);
-          }
+          if (e.slug !== 'Add a new project') router.push(`/p/${e.slug}`);
         }}
       >
         <div className="relative mt-1">
