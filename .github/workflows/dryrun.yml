@@ -16,6 +16,7 @@ on:
       - "middleware.ts"
       - "middleware.ts"
       - ".dockerignore"
+      - "Dockerfile"
       - "*.config.js"
       - "package.json"
       - "tsconfig.json"
