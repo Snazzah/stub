@@ -1,13 +1,15 @@
 let revision = '<revision unknown>';
-try {
-  revision = require('child_process').execSync('git rev-parse HEAD', { cwd: __dirname }).toString().trim();
-} catch (e) {}
+if (!process.env.GIT_REVISION) {
+  try {
+    revision = require('child_process').execSync('git rev-parse HEAD', { cwd: __dirname }).toString().trim();
+  } catch (e) {}
+}
 
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
   env: {
-    GIT_REVISION: revision
+    GIT_REVISION: process.env.GIT_REVISION || revision
   },
   images: {
     domains: [

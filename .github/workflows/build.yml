@@ -58,6 +58,8 @@ jobs:
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
+        env:
+          GIT_REVISION: ${{ github.sha }}
         with:
           context: .
           push: true
