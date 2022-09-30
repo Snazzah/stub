@@ -7,6 +7,8 @@ import useScroll from '@/lib/hooks/use-scroll';
 import { IntervalProps } from '@/lib/stats';
 import { linkConstructor } from '@/lib/utils';
 
+import CopyButton from '../shared/copy-button';
+
 export default function Toggle({
   domain,
   linkKey,
@@ -28,15 +30,13 @@ export default function Toggle({
   return (
     <div className={`z-20 mb-5 top-[6.5rem] sticky p-5 -mx-2.5 lg:mx-0 bg-gray-50 ${atTop ? 'shadow-md' : ''}`}>
       <div className="max-w-4xl mx-auto flex flex-col sm:flex-row gap-4 justify-between items-center">
-        <a
-          className="group flex text-xl text-gray-800 font-semibold"
-          href={linkConstructor({ key: linkKey, domain })}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {linkConstructor({ key: linkKey, domain, pretty: true })}
-          <ExpandingArrow className="w-5 h-5" />
-        </a>
+        <div className="flex text-xl text-gray-800 font-semibold gap-2">
+          <CopyButton url={linkConstructor({ key: linkKey, domain })} />
+          <a className="group flex" href={linkConstructor({ key: linkKey, domain })} target="_blank" rel="noreferrer">
+            {linkConstructor({ key: linkKey, domain, pretty: true })}
+            <ExpandingArrow className="w-5 h-5" />
+          </a>
+        </div>
         <div className="px-3 py-1 rounded-md shadow-md border bg-white border-gray-100">
           <BadgeSelect
             options={INTERVALS}
