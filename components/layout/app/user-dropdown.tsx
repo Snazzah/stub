@@ -40,7 +40,7 @@ export default function UserDropdown() {
           {session?.user?.superadmin && (
             <Link href="/admin">
               <Menu.Item>
-                <a className="text-gray-900 hover:bg-gray-100 group flex w-full items-center rounded-md px-2 py-2 text-sm">Admin</a>
+                <a className="text-gray-900 hover:bg-gray-100 group flex w-full items-center rounded-md px-2 py-2 text-sm cursor-pointer">Admin</a>
               </Menu.Item>
             </Link>
           )}
