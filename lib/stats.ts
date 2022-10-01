@@ -7,6 +7,13 @@ export interface RawStatsProps {
   ua: any;
   referer: string;
   timestamp: number;
+  utm?: {
+    source?: string;
+    medium?: string;
+    campaign?: string;
+    content?: string;
+    tags?: string;
+  };
 }
 
 export interface StatsProps {
