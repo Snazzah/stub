@@ -14,14 +14,11 @@ const redis = new Redis({
   password: process.env.REDIS_PASSWORD
 });
 
-/**
- * Recording clicks with geo, ua, referer and timestamp data
- * If key is not specified, record click as the root click
- **/
-export async function recordClick(hostname: string, req: IncomingMessage, ip: string, key?: string) {
+/** Recording clicks with geo, ua, referer and timestamp data **/
+export async function recordClick(hostname: string, req: IncomingMessage, ip: string, key: string) {
   const now = Date.now();
   return await redis.zadd(
-    key ? `${hostname}:clicks:${key}` : `${hostname}:root:clicks`,
+    `${hostname}:clicks:${key}`,
     'NX',
     now,
     JSON.stringify({
