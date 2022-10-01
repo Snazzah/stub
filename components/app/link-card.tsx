@@ -11,8 +11,8 @@ import { LinkProps } from '@/lib/types';
 import { fetcher, linkConstructor, nFormatter, timeAgo } from '@/lib/utils';
 
 import Tooltip from '../shared/tooltip';
-import { useAddEditLinkModal } from './add-edit-link-modal';
-import { useDeleteLinkModal } from './delete-link-modal';
+import { useAddEditLinkModal } from './modals/add-edit-link-modal';
+import { useDeleteLinkModal } from './modals/delete-link-modal';
 
 export default function LinkCard({ props }: { props: LinkProps }) {
   const { key, url, title, timestamp } = props;

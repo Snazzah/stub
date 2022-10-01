@@ -2,10 +2,10 @@ import AppLayout from 'components/layout/app';
 import { useSession } from 'next-auth/react';
 import useSWR from 'swr';
 
-import { useAddProjectModal } from '@/components/app/add-project-modal';
-import NoProjectsPlaceholder from '@/components/app/no-projects-placeholder';
+import { useAddProjectModal } from '@/components/app/modals/add-project-modal';
+import NoProjectsPlaceholder from '@/components/app/placeholders/no-projects-placeholder';
+import ProjectCardPlaceholder from '@/components/app/placeholders/project-card-placeholder';
 import ProjectCard from '@/components/app/project-card';
-import ProjectCardPlaceholder from '@/components/app/project-card-placeholder';
 import MaxWidthWrapper from '@/components/shared/max-width-wrapper';
 import { serverSidePropsAuth } from '@/lib/auth';
 import { ProjectProps } from '@/lib/types';

@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import { Fragment, useMemo } from 'react';
 import useSWR from 'swr';
 
-import { useAddProjectModal } from '@/components/app/add-project-modal';
+import { useAddProjectModal } from '@/components/app/modals/add-project-modal';
 import BlurImage from '@/components/shared/blur-image';
 import { ChevronUpDown, PlusCircle, Tick } from '@/components/shared/icons';
 import { ProjectProps } from '@/lib/types';

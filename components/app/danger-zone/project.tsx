@@ -1,4 +1,4 @@
-import { useDeleteProjectModal } from './delete-project-modal';
+import { useDeleteProjectModal } from '../modals/delete-project-modal';
 
 export default function ProjectDangerZone() {
   const { setShowDeleteProjectModal, DeleteProjectModal } = useDeleteProjectModal();

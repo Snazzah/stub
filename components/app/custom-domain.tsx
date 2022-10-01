@@ -5,7 +5,7 @@ import { AlertCircleFill, CheckCircleFill, ExternalLink, LoadingDots } from '@/c
 import useProject from '@/lib/swr/use-project';
 import { fetcher } from '@/lib/utils';
 
-import { useEditDomainModal } from './edit-domain-modal';
+import { useEditDomainModal } from './modals/edit-domain-modal';
 
 export default function CustomDomain() {
   const router = useRouter();
