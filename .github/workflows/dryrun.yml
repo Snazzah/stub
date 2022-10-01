@@ -13,8 +13,6 @@ on:
       - "styles/**"
       - ".github/workflows/dryrun.yml"
       - ".eslintrc.*"
-      - "middleware.ts"
-      - "middleware.ts"
       - ".dockerignore"
       - "Dockerfile"
       - "*.config.js"
