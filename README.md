@@ -28,6 +28,7 @@ Dub relies a lot on serverless services (Vercel, Upstash) and wasn't all that go
 - Stripe and Plausible modules were removed.
 - `@upstash/redis` was replaced with `ioredis`, which caused a bit of problems and I ended up restructuring link routing like in the next point.
 - Dub uses Next.js middleware to route links, but the middleware itself is limited to edge functionality, which wouldn't work for Redis outside of Upstash's Redis client (which is just calling endpoints). The router was *instead* made into a separate node HTTP server hosted on a separate port (default `3001`). This also allows for index links with no hassle. (Using `:index` as a key lets you create an index link!)
+- Getting location data is different since Dub used [Vercel's geolocation data](https://vercel.com/templates/next.js/edge-functions-geolocation). Instead, Stub will lookup geo data from [GeoLite2](https://github.com/GitSquared/node-geolite2-redist). (Make sure that you set your trust proxy variables correctly, or else you will get a default "Userland" location!)
 - Users now have types, with users being able to be [superadmins](https://get.snaz.in/4oXYvT9.png), or regular admins that can create projects. By default, users cannot create projects and will have to be invited to other projects by managers. This system is somewhat similar to Weblate.
   - Superadmins have control of instance-wide settings, like enabling or disabling new users, or limiting new users to certain e-mails. ([example](https://get.snaz.in/3wPaYvt.png))
 - Stub supports more login methods other than magic link e-mails, like Discord or GitHub OAuth logins.
@@ -49,7 +50,6 @@ Stub is split into two applications, the app itself and the router. The router i
 - `{hostname}:links` – hashmap of all links for a given hostname (e.g. `dub.sh:links`)
 - `{hostname}:links:timestamps` – sorted set of all link timestamps for a given hostname (e.g. `dub.sh:links:timestamps`)
 - `{hostname}:clicks:{linkId}` – sorted set of all clicks for a given link (e.g. `dub.sh:clicks:github`)
-- `{hostname}:root:clicks` – sorted set of all root link clicks for a given hostname (e.g. `dub.sh:root:clicks`)
 
 ## Deploy Your Own
 ### Manual
