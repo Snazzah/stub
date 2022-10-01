@@ -1,5 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'http';
 import Redis from 'ioredis';
+import { ParsedUrlQuery } from 'querystring';
 
 import type { LinkProps } from '@/lib/types';
 
@@ -14,8 +15,11 @@ const redis = new Redis({
   password: process.env.REDIS_PASSWORD
 });
 
+const queryToString = (v: undefined | string | string[]) =>
+  !v || (Array.isArray(v) && !v.length) ? undefined : (Array.isArray(v) ? v.join(',') : v).slice(0, 256);
+
 /** Recording clicks with geo, ua, referer and timestamp data **/
-export async function recordClick(hostname: string, req: IncomingMessage, ip: string, key: string) {
+export async function recordClick(hostname: string, req: IncomingMessage, ip: string, key: string, query?: ParsedUrlQuery) {
   const now = Date.now();
   return await redis.zadd(
     `${hostname}:clicks:${key}`,
@@ -25,7 +29,17 @@ export async function recordClick(hostname: string, req: IncomingMessage, ip: st
       geo: getGeo(ip),
       ua: userAgentFromString(req.headers['user-agent']),
       referer: req.headers.referer,
-      timestamp: now
+      timestamp: now,
+      utm:
+        !query || !['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].map((p) => !!query[p]).includes(true)
+          ? undefined
+          : {
+              source: queryToString(query.utm_source),
+              medium: queryToString(query.utm_medium),
+              compaign: queryToString(query.utm_campaign),
+              content: queryToString(query.utm_content),
+              term: queryToString(query.utm_term)
+            }
     })
   );
 }
@@ -56,7 +70,7 @@ const RATELIMIT_USES = 10;
 const RATELIMIT_EXPIRY = 60000;
 
 export default async function handleLink(req: IncomingMessage, res: ServerResponse) {
-  const { hostname, key: linkKey } = parseUrl(req);
+  const { hostname, key: linkKey, query } = parseUrl(req);
 
   const key = linkKey || ':index';
   if (!hostname) return false;
@@ -81,7 +95,7 @@ export default async function handleLink(req: IncomingMessage, res: ServerRespon
 
     if (target) {
       serverRedirect(res, target);
-      await recordClick(hostname, req, ip, key);
+      await recordClick(hostname, req, ip, key, query);
     } else {
       // TODO allow for 404 links
       res.statusCode = 404;
