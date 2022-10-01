@@ -1,6 +1,20 @@
-import { Apple, Baidu, Bing, Chrome, DuckDuckGo, Google, Insomnia, LinkedIn, Safari, Slack, Telegram } from 'components/shared/icons/devices';
-
 import BlurImage from '@/components/shared/blur-image';
+import {
+  Apple,
+  Baidu,
+  Bing,
+  Chrome,
+  DuckDuckGo,
+  Google,
+  Insomnia,
+  LinkedIn,
+  MSEdge,
+  Opera,
+  Safari,
+  Slack,
+  Telegram,
+  UCBrowser
+} from '@/components/shared/icons/devices';
 import { DeviceTabs } from '@/lib/stats';
 
 import { Discord, Facebook, Twitter } from '../shared/icons';
@@ -29,6 +43,12 @@ export default function DeviceIcon({ display, tab, className }: { display: strin
       return <Chrome className={className} />;
     } else if (display === 'Safari' || display === 'Mobile Safari') {
       return <Safari className={className} />;
+    } else if (display === 'UCBrowser') {
+      return <UCBrowser className={className} />;
+    } else if (display === 'Edge') {
+      return <MSEdge className={className} />;
+    } else if (display === 'Opera' || display === 'Opera Mobi' || display === 'Opera Mini' || display === 'Opera Neon' || display === 'Opera Touch') {
+      return <Opera className={className} />;
     } else {
       return (
         <BlurImage
