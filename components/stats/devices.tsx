@@ -9,6 +9,11 @@ import { nFormatter } from '@/lib/utils';
 import ChartIllustration from '../shared/illustrations/chart';
 import DeviceIcon from './device-icon';
 
+const nameDisplayMap: { [name: string]: string } = {
+  smarttv: 'Smart TV',
+  UCBrowser: 'UC Browser'
+};
+
 export default function Devices({ data: rawData }: { data: StatsProps }) {
   const [tab, setTab] = useState<DeviceTabs>('device');
   const [showBots, setShowBots] = useState(false); // hide bots by default
@@ -54,7 +59,7 @@ export default function Devices({ data: rawData }: { data: StatsProps }) {
                     <div className="relative flex items-center z-10 w-full max-w-[calc(100%-3rem)]">
                       <span className="flex gap-2 px-2 items-center z-10">
                         <DeviceIcon display={display} tab={tab} className="w-5 h-5 object-contain" />
-                        <p className={`text-gray-800 text-sm ${display !== 'iOS' ? 'capitalize' : ''}`}>{display}</p>
+                        <p className={`text-gray-800 text-sm ${display !== 'iOS' ? 'capitalize' : ''}`}>{nameDisplayMap[display] || display}</p>
                       </span>
                       <motion.div
                         style={{

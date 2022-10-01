@@ -4,16 +4,22 @@ import {
   Baidu,
   Bing,
   Chrome,
+  Console,
+  Desktop,
   DuckDuckGo,
   Google,
   Insomnia,
   LinkedIn,
+  Mobile,
   MSEdge,
   Opera,
   Safari,
   Slack,
+  Tablet,
   Telegram,
-  UCBrowser
+  TV,
+  UCBrowser,
+  Wearable
 } from '@/components/shared/icons/devices';
 import { DeviceTabs } from '@/lib/stats';
 
@@ -24,20 +30,24 @@ export default function DeviceIcon({ display, tab, className }: { display: strin
     return <img alt={display} src="https://avatars.dicebear.com/api/bottts/dub.svg" className={className} />;
   }
   if (tab === 'device') {
-    return (
-      <BlurImage
-        src={
-          display === 'Desktop'
-            ? `https://faisalman.github.io/ua-parser-js/images/types/default.png`
-            : `https://faisalman.github.io/ua-parser-js/images/types/${display}.png`
-        }
-        alt={display}
-        width={20}
-        height={20}
-        sizes="10vw"
-        className={className}
-      />
-    );
+    if (display === 'Desktop' || display === 'desktop') return <Desktop className={className} />;
+    else if (display === 'mobile') return <Mobile className={className} />;
+    else if (display === 'tablet') return <Tablet className={className} />;
+    else if (display === 'console') return <Console className={className} />;
+    else if (display === 'smarttv') return <TV className={className} />;
+    else if (display === 'wearable') return <Wearable className={className} />;
+    else {
+      return (
+        <BlurImage
+          src={`https://faisalman.github.io/ua-parser-js/images/types/${display}.png`}
+          alt={display}
+          width={40}
+          height={40}
+          sizes="10vw"
+          className={className}
+        />
+      );
+    }
   } else if (tab === 'browser') {
     if (display === 'Chrome') {
       return <Chrome className={className} />;
@@ -54,8 +64,8 @@ export default function DeviceIcon({ display, tab, className }: { display: strin
         <BlurImage
           src={`https://faisalman.github.io/ua-parser-js/images/browsers/${display.toLowerCase()}.png`}
           alt={display}
-          width={20}
-          height={20}
+          width={40}
+          height={40}
           className={className}
         />
       );
