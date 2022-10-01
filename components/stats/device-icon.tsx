@@ -7,12 +7,15 @@ import {
   Bot,
   Chrome,
   Console,
+  Debian,
   Desktop,
   DuckDuckGo,
+  Fuchsia,
   Google,
   Insomnia,
   LinkedIn,
   Linux,
+  LinuxMint,
   Mobile,
   MSEdge,
   Opera,
@@ -21,6 +24,7 @@ import {
   Tablet,
   Telegram,
   TV,
+  Ubuntu,
   UCBrowser,
   UnknownDevice,
   Wearable,
@@ -85,8 +89,16 @@ export default function DeviceIcon({ display, tab, className }: { display: strin
       return <Android className={className} />;
     } else if (display === 'Linux') {
       return <Linux className={className} />;
+    } else if (display === 'Mint') {
+      return <LinuxMint className={className} />;
+    } else if (display === 'Debian') {
+      return <Debian className={className} />;
     } else if (display === 'Windows') {
       return <Windows className={className} />;
+    } else if (display === 'Fuchsia') {
+      return <Fuchsia className={className} />;
+    } else if (display === 'Ubuntu') {
+      return <Ubuntu className={className} />;
     } else {
       return (
         <BlurImage

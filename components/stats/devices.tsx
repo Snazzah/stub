@@ -11,7 +11,8 @@ import DeviceIcon from './device-icon';
 
 const nameDisplayMap: { [name: string]: string } = {
   smarttv: 'Smart TV',
-  UCBrowser: 'UC Browser'
+  UCBrowser: 'UC Browser',
+  Mint: 'Linux Mint'
 };
 
 export default function Devices({ data: rawData }: { data: StatsProps }) {
