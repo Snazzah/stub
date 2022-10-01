@@ -1,8 +1,10 @@
 import BlurImage from '@/components/shared/blur-image';
 import {
+  Android,
   Apple,
   Baidu,
   Bing,
+  Bot,
   Chrome,
   Console,
   Desktop,
@@ -10,6 +12,7 @@ import {
   Google,
   Insomnia,
   LinkedIn,
+  Linux,
   Mobile,
   MSEdge,
   Opera,
@@ -19,16 +22,17 @@ import {
   Telegram,
   TV,
   UCBrowser,
-  Wearable
+  UnknownDevice,
+  Wearable,
+  Windows
 } from '@/components/shared/icons/devices';
 import { DeviceTabs } from '@/lib/stats';
 
 import { Discord, Facebook, Twitter } from '../shared/icons';
 
 export default function DeviceIcon({ display, tab, className }: { display: string; tab: DeviceTabs; className: string }) {
-  if (display === 'Bot') {
-    return <img alt={display} src="https://avatars.dicebear.com/api/bottts/dub.svg" className={className} />;
-  }
+  if (display === 'Bot') return <Bot className={className} />;
+  if (display === 'Unknown' || display === 'unknown') return <UnknownDevice className={className} />;
   if (tab === 'device') {
     if (display === 'Desktop' || display === 'desktop') return <Desktop className={className} />;
     else if (display === 'mobile') return <Mobile className={className} />;
@@ -45,6 +49,7 @@ export default function DeviceIcon({ display, tab, className }: { display: strin
           height={40}
           sizes="10vw"
           className={className}
+          draggable={false}
         />
       );
     }
@@ -67,22 +72,30 @@ export default function DeviceIcon({ display, tab, className }: { display: strin
           width={40}
           height={40}
           className={className}
+          draggable={false}
         />
       );
     }
   } else if (tab === 'os') {
     if (display === 'Mac OS') {
-      return <BlurImage src="/static/icons/macos.png" alt={display} width={20} height={20} className={className} />;
+      return <BlurImage src="/static/icons/macos.png" alt={display} width={40} height={40} className={className} draggable={false} />;
     } else if (display === 'iOS') {
       return <Apple className={className} />;
+    } else if (display === 'Android') {
+      return <Android className={className} />;
+    } else if (display === 'Linux') {
+      return <Linux className={className} />;
+    } else if (display === 'Windows') {
+      return <Windows className={className} />;
     } else {
       return (
         <BlurImage
           src={`https://faisalman.github.io/ua-parser-js/images/os/${display.toLowerCase()}.png`}
           alt={display}
-          width={20}
-          height={20}
+          width={40}
+          height={40}
           className={className}
+          draggable={false}
         />
       );
     }
@@ -98,9 +111,10 @@ export default function DeviceIcon({ display, tab, className }: { display: strin
         <BlurImage
           src="https://faisalman.github.io/ua-parser-js/images/browsers/yandex.png"
           alt={display}
-          width={20}
-          height={20}
+          width={40}
+          height={40}
           className={className}
+          draggable={false}
         />
       );
     } else if (display === 'DuckDuckGo Bot') {
