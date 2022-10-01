@@ -10,6 +10,7 @@ import { dummyData, StatsProps } from '@/lib/stats';
 import { fetcher } from '@/lib/utils';
 
 import CursorIllustration from '../shared/illustrations/cursor';
+import UTM from './utm';
 
 export default function Stats({ atModalTop, domain }: { atModalTop?: boolean; domain: string }) {
   const router = useRouter();
@@ -49,6 +50,7 @@ export default function Stats({ atModalTop, domain }: { atModalTop?: boolean; do
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <Locations data={data!} />
               <Devices data={data!} />
+              <UTM data={data!} />
             </div>
           </div>
         </>
