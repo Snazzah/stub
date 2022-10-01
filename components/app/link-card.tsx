@@ -42,54 +42,61 @@ export default function LinkCard({ props }: { props: LinkProps }) {
   }, [timestamp]);
 
   return (
-    <li className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-5 sm:space-y-0 border border-gray-200 bg-white p-4 rounded-md transition-all">
+    <>
       <AddEditLinkModal />
       <DeleteLinkModal />
-      <div className="relative flex items-center space-x-4">
-        <BlurImage
-          src={`https://logo.clearbit.com/${urlHostname}`}
-          alt={urlHostname}
-          className="w-10 h-10 rounded-full border border-gray-200"
-          width={40}
-          height={40}
-        />
-        <div>
-          <div className="flex items-center space-x-2">
-            <a className="text-blue-800 font-semibold" href={linkConstructor({ key, domain })} target="_blank" rel="noreferrer">
-              {linkConstructor({ key, domain, pretty: true })}
-            </a>
-            <CopyButton url={linkConstructor({ key, domain })} />
-            <Link href={`${router.asPath}/link/${encodeURIComponent(key)}`}>
-              <a className="flex items-center space-x-1 rounded-md bg-gray-100 px-2 py-0.5 hover:scale-105 active:scale-95 transition-all duration-75">
-                <Chart className="w-4 h-4" />
-                <p className="text-sm text-gray-500">
-                  {isValidating || !clicks ? <LoadingDots color="#71717A" /> : nFormatter(parseInt(clicks))} clicks
-                </p>
+      <li className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-5 sm:space-y-0 border border-gray-200 bg-white p-4 rounded-md transition-all">
+        <div className="relative flex items-center space-x-4">
+          <BlurImage
+            src={`https://logo.clearbit.com/${urlHostname}`}
+            alt={urlHostname}
+            className="w-10 h-10 rounded-full border border-gray-200"
+            width={40}
+            height={40}
+          />
+          <div>
+            <div className="flex items-center space-x-2">
+              <a
+                className="text-blue-800 text-sm sm:text-base font-semibold truncate w-40 sm:w-full"
+                href={linkConstructor({ key, domain })}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {linkConstructor({ key, domain, pretty: true })}
               </a>
-            </Link>
+              <CopyButton url={linkConstructor({ key, domain })} />
+              <Link href={`${router.asPath}/link/${encodeURIComponent(key)}`}>
+                <a className="flex items-center space-x-1 rounded-md bg-gray-100 px-2 py-0.5 hover:scale-105 active:scale-95 transition-all duration-75">
+                  <Chart className="w-4 h-4" />
+                  <p className="text-sm text-gray-500 whitespace-nowrap">
+                    {isValidating || !clicks ? <LoadingDots color="#71717A" /> : nFormatter(parseInt(clicks))} clicks
+                  </p>
+                </a>
+              </Link>
+            </div>
+            <h3 className="text-sm font-medium text-gray-700 line-clamp-1">{title}</h3>
           </div>
-          <h3 className="text-sm font-medium text-gray-700 line-clamp-1">{title}</h3>
         </div>
-      </div>
-      <div className="flex items-center space-x-3">
-        <Tooltip content={dateTooltip}>
-          <time className="text-sm text-gray-500 select-none" dateTime={new Date(timestamp).toISOString()}>
-            Added {timeAgo(timestamp)}
-          </time>
-        </Tooltip>
-        <button
-          onClick={() => setShowAddEditLinkModal(true)}
-          className="font-medium text-sm text-gray-500 px-5 py-2 border rounded-md border-gray-200 hover:border-black active:scale-95 transition-all duration-75"
-        >
-          Edit
-        </button>
-        <button
-          onClick={() => setShowDeleteLinkModal(true)}
-          className="font-medium text-sm text-white bg-red-600 hover:bg-white hover:text-red-600 border-red-600 px-5 py-2 border rounded-md active:scale-95 transition-all duration-75"
-        >
-          Delete
-        </button>
-      </div>
-    </li>
+        <div className="flex items-center space-x-3 w-full sm:w-auto">
+          <Tooltip content={dateTooltip}>
+            <time className="text-sm hidden sm:block text-gray-500" dateTime={new Date(timestamp).toISOString()}>
+              Added {timeAgo(timestamp)}
+            </time>
+          </Tooltip>
+          <button
+            onClick={() => setShowAddEditLinkModal(true)}
+            className="grow sm:grow-0 font-medium text-sm text-gray-500 px-5 py-1.5 sm:py-2 border rounded-md border-gray-200 hover:border-black active:scale-95 transition-all duration-75"
+          >
+            Edit
+          </button>
+          <button
+            onClick={() => setShowDeleteLinkModal(true)}
+            className="grow sm:grow-0 font-medium text-sm text-white bg-red-600 hover:bg-white hover:text-red-600 border-red-600 px-5 py-1.5 sm:py-2 border rounded-md active:scale-95 transition-all duration-75"
+          >
+            Delete
+          </button>
+        </div>
+      </li>
+    </>
   );
 }

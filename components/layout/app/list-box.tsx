@@ -94,7 +94,7 @@ export default function ListBox() {
                     width={48}
                     height={48}
                   />
-                  <span className={`block truncate ${selected.slug === slug ? 'font-medium' : 'font-normal'}`}>{name}</span>
+                  <span className={`block truncate text-sm ${selected.slug === slug ? 'font-medium' : 'font-normal'}`}>{name}</span>
                   {selected.slug === slug ? (
                     <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-black">
                       <Tick className="h-5 w-5" aria-hidden="true" />
