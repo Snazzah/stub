@@ -1,3 +1,4 @@
+import { escape } from 'html-escaper';
 import { IncomingMessage, ServerResponse } from 'http';
 import Redis from 'ioredis';
 import { ParsedUrlQuery } from 'querystring';
@@ -6,7 +7,7 @@ import type { LinkProps } from '@/lib/types';
 
 import { getGeo } from './geoip';
 import { userAgentFromString } from './ua';
-import { parseUrl, serverRedirect } from './util';
+import { detectBot, parseUrl, serverRedirect } from './util';
 
 const redis = new Redis({
   host: process.env.REDIS_HOST,
@@ -94,7 +95,33 @@ export default async function handleLink(req: IncomingMessage, res: ServerRespon
     const target = response?.url;
 
     if (target) {
-      serverRedirect(res, target);
+      const isBot = detectBot(req);
+
+      if (response.image && response.description && isBot) {
+        res.statusCode = 200;
+        res.end(`
+          <html>
+            <head>
+              <title>${escape(response.title)}</title>
+              <meta property="og:title" content=${escape(response.title)} />
+              <meta property="og:site_name" content=${escape(response.url)} />
+              <meta property="og:description" content=${escape(response.description)} />
+              <meta property="og:image" content=${escape(response.image)} />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:site" content=${escape(response.url)} />
+              <meta name="twitter:title" content=${escape(response.title)} />
+              <meta name="twitter:description" content=${escape(response.description)} />
+              <meta name="twitter:image" content=${escape(response.image)} />
+            </head>
+            <body>
+              <h1>${escape(response.title)}</h1>
+              <p>${escape(response.description)}</p>
+            </body>
+          </html>
+        `);
+      } else {
+        serverRedirect(res, target);
+      }
       await recordClick(hostname, req, ip, key, query);
     } else {
       // TODO allow for 404 links
