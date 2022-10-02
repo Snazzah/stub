@@ -16,6 +16,7 @@ import {
   LinkedIn,
   Linux,
   LinuxMint,
+  MetaTags,
   Mobile,
   MSEdge,
   Opera,
@@ -145,6 +146,8 @@ export default function DeviceIcon({ display, tab, className }: { display: strin
       return <Facebook className={className} />;
     } else if (display === 'Bing Bot') {
       return <Bing className={className} />;
+    } else if (display === 'MetaTags Bot') {
+      return <MetaTags className={className} />;
     }
 
     return <img alt={display} src={`https://avatars.dicebear.com/api/bottts/${display}.svg`} className={className} />;

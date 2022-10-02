@@ -54,7 +54,10 @@ export function linkConstructor({ key, domain, pretty }: { key: string; domain: 
 export const getMetadataFromUrl = async (url: string) => {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 2000); // timeout if it takes longer than 2 seconds
-  const title = await fetch(url, { signal: controller.signal })
+  const title = await fetch(url, {
+    headers: { 'User-Agent': `StubMetaInspector/${process.env.npm_package_version} (+https://github.com/Snazzah/stub)` },
+    signal: controller.signal
+  })
     .then((res) => {
       clearTimeout(timeoutId);
       return res.text();

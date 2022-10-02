@@ -287,6 +287,8 @@ export const handleDeviceEdgeCases = (ua: string): string => {
     return 'Yandex Bot';
   } else if (ua.includes('DuckDuckBot')) {
     return 'DuckDuckGo Bot';
+  } else if (ua.includes('MetaInspector')) {
+    return 'MetaTags Bot';
   } else {
     return 'Unknown';
   }
