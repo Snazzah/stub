@@ -270,7 +270,7 @@ function AddEditLinkModal({
             </div>
           </div>
 
-          {/* <AdvancedSettings data={data} setData={setData} debouncedUrl={debouncedUrl} /> */}
+          <AdvancedSettings data={data} setData={setData} debouncedUrl={debouncedUrl} />
 
           <button
             disabled={saving || keyExistsError}
@@ -292,7 +292,7 @@ function AdvancedSettings({ data, setData, debouncedUrl }) {
   const [expanded, setExpanded] = useState(false);
   const [generatingDescription, setGeneratingDescription] = useState(false);
 
-  const { url, description } = data;
+  const { url, description, image } = data;
 
   useEffect(() => {
     if (debouncedUrl.length > 0 && description?.length === 0) {
@@ -360,48 +360,27 @@ function AdvancedSettings({ data, setData, debouncedUrl }) {
             </div>
           </div>
 
-          {/* <div>
-            <p className="block text-sm font-medium text-gray-700">OG Image</p>
-            <label
-              htmlFor="image"
-              className="group flex flex-col justify-center items-center mt-1 h-[10.5rem] cursor-pointer rounded-md border border-gray-300 bg-white hover:bg-gray-50 shadow-sm transition-all"
-            >
-              {image ? (
-                image.startsWith("data:") ? (
-                  <img
-                    src={image}
-                    alt="Preview"
-                    className="object-cover h-full w-full rounded-md hover:brightness-95 transition-all"
-                  />
-                ) : (
-                  <BlurImage
-                    src={image}
-                    alt="Preview"
-                    width={1200}
-                    height={627}
-                    className="object-cover h-full w-full rounded-md hover:brightness-95 transition-all"
-                  />
-                )
-              ) : (
-                <>
-                  <UploadCloud className="h-7 w-7 text-gray-500 group-hover:scale-110 group-active:scale-95 transition-all duration-75" />
-                  <p className="text-gray-500 text-sm mt-2">
-                    Recommended: 1200 x 627 pixels
-                  </p>
-                  <span className="sr-only">OG Image upload</span>
-                </>
-              )}
+          <div>
+            <label htmlFor="url" className="block text-sm font-medium text-gray-700">
+              OG Image URL
             </label>
+            <p className="text-gray-500 text-xs">Recommended: 1200 x 627 pixels</p>
             <div className="flex mt-1 rounded-md shadow-sm">
               <input
-                id="image"
-                name="image"
-                type="file"
-                className="sr-only"
-                onChange={onChangePicture}
+                name="url"
+                id="url"
+                type="url"
+                required
+                className="border-gray-300 text-gray-900 placeholder-gray-300 focus:border-gray-500 focus:ring-gray-500 block w-full rounded-md focus:outline-none sm:text-sm"
+                placeholder="https://github.com/steven-tey/dub/raw/main/public/static/thumbnail.png"
+                value={image}
+                onChange={(e) => {
+                  setData({ ...data, image: e.target.value });
+                }}
+                aria-invalid="true"
               />
             </div>
-          </div> */}
+          </div>
         </div>
       )}
     </div>
