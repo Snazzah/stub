@@ -17,12 +17,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'GET') {
     const projectAndUsers = await prisma.project.findFirst({
       where: {
-        slug,
-        users: {
-          some: {
-            userId: session.user.id
-          }
-        }
+        slug
       },
       include: {
         users: {
@@ -35,11 +30,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
       }
     });
-    if (projectAndUsers) {
+    if (!projectAndUsers || (projectAndUsers.users[0].role !== 'owner' && !session.user.superadmin)) {
+      return res.status(404).json({ error: 'Project not found' });
+    } else {
       const { users, ...project } = projectAndUsers;
       return res.status(200).json({ project, user: users[0] });
-    } else {
-      return res.status(404).json({ error: 'Project not found' });
     }
 
     // PUT /api/projects/[slug] – edit a project
