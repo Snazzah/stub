@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const session = await getSession(req, res);
   if (!session?.user.id || !session?.user?.superadmin) return res.status(401).send({ error: 'Unauthorized' });
 
-  // GET /api/app-settings
+  // GET /api/admin/app-settings
   if (req.method === 'GET') {
     const [appSettings] = await getAppSettings();
     return res.status(200).json({
@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       registerEmailFilters: appSettings.registerEmailFilters
     });
 
-    // PUT /api/app-settings – edit app settings
+    // PUT /api/admin/app-settings – edit app settings
   } else if (req.method === 'PUT') {
     const data = schema.safeParse(req.body);
     if (data.success === false) return res.status(400).send({ message: 'Schema validation error', data: data.error.format() });
