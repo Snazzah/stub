@@ -82,10 +82,10 @@ export default function Modal({
             </div>
             {children}
           </motion.div>
-          <motion.dialog
+          <motion.div
             ref={desktopModalRef}
             key="desktop-modal"
-            className="fixed inset-0 z-50 hidden sm:block bg-transparent"
+            className="fixed inset-0 z-40 min-h-screen hidden sm:flex items-center justify-center"
             initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.95 }}
@@ -94,7 +94,7 @@ export default function Modal({
             }}
           >
             {children}
-          </motion.dialog>
+          </motion.div>
           <motion.div
             key="backdrop"
             className="fixed inset-0 z-40 bg-black bg-opacity-30 backdrop-blur"
