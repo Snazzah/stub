@@ -22,18 +22,29 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'GET') {
     if (!id || typeof id !== 'string') return res.status(400).json({ error: 'Missing or misconfigured user id' });
 
-    const user = await prisma.user.findUnique({
-      where: { id }
+    const userInfo = await prisma.user.findUnique({
+      where: { id },
+      include: {
+        accounts: {
+          select: {
+            id: true,
+            provider: true,
+            providerAccountId: true
+          }
+        },
+        sessions: {
+          select: { createdAt: true },
+          orderBy: { createdAt: 'desc' },
+          take: 1
+        }
+      }
     });
 
-    if (!user) return res.status(404).json({ error: 'User not found' });
+    if (!userInfo) return res.status(404).json({ error: 'User not found' });
 
-    const session = await prisma.session.findFirst({
-      where: { userId: user.id },
-      orderBy: { createdAt: 'desc' }
-    });
+    const { sessions, accounts, ...user } = userInfo;
 
-    return res.status(200).json({ user, lastLogin: session?.createdAt });
+    return res.status(200).json({ user, accounts, lastLogin: sessions[0]?.createdAt });
   } else if (req.method === 'PUT') {
     // PUT /api/admin/users/[id]
     if (!id || typeof id !== 'string') return res.status(400).json({ error: 'Missing or misconfigured user id' });

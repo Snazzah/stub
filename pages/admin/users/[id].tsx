@@ -2,14 +2,15 @@ import type { User } from '@prisma/client';
 import AppLayout from 'components/layout/app';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import { useMemo, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 import useSWR, { mutate } from 'swr';
 
-import { LoadingDots } from '@/components/shared/icons';
-import SuperAdmin from '@/components/shared/icons/superadmin';
+import UserAdminPlaceholder from '@/components/app/placeholders/user-admin-placeholder';
+import { Discord, Email, Facebook, Github, Google, LoadingDots, SuperAdmin, Twitter } from '@/components/shared/icons';
 import MaxWidthWrapper from '@/components/shared/max-width-wrapper';
 import Tooltip from '@/components/shared/tooltip';
 import { getSession } from '@/lib/auth';
+import { AdminUserProps } from '@/lib/types';
 import { fetcher, flattenErrors, timeAgo } from '@/lib/utils';
 
 function EditProfile({ user }: { user: User }) {
@@ -188,15 +189,31 @@ function EditProfile({ user }: { user: User }) {
 export default function AdminUserProfile() {
   const router = useRouter();
   const { id } = router.query as { id: string };
-  const { data: { user, lastLogin } = {} } = useSWR<{ user: User; lastLogin: string }>(id && `/api/admin/users/${id}`, fetcher, {
+  const { data: { user, accounts, lastLogin } = {} } = useSWR<AdminUserProps>(id && `/api/admin/users/${id}`, fetcher, {
     dedupingInterval: 30000
   });
+
+  const providerIcons: Record<string, ReactNode> = {
+    discord: <Discord className="w-10 h-10 text-gray-700" />,
+    github: <Github className="w-10 h-10 text-gray-700" />,
+    twitter: <Twitter className="w-10 h-10 text-gray-700" />,
+    facebook: <Facebook className="w-10 h-10 text-gray-700" />,
+    google: <Google className="w-10 h-10 text-gray-700" />,
+    email: <Email className="w-10 h-10 text-gray-700" />
+  };
+
+  const providerTitles: Record<string, string> = {
+    github: 'GitHub',
+    email: 'E-mail'
+  };
 
   return (
     <AppLayout pageTitle={user ? user.name : 'User Profile'}>
       <MaxWidthWrapper>
         <div className="my-10 flex flex-col gap-10">
-          {user && (
+          {!user ? (
+            <UserAdminPlaceholder />
+          ) : (
             <>
               <div className="flex gap-4 items-center md:flex-row flex-col">
                 <img
@@ -239,6 +256,22 @@ export default function AdminUserProfile() {
               </div>
               <EditProfile user={user} />
             </>
+          )}
+
+          {accounts && accounts.length && (
+            <div className="flex flex-col gap-4">
+              <h2 className="font-display text-2xl font-bold">Accounts</h2>
+
+              {accounts.map((a) => (
+                <div key={a.id} className="bg-white shadow rounded-lg py-3 px-4 flex gap-4 items-center">
+                  {providerIcons[a.provider]}
+                  <div className="flex justify-center flex-col">
+                    <h3 className="text-lg font-medium text-gray-700 capitalize">{providerTitles[a.provider] ?? a.provider}</h3>
+                    <span className="text-gray-500 text-sm">{a.providerAccountId}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           )}
         </div>
       </MaxWidthWrapper>
