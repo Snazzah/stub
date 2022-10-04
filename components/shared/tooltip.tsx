@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import Link from 'next/link';
 import { ReactNode, useRef, useState } from 'react';
 
-export default function Tooltip({ children, content }: { children: ReactNode; content: ReactNode | string }) {
+export default function Tooltip({ children, content, className }: { children: ReactNode; content: ReactNode | string; className?: string }) {
   const [openTooltip, setOpenTooltip] = useState(false);
   const mobileTooltipRef = useRef(null);
 
@@ -24,7 +24,7 @@ export default function Tooltip({ children, content }: { children: ReactNode; co
   const randomIndex = Math.floor(Math.random() * 1000000).toString();
   return (
     <>
-      <button className="block sm:hidden" onClick={() => setOpenTooltip(true)}>
+      <button className={`block sm:hidden ${className}`} onClick={() => setOpenTooltip(true)}>
         {children}
       </button>
       <AnimatePresence>
