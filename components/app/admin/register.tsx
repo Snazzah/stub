@@ -16,7 +16,7 @@ export default function AdminAuthentication({ appSettings, providers }: { appSet
     setSaving(true);
     setError(null);
 
-    const response = await fetch('/api/app-settings', {
+    const response = await fetch('/api/admin/app-settings', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
@@ -36,7 +36,7 @@ export default function AdminAuthentication({ appSettings, providers }: { appSet
     }
 
     if (response.status !== 200) setError(body);
-    else mutate('/api/app-settings', body, { revalidate: false });
+    else mutate('/api/admin/app-settings', body, { revalidate: false });
     setSaving(false);
   }
 

@@ -3,21 +3,27 @@ import { NextRouter, useRouter } from 'next/router';
 import { useMemo } from 'react';
 
 const TabsHelper = (router: NextRouter): { name: string; href: string }[] => {
-  const { slug, key } = router.query as {
+  const { slug, key, id } = router.query as {
     slug?: string;
     key?: string;
+    id?: string;
   };
-  if (key) {
-    return [{ name: '← All Links', href: `/p/${slug}` }];
-  } else if (slug) {
+  if (key) return [{ name: '← All Links', href: `/p/${slug}` }];
+  else if (slug)
     return [
       { name: 'Links', href: `/p/${slug}` },
       { name: 'Project Settings', href: `/p/${slug}/settings` }
     ];
-  } else if (router.pathname.startsWith('/admin'))
+  else if (router.pathname.startsWith('/admin/users/') && id)
+    return [
+      { name: '← Users', href: `/admin/users` },
+      { name: 'Profile', href: `/admin/users/${id}` }
+    ];
+  else if (router.pathname.startsWith('/admin'))
     return [
       { name: '← Projects', href: `/` },
-      { name: 'App Settings', href: `/admin` }
+      { name: 'App Settings', href: `/admin` },
+      { name: 'Users', href: `/admin/users` }
     ];
   return [{ name: 'Projects', href: `/` }];
 };

@@ -10,7 +10,7 @@ import { AppSettingsProps } from '@/lib/types';
 import { availableProviders, fetcher } from '@/lib/utils';
 
 export default function Admin({ appVersion, providers, rev }: { appVersion: string; providers: string[]; rev: string }) {
-  const { data } = useSWR<AppSettingsProps>('/api/app-settings', fetcher);
+  const { data } = useSWR<AppSettingsProps>('/api/admin/app-settings', fetcher);
 
   return (
     <AppLayout pageTitle="App Settings">

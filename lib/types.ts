@@ -1,3 +1,5 @@
+import { User } from '@prisma/client';
+
 export interface SimpleLinkProps {
   key: string;
   url: string;
@@ -37,4 +39,14 @@ export interface AppSettingsProps {
   appId: string;
   allowNewUsers: boolean;
   registerEmailFilters: string[];
+}
+
+export interface AdminUserProps {
+  user: User;
+  accounts: {
+    id: string;
+    provider: string;
+    providerAccountId: string;
+  }[];
+  lastLogin: string;
 }
