@@ -169,7 +169,7 @@ export function UCBrowser({ className }: { className?: string }) {
       version="1.1"
       className={className}
     >
-      <g stroke="none" stroke-width="1" fill-rule="evenodd">
+      <g stroke="none" stroke-width="1" fillRule="evenodd">
         <g transform="translate(-1301.000000, -2037.000000)" fill="#F28E08">
           <g transform="translate(1260.000000, 2021.000000)">
             <g transform="translate(41.000000, 16.000000)">
@@ -862,7 +862,7 @@ export function Bing({ className }: { className?: string }) {
 export function MetaTags({ className }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" className={className}>
-      <g fill="none" fill-rule="evenodd">
+      <g fill="none" fillRule="evenodd">
         <rect width="40" height="40" fill="#2A81FB" rx="8"></rect>
         <circle cx="29" cy="27" r="5" fill="#FFF"></circle>
         <path
