@@ -31,7 +31,7 @@ export interface StatsProps {
   utmData: { source: string; medium: string }[];
 }
 
-export type IntervalProps = '1h' | '24h' | '7d' | '30d';
+export type IntervalProps = '1h' | '24h' | '7d' | '30d' | '90d';
 
 export const intervalData = {
   '1h': {
@@ -70,6 +70,16 @@ export const intervalData = {
   '30d': {
     milliseconds: 2592000000,
     intervals: 30,
+    coefficient: 86400000,
+    format: (e: number) =>
+      new Date(e).toLocaleDateString('en-us', {
+        month: 'short',
+        day: 'numeric'
+      })
+  },
+  '90d': {
+    milliseconds: 7776000000,
+    intervals: 90,
     coefficient: 86400000,
     format: (e: number) =>
       new Date(e).toLocaleDateString('en-us', {
