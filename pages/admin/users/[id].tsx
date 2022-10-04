@@ -97,6 +97,7 @@ function EditProfile({ user }: { user: User }) {
             id="email"
             type="text"
             required
+            maxLength={255}
             className="border-gray-300 text-gray-900 placeholder-gray-300 focus:border-gray-500 focus:ring-gray-500 block w-full rounded-md focus:outline-none sm:text-sm"
             placeholder="user@example.com"
             pattern={`(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))`}
@@ -135,6 +136,35 @@ function EditProfile({ user }: { user: User }) {
         </div>
         {error?.data?.image &&
           flattenErrors(error?.data?.image).map((line, i) => (
+            <p key={i} className="text-red-700 text-sm">
+              {line}
+            </p>
+          ))}
+      </div>
+
+      <div className="flex justify-center flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <input
+            id="superadmin"
+            name="superadmin"
+            type="checkbox"
+            checked={data.superadmin}
+            onChange={(e) => {
+              setData({ ...data, superadmin: e.target.checked });
+            }}
+            className="h-4 w-4 rounded border-gray-300 text-blue-500 focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
+          />
+          <label htmlFor="superadmin" className="block text-sm font-medium text-gray-700">
+            Superadmin status
+          </label>
+          {data.superadmin !== user.superadmin && <span className="text-sm text-red-500 font-bold font-display animate-pulse">!!!</span>}
+        </div>
+        <p className="text-gray-600 text-sm">
+          Enabling this grants the user <b>all possible permissions</b>, including changing instance-wide settings. Enable this only for users you
+          trust.
+        </p>
+        {error?.data?.superadmin &&
+          flattenErrors(error?.data?.superadmin).map((line, i) => (
             <p key={i} className="text-red-700 text-sm">
               {line}
             </p>

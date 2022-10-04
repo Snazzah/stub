@@ -47,8 +47,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const data = schema.safeParse(req.body);
     if (data.success === false) return res.status(400).send({ message: 'Schema validation error', data: data.error.format() });
 
-    console.log(data.data);
-
     await prisma.user.update({
       where: { id: user.id },
       data: data.data
