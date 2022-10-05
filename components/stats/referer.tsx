@@ -70,7 +70,7 @@ export default function Referer({ data: rawData }: { data: StatsProps }) {
         )}
       </div>
       <AnimatePresence>
-        {data.utmData && data.utmData.length > 9 && !scrolled && (
+        {data.refererData && data.refererData.length > 9 && !scrolled && (
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{
