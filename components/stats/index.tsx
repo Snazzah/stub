@@ -10,6 +10,7 @@ import { dummyData, StatsProps } from '@/lib/stats';
 import { fetcher } from '@/lib/utils';
 
 import CursorIllustration from '../shared/illustrations/cursor';
+import Referer from './referer';
 import UTM from './utm';
 
 export default function Stats({ atModalTop, domain }: { atModalTop?: boolean; domain: string }) {
@@ -51,6 +52,7 @@ export default function Stats({ atModalTop, domain }: { atModalTop?: boolean; do
               <Locations data={data!} />
               <Devices data={data!} />
               <UTM data={data!} />
+              <Referer data={data!} />
             </div>
           </div>
         </>

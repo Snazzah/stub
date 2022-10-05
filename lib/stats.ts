@@ -29,6 +29,7 @@ export interface StatsProps {
   }[];
   deviceData: { device: string; browser: string; os: string; bot: string }[];
   utmData: { source: string; medium: string }[];
+  refererData: { domain: string }[];
 }
 
 export type IntervalProps = '1h' | '24h' | '7d' | '30d' | '90d';
@@ -147,6 +148,15 @@ export function processData(
     };
   });
 
+  const refererData = data.map(({ referer }) => {
+    try {
+      const url = referer ? new URL(referer) : null;
+      return { domain: url?.hostname || '(direct)' };
+    } catch (e) {
+      return { domain: '(invalid)' };
+    }
+  });
+
   return {
     key,
     interval: interval || '24h',
@@ -154,7 +164,8 @@ export function processData(
     clicksData,
     locationData,
     deviceData,
-    utmData
+    utmData,
+    refererData
   };
 }
 
@@ -250,6 +261,30 @@ export const processUTMData = (data: StatsProps['utmData'], tab: UTMTabs): UTMSt
     .sort((a, b) => b.count - a.count);
 };
 
+export interface RefererStatsProps {
+  display: string;
+  count: number;
+}
+
+export const processRefererData = (data: StatsProps['refererData']): RefererStatsProps[] => {
+  const results =
+    data && data.length > 0
+      ? data.reduce<Record<string, number>>((acc, d) => {
+          const currentVal = d.domain;
+          const count = acc[currentVal] || 0;
+          acc[currentVal] = count + 1;
+          return acc;
+        }, {})
+      : {};
+
+  return Object.entries(results)
+    .map(([display, count]) => ({
+      display,
+      count
+    }))
+    .sort((a, b) => b.count - a.count);
+};
+
 export const dummyData: StatsProps = {
   key: 'test',
   interval: '24h',
@@ -263,7 +298,9 @@ export const dummyData: StatsProps = {
   // @ts-ignore
   deviceData: null,
   // @ts-ignore
-  utmData: null
+  utmData: null,
+  // @ts-ignore
+  refererData: null
 };
 
 export const handleDeviceEdgeCases = (ua: string): string => {
