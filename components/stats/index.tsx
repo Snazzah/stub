@@ -2,16 +2,15 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 
+import CursorIllustration from '@/components/shared/illustrations/cursor';
 import Clicks from '@/components/stats/clicks';
 import Devices from '@/components/stats/devices';
 import Locations from '@/components/stats/locations';
+import Referer from '@/components/stats/referer';
 import Toggle from '@/components/stats/toggle';
+import UTM from '@/components/stats/utm';
 import { dummyData, StatsProps } from '@/lib/stats';
 import { fetcher } from '@/lib/utils';
-
-import CursorIllustration from '../shared/illustrations/cursor';
-import Referer from './referer';
-import UTM from './utm';
 
 export default function Stats({ atModalTop, domain }: { atModalTop?: boolean; domain: string }) {
   const router = useRouter();
