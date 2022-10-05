@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { getSession } from '@/lib/auth';
-import { RESERVED_KEYS } from '@/lib/constants';
 import prisma from '@/lib/prisma';
 import { validDomainRegex } from '@/lib/utils';
 
@@ -27,11 +26,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!session.user?.superadmin && session.user?.type !== 'admin') return res.status(401).json({ error: 'Missing permissions' });
     const { name, slug, domain } = req.body;
     if (!name || !slug || !domain) return res.status(422).json({ error: 'Missing name or slug or domain' });
-    const slugError = RESERVED_KEYS.has(slug)
-      ? 'Cannot use reserved slugs'
-      : !/^[a-zA-Z0-9-]+$/.test(slug)
-      ? 'Slug cannot contain spaces or periods'
-      : null;
+    const slugError = !/^[a-zA-Z0-9-]+$/.test(slug) ? 'Slug cannot contain spaces or periods' : null;
     const validDomain = validDomainRegex.test(domain);
     if (slugError || !validDomain) {
       return res.status(422).json({
