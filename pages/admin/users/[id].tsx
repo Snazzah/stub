@@ -12,7 +12,7 @@ import MaxWidthWrapper from '@/components/shared/max-width-wrapper';
 import Tooltip from '@/components/shared/tooltip';
 import { getSession } from '@/lib/auth';
 import { AdminUserProps } from '@/lib/types';
-import { fetcher, flattenErrors, timeAgo } from '@/lib/utils';
+import { fetcher, timeAgo } from '@/lib/utils';
 
 function EditProfile({ user }: { user: User }) {
   const [data, setData] = useState<{ name: string; email: string; type: string; superadmin: boolean; image: string | null }>({
@@ -94,6 +94,7 @@ function EditProfile({ user }: { user: User }) {
             aria-invalid="true"
           />
         </div>
+        {error?.data?.name?._errors && <p className="text-red-700 text-sm">{error.data.name._errors.join(', ')}</p>}
       </div>
 
       <div>
@@ -117,12 +118,7 @@ function EditProfile({ user }: { user: User }) {
             aria-invalid="true"
           />
         </div>
-        {error?.data?.email &&
-          flattenErrors(error?.data?.email).map((line, i) => (
-            <p key={i} className="text-red-700 text-sm">
-              {line}
-            </p>
-          ))}
+        {error?.data?.email?._errors && <p className="text-red-700 text-sm">{error.data.email._errors.join(', ')}</p>}
       </div>
 
       <div>
@@ -143,15 +139,10 @@ function EditProfile({ user }: { user: User }) {
             aria-invalid="true"
           />
         </div>
-        {error?.data?.image &&
-          flattenErrors(error?.data?.image).map((line, i) => (
-            <p key={i} className="text-red-700 text-sm">
-              {line}
-            </p>
-          ))}
+        {error?.data?.image?._errors && <p className="text-red-700 text-sm">{error.data.image._errors.join(', ')}</p>}
       </div>
 
-      <UserTypeRadioGroup value={data.type} onChange={(type) => setData({ ...data, type })} />
+      <UserTypeRadioGroup value={data.type} onChange={(type) => setData({ ...data, type })} errors={error?.data?.type?._errors} />
 
       <div className="flex justify-center flex-col gap-2">
         <div className="flex items-center gap-2">
@@ -174,12 +165,7 @@ function EditProfile({ user }: { user: User }) {
           Enabling this grants the user <b>all possible permissions</b>, including changing instance-wide settings. Enable this only for users you
           trust.
         </p>
-        {error?.data?.superadmin &&
-          flattenErrors(error?.data?.superadmin).map((line, i) => (
-            <p key={i} className="text-red-700 text-sm">
-              {line}
-            </p>
-          ))}
+        {error?.data?.superadmin?._errors && <p className="text-red-700 text-sm">{error.data.superadmin._errors.join(', ')}</p>}
       </div>
 
       <button
