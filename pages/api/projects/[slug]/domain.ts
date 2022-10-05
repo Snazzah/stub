@@ -5,7 +5,10 @@ import prisma from '@/lib/prisma';
 import { changeDomain } from '@/lib/redis';
 import { validDomainRegex } from '@/lib/utils';
 
-export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project) => {
+export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project, session) => {
+  if (!session?.user?.superadmin && !['manager', 'owner'].includes(project.users[0]?.role))
+    return res.status(403).send({ error: 'Missing permissions' });
+
   if (req.method === 'PUT') {
     const { slug } = req.query as { slug: string };
     const domain = project.domain;

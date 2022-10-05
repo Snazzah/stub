@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 
@@ -22,8 +23,9 @@ export default function LinkCard({ props }: { props: LinkProps }) {
   const router = useRouter();
   const { slug } = router.query as { slug: string };
 
-  const { project } = useProject();
+  const { project, user } = useProject();
   const { domain } = project || {};
+  const { data: session } = useSession();
 
   const { data: clicks, isValidating } = useSWR<string>(`/api/projects/${slug}/links/${encodeURIComponent(key)}/clicks`, fetcher);
 
@@ -83,18 +85,22 @@ export default function LinkCard({ props }: { props: LinkProps }) {
               Added {timeAgo(timestamp)}
             </time>
           </Tooltip>
-          <button
-            onClick={() => setShowAddEditLinkModal(true)}
-            className="grow sm:grow-0 font-medium text-sm text-gray-500 px-5 py-1.5 sm:py-2 border rounded-md border-gray-200 hover:border-black active:scale-95 transition-all duration-75"
-          >
-            Edit
-          </button>
-          <button
-            onClick={() => setShowDeleteLinkModal(true)}
-            className="grow sm:grow-0 font-medium text-sm text-white bg-red-600 hover:bg-white hover:text-red-600 border-red-600 px-5 py-1.5 sm:py-2 border rounded-md active:scale-95 transition-all duration-75"
-          >
-            Delete
-          </button>
+          {(session?.user?.superadmin || ['member', 'manager', 'owner'].includes(user?.role)) && (
+            <>
+              <button
+                onClick={() => setShowAddEditLinkModal(true)}
+                className="grow sm:grow-0 font-medium text-sm text-gray-500 px-5 py-1.5 sm:py-2 border rounded-md border-gray-200 hover:border-black active:scale-95 transition-all duration-75"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => setShowDeleteLinkModal(true)}
+                className="grow sm:grow-0 font-medium text-sm text-white bg-red-600 hover:bg-white hover:text-red-600 border-red-600 px-5 py-1.5 sm:py-2 border rounded-md active:scale-95 transition-all duration-75"
+              >
+                Delete
+              </button>
+            </>
+          )}
         </div>
       </li>
     </>

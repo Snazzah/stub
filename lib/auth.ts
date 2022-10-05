@@ -2,7 +2,6 @@ import { GetServerSideProps, GetServerSidePropsContext, NextApiRequest, NextApiR
 import { unstable_getServerSession } from 'next-auth/next';
 
 import prisma from '@/lib/prisma';
-import { ProjectProps } from '@/lib/types';
 import { authOptions } from '@/pages/api/auth/[...nextauth]';
 
 declare module 'next-auth' {
@@ -43,8 +42,18 @@ export async function getSession(req: GetServerSidePropsContext['req'] | NextApi
   return session;
 }
 
+interface ProjectAuthProps {
+  name: string;
+  slug: string;
+  domain: string;
+  users: {
+    role: string;
+    userId: string;
+  }[];
+}
+
 interface CustomNextApiHandler {
-  (req: NextApiRequest, res: NextApiResponse, project: ProjectProps): Promise<void>;
+  (req: NextApiRequest, res: NextApiResponse, project: ProjectAuthProps, session: Session): Promise<void>;
 }
 
 const withProjectAuth =
@@ -62,25 +71,38 @@ const withProjectAuth =
       return res.status(400).json({ error: 'Missing or misconfigured project slug' });
     }
 
-    const project = (await prisma.project.findFirst({
+    const project = await prisma.project.findFirst({
       where: {
         slug,
-        users: {
-          some: {
-            userId: session.user.id
-          }
-        }
+        ...(session?.user?.superadmin
+          ? {}
+          : {
+              users: {
+                some: {
+                  userId: session.user.id
+                }
+              }
+            })
       },
       select: {
         name: true,
         slug: true,
-        domain: true
+        domain: true,
+        users: {
+          where: {
+            userId: session.user.id
+          },
+          select: {
+            userId: true,
+            role: true
+          }
+        }
       }
-    })) as ProjectProps;
+    });
 
     if (!project) return res.status(401).end('Unauthorized');
 
-    return handler(req, res, project);
+    return handler(req, res, project, session);
   };
 
 export { withProjectAuth };

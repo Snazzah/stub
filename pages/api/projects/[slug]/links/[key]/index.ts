@@ -3,7 +3,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { withProjectAuth } from '@/lib/auth';
 import { deleteLink, editLink } from '@/lib/redis';
 
-export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project) => {
+export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project, session) => {
+  if (!session?.user?.superadmin && !['member', 'manager', 'owner'].includes(project.users[0]?.role))
+    return res.status(403).send({ error: 'Missing permissions' });
+
   const { key: oldKey } = req.query as { key: string };
 
   if (req.method === 'PUT') {
@@ -26,7 +29,7 @@ export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse,
     const response = await deleteLink(project.domain, oldKey);
     return res.status(200).json(response);
   } else {
-    res.setHeader('Allow', ['POST', 'DELETE']);
+    res.setHeader('Allow', ['PUT', 'DELETE']);
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
 });
