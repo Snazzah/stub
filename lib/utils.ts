@@ -139,7 +139,9 @@ export function flattenErrors(errors: any, keyPrefix = '') {
   let messages: string[] = [];
   for (const fieldName in errors) {
     if (!(fieldName in errors) || fieldName === 'message') continue;
-    if (errors[fieldName]._errors) {
+    if (fieldName === '_errors') {
+      messages = messages.concat(errors[fieldName].map((obj) => `${keyPrefix}: ${obj.message || obj}`));
+    } else if (errors[fieldName]._errors) {
       messages = messages.concat(errors[fieldName]._errors.map((obj) => `${keyPrefix + fieldName}: ${obj.message || obj}`));
     } else if (Array.isArray(errors[fieldName])) {
       messages = messages.concat(errors[fieldName].map((str) => `${keyPrefix + fieldName}: ${str}`));

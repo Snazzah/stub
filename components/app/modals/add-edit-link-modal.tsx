@@ -11,9 +11,6 @@ import useProject from '@/lib/swr/use-project';
 import { LinkProps } from '@/lib/types';
 import { linkConstructor } from '@/lib/utils';
 
-// TODO replace og image with some image url stuff
-// TODO allow decscription editing
-
 function AddEditLinkModal({
   showAddEditLinkModal,
   setShowAddEditLinkModal,
@@ -32,6 +29,7 @@ function AddEditLinkModal({
   const [generatingSlug, setGeneratingSlug] = useState(false);
   const [generatingTitle, setGeneratingTitle] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
 
   const [data, setData] = useState<LinkProps>(
     props || {
@@ -133,6 +131,7 @@ function AddEditLinkModal({
           onSubmit={async (e) => {
             e.preventDefault();
             setSaving(true);
+            setError(null);
             fetch(endpoint.url, {
               method: endpoint.method,
               headers: {
@@ -145,6 +144,8 @@ function AddEditLinkModal({
                 if (res.status === 200) {
                   mutate(`/api/projects/${slug}/links`);
                   setShowAddEditLinkModal(false);
+                } else {
+                  res.json().then(setError);
                 }
               })
               .catch(() => {
@@ -179,7 +180,7 @@ function AddEditLinkModal({
                 id="key"
                 required
                 autoFocus={false}
-                pattern="[\p{Letter}\p{Mark}-]+|:index"
+                pattern="[\p{Letter}\p{Mark}\d-]+|:index"
                 className={`${
                   keyExistsError
                     ? 'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500'
@@ -213,6 +214,7 @@ function AddEditLinkModal({
                 Short link is already in use.
               </p>
             )}
+            {error?.data?.key?._errors && <p className="text-red-700 text-sm">{error.data.key._errors.join(', ')}</p>}
           </div>
 
           <div>
@@ -234,6 +236,7 @@ function AddEditLinkModal({
                 aria-invalid="true"
               />
             </div>
+            {error?.data?.url?._errors && <p className="text-red-700 text-sm">{error.data.url._errors.join(', ')}</p>}
           </div>
 
           <div>
@@ -268,9 +271,10 @@ function AddEditLinkModal({
                 aria-invalid="true"
               />
             </div>
+            {error?.data?.title?._errors && <p className="text-red-700 text-sm">{error.data.title._errors.join(', ')}</p>}
           </div>
 
-          <AdvancedSettings data={data} setData={setData} debouncedUrl={debouncedUrl} />
+          <AdvancedSettings data={data} setData={setData} debouncedUrl={debouncedUrl} error={error} />
 
           <button
             disabled={saving || keyExistsError}
@@ -288,7 +292,7 @@ function AddEditLinkModal({
   );
 }
 
-function AdvancedSettings({ data, setData, debouncedUrl }) {
+function AdvancedSettings({ data, setData, debouncedUrl, error }) {
   const [expanded, setExpanded] = useState(false);
   const [generatingDescription, setGeneratingDescription] = useState(false);
 
@@ -358,6 +362,7 @@ function AdvancedSettings({ data, setData, debouncedUrl }) {
                 aria-invalid="true"
               />
             </div>
+            {error?.data?.description?._errors && <p className="text-red-700 text-sm">{error.data.description._errors.join(', ')}</p>}
           </div>
 
           <div>
@@ -380,6 +385,7 @@ function AdvancedSettings({ data, setData, debouncedUrl }) {
                 aria-invalid="true"
               />
             </div>
+            {error?.data?.image?._errors && <p className="text-red-700 text-sm">{error.data.image._errors.join(', ')}</p>}
           </div>
         </div>
       )}
