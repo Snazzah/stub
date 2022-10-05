@@ -2425,13 +2425,13 @@ math-expression-evaluator@^1.2.14:
   resolved "https://registry.npmjs.org/math-expression-evaluator/-/math-expression-evaluator-1.4.0.tgz"
   integrity sha512-4vRUvPyxdO8cWULGTh9dZWL2tZK6LDBvj+OGHBER7poH9Qdt7kXEoj20wiz4lQUbUXQZFjPbe5mVDo9nutizCw==
 
-maxmind@4.3.6:
-  version "4.3.6"
-  resolved "https://registry.yarnpkg.com/maxmind/-/maxmind-4.3.6.tgz#5e4aa2491eef8bd401f34be307776fa1fb5bc3ca"
-  integrity sha512-CwnEZqJX0T6b2rWrc0/V3n9hL/hWAMEn7fY09077YJUHiHx7cn/esA2ZIz8BpYLSJUf7cGVel0oUJa9jMwyQpg==
+maxmind@4.3.7:
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/maxmind/-/maxmind-4.3.7.tgz#3266978a2584f3e838263868e5b5d4a9dfc45080"
+  integrity sha512-+rMFiZAA9xQ7X//FO8iNVnVc1xYNjdNCpnZWEgoSTHcgAUCycrrMjNhJuw63YElI7feZjF0qflfDR8rOyzbOtA==
   dependencies:
     mmdb-lib "2.0.2"
-    tiny-lru "8.0.2"
+    tiny-lru "9.0.2"
 
 merge2@^1.3.0, merge2@^1.4.1:
   version "1.4.1"
@@ -3355,10 +3355,10 @@ text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==
 
-tiny-lru@8.0.2:
-  version "8.0.2"
-  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-8.0.2.tgz#812fccbe6e622ded552e3ff8a4c3b5ff34a85e4c"
-  integrity sha512-ApGvZ6vVvTNdsmt676grvCkUCGwzG9IqXma5Z07xJgiC5L7akUMof5U8G2JTI9Rz/ovtVhJBlY6mNhEvtjzOIg==
+tiny-lru@9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-9.0.2.tgz#6714626d1961831da99472eb9f6d26b3ff999c39"
+  integrity sha512-SZwDlvflOPYiImKv2Rh/1uccO+r5JsEexLU1szFsVudzk17Sj250xl75/X3aY4vINS1ZulnCPqcndvW9R0y7Yg==
 
 to-regex-range@^5.0.1:
   version "5.0.1"
