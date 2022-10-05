@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { ReactNode, useMemo, useState } from 'react';
 import useSWR, { mutate } from 'swr';
 
+import UserTypeRadioGroup from '@/components/app/admin/user-type-radiogroup';
 import UserAdminPlaceholder from '@/components/app/placeholders/user-admin-placeholder';
 import { Discord, Email, Facebook, Github, Google, LoadingDots, SuperAdmin, Twitter } from '@/components/shared/icons';
 import MaxWidthWrapper from '@/components/shared/max-width-wrapper';
@@ -14,17 +15,24 @@ import { AdminUserProps } from '@/lib/types';
 import { fetcher, flattenErrors, timeAgo } from '@/lib/utils';
 
 function EditProfile({ user }: { user: User }) {
-  const [data, setData] = useState<{ name: string; email: string; superadmin: boolean; image: string | null }>({
+  const [data, setData] = useState<{ name: string; email: string; type: string; superadmin: boolean; image: string | null }>({
     name: user?.name ?? '',
     email: user?.email ?? '',
     image: user?.image ?? null,
+    type: user?.type ?? '',
     superadmin: user?.superadmin ?? false
   });
 
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(null);
   const dataChanged = useMemo(() => {
-    return user.name !== data.name || user.email !== data.email || user.superadmin !== data.superadmin || user.image !== data.image;
+    return (
+      user.name !== data.name ||
+      user.email !== data.email ||
+      user.superadmin !== data.superadmin ||
+      user.image !== data.image ||
+      user.type !== data.type
+    );
   }, [data, user]);
 
   async function save() {
@@ -143,6 +151,8 @@ function EditProfile({ user }: { user: User }) {
           ))}
       </div>
 
+      <UserTypeRadioGroup value={data.type} onChange={(type) => setData({ ...data, type })} />
+
       <div className="flex justify-center flex-col gap-2">
         <div className="flex items-center gap-2">
           <input
@@ -153,7 +163,7 @@ function EditProfile({ user }: { user: User }) {
             onChange={(e) => {
               setData({ ...data, superadmin: e.target.checked });
             }}
-            className="h-4 w-4 rounded border-gray-300 text-blue-500 focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
+            className="h-4 w-4 rounded border-gray-300 text-amber-500 focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
           />
           <label htmlFor="superadmin" className="block text-sm font-medium text-gray-700">
             Superadmin status

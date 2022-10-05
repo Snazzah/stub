@@ -9,6 +9,7 @@ const schema = z
     name: z.string().trim().min(1).max(256).optional(),
     email: z.string().trim().email().optional(),
     image: z.string().trim().url().nullable().optional(),
+    type: z.enum(['user', 'admin']).optional(),
     superadmin: z.boolean().optional()
   })
   .strict();
