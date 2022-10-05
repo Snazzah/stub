@@ -85,7 +85,7 @@ export default function Modal({
           <motion.div
             ref={desktopModalRef}
             key="desktop-modal"
-            className="fixed inset-0 z-40 min-h-screen hidden sm:flex items-center justify-center"
+            className="fixed inset-0 z-50 min-h-screen hidden sm:flex items-center justify-center"
             initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.95 }}
