@@ -43,7 +43,7 @@ ENV GIT_REVISION=${GIT_REVISION}
 
 COPY --from=builder /build/package.json ./package.json
 COPY --from=builder /build/yarn.lock ./yarn.lock
-COPY --from=deps /deps/node_modules ./node_modules
+COPY --chown=node:node --from=deps /deps/node_modules ./node_modules
 COPY --chown=node:node --from=builder /build/.next ./.next
 COPY --chown=node:node --from=builder /build/public ./public
 COPY --from=builder /build/server ./server
