@@ -32,7 +32,7 @@
     "@visx/grid": "2.12.2",
     "@visx/responsive": "2.10.0",
     "@visx/shape": "2.12.2",
-    "@visx/tooltip": "2.10.0",
+    "@visx/tooltip": "2.15.0",
     "dotenv": "16.0.3",
     "framer-motion": "7.5.2",
     "geolite2-redist": "3.0.3",

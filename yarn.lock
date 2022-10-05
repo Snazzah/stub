@@ -846,10 +846,10 @@
     prop-types "^15.7.2"
     reduce-css-calc "^1.3.0"
 
-"@visx/tooltip@2.10.0":
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/@visx/tooltip/-/tooltip-2.10.0.tgz#86d6a720af573dc9853d86d99ae35052bb1629f3"
-  integrity sha512-6Zrd79MIEfyuLBcZ1ypSeAkpQc8oLRNB7FQnegzl3Lje4LK5lJtuf5ST0mwK6G2Uv+GlOW9REJ6VK4gfAGkq9A==
+"@visx/tooltip@2.15.0":
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/@visx/tooltip/-/tooltip-2.15.0.tgz#c192e88a457e51fc92758b6e4c6087d6385d9035"
+  integrity sha512-rYRgpm7cCSJl0YFgj1MjZ2tqXdsakNqAxHlsHzY/24NWmiskyTb+3/xZUFwfZFnUsF6ml1ICUZ3xNJ4MrZhTuw==
   dependencies:
     "@types/react" "*"
     "@visx/bounds" "2.10.0"
