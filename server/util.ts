@@ -5,7 +5,7 @@ export function parseUrl(req: IncomingMessage) {
   const hostname = req.headers['host'];
   const parsedUrl = parse(req.url, true);
   const { pathname, query } = parsedUrl;
-  const key = pathname.slice(1);
+  const key = decodeURIComponent(pathname.slice(1));
   return {
     hostname,
     path: pathname,
