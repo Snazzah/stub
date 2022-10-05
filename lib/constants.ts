@@ -1,4 +1,4 @@
-export const INTERVALS = ['1h', '24h', '7d', '30d', '90d', '365d'];
+export const INTERVALS = ['1h', '24h', '7d', '30d', '90d'];
 
 export const FRAMER_MOTION_LIST_ITEM_VARIANTS = {
   hidden: { scale: 0.8, opacity: 0 },
