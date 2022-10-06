@@ -50,8 +50,8 @@ export default function Stats({ atModalTop, domain }: { atModalTop?: boolean; do
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <Locations data={data!} />
               <Devices data={data!} />
-              <UTM data={data!} />
               <Referer data={data!} />
+              <UTM data={data!} />
             </div>
           </div>
         </>

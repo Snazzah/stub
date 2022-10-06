@@ -31,16 +31,16 @@ export async function recordClick(hostname: string, req: IncomingMessage, ip: st
       ua: userAgentFromString(req.headers['user-agent']),
       referer: req.headers.referer,
       timestamp: now,
-      utm:
-        !query || !['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].map((p) => !!query[p]).includes(true)
-          ? undefined
-          : {
-              source: queryToString(query.utm_source),
-              medium: queryToString(query.utm_medium),
-              compaign: queryToString(query.utm_campaign),
-              content: queryToString(query.utm_content),
-              term: queryToString(query.utm_term)
-            }
+      ...(query &&
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].some((p) => p in query) && {
+          utm: {
+            source: queryToString(query.utm_source),
+            medium: queryToString(query.utm_medium),
+            compaign: queryToString(query.utm_campaign),
+            content: queryToString(query.utm_content),
+            term: queryToString(query.utm_term)
+          }
+        })
     })
   );
 }
