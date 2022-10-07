@@ -12,7 +12,7 @@ const TabsHelper = (router: NextRouter): { name: string; href: string }[] => {
   else if (slug)
     return [
       { name: 'Links', href: `/p/${slug}` },
-      { name: 'Project Settings', href: `/p/${slug}/settings` }
+      { name: 'Settings', href: `/p/${slug}/settings` }
     ];
   else if (router.pathname.startsWith('/admin/users/') && id)
     return [
@@ -22,7 +22,7 @@ const TabsHelper = (router: NextRouter): { name: string; href: string }[] => {
   else if (router.pathname.startsWith('/admin'))
     return [
       { name: '← Projects', href: `/` },
-      { name: 'App Settings', href: `/admin` },
+      { name: 'Instance Settings', href: `/admin` },
       { name: 'Users', href: `/admin/users` }
     ];
   return [{ name: 'Projects', href: `/` }];
