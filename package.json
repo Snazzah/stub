@@ -49,7 +49,7 @@
     "react-dom": "18.2.0",
     "react-textarea-autosize": "8.3.4",
     "sharp": "0.31.1",
-    "swr": "2.0.0-beta.7",
+    "swr": "2.0.0-rc.0",
     "tailwind-scrollbar-hide": "1.1.7",
     "tsx": "3.10.1",
     "ua-parser-js": "1.0.2",
