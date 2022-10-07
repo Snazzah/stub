@@ -54,6 +54,7 @@ interface CooldownResponse {
   ok: boolean;
   cooldown: Cooldown;
   expiry: number;
+  updateCooldown(): Promise<void>;
 }
 
 export async function processCooldown(key: string, ms: number, uses: number): Promise<CooldownResponse> {
@@ -61,10 +62,14 @@ export async function processCooldown(key: string, ms: number, uses: number): Pr
   const cooldownString = await redis.get(key);
   const cooldown: Cooldown = cooldownString ? JSON.parse(cooldownString) : { uses, expires: currentTime + ms };
   const expiry = cooldown.expires - currentTime;
-  if (cooldown.uses <= 0 && currentTime < cooldown.expires) return { ok: false, cooldown, expiry };
+  let updateCooldown = async () => {};
+  if (cooldown.uses <= 0 && currentTime < cooldown.expires) return { ok: false, cooldown, expiry, updateCooldown };
   cooldown.uses--;
-  if (Math.round(expiry) > 0) await redis.set(key, JSON.stringify(cooldown), 'PX', Math.round(expiry));
-  return { ok: true, cooldown, expiry };
+  if (Math.round(expiry) > 0)
+    updateCooldown = async () => {
+      await redis.set(key, JSON.stringify(cooldown), 'PX', Math.round(expiry));
+    };
+  return { ok: true, cooldown, expiry, updateCooldown };
 }
 
 const RATELIMIT_USES = 10;
@@ -123,6 +128,7 @@ export default async function handleLink(req: IncomingMessage, res: ServerRespon
         serverRedirect(res, target);
       }
       await recordClick(hostname, req, ip, key, query);
+      await cooldown.updateCooldown();
     } else {
       // TODO allow for 404 links
       res.statusCode = 404;
