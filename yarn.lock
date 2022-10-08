@@ -646,6 +646,20 @@
   resolved "https://registry.yarnpkg.com/@types/ua-parser-js/-/ua-parser-js-0.7.36.tgz#9bd0b47f26b5a3151be21ba4ce9f5fa457c5f190"
   integrity sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==
 
+"@typescript-eslint/eslint-plugin@5.39.0":
+  version "5.39.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.39.0.tgz#778b2d9e7f293502c7feeea6c74dca8eb3e67511"
+  integrity sha512-xVfKOkBm5iWMNGKQ2fwX5GVgBuHmZBO1tCRwXmY5oAIsPscfwm2UADDuNB8ZVYCtpQvJK4xpjrK7jEhcJ0zY9A==
+  dependencies:
+    "@typescript-eslint/scope-manager" "5.39.0"
+    "@typescript-eslint/type-utils" "5.39.0"
+    "@typescript-eslint/utils" "5.39.0"
+    debug "^4.3.4"
+    ignore "^5.2.0"
+    regexpp "^3.2.0"
+    semver "^7.3.7"
+    tsutils "^3.21.0"
+
 "@typescript-eslint/eslint-plugin@^5.30.7":
   version "5.38.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.38.0.tgz#ac919a199548861012e8c1fb2ec4899ac2bc22ae"
@@ -660,19 +674,15 @@
     semver "^7.3.7"
     tsutils "^3.21.0"
 
-"@typescript-eslint/eslint-plugin@^5.39.0":
+"@typescript-eslint/parser@5.39.0":
   version "5.39.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.39.0.tgz#778b2d9e7f293502c7feeea6c74dca8eb3e67511"
-  integrity sha512-xVfKOkBm5iWMNGKQ2fwX5GVgBuHmZBO1tCRwXmY5oAIsPscfwm2UADDuNB8ZVYCtpQvJK4xpjrK7jEhcJ0zY9A==
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.39.0.tgz#93fa0bc980a3a501e081824f6097f7ca30aaa22b"
+  integrity sha512-PhxLjrZnHShe431sBAGHaNe6BDdxAASDySgsBCGxcBecVCi8NQWxQZMcizNA4g0pN51bBAn/FUfkWG3SDVcGlA==
   dependencies:
     "@typescript-eslint/scope-manager" "5.39.0"
-    "@typescript-eslint/type-utils" "5.39.0"
-    "@typescript-eslint/utils" "5.39.0"
+    "@typescript-eslint/types" "5.39.0"
+    "@typescript-eslint/typescript-estree" "5.39.0"
     debug "^4.3.4"
-    ignore "^5.2.0"
-    regexpp "^3.2.0"
-    semver "^7.3.7"
-    tsutils "^3.21.0"
 
 "@typescript-eslint/parser@^5.30.7":
   version "5.38.0"
@@ -682,16 +692,6 @@
     "@typescript-eslint/scope-manager" "5.38.0"
     "@typescript-eslint/types" "5.38.0"
     "@typescript-eslint/typescript-estree" "5.38.0"
-    debug "^4.3.4"
-
-"@typescript-eslint/parser@^5.39.0":
-  version "5.39.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.39.0.tgz#93fa0bc980a3a501e081824f6097f7ca30aaa22b"
-  integrity sha512-PhxLjrZnHShe431sBAGHaNe6BDdxAASDySgsBCGxcBecVCi8NQWxQZMcizNA4g0pN51bBAn/FUfkWG3SDVcGlA==
-  dependencies:
-    "@typescript-eslint/scope-manager" "5.39.0"
-    "@typescript-eslint/types" "5.39.0"
-    "@typescript-eslint/typescript-estree" "5.39.0"
     debug "^4.3.4"
 
 "@typescript-eslint/scope-manager@5.38.0":
