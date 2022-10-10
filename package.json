@@ -38,6 +38,8 @@
     "geolite2-redist": "3.0.3",
     "html-escaper": "3.0.3",
     "ioredis": "5.2.3",
+    "mailing": "^0.8.2",
+    "mailing-core": "^0.8.2",
     "matcher": "5.0.0",
     "maxmind": "4.3.8",
     "ms": "2.1.3",
