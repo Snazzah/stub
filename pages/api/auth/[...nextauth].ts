@@ -1,4 +1,5 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import { User } from '@prisma/client';
 import { matcher } from 'matcher';
 import NextAuth, { type NextAuthOptions } from 'next-auth';
 import { Provider } from 'next-auth/providers';
@@ -82,7 +83,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user }) {
       // If the superadmin attribute exists, then the user already had an account
-      if (typeof user.superadmin === 'boolean') return true;
+      if (typeof (user as User).superadmin === 'boolean') return true;
 
       const [appSettings] = await getAppSettings();
       if (!appSettings.allowNewUsers) throw new Error('RegisterClosed');
