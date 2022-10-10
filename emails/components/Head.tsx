@@ -1,13 +1,7 @@
-import React from "react";
-import {
-  MjmlHead,
-  MjmlFont,
-  MjmlAttributes,
-  MjmlAll,
-  MjmlStyle,
-  MjmlRaw,
-} from "mjml-react";
-import { black, blue, grayDark, grayLight, purple } from "./theme";
+import { MjmlAll, MjmlAttributes, MjmlFont, MjmlHead, MjmlRaw, MjmlStyle } from 'mjml-react';
+import React from 'react';
+
+import { black, blue, grayDark, grayLight, purple } from './theme';
 
 export default function Head(): JSX.Element {
   return (
@@ -17,10 +11,7 @@ export default function Head(): JSX.Element {
           <meta name="color-scheme" content="light dark" />
           <meta name="supported-color-schemes" content="light dark" />
         </MjmlRaw>
-        <MjmlFont
-          name="Inter"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700"
-        />
+        <MjmlFont name="Inter" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700" />
         <MjmlStyle>{`
         .container {
           border: solid 1px ${grayLight};
@@ -84,9 +75,6 @@ export default function Head(): JSX.Element {
           }
           .container {
             border: solid 1px ${grayDark};
-          }
-          .logo > * {
-            filter: invert(1) !important;
           }
           .title > * {
             color: #fff !important;
