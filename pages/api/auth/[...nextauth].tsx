@@ -1,5 +1,7 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { User } from '@prisma/client';
+import sendMail from 'emails';
+import LoginLink from 'emails/LoginLink';
 import { matcher } from 'matcher';
 import NextAuth, { type NextAuthOptions } from 'next-auth';
 import { Provider } from 'next-auth/providers';
@@ -17,8 +19,13 @@ const PRODUCTION = process.env.NODE_ENV === 'production';
 const providers: Provider[] = [
   process.env.EMAIL_SERVER && process.env.EMAIL_FROM
     ? EmailProvider({
-        server: process.env.EMAIL_SERVER,
-        from: process.env.EMAIL_FROM
+        sendVerificationRequest({ identifier, url }) {
+          sendMail({
+            subject: `Your Stub Login Link from ${process.env.APP_HOSTNAME}`,
+            to: identifier,
+            component: <LoginLink url={url} />
+          });
+        }
       })
     : null,
   process.env.DISCORD_CLIENT_ID && process.env.DISCORD_CLIENT_SECRET
