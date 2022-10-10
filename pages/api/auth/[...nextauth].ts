@@ -89,7 +89,7 @@ export const authOptions: NextAuthOptions = {
       if (!appSettings.allowNewUsers) throw new Error('RegisterClosed');
 
       // Give superadmin to new users with admin e-mail
-      if (process.env.STUB_ADMIN_EMAIL === user.email) user.superadmin = true;
+      if (process.env.STUB_ADMIN_EMAIL === user.email) (user as User).superadmin = true;
 
       // Match e-mails if given e-mails
       const hasWhitelistedEmails = appSettings.registerEmailFilters.filter((line) => line).length !== 0;
