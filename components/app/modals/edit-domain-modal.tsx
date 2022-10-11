@@ -119,14 +119,15 @@ function EditDomainModal({
 
           <div>
             <label htmlFor="verification" className="block text-sm text-gray-700">
-              To verify, type <span className="font-semibold">confirm domain change</span> below
+              To verify, type <span className="font-semibold">yes, change my domain</span> below
             </label>
             <div className="relative mt-1 rounded-md shadow-sm">
               <input
                 type="text"
                 name="verification"
                 id="verification"
-                pattern="confirm domain change"
+                pattern="yes, change my domain"
+                placeholder="yes, change my domain"
                 required
                 autoFocus={false}
                 className="border-gray-300 text-gray-900 placeholder-gray-300 focus:border-gray-500 focus:ring-gray-500 pr-10 block w-full rounded-md focus:outline-none sm:text-sm"
