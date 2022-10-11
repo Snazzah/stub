@@ -45,31 +45,6 @@ export async function recordClick(hostname: string, req: IncomingMessage, ip: st
   );
 }
 
-interface Cooldown {
-  uses: number;
-  expires: number;
-}
-
-interface CooldownResponse {
-  ok: boolean;
-  cooldown: Cooldown;
-  expiry: number;
-}
-
-export async function processCooldown(key: string, ms: number, uses: number): Promise<CooldownResponse> {
-  const currentTime = Date.now();
-  const cooldownString = await redis.get(key);
-  const cooldown: Cooldown = cooldownString ? JSON.parse(cooldownString) : { uses, expires: currentTime + ms };
-  const expiry = cooldown.expires - currentTime;
-  if (cooldown.uses <= 0 && currentTime < cooldown.expires) return { ok: false, cooldown, expiry };
-  cooldown.uses--;
-  if (Math.round(expiry) > 0) await redis.set(key, JSON.stringify(cooldown), 'PX', Math.round(expiry));
-  return { ok: true, cooldown, expiry };
-}
-
-const RATELIMIT_USES = 10;
-const RATELIMIT_EXPIRY = 60000;
-
 export default async function handleLink(req: IncomingMessage, res: ServerResponse) {
   const { hostname, key: linkKey, query } = parseUrl(req);
 
@@ -84,57 +59,45 @@ export default async function handleLink(req: IncomingMessage, res: ServerRespon
       ip = Array.isArray(req.headers[proxyHeader]) ? req.headers[proxyHeader][0] : (req.headers[proxyHeader] as string);
   }
 
-  const cooldown = await processCooldown(`stub_${ip}`, RATELIMIT_EXPIRY, RATELIMIT_USES);
+  const response = await redis.hget(`${hostname}:links`, key).then((r) => {
+    if (r !== null) return JSON.parse(r) as Omit<LinkProps, 'key'>;
+    return null;
+  });
+  const target = response?.url;
 
-  if (cooldown.ok) {
-    // if ratelimit is not exceeded
-    const response = await redis.hget(`${hostname}:links`, key).then((r) => {
-      if (r !== null) return JSON.parse(r) as Omit<LinkProps, 'key'>;
-      return null;
-    });
-    const target = response?.url;
+  if (target) {
+    const isBot = detectBot(req);
 
-    if (target) {
-      const isBot = detectBot(req);
-
-      if (response.image && response.description && isBot) {
-        res.statusCode = 200;
-        res.end(`
-          <html>
-            <head>
-              <title>${escape(response.title)}</title>
-              <meta property="og:title" content=${escape(response.title)} />
-              <meta property="og:site_name" content=${escape(response.url)} />
-              <meta property="og:description" content=${escape(response.description)} />
-              <meta property="og:image" content=${escape(response.image)} />
-              <meta name="twitter:card" content="summary_large_image" />
-              <meta name="twitter:site" content=${escape(response.url)} />
-              <meta name="twitter:title" content=${escape(response.title)} />
-              <meta name="twitter:description" content=${escape(response.description)} />
-              <meta name="twitter:image" content=${escape(response.image)} />
-            </head>
-            <body>
-              <h1>${escape(response.title)}</h1>
-              <p>${escape(response.description)}</p>
-            </body>
-          </html>
-        `);
-      } else {
-        serverRedirect(res, target);
-      }
-      await recordClick(hostname, req, ip, key, query);
+    if (response.image && response.description && isBot) {
+      res.statusCode = 200;
+      res.end(`
+        <html>
+          <head>
+            <title>${escape(response.title)}</title>
+            <meta property="og:title" content=${escape(response.title)} />
+            <meta property="og:site_name" content=${escape(response.url)} />
+            <meta property="og:description" content=${escape(response.description)} />
+            <meta property="og:image" content=${escape(response.image)} />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:site" content=${escape(response.url)} />
+            <meta name="twitter:title" content=${escape(response.title)} />
+            <meta name="twitter:description" content=${escape(response.description)} />
+            <meta name="twitter:image" content=${escape(response.image)} />
+          </head>
+          <body>
+            <h1>${escape(response.title)}</h1>
+            <p>${escape(response.description)}</p>
+          </body>
+        </html>
+      `);
     } else {
-      // TODO allow for 404 links
-      res.statusCode = 404;
-      res.end('Not Found');
+      serverRedirect(res, target);
     }
+    await recordClick(hostname, req, ip, key, query);
   } else {
-    res
-      .setHeader('X-RateLimit-Limit', RATELIMIT_USES)
-      .setHeader('X-RateLimit-Remaining', cooldown.cooldown.uses)
-      .setHeader('X-RateLimit-Reset', Math.ceil(cooldown.cooldown.expires / 1000));
-    res.statusCode = 429;
-    res.end('You are requesting a bit too often, try again later.');
+    // TODO allow for 404 links
+    res.statusCode = 404;
+    res.end('Not Found');
   }
   return true;
 }

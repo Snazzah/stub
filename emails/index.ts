@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 let mailFn: (mail: ComponentMail) => Promise<any>;
 
 export default function sendMail(mail: ComponentMail) {
-  if (!process.env.EMAIL_SERVER) return () => {};
+  if (!process.env.EMAIL_SERVER || !process.env.EMAIL_FROM) return () => {};
   mailFn =
     mailFn ??
     buildSendMail({
