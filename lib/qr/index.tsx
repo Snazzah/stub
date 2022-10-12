@@ -373,22 +373,46 @@ export function getQRAsSVGDataUri(props: QRProps) {
   return `data:image/svg+xml,${encodeURIComponent(svgData)}`;
 }
 
-export function getQRAsCanvas(props: QRProps, type: string) {
+function waitUntilImageLoaded(img: HTMLImageElement, src: string) {
+  return new Promise((resolve) => {
+    function onFinish() {
+      img.onload = null;
+      img.onerror = null;
+      resolve(true);
+    }
+    img.onload = onFinish;
+    img.onerror = onFinish;
+    img.src = src;
+    img.loading = 'eager';
+  });
+}
+
+export async function getQRAsCanvas(props: QRProps, type: string) {
   const {
     value,
     size = DEFAULT_SIZE,
     level = DEFAULT_LEVEL,
     bgColor = DEFAULT_BGCOLOR,
     fgColor = DEFAULT_FGCOLOR,
-    includeMargin = DEFAULT_INCLUDEMARGIN
+    includeMargin = DEFAULT_INCLUDEMARGIN,
+    imageSettings
   } = props;
 
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
 
-  const cells = qrcodegen.QrCode.encodeText(value, ERROR_LEVEL_MAP[level]).getModules();
+  let cells = qrcodegen.QrCode.encodeText(value, ERROR_LEVEL_MAP[level]).getModules();
   const margin = includeMargin ? MARGIN_SIZE : 0;
   const numCells = cells.length + margin * 2;
+  const calculatedImageSettings = getImageSettings(cells, size, includeMargin, imageSettings);
+
+  const image = new Image();
+  if (calculatedImageSettings) {
+    await waitUntilImageLoaded(image, imageSettings.src);
+    if (calculatedImageSettings.excavation != null) {
+      cells = excavateModules(cells, calculatedImageSettings.excavation);
+    }
+  }
 
   const pixelRatio = window.devicePixelRatio || 1;
   canvas.height = canvas.width = size * pixelRatio;
@@ -413,7 +437,20 @@ export function getQRAsCanvas(props: QRProps, type: string) {
     });
   }
 
+  const haveImageToRender =
+    calculatedImageSettings != null && image !== null && image.complete && image.naturalHeight !== 0 && image.naturalWidth !== 0;
+  if (haveImageToRender) {
+    ctx.drawImage(
+      image,
+      calculatedImageSettings.x + margin,
+      calculatedImageSettings.y + margin,
+      calculatedImageSettings.w,
+      calculatedImageSettings.h
+    );
+  }
+
   const url = canvas.toDataURL(type, 1.0);
   canvas.remove();
+  image.remove();
   return url;
 }
