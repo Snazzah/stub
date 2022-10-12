@@ -3391,20 +3391,7 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-mailing-core@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/mailing-core/-/mailing-core-0.8.2.tgz#1c8b1f0cf9e55e5dfd2b6a278b421569179966c9"
-  integrity sha512-ZDYqyvyGZPYftLDiXulFFKY5NSGOfGS00B5i1Vk82PACKXsblF908b2at2afjTLOz9ec4uCK+TqlCl+pDFKvJQ==
-  dependencies:
-    chalk "^4.1.2"
-    fs-extra "^10.1.0"
-    mjml "^4.12.0"
-    mjml-react "^2.0.7"
-    node-fetch "^2.6.7"
-    open "^8.4.0"
-    posthog-node "^2.0.2"
-
-mailing-core@^0.8.3:
+mailing-core@0.8.3, mailing-core@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/mailing-core/-/mailing-core-0.8.3.tgz#a3922571aae17d5fea7560a0b4ec71cd4ad1691d"
   integrity sha512-LsW0xMQq2DKuEQSBzSncfkT2rPr3P/49y0n9EC6ShvsCET5y03fPIQoeT+AcdTtcVlLl+ongESUjaOLEEets0A==
