@@ -18,7 +18,6 @@ function LinkQRModalHelper({
   props: LinkProps;
 }) {
   const anchorRef = useRef<HTMLAnchorElement>();
-  const [useSource, setUseSource] = useState(true);
   const [useLogo, setUseLogo] = useState(true);
   const { project: { domain } = {} } = useProject();
   const avatarUrl = useMemo(() => {
@@ -29,7 +28,7 @@ function LinkQRModalHelper({
       return null;
     }
   }, [props]);
-  const qrDestUrl = useMemo(() => `${linkConstructor({ key: props.key, domain })}${useSource && `?utm_source=qr`}`, [props, domain, useSource]);
+  const qrDestUrl = useMemo(() => linkConstructor({ key: props.key, domain }), [props, domain]);
   const qrLogoUrl = useMemo(() => (useLogo ? new URL('/static/logo.min.svg', location.href).href : null), [useLogo]);
   const qrData = useMemo(
     () => ({
@@ -89,20 +88,6 @@ function LinkQRModalHelper({
           </div>
 
           <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-2">
-              <input
-                id="qr-source"
-                name="qr-source"
-                type="checkbox"
-                checked={useSource}
-                onChange={(e) => setUseSource(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-amber-500 focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
-              />
-              <label htmlFor="qr-source" className="block text-sm text-gray-700 select-none">
-                Track QR visits as UTM source
-              </label>
-            </div>
-
             <div className="flex items-center gap-2">
               <input
                 id="qr-logo"
