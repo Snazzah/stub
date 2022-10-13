@@ -456,7 +456,7 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-compose-refs" "1.0.0"
 
-"@radix-ui/react-switch@^1.0.0":
+"@radix-ui/react-switch@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-switch/-/react-switch-1.0.0.tgz#f714eb81da7b16dae7f5ab6e774e3194d8f009b6"
   integrity sha512-SydkCiuirxJfRG8259J0RIpOw1p6y4TgJdNYvDNXgkEjCjFzLCvBbgDNQn9SeYXk3mjO/ezMgMFsacnrp4eihw==
@@ -2596,7 +2596,7 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
-focus-trap-react@^10.0.0:
+focus-trap-react@10.0.0:
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-10.0.0.tgz#9e41ddd0b869db577dfe670611648d97736b9188"
   integrity sha512-I0tReLdpmCwWuVb6YAmOD+S9KHj0GrlIWmnVJf61j2NHxiIg7DbrsabPmtPC+1yzGJrsy+/iTZiqXtStjlBQcA==
@@ -4566,7 +4566,7 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-colorful@^5.6.1:
+react-colorful@5.6.1:
   version "5.6.1"
   resolved "https://registry.yarnpkg.com/react-colorful/-/react-colorful-5.6.1.tgz#7dc2aed2d7c72fac89694e834d179e32f3da563b"
   integrity sha512-1exovf0uGTGyq5mXQT0zgQ80uvj2PCwvF8zY1RN9/vbJVSjSo3fsB/4L3ObbF7u70NduSiK4xu4Y6q1MHoUGEw==
