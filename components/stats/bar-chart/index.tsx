@@ -34,8 +34,8 @@ const rangeFormatter = (maxN: number): number => {
 
 const BarChart = ({ data, isValidating, screenWidth }: { data: StatsProps['clicksData']; isValidating: boolean; screenWidth?: number }) => {
   const [CHART_WIDTH, CHART_HEIGHT] = useMemo(() => {
-    const width = screenWidth ? Math.min(screenWidth * 0.7, CHART_MAX_WIDTH) : CHART_MAX_WIDTH;
-    const height = screenWidth ? Math.min(screenWidth * 0.4, CHART_MAX_HEIGHT) : CHART_MAX_HEIGHT;
+    const width = screenWidth ? Math.min(screenWidth * 0.8, CHART_MAX_WIDTH) : CHART_MAX_WIDTH;
+    const height = screenWidth ? Math.min(screenWidth * 0.5, CHART_MAX_HEIGHT) : CHART_MAX_HEIGHT;
     return [width, height];
   }, [screenWidth]);
 
@@ -152,9 +152,9 @@ const BarChart = ({ data, isValidating, screenWidth }: { data: StatsProps['click
       </svg>
       {tooltipOpen && tooltipData && (
         <TooltipInPortal top={tooltipTop} left={tooltipLeft} className={styles.tooltip}>
-          <div className="text-center z-50">
+          <div className="text-center">
             <h3 className="text-black my-1">
-              <span className="text-2xl font-semibold">{nFormatter(tooltipData.count)}</span> click{tooltipData.count !== 1 && 's'}
+              <span className="text-2xl font-semibold">{nFormatter(tooltipData.count)}</span> clicks
             </h3>
             <p className="text-xs text-gray-600">
               {intervalData[interval].format(tooltipData.start)} - {intervalData[interval].format(tooltipData.end)}

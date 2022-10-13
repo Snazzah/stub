@@ -25,7 +25,7 @@ export default function AppLayout({ children, pageTitle }: { children: ReactNode
     <div>
       <Meta pageTitle={pageTitle} />
       <div className="min-h-screen w-full bg-gray-50">
-        <div className="sticky top-0 left-0 right-0 border-b bg-white border-gray-200 z-40">
+        <div className="sticky top-0 left-0 right-0 border-b bg-white border-gray-200 z-30">
           <div className="flex flex-col gap-3 pt-3 max-w-screen-xl mx-auto px-5 sm:px-20">
             <div className="h-10 flex justify-between items-center">
               <div className="flex items-center">
