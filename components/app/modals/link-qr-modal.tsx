@@ -1,11 +1,14 @@
 import { Dispatch, SetStateAction, useCallback, useMemo, useRef, useState } from 'react';
+import { HexColorInput, HexColorPicker } from 'react-colorful';
 
 import BlurImage from '@/components/shared/blur-image';
-import { Download, Logo } from '@/components/shared/icons';
+import { ChevronRight, Download, Logo } from '@/components/shared/icons';
 import Modal from '@/components/shared/modal';
+import Switch from '@/components/shared/switch';
+import Tooltip from '@/components/shared/tooltip';
 import { getQRAsCanvas, getQRAsSVGDataUri, QRCodeSVG } from '@/lib/qr';
 import useProject from '@/lib/swr/use-project';
-import { LinkProps } from '@/lib/types';
+import { SimpleLinkProps } from '@/lib/types';
 import { linkConstructor } from '@/lib/utils';
 
 function LinkQRModalHelper({
@@ -15,10 +18,10 @@ function LinkQRModalHelper({
 }: {
   showLinkQRModal: boolean;
   setShowLinkQRModal: Dispatch<SetStateAction<boolean>>;
-  props: LinkProps;
+  props: SimpleLinkProps;
 }) {
   const anchorRef = useRef<HTMLAnchorElement>();
-  const [useLogo, setUseLogo] = useState(true);
+  const [showLogo, setShowLogo] = useState(true);
   const { project: { domain } = {} } = useProject();
   const avatarUrl = useMemo(() => {
     try {
@@ -29,24 +32,25 @@ function LinkQRModalHelper({
     }
   }, [props]);
   const qrDestUrl = useMemo(() => linkConstructor({ key: props.key, domain }), [props, domain]);
-  const qrLogoUrl = useMemo(() => (useLogo ? new URL('/static/logo.min.svg', location.href).href : null), [useLogo]);
-  const qrData = useMemo(
-    () => ({
-      bgColor: '#ffffff',
-      fgColor: '#000000',
-      size: 1024,
-      level: 'Q',
-      imageSettings: qrLogoUrl
-        ? {
-            src: qrLogoUrl,
-            height: 256,
-            width: 256,
-            excavate: true
-          }
-        : null
-    }),
-    [qrLogoUrl]
+  const qrLogoUrl = useMemo(
+    () => (typeof window !== 'undefined' && window.location.origin ? new URL('/static/logo.svg', window.location.origin).href : ''),
+    []
   );
+  const [qrData, setQrData] = useState({
+    value: qrDestUrl,
+    bgColor: '#ffffff',
+    fgColor: '#000000',
+    size: 1024,
+    level: 'Q', // QR Code error correction level: https://blog.qrstuff.com/general/qr-code-error-correction
+    ...(showLogo && {
+      imageSettings: {
+        src: qrLogoUrl,
+        height: 256,
+        width: 256,
+        excavate: true
+      }
+    })
+  });
 
   function download(url: string, extension: string) {
     if (!anchorRef.current) return;
@@ -57,7 +61,7 @@ function LinkQRModalHelper({
 
   return (
     <Modal showModal={showLinkQRModal} setShowModal={setShowLinkQRModal}>
-      <div className="inline-block w-full sm:max-w-md overflow-hidden align-middle transition-all transform bg-white sm:border sm:border-gray-200 shadow-xl sm:rounded-2xl">
+      <div className="inline-block w-full sm:max-w-md align-middle transition-all transform bg-white sm:border sm:border-gray-200 shadow-xl sm:rounded-2xl">
         <div className="flex flex-col justify-center items-center space-y-3 sm:px-16 px-4 pt-8 py-4 border-b border-gray-200">
           {avatarUrl ? (
             <BlurImage src={avatarUrl} alt="Download QR Code" className="w-10 h-10 rounded-full border border-gray-200" width={40} height={40} />
@@ -67,43 +71,28 @@ function LinkQRModalHelper({
           <h3 className="font-medium text-lg">Download QR Code</h3>
         </div>
 
-        <div className="flex flex-col space-y-6 text-left bg-gray-50 sm:px-16 px-4 py-8">
+        <div className="flex flex-col space-y-6 text-left bg-gray-50 py-6 sm:rounded-b-2xl">
           <div className="p-4 rounded-lg bg-white mx-auto border-2 border-gray-200">
             <QRCodeSVG
-              value={qrDestUrl}
-              size={128}
-              bgColor="#ffffff"
-              fgColor="#000000"
-              level="Q"
+              value={qrData.value}
+              size={qrData.size / 8}
+              bgColor={qrData.bgColor}
+              fgColor={qrData.fgColor}
+              level={qrData.level}
               includeMargin={false}
               imageSettings={
-                qrLogoUrl && {
-                  src: qrLogoUrl,
-                  height: 36,
-                  width: 36,
-                  excavate: true
+                showLogo && {
+                  ...qrData.imageSettings,
+                  height: qrData.imageSettings.height / 8,
+                  width: qrData.imageSettings.width / 8
                 }
               }
             />
           </div>
 
-          <div className="flex flex-col gap-1">
-            <div className="flex items-center gap-2">
-              <input
-                id="qr-logo"
-                name="qr-logo"
-                type="checkbox"
-                checked={useLogo}
-                onChange={(e) => setUseLogo(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-300 text-amber-500 focus:border-gray-500 focus:ring-gray-500 focus:outline-none"
-              />
-              <label htmlFor="qr-logo" className="block text-sm text-gray-700 select-none">
-                Display logo in QR code
-              </label>
-            </div>
-          </div>
+          <AdvancedSettings qrData={qrData} setQrData={setQrData} setShowLogo={setShowLogo} />
 
-          <div className="flex gap-2">
+          <div className="flex gap-2 sm:px-16 px-4">
             <button
               onClick={() => download(getQRAsSVGDataUri({ value: qrDestUrl, ...qrData }), 'svg')}
               className="py-1.5 px-5 bg-black hover:bg-white rounded-md border border-black text-sm text-white hover:text-black transition-all w-full flex items-center gap-2 justify-center"
@@ -131,8 +120,79 @@ function LinkQRModalHelper({
     </Modal>
   );
 }
+function AdvancedSettings({ qrData, setQrData, setShowLogo }) {
+  const [expanded, setExpanded] = useState(false);
 
-export function useLinkQRModal({ props }: { props: LinkProps }) {
+  return (
+    <div>
+      <div className="sm:px-16 px-4">
+        <button type="button" className="flex items-center" onClick={() => setExpanded(!expanded)}>
+          <ChevronRight className={`h-5 w-5 text-gray-600 ${expanded ? 'rotate-90' : ''} transition-all`} />
+          <p className="text-gray-600 text-sm">Advanced options</p>
+        </button>
+      </div>
+      {expanded && (
+        <div className="mt-4 grid gap-5 bg-white border-t border-b border-gray-200 sm:px-16 px-4 py-8">
+          <div>
+            <label htmlFor="logo-toggle" className="block text-sm font-medium text-gray-700">
+              Logo
+            </label>
+            <div className="flex mt-1 space-x-2 items-center">
+              <Switch trackDimensions="h-6 w-12" thumbDimensions="w-5 h-5" thumbTranslate="translate-x-6" setState={setShowLogo} />
+              <p className="text-gray-600 text-sm">Show Logo</p>
+            </div>
+          </div>
+          <div>
+            <label htmlFor="color" className="block text-sm font-medium text-gray-700">
+              Foreground Color
+            </label>
+            <div className="relative flex mt-1 rounded-md shadow-sm h-9 w-48">
+              <Tooltip
+                content={
+                  <div className="max-w-xs flex flex-col text-center items-center space-y-3 p-5">
+                    <HexColorPicker
+                      color={qrData.fgColor}
+                      onChange={(color) =>
+                        setQrData({
+                          ...qrData,
+                          fgColor: color
+                        })
+                      }
+                    />
+                  </div>
+                }
+              >
+                <button
+                  className="rounded-l-md w-12 h-full border"
+                  style={{
+                    backgroundColor: qrData.fgColor,
+                    borderColor: qrData.fgColor
+                  }}
+                />
+              </Tooltip>
+              <HexColorInput
+                id="color"
+                name="color"
+                color={qrData.fgColor}
+                onChange={(color) =>
+                  setQrData({
+                    ...qrData,
+                    fgColor: color
+                  })
+                }
+                prefixed
+                style={{ borderColor: qrData.fgColor }}
+                className={`border-2 border-l-0 text-gray-900 placeholder-gray-300 focus:ring-black pl-3 block w-full rounded-r-md focus:outline-none sm:text-sm`}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function useLinkQRModal({ props }: { props: SimpleLinkProps }) {
   const [showLinkQRModal, setShowLinkQRModal] = useState(false);
 
   const LinkQRModal = useCallback(() => {

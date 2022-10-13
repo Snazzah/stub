@@ -1,3 +1,5 @@
+// Most of these icons are gotten from Vercel's open-sourced icons library: https://vercel.com/design/icons
+
 export { default as Airplay } from './airplay';
 export { default as AlertCircleFill } from './alert-circle-fill';
 export { default as Chart } from './chart';
