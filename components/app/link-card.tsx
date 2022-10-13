@@ -85,9 +85,10 @@ export default function LinkCard({ props }: { props: LinkProps }) {
               </button>
               <Link href={`${router.asPath}/link/${encodeURIComponent(key)}`}>
                 <a className="flex items-center space-x-1 rounded-md bg-gray-100 px-2 py-0.5 hover:scale-105 active:scale-95 transition-all duration-75">
-                  <Chart className="w-4 h-4" />
+                  <Chart className="w-4 h-4" />{' '}
                   <p className="text-sm text-gray-500 whitespace-nowrap">
-                    {isValidating || !clicks ? <LoadingDots color="#71717A" /> : nFormatter(parseInt(clicks))} clicks
+                    {isValidating || !clicks ? <LoadingDots color="#71717A" /> : nFormatter(parseInt(clicks))}
+                    <span className="hidden sm:inline-block ml-1">clicks</span>
                   </p>
                 </a>
               </Link>
