@@ -13,14 +13,13 @@ module.exports = {
   },
   images: {
     domains: [
-      'logo.clearbit.com',
+      'www.google.com',
       'avatar.tobi.sh',
       'faisalman.github.io',
       'avatars.dicebear.com',
       'cdn.discordapp.com',
       'avatars.githubusercontent.com',
-      'pbs.twimg.com',
-      'www.google.com'
+      'pbs.twimg.com'
     ]
   },
   async redirects() {

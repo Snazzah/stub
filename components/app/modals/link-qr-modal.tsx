@@ -23,10 +23,13 @@ function LinkQRModalHelper({
   const anchorRef = useRef<HTMLAnchorElement>();
   const [showLogo, setShowLogo] = useState(true);
   const { project: { domain } = {} } = useProject();
-  const avatarUrl = useMemo(() => {
+  const { avatarUrl, urlHostname } = useMemo(() => {
     try {
       const urlHostname = new URL(props.url).hostname;
-      return `https://logo.clearbit.com/${urlHostname}`;
+      return {
+        avatarUrl: `https://www.google.com/s2/favicons?sz=64&domain_url=${urlHostname}`,
+        urlHostname
+      };
     } catch (e) {
       return null;
     }
@@ -64,7 +67,7 @@ function LinkQRModalHelper({
       <div className="inline-block w-full sm:max-w-md align-middle transition-all transform bg-white sm:border sm:border-gray-200 shadow-xl sm:rounded-2xl">
         <div className="flex flex-col justify-center items-center space-y-3 sm:px-16 px-4 pt-8 py-4 border-b border-gray-200">
           {avatarUrl ? (
-            <BlurImage src={avatarUrl} alt="Download QR Code" className="w-10 h-10 rounded-full border border-gray-200" width={40} height={40} />
+            <BlurImage src={avatarUrl} alt={urlHostname} className="w-10 h-10 rounded-full border border-gray-200" width={40} height={40} />
           ) : (
             <Logo className="w-10 h-10" />
           )}
