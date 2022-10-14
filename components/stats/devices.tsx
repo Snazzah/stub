@@ -40,8 +40,8 @@ export default function Devices({ data: rawData }: { data: StatsProps }) {
   };
 
   return (
-    <div className="flex flex-col justify-between bg-white pt-5 shadow-lg rounded-lg border border-gray-100 h-[420px]">
-      <div className="relative overflow-scroll scrollbar-hide px-7" onScroll={handleScroll}>
+    <div className="flex flex-col justify-between bg-white pt-5 sm:shadow-lg sm:rounded-lg border border-gray-200 sm:border-gray-100 h-[420px]">
+      <div className="relative h-full overflow-scroll scrollbar-hide px-7" onScroll={handleScroll}>
         <div className="mb-3 flex justify-between">
           <h1 className="text-xl font-semibold">Devices</h1>
           <BadgeSelect

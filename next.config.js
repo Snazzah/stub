@@ -19,7 +19,8 @@ module.exports = {
       'avatars.dicebear.com',
       'cdn.discordapp.com',
       'avatars.githubusercontent.com',
-      'pbs.twimg.com'
+      'pbs.twimg.com',
+      'www.google.com'
     ]
   },
   async redirects() {

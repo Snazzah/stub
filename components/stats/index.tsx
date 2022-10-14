@@ -5,6 +5,7 @@ import useSWR from 'swr';
 import CursorIllustration from '@/components/shared/illustrations/cursor';
 import Clicks from '@/components/stats/clicks';
 import Devices from '@/components/stats/devices';
+import Feedback from '@/components/stats/feedback';
 import Locations from '@/components/stats/locations';
 import Referer from '@/components/stats/referer';
 import Toggle from '@/components/stats/toggle';
@@ -50,6 +51,7 @@ export default function Stats({ atModalTop, domain }: { atModalTop?: boolean; do
               <Locations data={data!} />
               <Devices data={data!} />
               <Referer data={data!} />
+              <Feedback />
             </div>
           </div>
         </>
