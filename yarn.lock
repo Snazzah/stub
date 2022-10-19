@@ -396,17 +396,6 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-use-layout-effect" "1.0.0"
 
-"@radix-ui/react-label@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-label/-/react-label-1.0.0.tgz#c6691b0bec18958512a952c18732279285b61fef"
-  integrity sha512-k+EbxeRaVbSJ4oaR9eUYuC0cDIGRB4TAPhilbFCIMpP9pXFNcyQPQUvRaVOQBrviuArYM80xh0BQR/0y3kjUdQ==
-  dependencies:
-    "@babel/runtime" "^7.13.10"
-    "@radix-ui/react-compose-refs" "1.0.0"
-    "@radix-ui/react-context" "1.0.0"
-    "@radix-ui/react-id" "1.0.0"
-    "@radix-ui/react-primitive" "1.0.0"
-
 "@radix-ui/react-popper@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-popper/-/react-popper-1.0.0.tgz#fb4f937864bf39c48f27f55beee61fa9f2bef93c"
@@ -448,6 +437,14 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-slot" "1.0.0"
 
+"@radix-ui/react-primitive@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-primitive/-/react-primitive-1.0.1.tgz#c1ebcce283dd2f02e4fbefdaa49d1cb13dbc990a"
+  integrity sha512-fHbmislWVkZaIdeF6GZxF0A/NH/3BjrGIYj+Ae6eTmTCr7EB0RQAAVEiqsXK6p3/JcRqVSBQoceZroj30Jj3XA==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-slot" "1.0.1"
+
 "@radix-ui/react-slot@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.0.0.tgz#7fa805b99891dea1e862d8f8fbe07f4d6d0fd698"
@@ -456,17 +453,24 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-compose-refs" "1.0.0"
 
-"@radix-ui/react-switch@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@radix-ui/react-switch/-/react-switch-1.0.0.tgz#f714eb81da7b16dae7f5ab6e774e3194d8f009b6"
-  integrity sha512-SydkCiuirxJfRG8259J0RIpOw1p6y4TgJdNYvDNXgkEjCjFzLCvBbgDNQn9SeYXk3mjO/ezMgMFsacnrp4eihw==
+"@radix-ui/react-slot@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-slot/-/react-slot-1.0.1.tgz#e7868c669c974d649070e9ecbec0b367ee0b4d81"
+  integrity sha512-avutXAFL1ehGvAXtPquu0YK5oz6ctS474iM3vNGQIkswrVhdrS52e3uoMQBzZhNRAIE0jBnUyXWNmSjGHhCFcw==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/react-compose-refs" "1.0.0"
+
+"@radix-ui/react-switch@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-switch/-/react-switch-1.0.1.tgz#56665fa951a4190313be21fab70a90041bdbd191"
+  integrity sha512-tTxGluMtwrc5ffgAiOSMrYIx0r3vSTcgM4Vl8rqfpXcHt6ryB9B0OlFKUOiDpKASXlhvzfHf4Y0AYKJdpzjL8w==
   dependencies:
     "@babel/runtime" "^7.13.10"
     "@radix-ui/primitive" "1.0.0"
     "@radix-ui/react-compose-refs" "1.0.0"
     "@radix-ui/react-context" "1.0.0"
-    "@radix-ui/react-label" "1.0.0"
-    "@radix-ui/react-primitive" "1.0.0"
+    "@radix-ui/react-primitive" "1.0.1"
     "@radix-ui/react-use-controllable-state" "1.0.0"
     "@radix-ui/react-use-previous" "1.0.0"
     "@radix-ui/react-use-size" "1.0.0"
