@@ -88,12 +88,18 @@ export const authOptions: NextAuthOptions = {
     }
   },
   callbacks: {
-    async signIn({ user }) {
+    async signIn({ user, account }) {
       // If the superadmin attribute exists, then the user already had an account
       if (typeof (user as User).superadmin === 'boolean') return true;
 
       const [appSettings] = await getAppSettings();
-      if (!appSettings.allowNewUsers) throw new Error('RegisterClosed');
+      if (!appSettings.allowNewUsers) {
+        // For e-mail, check if a user has that e-mail
+        if (account.provider === 'email') {
+          const dbUser = await prisma.user.findUnique({ where: { email: user.email } });
+          if (!dbUser) throw new Error('RegisterClosed');
+        } else throw new Error('RegisterClosed');
+      }
 
       // Give superadmin to new users with admin e-mail
       if (process.env.STUB_ADMIN_EMAIL === user.email) (user as User).superadmin = true;
