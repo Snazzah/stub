@@ -175,7 +175,7 @@ function AddEditLinkModal({
               </div>
               <div className="relative flex mt-1 rounded-md shadow-sm">
                 <span className="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-5 text-gray-500 sm:text-sm whitespace-nowrap">
-                  {domain}
+                  {domain || 'dub.sh'}
                 </span>
                 <input
                   type="text"
@@ -183,7 +183,7 @@ function AddEditLinkModal({
                   id="key"
                   required
                   autoFocus={false}
-                  pattern="[\p{Letter}\p{Mark}\d-]+|:index"
+                  pattern="[\p{Letter}\p{Mark}\d-]+|:index" // Unicode regex to match characters from all languages and numbers (and omit all symbols except for dashes)
                   className={`${
                     keyExistsError
                       ? 'border-red-300 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500'
@@ -277,11 +277,11 @@ function AddEditLinkModal({
                   aria-invalid="true"
                 />
               </div>
-              {error?.data?.title?._errors && <p className="text-red-700 text-sm">{error.data.title._errors.join(', ')}</p>}
             </div>
-
-            <AdvancedSettings data={data} setData={setData} debouncedUrl={debouncedUrl} error={error} />
+            {error?.data?.title?._errors && <p className="text-red-700 text-sm">{error.data.title._errors.join(', ')}</p>}
           </div>
+
+          <AdvancedSettings data={data} setData={setData} debouncedUrl={debouncedUrl} error={error} />
 
           <div className="sm:px-16 px-4">
             <button
@@ -330,10 +330,12 @@ function AdvancedSettings({ data, setData, debouncedUrl, error }) {
 
   return (
     <div>
-      <button type="button" className="flex items-center" onClick={() => setExpanded(!expanded)}>
-        <ChevronRight className={`h-5 w-5 text-gray-600 ${expanded ? 'rotate-90' : ''} transition-all`} />
-        <p className="text-gray-600 text-sm">Advanced options</p>
-      </button>
+      <div className="sm:px-16 px-4">
+        <button type="button" className="flex items-center" onClick={() => setExpanded(!expanded)}>
+          <ChevronRight className={`h-5 w-5 text-gray-600 ${expanded ? 'rotate-90' : ''} transition-all`} />
+          <p className="text-gray-600 text-sm">Advanced options</p>
+        </button>
+      </div>
 
       {expanded && (
         <div className="mt-4 grid gap-5 bg-white border-t border-b border-gray-200 sm:px-16 px-4 py-8">
@@ -375,16 +377,15 @@ function AdvancedSettings({ data, setData, debouncedUrl, error }) {
           </div>
 
           <div>
-            <label htmlFor="url" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="imageUrl" className="block text-sm font-medium text-gray-700">
               OG Image URL
             </label>
             <p className="text-gray-500 text-xs">Recommended: 1200 x 627 pixels</p>
             <div className="flex mt-1 rounded-md shadow-sm">
               <input
-                name="url"
-                id="url"
+                name="imageUrl"
+                id="imageUrl"
                 type="url"
-                required
                 className="border-gray-300 text-gray-900 placeholder-gray-300 focus:border-gray-500 focus:ring-gray-500 block w-full rounded-md focus:outline-none sm:text-sm"
                 placeholder="https://github.com/steven-tey/dub/raw/main/public/static/thumbnail.png"
                 value={image}
