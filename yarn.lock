@@ -5232,10 +5232,10 @@ tsutils@^3.21.0:
   dependencies:
     tslib "^1.8.1"
 
-tsx@3.10.1:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/tsx/-/tsx-3.10.1.tgz#4ffb1229077f648bbf46c0ed2b098f4cd8dd6d6d"
-  integrity sha512-Gh6xoW4xrdnLs6hYZydVHIQtrgmbZ/DbnJoLsYoI8MxhKAIyu8R7RyF0D5qg9UKi74Nmr4iSlijdz7Q43IGLyQ==
+tsx@3.10.4:
+  version "3.10.4"
+  resolved "https://registry.yarnpkg.com/tsx/-/tsx-3.10.4.tgz#f46a876747f517263027e68121335bb294641b34"
+  integrity sha512-sBxeSgUAPVqRgBPk6TY0yFiNDUlva9rA+Nj46oYEd89FXVD2MFWChFhybTtq7Qh1Ies/O75mQNwpLuO7m8gToA==
   dependencies:
     "@esbuild-kit/cjs-loader" "^2.4.0"
     "@esbuild-kit/core-utils" "^3.0.0"
