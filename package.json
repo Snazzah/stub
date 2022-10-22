@@ -33,7 +33,7 @@
     "@visx/grid": "2.12.2",
     "@visx/responsive": "2.10.0",
     "@visx/shape": "2.12.2",
-    "@visx/tooltip": "2.15.0",
+    "@visx/tooltip": "2.16.0",
     "dotenv": "16.0.3",
     "focus-trap-react": "10.0.0",
     "framer-motion": "7.5.3",
