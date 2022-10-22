@@ -2,8 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider             = "postgres"
-  url                  = env("DATABASE_URL")
+  provider = "postgres"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -11,42 +11,45 @@ generator client {
 }
 
 model AppSettings {
-  id                   Int       @id @default(1)
-  appId                String    @default(uuid())
+  id    Int    @id @default(1)
+  appId String @default(uuid())
 
-  allowNewUsers        Boolean   @default(true)
-  registerEmailFilters String[]  @default([])
+  allowNewUsers        Boolean  @default(true)
+  registerEmailFilters String[] @default([])
 
-  createdAt            DateTime  @default(now())
+  createdAt DateTime @default(now())
 }
 
 model User {
-  id            String    @id @default(cuid())
-  superadmin    Boolean   @default(false)
-  type          String    @default("user")
+  id            String         @id @default(cuid())
+  superadmin    Boolean        @default(false)
+  type          String         @default("user")
   name          String?
-  email         String?   @unique
+  email         String?        @unique
   emailVerified DateTime?
   image         String?
-  createdAt     DateTime  @default(now())
+  createdAt     DateTime       @default(now())
   accounts      Account[]
   sessions      Session[]
   projects      ProjectUsers[]
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String
-  type               String
-  provider           String
-  providerAccountId  String
-  refresh_token      String?  @db.Text
-  access_token       String?  @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?  @db.Text
-  session_state      String?
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String? @db.Text
+  refresh_token_expires_in Int?    // For GitHub authentication
+  access_token             String? @db.Text
+  oauth_token              String? @db.Text // For Twitter authentication
+  oauth_token_secret       String? @db.Text // For Twitter authentication
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String? @db.Text
+  session_state            String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -71,13 +74,13 @@ model VerificationToken {
 }
 
 model Project {
-  id              String   @id @default(cuid())
-  name            String
-  slug            String   @unique
-  domain          String   @unique
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  users           ProjectUsers[]
+  id        String         @id @default(cuid())
+  name      String
+  slug      String         @unique
+  domain    String         @unique
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  users     ProjectUsers[]
 }
 
 model ProjectUsers {
