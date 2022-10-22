@@ -1,6 +1,6 @@
 import ms from 'ms';
 
-import { ccTLDs } from './constants';
+import { ccTLDs, secondLevelDomains } from './constants';
 
 interface SWRError extends Error {
   status: number;
@@ -97,12 +97,12 @@ export const generateSlugFromName = (name: string) => {
   if (normalizedName.length < 3) {
     return '';
   }
-  if (ccTLDs.some((tld) => normalizedName.endsWith(tld))) {
+  if (ccTLDs.has(normalizedName.slice(-2))) {
     return `${normalizedName.slice(0, -2)}.${normalizedName.slice(-2)}`;
   }
   // remove vowels
   const devowel = normalizedName.replace(/[aeiou]/g, '');
-  if (devowel.length >= 3 && ccTLDs.some((tld) => devowel.endsWith(tld))) {
+  if (devowel.length >= 3 && ccTLDs.has(devowel.slice(-2))) {
     return `${devowel.slice(0, -2)}.${devowel.slice(-2)}`;
   }
 
@@ -111,13 +111,33 @@ export const generateSlugFromName = (name: string) => {
     .map((word) => word[0])
     .join('');
 
-  if (acronym.length >= 3 && ccTLDs.some((tld) => acronym.endsWith(tld))) {
+  if (acronym.length >= 3 && ccTLDs.has(acronym.slice(-2))) {
     return `${acronym.slice(0, -2)}.${acronym.slice(-2)}`;
   }
 
   const shortestString = [normalizedName, devowel, acronym].reduce((a, b) => (a.length < b.length ? a : b));
 
   return `${shortestString}.sh`;
+};
+
+export const getApexDomain = (url: string) => {
+  let domain: string;
+  try {
+    domain = new URL(url).hostname;
+  } catch (e) {
+    return '';
+  }
+  const parts = domain.split('.');
+  if (parts.length > 2) {
+    // if this is a second-level TLD (e.g. co.uk, .com.ua, .org.tt), we need to return the last 3 parts
+    if (secondLevelDomains.has(parts[parts.length - 2]) && ccTLDs.has(parts[parts.length - 1])) {
+      return parts.slice(-3).join('.');
+    }
+    // otherwise, it's a subdomain (e.g. dub.vercel.app), so we return the last 2 parts
+    return parts.slice(-2).join('.');
+  }
+  // if it's a normal domain (e.g. dub.sh), we return the domain
+  return domain;
 };
 
 export const validDomainRegex = new RegExp('^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$');

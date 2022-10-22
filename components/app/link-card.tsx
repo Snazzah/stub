@@ -9,7 +9,7 @@ import CopyButton from '@/components/shared/copy-button';
 import { Chart, LoadingDots, QR } from '@/components/shared/icons';
 import useProject from '@/lib/swr/use-project';
 import { LinkProps } from '@/lib/types';
-import { fetcher, linkConstructor, nFormatter, timeAgo } from '@/lib/utils';
+import { fetcher, getApexDomain, linkConstructor, nFormatter, timeAgo } from '@/lib/utils';
 
 import Tooltip from '../shared/tooltip';
 import { useAddEditLinkModal } from './modals/add-edit-link-modal';
@@ -19,7 +19,7 @@ import { useLinkQRModal } from './modals/link-qr-modal';
 export default function LinkCard({ props }: { props: LinkProps }) {
   const { key, url, title, timestamp } = props;
 
-  const urlHostname = url ? new URL(url).hostname : '';
+  const apexDomain = getApexDomain(url);
 
   const router = useRouter();
   const { slug } = router.query as { slug: string };
@@ -59,8 +59,8 @@ export default function LinkCard({ props }: { props: LinkProps }) {
       <li className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-5 sm:space-y-0 bg-white p-4 rounded-lg shadow hover:shadow-md transition-all">
         <div className="relative flex items-center space-x-4">
           <BlurImage
-            src={`https://www.google.com/s2/favicons?sz=64&domain_url=${urlHostname}`}
-            alt={urlHostname}
+            src={`https://www.google.com/s2/favicons?sz=64&domain_url=${apexDomain}`}
+            alt={apexDomain}
             className="w-10 h-10 rounded-full"
             width={40}
             height={40}

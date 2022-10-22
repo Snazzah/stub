@@ -9,7 +9,7 @@ import Tooltip from '@/components/shared/tooltip';
 import { getQRAsCanvas, getQRAsSVGDataUri, QRCodeSVG } from '@/lib/qr';
 import useProject from '@/lib/swr/use-project';
 import { SimpleLinkProps } from '@/lib/types';
-import { linkConstructor } from '@/lib/utils';
+import { getApexDomain, linkConstructor } from '@/lib/utils';
 
 function LinkQRModalHelper({
   showLinkQRModal,
@@ -23,13 +23,10 @@ function LinkQRModalHelper({
   const anchorRef = useRef<HTMLAnchorElement>();
   const [showLogo, setShowLogo] = useState(true);
   const { project: { domain } = {} } = useProject();
-  const { avatarUrl, urlHostname } = useMemo(() => {
+  const { avatarUrl, apexDomain } = useMemo(() => {
     try {
-      const urlHostname = new URL(props.url).hostname;
-      return {
-        avatarUrl: `https://www.google.com/s2/favicons?sz=64&domain_url=${urlHostname}`,
-        urlHostname
-      };
+      const apexDomain = getApexDomain(props.url);
+      return { avatarUrl: `https://www.google.com/s2/favicons?sz=64&domain_url=${apexDomain}`, apexDomain };
     } catch (e) {
       return null;
     }
@@ -67,7 +64,7 @@ function LinkQRModalHelper({
       <div className="inline-block w-full sm:max-w-md align-middle transition-all transform bg-white sm:border sm:border-gray-200 shadow-xl sm:rounded-2xl">
         <div className="flex flex-col justify-center items-center space-y-3 sm:px-16 px-4 pt-8 py-4 border-b border-gray-200">
           {avatarUrl ? (
-            <BlurImage src={avatarUrl} alt={urlHostname} className="w-10 h-10 rounded-full border border-gray-200" width={40} height={40} />
+            <BlurImage src={avatarUrl} alt={apexDomain} className="w-10 h-10 rounded-full" width={40} height={40} />
           ) : (
             <Logo className="w-10 h-10" />
           )}
