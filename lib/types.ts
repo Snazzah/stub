@@ -6,12 +6,25 @@ export interface SimpleLinkProps {
 }
 
 export interface LinkProps {
+  id?: string;
+  domain: string;
   key: string;
   url: string;
-  title: string;
+  archived: boolean;
+  expiresAt: Date | null;
+  password: string | null;
+
+  title: string | null;
+  description: string | null;
+  image: string | null;
+
+  clicks: number;
+  userId: string;
+
+  createdAt: Date;
+
+  // @deprecated
   timestamp?: number;
-  description?: string;
-  image?: string;
 }
 
 export interface ProjectProps {

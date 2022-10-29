@@ -534,3 +534,7 @@ export const ccTLDs = new Set([
 ]);
 
 export const secondLevelDomains = new Set(['com', 'co', 'net', 'org', 'edu', 'gov', 'in']);
+
+export const SPECIAL_APEX_DOMAINS = {
+  'youtu.be': 'youtube.com'
+};

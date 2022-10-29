@@ -1,6 +1,10 @@
 import ms from 'ms';
+import { customAlphabet } from 'nanoid';
+import { NextRouter } from 'next/router';
 
-import { ccTLDs, secondLevelDomains } from './constants';
+import { ccTLDs, secondLevelDomains, SPECIAL_APEX_DOMAINS } from './constants';
+
+export const nanoid = customAlphabet('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', 7);
 
 interface SWRError extends Error {
   status: number;
@@ -87,9 +91,14 @@ export const getMetadataFromUrl = async (url: string) => {
   return title;
 };
 
-export const timeAgo = (timestamp: number): string => {
+export const timeAgo = (timestamp: Date, timeOnly?: boolean): string => {
   if (!timestamp) return 'never';
-  return `${ms(Date.now() - timestamp)} ago`;
+  return `${ms(Date.now() - new Date(timestamp).getTime())}${timeOnly ? '' : ' ago'}`;
+};
+
+export const getDateTimeLocal = (timestamp?: Date): string => {
+  const d = timestamp ? new Date(timestamp) : new Date();
+  return new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().split(':').slice(0, 2).join(':');
 };
 
 export const generateSlugFromName = (name: string) => {
@@ -97,6 +106,7 @@ export const generateSlugFromName = (name: string) => {
   if (normalizedName.length < 3) {
     return '';
   }
+
   if (ccTLDs.has(normalizedName.slice(-2))) {
     return `${normalizedName.slice(0, -2)}.${normalizedName.slice(-2)}`;
   }
@@ -127,6 +137,10 @@ export const getApexDomain = (url: string) => {
   } catch (e) {
     return '';
   }
+
+  // special apex domains (e.g. youtu.be)
+  if (SPECIAL_APEX_DOMAINS[domain]) return SPECIAL_APEX_DOMAINS[domain];
+
   const parts = domain.split('.');
   if (parts.length > 2) {
     // if this is a second-level TLD (e.g. co.uk, .com.ua, .org.tt), we need to return the last 3 parts
@@ -138,6 +152,49 @@ export const getApexDomain = (url: string) => {
   }
   // if it's a normal domain (e.g. dub.sh), we return the domain
   return domain;
+};
+
+export const getParamsFromURL = (url: string) => {
+  if (!url) return {};
+  try {
+    const params = new URL(url).searchParams;
+    const paramsObj: Record<string, string> = {};
+    for (const [key, value] of params.entries()) {
+      if (value && value !== '') {
+        paramsObj[key] = value;
+      }
+    }
+    return paramsObj;
+  } catch (e) {
+    return {};
+  }
+};
+
+export const constructURLFromUTMParams = (url: string, utmParams: Record<string, string>) => {
+  if (!url) return '';
+  try {
+    const params = new URL(url).searchParams;
+    for (const [key, value] of Object.entries(utmParams)) {
+      if (value === '') {
+        params.delete(key);
+      } else {
+        params.set(key, value);
+      }
+    }
+    return `${url.split('?')[0]}${params.toString() ? `?${params.toString()}` : ''}`;
+  } catch (e) {
+    return '';
+  }
+};
+
+export const getQueryString = (router: NextRouter) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { slug: _, ...queryWithoutSlug } = router.query as {
+    slug: string;
+    [key: string]: string;
+  };
+  const queryString = new URLSearchParams(queryWithoutSlug).toString();
+  return `${queryString ? '?' : ''}${queryString}`;
 };
 
 export const validDomainRegex = new RegExp('^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$');

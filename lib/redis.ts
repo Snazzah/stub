@@ -179,14 +179,14 @@ export async function changeDomain(hostname: string, newHostname: string) {
   }
 }
 
-export async function deleteProject(hostname: string) {
-  const keys = await redis.zrange(`${hostname}:links:timestamps`, 0, -1);
+export async function deleteProject(domain: string) {
+  const keys = await redis.zrange(`${domain}:links:timestamps`, 0, -1);
   const pipeline = redis.pipeline();
-  pipeline.del(`${hostname}:links`);
-  pipeline.del(`${hostname}:links:timestamps`);
-  pipeline.del(`${hostname}:root:clicks`);
+  pipeline.del(`${domain}:links`);
+  pipeline.del(`${domain}:links:timestamps`);
+  pipeline.del(`${domain}:root:clicks`);
   keys.forEach((key) => {
-    pipeline.del(`${hostname}:clicks:${key}`);
+    pipeline.del(`${domain}:clicks:${key}`);
   });
   try {
     return await pipeline.exec();

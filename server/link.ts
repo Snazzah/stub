@@ -1,10 +1,11 @@
-import { escape } from 'html-escaper';
 import { IncomingMessage, ServerResponse } from 'http';
 import Redis from 'ioredis';
 
 import type { LinkProps } from '@/lib/types';
 
+import { validPasswordCookie } from './decrypt';
 import { getGeo } from './geoip';
+import { getEmbedHTML, getPasswordPageHTML } from './html';
 import { userAgentFromString } from './ua';
 import { detectBot, parseUrl, serverRedirect } from './util';
 
@@ -53,29 +54,15 @@ export default async function handleLink(req: IncomingMessage, res: ServerRespon
 
   if (target) {
     const isBot = detectBot(req);
-
-    if (response.image && response.description && isBot) {
+    if (response.password) {
+      if (await validPasswordCookie(req, hostname, key)) serverRedirect(res, target);
+      else {
+        res.statusCode = 200;
+        res.end(getPasswordPageHTML(key, hostname));
+      }
+    } else if (response.title && response.image && response.description && isBot) {
       res.statusCode = 200;
-      res.end(`
-        <html>
-          <head>
-            <title>${escape(response.title)}</title>
-            <meta property="og:title" content=${escape(response.title)} />
-            <meta property="og:site_name" content=${escape(response.url)} />
-            <meta property="og:description" content=${escape(response.description)} />
-            <meta property="og:image" content=${escape(response.image)} />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:site" content=${escape(response.url)} />
-            <meta name="twitter:title" content=${escape(response.title)} />
-            <meta name="twitter:description" content=${escape(response.description)} />
-            <meta name="twitter:image" content=${escape(response.image)} />
-          </head>
-          <body>
-            <h1>${escape(response.title)}</h1>
-            <p>${escape(response.description)}</p>
-          </body>
-        </html>
-      `);
+      res.end(getEmbedHTML(response));
     } else {
       serverRedirect(res, target);
     }
