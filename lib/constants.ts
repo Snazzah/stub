@@ -1,3 +1,5 @@
+export const FAVICON_FOLDER = '/static/favicons';
+
 export const INTERVALS = ['1h', '24h', '7d', '30d', '90d'];
 
 export const FRAMER_MOTION_LIST_ITEM_VARIANTS = {
@@ -534,3 +536,7 @@ export const ccTLDs = new Set([
 ]);
 
 export const secondLevelDomains = new Set(['com', 'co', 'net', 'org', 'edu', 'gov', 'in']);
+
+export const SPECIAL_APEX_DOMAINS = {
+  'youtu.be': 'youtube.com'
+};

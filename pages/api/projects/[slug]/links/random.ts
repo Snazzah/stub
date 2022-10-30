@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import { getRandomKey } from '@/lib/api/links';
 import { withProjectAuth } from '@/lib/auth';
-import { getRandomKey } from '@/lib/redis';
 
 export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project) => {
   // GET /api/projects/[slug]/links/random – get a random link

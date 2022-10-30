@@ -47,9 +47,8 @@ Stub is split into two applications, the app itself and the router. The router i
 
 [Redis](https://redis.io/) is used as the database for storing links and analytics data, which works well for key-value data types. Redis also has the Sorted Set data type, which is perfect for storing & retrieving time-series analytics data. Here's the full schema:
 
-- `{hostname}:links` – hashmap of all links for a given hostname (e.g. `dub.sh:links`)
-- `{hostname}:links:timestamps` – sorted set of all link timestamps for a given hostname (e.g. `dub.sh:links:timestamps`)
-- `{hostname}:clicks:{linkId}` – sorted set of all clicks for a given link (e.g. `dub.sh:clicks:github`)
+- `{hostname}:{key}` – string containing a JSON object with the target URL and password (optional). Also has an optional TTL.
+- `{hostname}:clicks:{key}` – sorted set of all clicks for a given link (e.g. `dub.sh:clicks:github`)
 
 ## Deploy Your Own
 ### Manual

@@ -4,11 +4,13 @@ import { createServer } from 'node:http';
 
 import { openReader } from './geoip';
 import handleLink from './link';
+import { prisma } from './prisma';
 
 const hostname = process.env.HOST || 'localhost';
 const port = parseInt(process.env.ROUTER_PORT, 10) || 3001;
 
 (async () => {
+  await prisma.$connect();
   await openReader();
   const server = createServer(async (req, res) => {
     try {

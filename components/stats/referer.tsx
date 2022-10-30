@@ -36,7 +36,7 @@ export default function Referer({ data: rawData }: { data: StatsProps }) {
       onScroll={handleScroll}
     >
       <div className="mb-5 flex">
-        <h1 className="text-xl font-semibold">Referrals</h1>
+        <h1 className="text-xl font-semibold">Referrers</h1>
       </div>
       <div className={data.refererData && data.refererData.length > 0 ? 'grid gap-4' : 'h-[300px] flex justify-center items-center'}>
         {data.refererData ? (

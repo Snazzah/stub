@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import { checkIfKeyExists } from '@/lib/api/links';
 import { withProjectAuth } from '@/lib/auth';
-import { checkIfKeyExists } from '@/lib/redis';
 
 export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project) => {
   if (req.method === 'GET') {

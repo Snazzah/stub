@@ -3,22 +3,22 @@ import cx from 'classnames';
 import { Dispatch, SetStateAction } from 'react';
 
 const Switch = ({
+  fn,
   trackDimensions = 'h-4 w-8',
   thumbDimensions = 'h-3 w-3',
   thumbTranslate = 'translate-x-4',
-  disabled = false,
-  setState
+  disabled = false
 }: {
+  fn: Dispatch<SetStateAction<boolean>> | (() => void);
   trackDimensions?: string;
   thumbDimensions?: string;
   thumbTranslate?: string;
   disabled?: boolean;
-  setState: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
     <SwitchPrimitive.Root
       defaultChecked={true}
-      onCheckedChange={(checked) => setState(checked)}
+      onCheckedChange={(checked) => fn(checked)}
       disabled={disabled}
       className={cx(
         disabled ? 'cursor-not-allowed bg-gray-200' : 'cursor-pointer radix-state-checked:bg-blue-500 radix-state-unchecked:bg-gray-200',

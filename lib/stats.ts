@@ -259,6 +259,7 @@ export const dummyData: StatsProps = {
 };
 
 export const handleDeviceEdgeCases = (ua: string): string => {
+  if (!ua) return 'Unknown';
   if (ua.includes('curl')) {
     return 'Curl Request';
   } else if (ua.includes('Wget')) {

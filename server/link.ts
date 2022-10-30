@@ -1,10 +1,10 @@
-import { escape } from 'html-escaper';
+import cookie from 'cookie';
 import { IncomingMessage, ServerResponse } from 'http';
 import Redis from 'ioredis';
 
-import type { LinkProps } from '@/lib/types';
-
+import { hasPasswordCookie, passwordValid, validPasswordCookie } from './decrypt';
 import { getGeo } from './geoip';
+import { getEmbedHTML, getPasswordPageHTML } from './html';
 import { userAgentFromString } from './ua';
 import { detectBot, parseUrl, serverRedirect } from './util';
 
@@ -32,7 +32,7 @@ export async function recordClick(hostname: string, req: IncomingMessage, ip: st
 }
 
 export default async function handleLink(req: IncomingMessage, res: ServerResponse) {
-  const { hostname, key: linkKey } = parseUrl(req);
+  const { hostname, key: linkKey, query } = parseUrl(req);
 
   const key = linkKey || ':index';
   if (!hostname) return false;
@@ -45,37 +45,45 @@ export default async function handleLink(req: IncomingMessage, res: ServerRespon
       ip = Array.isArray(req.headers[proxyHeader]) ? req.headers[proxyHeader][0] : (req.headers[proxyHeader] as string);
   }
 
-  const response = await redis.hget(`${hostname}:links`, key).then((r) => {
-    if (r !== null) return JSON.parse(r) as Omit<LinkProps, 'key'>;
+  const response = await redis.get(`${hostname}:${key}`).then((r) => {
+    if (r !== null)
+      return JSON.parse(r) as {
+        url: string;
+        password?: boolean;
+        proxy?: boolean;
+      };
     return null;
   });
   const target = response?.url;
 
   if (target) {
     const isBot = detectBot(req);
-
-    if (response.image && response.description && isBot) {
+    if (response.password) {
+      if (await validPasswordCookie(req, hostname, key)) serverRedirect(res, target);
+      else if (query.password !== '' && typeof query.password === 'string' && (await passwordValid(hostname, key, query.password))) {
+        res.setHeader(
+          'Set-Cookie',
+          cookie.serialize('stub_link_password', query.password, {
+            path: `/${encodeURIComponent(key)}`,
+            expires: new Date(Date.now() + 604800000)
+          })
+        );
+        serverRedirect(res, target);
+      } else {
+        res.statusCode = 200;
+        if (hasPasswordCookie(req))
+          res.setHeader(
+            'Set-Cookie',
+            cookie.serialize('stub_link_password', '', {
+              path: `/${encodeURIComponent(key)}`,
+              expires: new Date(1)
+            })
+          );
+        res.end(getPasswordPageHTML(typeof query.password === 'string' ? query.password : undefined));
+      }
+    } else if (response.proxy && isBot) {
       res.statusCode = 200;
-      res.end(`
-        <html>
-          <head>
-            <title>${escape(response.title)}</title>
-            <meta property="og:title" content=${escape(response.title)} />
-            <meta property="og:site_name" content=${escape(response.url)} />
-            <meta property="og:description" content=${escape(response.description)} />
-            <meta property="og:image" content=${escape(response.image)} />
-            <meta name="twitter:card" content="summary_large_image" />
-            <meta name="twitter:site" content=${escape(response.url)} />
-            <meta name="twitter:title" content=${escape(response.title)} />
-            <meta name="twitter:description" content=${escape(response.description)} />
-            <meta name="twitter:image" content=${escape(response.image)} />
-          </head>
-          <body>
-            <h1>${escape(response.title)}</h1>
-            <p>${escape(response.description)}</p>
-          </body>
-        </html>
-      `);
+      res.end(await getEmbedHTML(res, hostname, key));
     } else {
       serverRedirect(res, target);
     }

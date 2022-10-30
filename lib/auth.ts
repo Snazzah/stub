@@ -43,6 +43,7 @@ export async function getSession(req: GetServerSidePropsContext['req'] | NextApi
 }
 
 interface ProjectAuthProps {
+  id: string;
   name: string;
   slug: string;
   domain: string;
@@ -85,6 +86,7 @@ const withProjectAuth =
             })
       },
       select: {
+        id: true,
         name: true,
         slug: true,
         domain: true,

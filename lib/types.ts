@@ -6,22 +6,32 @@ export interface SimpleLinkProps {
 }
 
 export interface LinkProps {
+  id?: string;
+  domain: string;
   key: string;
   url: string;
-  title: string;
-  timestamp?: number;
-  description?: string;
-  image?: string;
+  archived: boolean;
+  expiresAt: Date | null;
+  password: string | null;
+
+  title: string | null;
+  description: string | null;
+  image: string | null;
+
+  clicks: number;
+  userId: string;
+
+  createdAt: Date;
 }
 
 export interface ProjectProps {
+  id: string;
   name: string;
   slug: string;
   domain: string;
-}
-
-export interface ProjectUserProps {
-  role: 'member' | 'owner';
+  users?: {
+    role: string;
+  }[];
 }
 
 export interface ProjectResponseProps {
@@ -49,4 +59,24 @@ export interface AdminUserProps {
     providerAccountId: string;
   }[];
   lastLogin: string;
+}
+
+export interface ProjectUserProps {
+  role: 'viewer' | 'member' | 'manager' | 'owner';
+  createdAt: string;
+  user: {
+    id: string;
+    name: string;
+    email: string;
+    image?: string;
+  };
+}
+
+export interface UserProps {
+  id: string;
+  name: string;
+  email: string;
+  stripeId: string;
+  usageLimit: number;
+  projects?: { projectId: string }[];
 }

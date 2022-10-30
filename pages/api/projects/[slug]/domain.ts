@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import { changeDomain } from '@/lib/api/links';
 import { withProjectAuth } from '@/lib/auth';
 import prisma from '@/lib/prisma';
-import { changeDomain } from '@/lib/redis';
 import { validDomainRegex } from '@/lib/utils';
 
 export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project, session) => {
@@ -26,13 +26,13 @@ export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse,
         where: {
           domain: newDomain
         },
-        select: { slug: true }
+        select: { id: true, domain: true, slug: true }
       });
       if (project && project.slug !== slug) {
         return res.status(400).json({ error: 'Domain already exists' });
       }
-      const [upstashResponse, prismaResponse] = await Promise.all([
-        changeDomain(domain, newDomain),
+      const [redisResponse, prismaResponse] = await Promise.all([
+        changeDomain(project, newDomain),
         prisma.project.update({
           where: {
             slug
@@ -44,7 +44,7 @@ export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse,
       ]);
 
       return res.status(200).json({
-        upstashResponse,
+        redisResponse,
         prismaResponse
       });
     }

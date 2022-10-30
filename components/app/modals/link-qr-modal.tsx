@@ -138,7 +138,7 @@ function AdvancedSettings({ qrData, setQrData, setShowLogo }) {
               Logo
             </label>
             <div className="flex mt-1 space-x-2 items-center">
-              <Switch trackDimensions="h-6 w-12" thumbDimensions="w-5 h-5" thumbTranslate="translate-x-6" setState={setShowLogo} />
+              <Switch trackDimensions="h-6 w-12" thumbDimensions="w-5 h-5" thumbTranslate="translate-x-6" fn={setShowLogo} />
               <p className="text-gray-600 text-sm">Show Logo</p>
             </div>
           </div>

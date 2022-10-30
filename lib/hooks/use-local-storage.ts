@@ -11,7 +11,7 @@ const useLocalStorage = <T>(key: string, initialValue: T): [T, (value: T) => voi
     }
   }, [key]);
 
-  const setValue = (value: any) => {
+  const setValue = (value: T) => {
     // Save state
     setStoredValue(value);
     // Save to localStorage
