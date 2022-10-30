@@ -229,13 +229,13 @@ export default function AdminUserProfile() {
                   </h1>
                   <div className="text-sm text-gray-500 flex flex-wrap md:justify-start justify-center">
                     <Tooltip content={new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'long' }).format(new Date(user.createdAt))}>
-                      <time dateTime={new Date(user.createdAt).toISOString()}>Joined {timeAgo(new Date(user.createdAt).valueOf())}</time>
+                      <time dateTime={new Date(user.createdAt).toISOString()}>Joined {timeAgo(new Date(user.createdAt))}</time>
                     </Tooltip>
                     {lastLogin && (
                       <>
                         <span className="mx-2">·</span>
                         <Tooltip content={new Intl.DateTimeFormat(undefined, { dateStyle: 'full', timeStyle: 'long' }).format(new Date(lastLogin))}>
-                          <time dateTime={new Date(lastLogin).toISOString()}>Last sign-in {timeAgo(new Date(lastLogin).valueOf())}</time>
+                          <time dateTime={new Date(lastLogin).toISOString()}>Last sign-in {timeAgo(new Date(lastLogin))}</time>
                         </Tooltip>
                       </>
                     )}
