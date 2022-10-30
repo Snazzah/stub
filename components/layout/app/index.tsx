@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 import { Divider, Logo } from '@/components/shared/icons';
 
 import Meta from '../meta';
-import ListBox from './list-box';
+import ProjectSelect from './project-select';
 import UserDropdown from './user-dropdown';
 
 const NavTabs = dynamic(() => import('./nav-tabs'), {
@@ -26,7 +26,7 @@ export default function AppLayout({ children, pageTitle }: { children: ReactNode
       <Meta pageTitle={pageTitle} />
       <div className="min-h-screen w-full bg-gray-50">
         <div className="sticky top-0 left-0 right-0 border-b bg-white border-gray-200 z-30">
-          <div className="flex flex-col gap-3 pt-3 max-w-screen-xl mx-auto px-5 sm:px-20">
+          <div className="flex flex-col gap-3 pt-3 max-w-screen-xl mx-auto px-5 md:px-20">
             <div className="h-10 flex justify-between items-center">
               <div className="flex items-center">
                 <Link href="/">
@@ -35,7 +35,7 @@ export default function AppLayout({ children, pageTitle }: { children: ReactNode
                   </a>
                 </Link>
                 <Divider className="h-8 w-8 ml-3 text-gray-200" />
-                <ListBox />
+                <ProjectSelect />
                 {key && slug && (
                   <>
                     <Divider className="h-8 w-8 mr-3 text-gray-200 sm:block hidden" />

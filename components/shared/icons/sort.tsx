@@ -1,4 +1,4 @@
-export default function Chart({ className }: { className?: string }) {
+export default function Sort({ className }: { className: string }) {
   return (
     <svg
       fill="none"
@@ -8,13 +8,11 @@ export default function Chart({ className }: { className?: string }) {
       strokeLinejoin="round"
       strokeWidth="1.5"
       viewBox="0 0 24 24"
-      width="14"
-      height="14"
+      width="24"
+      height="24"
       className={className}
     >
-      <path d="M12 20V10" />
-      <path d="M18 20V4" />
-      <path d="M6 20v-4" />
+      <path d="M15 18H3M21 6H3M17 12H3" />
     </svg>
   );
 }

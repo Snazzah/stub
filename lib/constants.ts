@@ -1,3 +1,5 @@
+export const FAVICON_FOLDER = '/static/favicons';
+
 export const INTERVALS = ['1h', '24h', '7d', '30d', '90d'];
 
 export const FRAMER_MOTION_LIST_ITEM_VARIANTS = {

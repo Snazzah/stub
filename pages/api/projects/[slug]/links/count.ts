@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import { getLinkCountForProject } from '@/lib/api/links';
 import { withProjectAuth } from '@/lib/auth';
-import { getLinkCountForProject } from '@/lib/redis';
 
 export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project) => {
   // GET /api/projects/[slug]/links/count – count the number of links for a project

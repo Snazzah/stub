@@ -1,8 +1,20 @@
 import { escape } from 'html-escaper';
+import { ServerResponse } from 'http';
 
-import { LinkProps } from '@/lib/types';
+import { prisma } from './prisma';
 
-export function getEmbedHTML(link: Omit<LinkProps, 'key'>) {
+export async function getEmbedHTML(res: ServerResponse, domain: string, key: string) {
+  const link = await prisma.link.findUnique({
+    where: { domain_key: { domain, key } },
+    select: { title: true, url: true, description: true, image: true }
+  });
+
+  if (!link) {
+    res.statusCode = 404;
+    return 'Not Found';
+  }
+
+  res.statusCode = 200;
   return `
     <html>
       <head>
@@ -25,7 +37,7 @@ export function getEmbedHTML(link: Omit<LinkProps, 'key'>) {
   `;
 }
 
-export function getPasswordPageHTML(key: string, domain: string) {
+export function getPasswordPageHTML(attemptedPassword?: string) {
   const title = 'Password Required';
   const description = 'This link is password protected. Please enter the password to view it.';
   const image = 'https://github.com/steven-tey/dub/raw/3388af74d9f539d347e46f50d6fbd3307b85cf1a/public/_static/password-protected.png';
@@ -176,15 +188,9 @@ export function getPasswordPageHTML(key: string, domain: string) {
             cursor: pointer;
             transition: all cubic-bezier(.4,0,.2,1) .15s;
           }
-          #password-page button:hover:not(.validating) {
+          #password-page button:hover {
             color: #000;
             background-color: #fff;
-          }
-          #password-page button.validating {
-            cursor: not-allowed;
-            color: #9ca3af;
-            background-color: #f3f4f6;
-            border-color: #e5e7eb;
           }
           @media (min-width: 640px) {
             #password-page form {
@@ -203,11 +209,13 @@ export function getPasswordPageHTML(key: string, domain: string) {
               <h3>Password Required</h3>
               <p>This link is password protected. Please enter the password to view it.</p>
             </header>
-            <form data-key="${escape(key)}" data-domain="${escape(domain)}">
+            <form>
               <div>
                 <label for="password">PASSWORD</label>
-                <div class="input-outer">
-                  <input type="password" name="password" id="password" required autofocus>
+                <div class="input-outer${attemptedPassword ? ' error' : ''}">
+                  <input type="password" name="password" id="password" ${
+                    attemptedPassword ? `value="${escape(attemptedPassword)}"` : ''
+                  } required autofocus autocomplete="link-password">
                   <div class="error-icon">
                     <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="20" height="20">
                       <circle cx="12" cy="12" r="10" fill="currentColor"></circle>
@@ -224,34 +232,6 @@ export function getPasswordPageHTML(key: string, domain: string) {
             </form>
           </div>
         </main>
-        <script>
-          document.querySelector('form').onsubmit = () => {
-            const form = document.querySelector('form');
-            const submitButton = document.querySelector('#submit');
-            const inputField = document.querySelector('#password');
-            const inputOuter = document.querySelector('.input-outer');
-            inputOuter.classList.remove('error');
-            submitButton.classList.add('validating');
-            fetch('/_stub/decrypt', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                domain: form.dataSet.domain,
-                key: form.dataSet.key,
-                password: inputField.value,
-              })
-            }).then(async (res) => {
-              if (res.status === 200) {
-                const { url } = await res.json();
-                document.cookie = \`stub_link_password=\${btoa(inputField.value)}; path=\${location.pathname}; expires=\${new Date(Date.now() + 604800000).toGMTString()}\`;
-                location.href = url;
-              } else {
-                inputOuter.classList.add('error');
-                submitButton.classList.remove('validating');
-              }
-            });
-          }
-        </script>
       </body>
     </html>
   `;

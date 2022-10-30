@@ -100,7 +100,7 @@ export async function getLinkCountForProject(slug: string) {
 }
 
 export async function getLinkClicksCount(hostname: string, key: string) {
-  return String((await redis.zcard(`${hostname}:clicks:${key}`)) || 0);
+  return (await redis.zcard(`${hostname}:clicks:${key}`)) || 0;
 }
 
 export async function addLink(
@@ -116,51 +116,6 @@ export async function addLink(
   } else {
     return null; // key already exists
   }
-}
-
-/**
- * Edit a link
- **/
-export async function editLink(hostname: string, key: string, newKey: string, props: Omit<LinkProps, 'key'>) {
-  if (key === newKey) {
-    // if key is the same, just update the url and title
-    return await redis.hset(`${hostname}:links`, {
-      [key]: JSON.stringify(props)
-    });
-  } else {
-    // if key is different
-    const keyExists = await checkIfKeyExists(hostname, newKey);
-    if (keyExists === 1) {
-      return null; // key already exists
-    }
-    // get number of clicks for key (we'll add it to newKey)
-    const numClicks = await redis.zcard(`${hostname}:clicks:${key}`);
-    const pipeline = redis.pipeline();
-    // delete old key and add new key from hash
-    pipeline.hdel(`${hostname}:links`, key);
-    pipeline.hset(`${hostname}:links`, {
-      [newKey]: JSON.stringify(props)
-    });
-    // remove old key from links:timestamps and add new key (with same timestamp)
-    pipeline.zrem(`${hostname}:links:timestamps`, key);
-    pipeline.zadd(`${hostname}:links:timestamps`, props.timestamp, newKey);
-    // update name for clicks:[key] (if numClicks > 0, because we don't create clicks:[key] until the first click)
-    if (numClicks > 0) {
-      pipeline.rename(`${hostname}:clicks:${key}`, `${hostname}:clicks:${newKey}`);
-    }
-    return await pipeline.exec();
-  }
-}
-
-/**
- * Delete a link
- **/
-export async function deleteLink(domain: string, key: string) {
-  const pipeline = redis.pipeline();
-  pipeline.hdel(`${domain}:links`, key);
-  pipeline.zrem(`${domain}:links:timestamps`, key);
-  pipeline.del(`${domain}:clicks:${key}`);
-  return await pipeline.exec();
 }
 
 export async function changeDomain(hostname: string, newHostname: string) {

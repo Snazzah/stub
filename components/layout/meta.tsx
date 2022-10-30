@@ -1,17 +1,17 @@
 import Head from 'next/head';
 
-const faviconFolder = '/static/favicons';
+import { FAVICON_FOLDER } from '@/lib/constants';
 
 export default function Meta({ pageTitle }: { pageTitle?: string }) {
   return (
     <Head>
       <title>{pageTitle ? `${pageTitle} - Stub` : 'Stub'}</title>
       <meta name="description" content="A self-hostable fork of Dub: An open-source link shortener." />
-      <link rel="apple-touch-icon" sizes="180x180" href={`${faviconFolder}/apple-touch-icon.png`} />
-      <link rel="icon" type="image/png" sizes="32x32" href={`${faviconFolder}/favicon-32x32.png`} />
-      <link rel="icon" type="image/png" sizes="16x16" href={`${faviconFolder}/favicon-16x16.png`} />
+      <link rel="apple-touch-icon" sizes="180x180" href={`${FAVICON_FOLDER}/apple-touch-icon.png`} />
+      <link rel="icon" type="image/png" sizes="32x32" href={`${FAVICON_FOLDER}/favicon-32x32.png`} />
+      <link rel="icon" type="image/png" sizes="16x16" href={`${FAVICON_FOLDER}/favicon-16x16.png`} />
       <link rel="manifest" href="/site.webmanifest" />
-      <link rel="mask-icon" href={`${faviconFolder}/safari-pinned-tab.svg`} color="#f59e0b" />
+      <link rel="mask-icon" href={`${FAVICON_FOLDER}/safari-pinned-tab.svg`} color="#f59e0b" />
       <meta name="msapplication-TileColor" content="#f59e0b" />
       <meta name="theme-color" content="#f59e0b" />
 

@@ -2,7 +2,6 @@ import './env';
 
 import { createServer } from 'node:http';
 
-import { decryptPassword } from './decrypt';
 import { openReader } from './geoip';
 import handleLink from './link';
 import { prisma } from './prisma';
@@ -20,8 +19,6 @@ const port = parseInt(process.env.ROUTER_PORT, 10) || 3001;
         res.end();
         return;
       }
-
-      if (req.method === 'POST' && req.url === '/_stub/decrypt') return await decryptPassword(req, res);
 
       const handled = await handleLink(req, res);
       if (!handled) {

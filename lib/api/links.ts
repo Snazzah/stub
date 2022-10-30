@@ -122,8 +122,6 @@ export async function addLink(link: LinkProps) {
     prisma.link.create({
       data: {
         ...link,
-        // can't upload base64 image string to mysql, need to upload to cloudinary first
-        image,
         utm_source,
         utm_medium,
         utm_campaign,
@@ -138,7 +136,7 @@ export async function addLink(link: LinkProps) {
         password: hasPassword,
         proxy
       }),
-      ...(exat && (['EXAT', exat] as ['EXAT', number])),
+      ...(exat ? (['EXAT', exat] as ['EXAT', number]) : ([] as any[])),
       'NX'
     )
   ]);
@@ -165,8 +163,6 @@ export async function editLink(link: LinkProps, oldKey: string) {
       },
       data: {
         ...link,
-        // if it's an uploaded image (base64 URI), need to upload to cloudinary first
-        image,
         utm_source,
         utm_medium,
         utm_campaign,
@@ -181,7 +177,7 @@ export async function editLink(link: LinkProps, oldKey: string) {
         password: hasPassword,
         proxy
       }),
-      ...(exat && (['EXAT', exat] as ['EXAT', number]))
+      ...(exat ? (['EXAT', exat] as ['EXAT', number]) : ([] as any[]))
     )
   ]);
 
@@ -203,7 +199,7 @@ export async function deleteLink(domain: string, key: string) {
   ]);
 }
 
-export async function archiveLink(domain: string, key: string) {
+export async function archiveLink(domain: string, key: string, archived = true) {
   return await prisma.link.update({
     where: {
       domain_key: {
@@ -212,7 +208,26 @@ export async function archiveLink(domain: string, key: string) {
       }
     },
     data: {
-      archived: true
+      archived
     }
   });
+}
+
+export async function changeDomain(project: { id: string; domain: string }, newDomain: string) {
+  const links = await prisma.link.findMany({
+    where: {
+      project: {
+        id: project.id
+      }
+    }
+  });
+  const pipeline = redis.pipeline();
+  links.forEach(({ key }) => {
+    pipeline.rename(`${project.domain}:clicks:${key}`, `${newDomain}:clicks:${key}`);
+  });
+  try {
+    return await pipeline.exec();
+  } catch (e) {
+    return null;
+  }
 }

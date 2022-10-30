@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 import useSWR from 'swr';
 
 import { ProjectResponseProps } from '@/lib/types';
@@ -15,9 +16,14 @@ export default function useProject() {
     dedupingInterval: 30000
   });
 
+  const isOwner = useMemo(() => {
+    if (data?.user) return data.user.role === 'owner';
+  }, [data]);
+
   return {
     project: data?.project,
     user: data?.user,
+    isOwner,
     loading: !error && !data,
     error
   };

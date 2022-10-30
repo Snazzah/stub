@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import { checkIfKeyExists } from '@/lib/api/links';
 import { withProjectAuth } from '@/lib/auth';
-import { checkIfKeyExists, redis } from '@/lib/redis';
+import { redis } from '@/lib/redis';
 import { intervalData, IntervalProps, processData, RawStatsProps } from '@/lib/stats';
 
 export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project) => {

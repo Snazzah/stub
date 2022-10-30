@@ -1,15 +1,63 @@
-import { Menu, Transition } from '@headlessui/react';
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
-import { Fragment } from 'react';
+import { useState } from 'react';
 
 import SuperAdmin from '@/components/shared/icons/superadmin';
+import Popover from '@/components/shared/popover';
 import Tooltip from '@/components/shared/tooltip';
 
 export default function UserDropdown() {
   const { data: session } = useSession();
+  const [openPopover, setOpenPopover] = useState(false);
+
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <div className="relative inline-block text-left">
+      <Popover
+        content={
+          <div className="w-full rounded-md bg-white p-1 sm:w-56">
+            {session?.user?.superadmin && (
+              <Link href="/admin">
+                <a className="block relative w-full rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100">Admin</a>
+              </Link>
+            )}
+            <button
+              className="relative w-full rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
+              onClick={() => signOut()}
+            >
+              Logout
+            </button>
+          </div>
+        }
+        align="end"
+        openPopover={openPopover}
+        setOpenPopover={setOpenPopover}
+      >
+        <div className="flex gap-4 items-center">
+          {session?.user?.superadmin && (
+            <Tooltip content="You are a superadmin, pretty cool!">
+              <div>
+                <SuperAdmin className="w-6 h-6 text-gray-500" />
+              </div>
+            </Tooltip>
+          )}
+          <button
+            onClick={() => setOpenPopover(!openPopover)}
+            className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-gray-300 transition-all duration-75 focus:outline-none active:scale-95"
+          >
+            {session && (
+              <img
+                alt={session?.user?.email || 'Avatar for logged in user'}
+                src={session?.user?.image || `https://avatars.dicebear.com/api/micah/${session?.user?.email}.svg`}
+              />
+            )}
+          </button>
+        </div>
+      </Popover>
+    </div>
+  );
+}
+
+/* <Menu as="div" className="relative inline-block text-left">
       <div className="flex gap-4 items-center">
         {session?.user?.superadmin && (
           <Tooltip content="You are a superadmin, pretty cool!">
@@ -51,6 +99,4 @@ export default function UserDropdown() {
           </Menu.Item>
         </Menu.Items>
       </Transition>
-    </Menu>
-  );
-}
+    </Menu> */

@@ -2,8 +2,8 @@ import AppLayout from 'components/layout/app';
 import ErrorPage from 'next/error';
 import { useSession } from 'next-auth/react';
 
-import LinksContainer from '@/components/app/links-container';
-import { useAddEditLinkModal } from '@/components/app/modals/add-edit-link-modal';
+import LinksContainer from '@/components/app/links/links-container';
+import { useAddEditLinkModal } from '@/components/app/modals/add-edit-link-modal/index';
 import MaxWidthWrapper from '@/components/shared/max-width-wrapper';
 import { serverSidePropsAuth } from '@/lib/auth';
 import useProject from '@/lib/swr/use-project';

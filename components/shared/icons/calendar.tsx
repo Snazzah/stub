@@ -1,4 +1,4 @@
-export default function Chart({ className }: { className?: string }) {
+export default function Calendar({ className }: { className: string }) {
   return (
     <svg
       fill="none"
@@ -8,13 +8,14 @@ export default function Chart({ className }: { className?: string }) {
       strokeLinejoin="round"
       strokeWidth="1.5"
       viewBox="0 0 24 24"
-      width="14"
-      height="14"
+      width="24"
+      height="24"
       className={className}
     >
-      <path d="M12 20V10" />
-      <path d="M18 20V4" />
-      <path d="M6 20v-4" />
+      <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+      <path d="M16 2v4" />
+      <path d="M8 2v4" />
+      <path d="M3 10h18" />
     </svg>
   );
 }

@@ -1,20 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
 
+import { deleteLink, editLink } from '@/lib/api/links';
 import { withProjectAuth } from '@/lib/auth';
-import { deleteLink, editLink } from '@/lib/redis';
-import { LinkProps } from '@/lib/types';
 
-const schema = z
-  .object({
-    key: z.string().regex(/^(?:[\p{Letter}\p{Mark}\d-]+|:index)$/u),
-    url: z.string().url(),
-    title: z.string().min(1).max(1024),
-    timestamp: z.number().min(1),
-    description: z.string().min(1).max(4096).optional(),
-    image: z.string().url().optional()
-  })
-  .strict();
+const schema = z.object({
+  key: z.string().regex(/^(?:[\p{Letter}\p{Mark}\d/-]+|:index)$/u),
+  url: z.string().url(),
+  archived: z.boolean(),
+  title: z.string().min(1).max(1024).nullish(),
+  description: z.string().min(1).max(4096).nullish(),
+  image: z.string().url().nullish(),
+  password: z.string().min(1).nullish(),
+  expiresAt: z.string().min(1).nullish()
+});
 
 export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse, project, session) => {
   if (!session?.user?.superadmin && !['member', 'manager', 'owner'].includes(project.users[0]?.role))
@@ -27,7 +26,14 @@ export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse,
     if (!key) return res.status(400).json({ error: 'Missing key' });
     const data = schema.safeParse(req.body);
     if (data.success === false) return res.status(400).send({ message: 'Schema validation error', data: data.error.format() });
-    const response = await editLink(project.domain, oldKey, key, data.data as Omit<LinkProps, 'key'>);
+    const response = await editLink(
+      {
+        ...req.body,
+        domain: project.domain,
+        userId: session.user.id
+      },
+      oldKey
+    );
     if (response === null) return res.status(400).json({ message: 'Key already exists', data: { key: { _errors: ['Key already exists'] } } });
     return res.status(200).json(response);
   } else if (req.method === 'DELETE') {

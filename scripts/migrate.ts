@@ -51,14 +51,14 @@ interface V0_3LinkProps {
               description: link.description,
               image: link.image,
               createdAt: link.timestamp ? new Date(link.timestamp) : new Date(),
-              userId: project.users[0].id
+              userId: project.users[0].userId
             }
           }),
         redis.set(
           `${project.domain}:${key}`,
           JSON.stringify({
             url: link.url,
-            proxy: link.title && link.description && !!link.image,
+            proxy: !!(link.title && link.description && link.image),
             password: false
           }),
           'NX'

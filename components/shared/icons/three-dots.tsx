@@ -1,4 +1,4 @@
-export default function Chart({ className }: { className?: string }) {
+export default function ThreeDots({ className }: { className: string }) {
   return (
     <svg
       fill="none"
@@ -12,9 +12,9 @@ export default function Chart({ className }: { className?: string }) {
       height="14"
       className={className}
     >
-      <path d="M12 20V10" />
-      <path d="M18 20V4" />
-      <path d="M6 20v-4" />
+      <circle cx="12" cy="12" r="1" />
+      <circle cx="12" cy="5" r="1" />
+      <circle cx="12" cy="19" r="1" />
     </svg>
   );
 }
