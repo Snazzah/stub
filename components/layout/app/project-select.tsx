@@ -51,17 +51,21 @@ export default function ProjectSelect() {
           className="relative cursor-pointer w-60 rounded-lg bg-white hover:bg-gray-100 active:bg-gray-200 py-1.5 pl-3 pr-10 text-left focus:outline-none text-sm transition-all duration-75"
         >
           <div className="flex justify-start items-center space-x-3">
-            <BlurImage
-              src={
-                selected.domain
-                  ? `https://www.google.com/s2/favicons?sz=64&domain_url=${selected.domain}`
-                  : session?.user?.image || `https://avatars.dicebear.com/api/micah/${session?.user?.email}.svg`
-              }
-              alt={selected.slug}
-              className="w-8 h-8 flex-shrink-0 rounded-full overflow-hidden"
-              width={48}
-              height={48}
-            />
+            {selected.slug === '/' ? (
+              <img
+                alt={session?.user?.email || 'Avatar for logged in user'}
+                src={session?.user?.image || `https://avatars.dicebear.com/api/micah/${session?.user?.email}.svg`}
+                className="w-8 h-8 flex-shrink-0 rounded-full overflow-hidden"
+              />
+            ) : (
+              <BlurImage
+                src={`https://www.google.com/s2/favicons?sz=64&domain_url=${selected.domain}`}
+                alt={selected.slug}
+                className="w-8 h-8 flex-shrink-0 rounded-full overflow-hidden"
+                width={48}
+                height={48}
+              />
+            )}
             <span className="block truncate font-medium text-sm">{selected.name}</span>
           </div>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
