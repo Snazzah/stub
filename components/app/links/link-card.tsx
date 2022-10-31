@@ -151,12 +151,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
                       onClick={async (e) => {
                         e.preventDefault();
                         setUnarchiving(true);
-                        fetch(`/api/projects/${slug}/links/${encodeURIComponent(props.key)}/archive`, {
-                          method: 'DELETE',
-                          headers: {
-                            'Content-Type': 'application/json'
-                          }
-                        }).then(async (res) => {
+                        fetch(`/api/projects/${slug}/links/${encodeURIComponent(props.key)}/archive`, { method: 'DELETE' }).then(async (res) => {
                           setUnarchiving(false);
                           setOpenPopover(false);
                           if (res.status === 200) {
