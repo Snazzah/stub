@@ -6,6 +6,8 @@ import { Logout, SuperAdmin } from '@/components/shared/icons';
 import Popover from '@/components/shared/popover';
 import Tooltip from '@/components/shared/tooltip';
 
+import IconMenu from './icon-menu';
+
 export default function UserDropdown() {
   const { data: session } = useSession();
   const [openPopover, setOpenPopover] = useState(false);
@@ -18,10 +20,7 @@ export default function UserDropdown() {
             {session?.user?.superadmin && (
               <Link href="/admin">
                 <a className="block relative w-full rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100">
-                  <div className="flex items-center justify-start space-x-2">
-                    <SuperAdmin className="w-4 h-4 text-gray-500" />
-                    <p className="text-sm">Admin</p>
-                  </div>
+                  <IconMenu text="Admin" icon={<SuperAdmin className="w-4 h-4 text-gray-500" />} />
                 </a>
               </Link>
             )}
@@ -29,10 +28,7 @@ export default function UserDropdown() {
               className="relative w-full rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
               onClick={() => signOut()}
             >
-              <div className="flex items-center justify-start space-x-2">
-                <Logout className="w-4 h-4" />
-                <p className="text-sm">Logout</p>
-              </div>
+              <IconMenu text="Logout" icon={<Logout className="h-4 w-4" />} />
             </button>
           </div>
         }

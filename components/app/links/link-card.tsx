@@ -8,6 +8,7 @@ import { useAddEditLinkModal } from '@/components/app/modals/add-edit-link-modal
 import { useArchiveLinkModal } from '@/components/app/modals/archive-link-modal';
 import { useDeleteLinkModal } from '@/components/app/modals/delete-link-modal';
 import { useLinkQRModal } from '@/components/app/modals/link-qr-modal';
+import IconMenu from '@/components/layout/app/icon-menu';
 import BlurImage from '@/components/shared/blur-image';
 import CopyButton from '@/components/shared/copy-button';
 import { Archive, Chart, Delete, Edit, LoadingDots, QR, ThreeDots } from '@/components/shared/icons';
@@ -133,10 +134,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
                     }}
                     className="w-full font-medium text-sm text-gray-500 p-2 text-left rounded-md hover:bg-gray-100 transition-all duration-75"
                   >
-                    <div className="flex items-center justify-start space-x-2">
-                      <Edit className="w-4 h-4" />
-                      <p className="text-sm">Edit</p>
-                    </div>
+                    <IconMenu text="Edit" icon={<Edit className="h-4 w-4" />} />
                   </button>
                   {!archived ? (
                     <button
@@ -146,10 +144,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
                       }}
                       className="w-full font-medium text-sm text-gray-500 p-2 text-left rounded-md hover:bg-gray-100 transition-all duration-75"
                     >
-                      <div className="flex items-center justify-start space-x-2">
-                        <Archive className="w-4 h-4" />
-                        <p className="text-sm">Archive</p>
-                      </div>
+                      <IconMenu text="Archive" icon={<Archive className="h-4 w-4" />} />
                     </button>
                   ) : (
                     <button
@@ -173,10 +168,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
                       disabled={unarchiving}
                       className="w-full font-medium text-sm text-gray-500 p-2 text-left rounded-md hover:bg-gray-100 transition-all duration-75"
                     >
-                      <div className="flex items-center justify-start space-x-2">
-                        <Archive className="w-4 h-4" />
-                        <p className="text-sm">{unarchiving ? 'Unarchiving...' : 'Unarchive'}</p>
-                      </div>
+                      <IconMenu text={unarchiving ? 'Unarchiving...' : 'Unarchive'} icon={<Archive className="h-4 w-4" />} />
                     </button>
                   )}
                   <button
@@ -186,10 +178,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
                     }}
                     className="w-full font-medium text-sm text-red-600 hover:bg-red-600 hover:text-white p-2 text-left rounded-md transition-all duration-75"
                   >
-                    <div className="flex items-center justify-start space-x-2">
-                      <Delete className="w-4 h-4" />
-                      <p className="text-sm">Delete</p>
-                    </div>
+                    <IconMenu text="Delete" icon={<Delete className="h-4 w-4" />} />
                   </button>
                 </div>
               }
