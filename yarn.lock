@@ -3257,7 +3257,7 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-he@^1.2.0:
+he@1.2.0, he@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
@@ -3837,23 +3837,24 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-mailing-core@0.8.8, mailing-core@^0.8.8:
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/mailing-core/-/mailing-core-0.8.8.tgz#ed3ccb2c088f6158bf45f728fc4159e45dd983d3"
-  integrity sha512-H4msH7M4Zd59yR0acMVkUoke7R0czgPQaoDkqUBaTjLYXtIajLh9fe1ZIafkEdsENpsylbJBU1fVldy3KP1xRA==
+mailing-core@0.8.11, mailing-core@^0.8.11:
+  version "0.8.11"
+  resolved "https://registry.yarnpkg.com/mailing-core/-/mailing-core-0.8.11.tgz#8a14978acc902d30549ac99531ae2e195ed07bed"
+  integrity sha512-rGTTTRr/ScuqTeRPUWFgRLn2j1oETTyRPkmCTtqPHhh6Obv381e9+4lPokebWEWMdl7seiqSO1ZDZrYijL6yUQ==
   dependencies:
     chalk "^4.1.2"
     fs-extra "^10.1.0"
     mjml "^4.12.0"
     mjml-react "^2.0.7"
     node-fetch "^2.6.7"
+    node-html-parser "^6.1.1"
     open "^8.4.0"
     posthog-node "^2.0.2"
 
-mailing@0.8.8:
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/mailing/-/mailing-0.8.8.tgz#920c372d50e6b03f62def4ad4257407bad3f9346"
-  integrity sha512-DXD3TdAGouiuqisN/RTINt1GRVhH/lx1099G0AZxelfLC0zWCizx1S10HHcSeKgrEdIfFOvB1L0fFSER5uaMkA==
+mailing@0.8.11:
+  version "0.8.11"
+  resolved "https://registry.yarnpkg.com/mailing/-/mailing-0.8.11.tgz#c57bdc5a874dfa4faccd8154d4a05f00e8e55813"
+  integrity sha512-GL7LTj5tUd9qptLNBeTGkaEQJaILoLC3jxGker3pyG+W0bmHVejW8sA7jWTvYnXgHyK3DwQmrOAh/en3/bO0IQ==
   dependencies:
     "@babel/parser" "^7.18.11"
     "@prisma/client" "^4.4.0"
@@ -3887,10 +3888,11 @@ mailing@0.8.8:
     iron-session "^6.2.1"
     jsdom "^20.0.0"
     lodash "^4.17.21"
-    mailing-core "^0.8.8"
+    mailing-core "^0.8.11"
     mjml "^4.12.0"
     mjml-react "^2.0.7"
     node-fetch "^2.6.7"
+    node-html-parser "^6.1.1"
     nodemailer "6.8.0"
     open "^8.4.0"
     postcss "^8.4.16"
@@ -4484,6 +4486,14 @@ node-fetch@^2.6.0, node-fetch@^2.6.7:
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
   dependencies:
     whatwg-url "^5.0.0"
+
+node-html-parser@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-6.1.1.tgz#7f38f4427fafc242a22135d9db80c1455e837467"
+  integrity sha512-eYYblUeoMg0nR6cYGM4GRb1XncNa9FXEftuKAU1qyMIr6rXVtNyUKduvzZtkqFqSHVByq2lLjC7WO8tz7VDmnA==
+  dependencies:
+    css-select "^5.1.0"
+    he "1.2.0"
 
 node-releases@^2.0.6:
   version "2.0.6"
