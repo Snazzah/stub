@@ -156,7 +156,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
                       onClick={async (e) => {
                         e.preventDefault();
                         setUnarchiving(true);
-                        fetch(`/api/projects/${slug}/links/${props.key}/archive`, {
+                        fetch(`/api/projects/${slug}/links/${encodeURIComponent(props.key)}/archive`, {
                           method: 'DELETE',
                           headers: {
                             'Content-Type': 'application/json'
