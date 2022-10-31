@@ -2,7 +2,6 @@ import { useRouter } from 'next/router';
 import { useMemo, useState } from 'react';
 import useSWR from 'swr';
 
-import BlurImage from '@/components/shared/blur-image';
 import { ChevronDown, Search, X } from '@/components/shared/icons';
 import Popover from '@/components/shared/popover';
 import { ProjectUserProps } from '@/lib/types';
@@ -41,13 +40,7 @@ export default function UserFilter() {
               }}
               className="flex w-full items-center space-x-2 rounded-md p-2 hover:bg-gray-100 active:bg-gray-200"
             >
-              <BlurImage
-                src={image || `https://avatars.dicebear.com/api/micah/${email}.svg`}
-                alt={email}
-                width={28}
-                height={28}
-                className="rounded-full"
-              />
+              <img alt={email} src={image || `https://avatars.dicebear.com/api/micah/${email}.svg`} className="w-7 h-7 rounded-full" />
               <p className="truncate text-sm text-gray-700">{name || email}</p>
             </button>
           ))}
