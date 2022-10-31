@@ -132,7 +132,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
                       setOpenPopover(false);
                       setShowAddEditLinkModal(true);
                     }}
-                    className="w-full font-medium text-sm text-gray-500 p-2 text-left rounded-md hover:bg-gray-100 transition-all duration-75"
+                    className="w-full rounded-md p-2 text-left text-sm font-medium text-gray-500 transition-all duration-75 hover:bg-gray-100"
                   >
                     <IconMenu text="Edit" icon={<Edit className="h-4 w-4" />} />
                   </button>
@@ -154,7 +154,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
                         }
                       });
                     }}
-                    className="w-full font-medium text-sm text-gray-500 p-2 text-left rounded-md hover:bg-gray-100 transition-all duration-75"
+                    className="w-full rounded-md p-2 text-left text-sm font-medium text-gray-500 transition-all duration-75 hover:bg-gray-100"
                   >
                     <IconMenu
                       text={!archived ? 'Archive' : unarchiving ? 'Unarchiving...' : 'Remove from archive'}
@@ -166,7 +166,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
                       setOpenPopover(false);
                       setShowDeleteLinkModal(true);
                     }}
-                    className="w-full font-medium text-sm text-red-600 hover:bg-red-600 hover:text-white p-2 text-left rounded-md transition-all duration-75"
+                    className="w-full rounded-md p-2 text-left text-sm font-medium text-red-600 transition-all duration-75 hover:bg-red-600 hover:text-white"
                   >
                     <IconMenu text="Delete" icon={<Delete className="h-4 w-4" />} />
                   </button>
