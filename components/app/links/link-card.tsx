@@ -126,7 +126,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
           {(session?.user?.superadmin || ['member', 'manager', 'owner'].includes(user?.role)) && (
             <Popover
               content={
-                <div className="w-full sm:w-40 p-2 grid gap-1">
+                <div className="w-full sm:w-48 p-2 grid gap-1">
                   <button
                     onClick={() => {
                       setOpenPopover(false);
@@ -163,7 +163,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
                       disabled={unarchiving}
                       className="w-full font-medium text-sm text-gray-500 p-2 text-left rounded-md hover:bg-gray-100 transition-all duration-75"
                     >
-                      <IconMenu text={unarchiving ? 'Unarchiving...' : 'Unarchive'} icon={<Archive className="h-4 w-4" />} />
+                      <IconMenu text={unarchiving ? 'Unarchiving...' : 'Remove from archive'} icon={<Archive className="h-4 w-4" />} />
                     </button>
                   )}
                   <button
