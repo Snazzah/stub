@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
 
-import SuperAdmin from '@/components/shared/icons/superadmin';
+import { Logout, SuperAdmin } from '@/components/shared/icons';
 import Popover from '@/components/shared/popover';
 import Tooltip from '@/components/shared/tooltip';
 
@@ -17,14 +17,22 @@ export default function UserDropdown() {
           <div className="w-full rounded-md bg-white p-1 sm:w-56">
             {session?.user?.superadmin && (
               <Link href="/admin">
-                <a className="block relative w-full rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100">Admin</a>
+                <a className="block relative w-full rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100">
+                  <div className="flex items-center justify-start space-x-2">
+                    <SuperAdmin className="w-4 h-4 text-gray-500" />
+                    <p className="text-sm">Admin</p>
+                  </div>
+                </a>
               </Link>
             )}
             <button
               className="relative w-full rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
               onClick={() => signOut()}
             >
-              Logout
+              <div className="flex items-center justify-start space-x-2">
+                <Logout className="w-4 h-4" />
+                <p className="text-sm">Logout</p>
+              </div>
             </button>
           </div>
         }
