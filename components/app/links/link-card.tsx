@@ -136,36 +136,31 @@ export default function LinkCard({ props }: { props: LinkProps }) {
                   >
                     <IconMenu text="Edit" icon={<Edit className="h-4 w-4" />} />
                   </button>
-                  {!archived ? (
-                    <button
-                      onClick={() => {
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (!archived) {
                         setOpenPopover(false);
                         setShowArchiveLinkModal(true);
-                      }}
-                      className="w-full font-medium text-sm text-gray-500 p-2 text-left rounded-md hover:bg-gray-100 transition-all duration-75"
-                    >
-                      <IconMenu text="Archive" icon={<Archive className="h-4 w-4" />} />
-                    </button>
-                  ) : (
-                    <button
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        setUnarchiving(true);
-                        fetch(`/api/projects/${slug}/links/${encodeURIComponent(props.key)}/archive`, { method: 'DELETE' }).then(async (res) => {
-                          setUnarchiving(false);
-                          setOpenPopover(false);
-                          if (res.status === 200) {
-                            mutate(`/api/projects/${slug}/links${getQueryString(router)}`);
-                            setShowArchiveLinkModal(false);
-                          }
-                        });
-                      }}
-                      disabled={unarchiving}
-                      className="w-full font-medium text-sm text-gray-500 p-2 text-left rounded-md hover:bg-gray-100 transition-all duration-75"
-                    >
-                      <IconMenu text={unarchiving ? 'Unarchiving...' : 'Remove from archive'} icon={<Archive className="h-4 w-4" />} />
-                    </button>
-                  )}
+                        return;
+                      }
+                      setUnarchiving(true);
+                      fetch(`/api/projects/${slug}/links/${encodeURIComponent(props.key)}/archive`, { method: 'DELETE' }).then(async (res) => {
+                        setUnarchiving(false);
+                        setOpenPopover(false);
+                        if (res.status === 200) {
+                          mutate(`/api/projects/${slug}/links${getQueryString(router)}`);
+                          setShowArchiveLinkModal(false);
+                        }
+                      });
+                    }}
+                    className="w-full font-medium text-sm text-gray-500 p-2 text-left rounded-md hover:bg-gray-100 transition-all duration-75"
+                  >
+                    <IconMenu
+                      text={!archived ? 'Archive' : unarchiving ? 'Unarchiving...' : 'Remove from archive'}
+                      icon={<Archive className="h-4 w-4" />}
+                    />
+                  </button>
                   <button
                     onClick={() => {
                       setOpenPopover(false);
