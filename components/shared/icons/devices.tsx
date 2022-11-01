@@ -1,23 +1,23 @@
 export function Chrome({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 100 100" className={className}>
-      <linearGradient id="b" x1="55.41" x2="12.11" y1="96.87" y2="21.87" gradientUnits="userSpaceOnUse">
+      <linearGradient id="chrome-b" x1="55.41" x2="12.11" y1="96.87" y2="21.87" gradientUnits="userSpaceOnUse">
         <stop offset="0" stopColor="#1e8e3e" />
         <stop offset="1" stopColor="#34a853" />
       </linearGradient>
-      <linearGradient id="c" x1="42.7" x2="86" y1="100" y2="25.13" gradientUnits="userSpaceOnUse">
+      <linearGradient id="chrome-c" x1="42.7" x2="86" y1="100" y2="25.13" gradientUnits="userSpaceOnUse">
         <stop offset="0" stopColor="#fcc934" />
         <stop offset="1" stopColor="#fbbc04" />
       </linearGradient>
-      <linearGradient id="a" x1="6.7" x2="93.29" y1="31.25" y2="31.25" gradientUnits="userSpaceOnUse">
+      <linearGradient id="chrome-a" x1="6.7" x2="93.29" y1="31.25" y2="31.25" gradientUnits="userSpaceOnUse">
         <stop offset="0" stopColor="#d93025" />
         <stop offset="1" stopColor="#ea4335" />
       </linearGradient>
-      <path fill="url(#a)" d="M93.29 25a50 50 90 0 0-86.6 0l3 54z" />
-      <path fill="url(#b)" d="M28.35 62.5 6.7 25A50 50 90 0 0 50 100l49-50z" />
-      <path fill="url(#c)" d="M71.65 62.5 50 100a50 50 90 0 0 43.29-75H50z" />
+      <path fill="url(#chrome-a)" d="M93.29 25a50 50 90 0 0-86.6 0l3 54z" />
+      <path fill="url(#chrome-b)" d="M28.35 62.5 6.7 25A50 50 90 0 0 50 100l49-50z" />
+      <path fill="url(#chrome-c)" d="M71.65 62.5 50 100a50 50 90 0 0 43.29-75H50z" />
       <path fill="#fff" d="M50 75a25 25 90 1 0 0-50 25 25 90 0 0 0 50z" />
-      <path fill="#1a73e8" d="M50 69.8a19.8 19.8 90 1 0 0-39.6 19.8 19.8 90 0 0 0 39.6z" />{' '}
+      <path fill="#1a73e8" d="M50 69.8a19.8 19.8 90 1 0 0-39.6 19.8 19.8 90 0 0 0 39.6z" />
     </svg>
   );
 }
@@ -53,7 +53,7 @@ export function MSEdge({ className }: { className?: string }) {
     <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256" className={className}>
       <defs>
         <radialGradient
-          id="svgIDb"
+          id="msedge-svgIDb"
           cx="161.83"
           cy="788.401"
           r="95.38"
@@ -65,7 +65,7 @@ export function MSEdge({ className }: { className?: string }) {
           <stop offset="1" />
         </radialGradient>
         <radialGradient
-          id="svgIDd"
+          id="msedge-svgIDd"
           cx="-773.636"
           cy="746.715"
           r="143.24"
@@ -77,7 +77,7 @@ export function MSEdge({ className }: { className?: string }) {
           <stop offset="1" />
         </radialGradient>
         <radialGradient
-          id="svgIDe"
+          id="msedge-svgIDe"
           cx="230.593"
           cy="-106.038"
           r="202.43"
@@ -91,7 +91,7 @@ export function MSEdge({ className }: { className?: string }) {
           <stop offset=".67" stopColor="#36C752" />
         </radialGradient>
         <radialGradient
-          id="svgIDf"
+          id="msedge-svgIDf"
           cx="536.357"
           cy="-117.703"
           r="97.34"
@@ -102,7 +102,7 @@ export function MSEdge({ className }: { className?: string }) {
           <stop offset="1" stopColor="#66EB6E" stopOpacity="0" />
         </radialGradient>
         <linearGradient
-          id="svgIDa"
+          id="msedge-svgIDa"
           x1="63.334"
           x2="241.617"
           y1="757.83"
@@ -114,7 +114,7 @@ export function MSEdge({ className }: { className?: string }) {
           <stop offset="1" stopColor="#114A8B" />
         </linearGradient>
         <linearGradient
-          id="svgIDc"
+          id="msedge-svgIDc"
           x1="157.401"
           x2="46.028"
           y1="680.556"
@@ -129,29 +129,29 @@ export function MSEdge({ className }: { className?: string }) {
         </linearGradient>
       </defs>
       <path
-        fill="url(#svgIDa)"
+        fill="url(#msedge-svgIDa)"
         d="M231 190.5c-3.4 1.8-6.9 3.4-10.5 4.7c-11.5 4.3-23.6 6.5-35.9 6.5c-47.3 0-88.5-32.5-88.5-74.3c.1-11.4 6.4-21.9 16.4-27.3c-42.8 1.8-53.8 46.4-53.8 72.5c0 73.9 68.1 81.4 82.8 81.4c7.9 0 19.8-2.3 27-4.6l1.3-.4c27.6-9.5 51-28.1 66.6-52.8c1.2-1.9.6-4.3-1.2-5.5c-1.3-.8-2.9-.9-4.2-.2z"
       />
       <path
-        fill="url(#svgIDb)"
+        fill="url(#msedge-svgIDb)"
         d="M231 190.5c-3.4 1.8-6.9 3.4-10.5 4.7c-11.5 4.3-23.6 6.5-35.9 6.5c-47.3 0-88.5-32.5-88.5-74.3c.1-11.4 6.4-21.9 16.4-27.3c-42.8 1.8-53.8 46.4-53.8 72.5c0 73.9 68.1 81.4 82.8 81.4c7.9 0 19.8-2.3 27-4.6l1.3-.4c27.6-9.5 51-28.1 66.6-52.8c1.2-1.9.6-4.3-1.2-5.5c-1.3-.8-2.9-.9-4.2-.2z"
         opacity=".35"
       />
       <path
-        fill="url(#svgIDc)"
+        fill="url(#msedge-svgIDc)"
         d="M105.7 241.4c-8.9-5.5-16.6-12.8-22.7-21.3c-26.3-36-18.4-86.5 17.6-112.8c3.8-2.7 7.7-5.2 11.9-7.2c3.1-1.5 8.4-4.1 15.5-4c10.1.1 19.6 4.9 25.7 13c4 5.4 6.3 11.9 6.4 18.7c0-.2 24.5-79.6-80-79.6c-43.9 0-80 41.7-80 78.2c-.2 19.3 4 38.5 12.1 56c27.6 58.8 94.8 87.6 156.4 67.1c-21.1 6.6-44.1 3.7-62.9-8.1z"
       />
       <path
-        fill="url(#svgIDd)"
+        fill="url(#msedge-svgIDd)"
         d="M105.7 241.4c-8.9-5.5-16.6-12.8-22.7-21.3c-26.3-36-18.4-86.5 17.6-112.8c3.8-2.7 7.7-5.2 11.9-7.2c3.1-1.5 8.4-4.1 15.5-4c10.1.1 19.6 4.9 25.7 13c4 5.4 6.3 11.9 6.4 18.7c0-.2 24.5-79.6-80-79.6c-43.9 0-80 41.7-80 78.2c-.2 19.3 4 38.5 12.1 56c27.6 58.8 94.8 87.6 156.4 67.1c-21.1 6.6-44.1 3.7-62.9-8.1z"
         opacity=".41"
       />
       <path
-        fill="url(#svgIDe)"
+        fill="url(#msedge-svgIDe)"
         d="M152.3 148.9c-.8 1-3.3 2.5-3.3 5.7c0 2.6 1.7 5.1 4.7 7.2c14.4 10 41.5 8.7 41.6 8.7c10.7 0 21.1-2.9 30.3-8.3c18.8-11 30.4-31.1 30.4-52.9c.3-22.4-8-37.3-11.3-43.9C223.5 23.9 177.7 0 128 0C58 0 1 56.2 0 126.2c.5-36.5 36.8-66 80-66c3.5 0 23.5.3 42 10.1c16.3 8.6 24.9 18.9 30.8 29.2c6.2 10.7 7.3 24.1 7.3 29.5c0 5.3-2.7 13.3-7.8 19.9z"
       />
       <path
-        fill="url(#svgIDf)"
+        fill="url(#msedge-svgIDf)"
         d="M152.3 148.9c-.8 1-3.3 2.5-3.3 5.7c0 2.6 1.7 5.1 4.7 7.2c14.4 10 41.5 8.7 41.6 8.7c10.7 0 21.1-2.9 30.3-8.3c18.8-11 30.4-31.1 30.4-52.9c.3-22.4-8-37.3-11.3-43.9C223.5 23.9 177.7 0 128 0C58 0 1 56.2 0 126.2c.5-36.5 36.8-66 80-66c3.5 0 23.5.3 42 10.1c16.3 8.6 24.9 18.9 30.8 29.2c6.2 10.7 7.3 24.1 7.3 29.5c0 5.3-2.7 13.3-7.8 19.9z"
       />
     </svg>
@@ -186,7 +186,7 @@ export function Opera({ className }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256" className={className}>
       <defs>
-        <linearGradient id="svgIDa" x1="50.003%" x2="50.003%" y1="1.63%" y2="98.545%">
+        <linearGradient id="opera-svgIDa" x1="50.003%" x2="50.003%" y1="1.63%" y2="98.545%">
           <stop offset="30%" stopColor="#FF1B2D" />
           <stop offset="43.81%" stopColor="#FA1A2C" />
           <stop offset="59.39%" stopColor="#ED1528" />
@@ -194,17 +194,17 @@ export function Opera({ className }: { className?: string }) {
           <stop offset="92.72%" stopColor="#B70519" />
           <stop offset="100%" stopColor="#A70014" />
         </linearGradient>
-        <linearGradient id="svgIDb" x1="49.99%" x2="49.99%" y1=".853%" y2="99.519%">
+        <linearGradient id="opera-svgIDb" x1="49.99%" x2="49.99%" y1=".853%" y2="99.519%">
           <stop offset="0%" stopColor="#9C0000" />
           <stop offset="70%" stopColor="#FF4B4B" />
         </linearGradient>
       </defs>
       <path
-        fill="url(#svgIDa)"
+        fill="url(#opera-svgIDa)"
         d="M85.9 200.1C71.7 183.4 62.6 158.7 62 131v-6c.6-27.7 9.8-52.4 23.9-69.1c18.4-23.8 45.4-34.5 75.9-34.5c18.8 0 36.5 1.3 51.5 11.3C190.8 12.4 161.1.1 128.5 0h-.5C57.3 0 0 57.3 0 128c0 68.6 54 124.7 121.9 127.9c2 .1 4.1.1 6.1.1c32.8 0 62.7-12.3 85.3-32.6c-15 10-31.7 10.4-50.5 10.4c-30.4.1-58.6-9.8-76.9-33.7Z"
       />
       <path
-        fill="url(#svgIDb)"
+        fill="url(#opera-svgIDb)"
         d="M85.9 55.9c11.7-13.9 26.9-22.2 43.5-22.2c37.3 0 67.5 42.2 67.5 94.4s-30.2 94.4-67.5 94.4c-16.6 0-31.7-8.4-43.5-22.2c18.4 23.8 45.7 39 76.1 39c18.7 0 36.3-5.7 51.3-15.7C239.5 200 256 165.9 256 128c0-37.9-16.5-72-42.7-95.4c-15-10-32.5-15.7-51.3-15.7c-30.5 0-57.8 15.1-76.1 39Z"
       />
     </svg>
@@ -307,87 +307,87 @@ export function Linux({ className }: { className: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 295" className={className}>
       <defs>
-        <linearGradient id="svgIDb" x1="48.548%" x2="51.047%" y1="115.276%" y2="41.364%">
+        <linearGradient id="linux-svgIDb" x1="48.548%" x2="51.047%" y1="115.276%" y2="41.364%">
           <stop offset="0%" stopColor="#FFEED7" />
           <stop offset="100%" stopColor="#BDBFC2" />
         </linearGradient>
-        <linearGradient id="svgIDc" x1="54.407%" x2="46.175%" y1="2.404%" y2="90.542%">
+        <linearGradient id="linux-svgIDc" x1="54.407%" x2="46.175%" y1="2.404%" y2="90.542%">
           <stop offset="0%" stopColor="#FFF" stop-opacity=".8" />
           <stop offset="100%" stopColor="#FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="svgIDd" x1="51.86%" x2="47.947%" y1="88.248%" y2="9.748%">
+        <linearGradient id="linux-svgIDd" x1="51.86%" x2="47.947%" y1="88.248%" y2="9.748%">
           <stop offset="0%" stopColor="#FFEED7" />
           <stop offset="100%" stopColor="#BDBFC2" />
         </linearGradient>
-        <linearGradient id="svgIDe" x1="49.925%" x2="49.924%" y1="85.49%" y2="13.811%">
+        <linearGradient id="linux-svgIDe" x1="49.925%" x2="49.924%" y1="85.49%" y2="13.811%">
           <stop offset="0%" stopColor="#FFEED7" />
           <stop offset="100%" stopColor="#BDBFC2" />
         </linearGradient>
-        <linearGradient id="svgIDf" x1="53.901%" x2="45.956%" y1="3.102%" y2="93.895%">
+        <linearGradient id="linux-svgIDf" x1="53.901%" x2="45.956%" y1="3.102%" y2="93.895%">
           <stop offset="0%" stopColor="#FFF" stop-opacity=".65" />
           <stop offset="100%" stopColor="#FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="svgIDg" x1="45.593%" x2="54.811%" y1="5.475%" y2="93.524%">
+        <linearGradient id="linux-svgIDg" x1="45.593%" x2="54.811%" y1="5.475%" y2="93.524%">
           <stop offset="0%" stopColor="#FFF" stop-opacity=".65" />
           <stop offset="100%" stopColor="#FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="svgIDh" x1="49.984%" x2="49.984%" y1="89.845%" y2="40.632%">
+        <linearGradient id="linux-svgIDh" x1="49.984%" x2="49.984%" y1="89.845%" y2="40.632%">
           <stop offset="0%" stopColor="#FFEED7" />
           <stop offset="100%" stopColor="#BDBFC2" />
         </linearGradient>
-        <linearGradient id="svgIDi" x1="53.505%" x2="42.746%" y1="99.975%" y2="23.545%">
+        <linearGradient id="linux-svgIDi" x1="53.505%" x2="42.746%" y1="99.975%" y2="23.545%">
           <stop offset="0%" stopColor="#FFEED7" />
           <stop offset="100%" stopColor="#BDBFC2" />
         </linearGradient>
-        <linearGradient id="svgIDj" x1="49.841%" x2="50.241%" y1="13.229%" y2="94.673%">
+        <linearGradient id="linux-svgIDj" x1="49.841%" x2="50.241%" y1="13.229%" y2="94.673%">
           <stop offset="0%" stopColor="#FFF" stop-opacity=".8" />
           <stop offset="100%" stopColor="#FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="svgIDk" x1="49.927%" x2="50.727%" y1="37.327%" y2="92.782%">
+        <linearGradient id="linux-svgIDk" x1="49.927%" x2="50.727%" y1="37.327%" y2="92.782%">
           <stop offset="0%" stopColor="#FFF" stop-opacity=".65" />
           <stop offset="100%" stopColor="#FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="svgIDl" x1="49.876%" x2="49.876%" y1="2.299%" y2="81.204%">
+        <linearGradient id="linux-svgIDl" x1="49.876%" x2="49.876%" y1="2.299%" y2="81.204%">
           <stop offset="0%" stopColor="#FFF" stop-opacity=".65" />
           <stop offset="100%" stopColor="#FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="svgIDm" x1="49.833%" x2="49.824%" y1="2.272%" y2="71.799%">
+        <linearGradient id="linux-svgIDm" x1="49.833%" x2="49.824%" y1="2.272%" y2="71.799%">
           <stop offset="0%" stopColor="#FFF" stop-opacity=".65" />
           <stop offset="100%" stopColor="#FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="svgIDn" x1="53.467%" x2="38.949%" y1="48.921%" y2="98.1%">
+        <linearGradient id="linux-svgIDn" x1="53.467%" x2="38.949%" y1="48.921%" y2="98.1%">
           <stop offset="0%" stopColor="#FFA63F" />
           <stop offset="100%" stopColor="#FF0" />
         </linearGradient>
-        <linearGradient id="svgIDo" x1="52.373%" x2="47.579%" y1="143.009%" y2="-64.622%">
+        <linearGradient id="linux-svgIDo" x1="52.373%" x2="47.579%" y1="143.009%" y2="-64.622%">
           <stop offset="0%" stopColor="#FFEED7" />
           <stop offset="100%" stopColor="#BDBFC2" />
         </linearGradient>
-        <linearGradient id="svgIDp" x1="30.581%" x2="65.887%" y1="34.024%" y2="89.175%">
+        <linearGradient id="linux-svgIDp" x1="30.581%" x2="65.887%" y1="34.024%" y2="89.175%">
           <stop offset="0%" stopColor="#FFA63F" />
           <stop offset="100%" stopColor="#FF0" />
         </linearGradient>
-        <linearGradient id="svgIDq" x1="59.572%" x2="48.361%" y1="-17.216%" y2="66.118%">
+        <linearGradient id="linux-svgIDq" x1="59.572%" x2="48.361%" y1="-17.216%" y2="66.118%">
           <stop offset="0%" stopColor="#FFF" stop-opacity=".65" />
           <stop offset="100%" stopColor="#FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="svgIDr" x1="47.769%" x2="51.373%" y1="1.565%" y2="104.313%">
+        <linearGradient id="linux-svgIDr" x1="47.769%" x2="51.373%" y1="1.565%" y2="104.313%">
           <stop offset="0%" stopColor="#FFF" stop-opacity=".65" />
           <stop offset="100%" stopColor="#FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="svgIDs" x1="43.55%" x2="57.114%" y1="4.533%" y2="92.827%">
+        <linearGradient id="linux-svgIDs" x1="43.55%" x2="57.114%" y1="4.533%" y2="92.827%">
           <stop offset="0%" stopColor="#FFF" stop-opacity=".65" />
           <stop offset="100%" stopColor="#FFF" stop-opacity="0" />
         </linearGradient>
-        <linearGradient id="svgIDt" x1="49.733%" x2="50.558%" y1="17.609%" y2="99.385%">
+        <linearGradient id="linux-svgIDt" x1="49.733%" x2="50.558%" y1="17.609%" y2="99.385%">
           <stop offset="0%" stopColor="#FFA63F" />
           <stop offset="100%" stopColor="#FF0" />
         </linearGradient>
-        <linearGradient id="svgIDu" x1="50.17%" x2="49.68%" y1="2.89%" y2="94.17%">
+        <linearGradient id="linux-svgIDu" x1="50.17%" x2="49.68%" y1="2.89%" y2="94.17%">
           <stop offset="0%" stopColor="#FFF" stop-opacity=".65" />
           <stop offset="100%" stopColor="#FFF" stop-opacity="0" />
         </linearGradient>
-        <filter id="svgIDa" width="200%" height="200%" x="-50%" y="-50%" filterUnits="objectBoundingBox">
+        <filter id="linux-svgIDa" width="200%" height="200%" x="-50%" y="-50%" filterUnits="objectBoundingBox">
           <feOffset in="SourceAlpha" result="shadowOffsetOuter1" />
           <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="6.5" />
         </filter>
@@ -397,7 +397,7 @@ export function Linux({ className }: { className: string }) {
           fill="#000"
           fill-opacity=".2"
           d="M235.125 249.359c0 17.355-52.617 31.497-117.54 31.497S.044 266.806.044 249.359c0-17.356 52.618-31.498 117.54-31.498c64.924 0 117.45 14.142 117.541 31.498Z"
-          filter="url(#svgIDa)"
+          filter="url(#linux-svgIDa)"
           transform="translate(10)"
         />
         <path
@@ -405,7 +405,7 @@ export function Linux({ className }: { className: string }) {
           d="M63.213 215.474c-11.387-16.346-13.591-69.606 12.947-102.39C89.292 97.383 92.69 86.455 93.7 71.67c.734-16.805-11.846-66.851 35.537-70.616c48.027-3.857 45.364 43.526 45.088 68.596c-.183 21.12 15.52 33.15 26.355 49.68c19.927 30.303 18.274 82.461-3.765 110.745c-27.916 35.354-51.791 20.018-67.678 21.304c-29.752 1.745-30.762 17.54-66.024-35.905Z"
         />
         <path
-          fill="url(#svgIDb)"
+          fill="url(#linux-svgIDb)"
           d="M169.1 122.451c8.265 7.622 29.661 41.69-4.224 62.995c-11.937 7.438 10.653 35.721 21.488 22.039c19.193-24.61 6.98-63.913-4.591-77.963c-7.714-9.917-19.651-13.774-12.672-7.07Z"
           transform="translate(10)"
         />
@@ -416,17 +416,17 @@ export function Linux({ className }: { className: string }) {
           d="M176.805 117.86c13.59 11.02 38.292 49.587 2.204 74.748c-11.846 7.806 10.468 32.508 23.049 19.927c43.618-43.894-1.102-94.308-16.53-111.664c-13.774-15.151-25.987 3.49-8.723 16.989Z"
         />
         <path
-          fill="url(#svgIDc)"
+          fill="url(#linux-svgIDc)"
           d="M147.245 25.02c-.459 12.581-14.325 23.51-30.946 24.52c-16.621 1.01-29.66-8.54-29.202-21.121c.46-12.581 14.326-23.509 30.947-24.519c16.62-.918 29.66 8.54 29.201 21.12Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDd)"
+          fill="url(#linux-svgIDd)"
           d="M107.483 54.957c.46 8.173-3.397 15.06-8.723 15.335c-5.326.276-10.01-6.06-10.469-14.233c-.459-8.173 3.398-15.06 8.724-15.335c5.326-.276 10.01 6.06 10.468 14.233Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDe)"
+          fill="url(#linux-svgIDe)"
           d="M117.125 55.6c.184 9.458 6.337 16.988 13.683 16.805c7.346-.184 13.131-7.99 12.948-17.54c-.184-9.458-6.336-16.988-13.683-16.804c-7.346.183-13.223 8.08-12.948 17.539Z"
           transform="translate(10)"
         />
@@ -435,22 +435,22 @@ export function Linux({ className }: { className: string }) {
           d="M133.186 57.712c-.092 5.234 2.48 9.458 5.877 9.458c3.306 0 6.153-4.224 6.245-9.366c.091-5.234-2.48-9.459-5.878-9.459c-3.397 0-6.152 4.225-6.244 9.367Zm-21.212.092c.459 4.316-1.194 7.989-3.582 8.356c-2.387.276-4.683-2.938-5.142-7.254c-.46-4.316 1.194-7.99 3.581-8.357c2.388-.275 4.684 2.939 5.143 7.255Z"
         />
         <path
-          fill="url(#svgIDf)"
+          fill="url(#linux-svgIDf)"
           d="M124.564 54.773c-.276 2.939 1.102 5.326 3.03 5.51c1.928.184 3.765-2.112 4.04-4.959c.276-2.938-1.102-5.326-3.03-5.51c-1.928-.183-3.765 2.113-4.04 4.96Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDg)"
+          fill="url(#linux-svgIDg)"
           d="M99.953 55.508c.276 2.388-.734 4.5-2.203 4.683c-1.47.184-2.847-1.653-3.123-4.132c-.275-2.388.735-4.5 2.204-4.683c1.47-.184 2.847 1.744 3.122 4.132Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDh)"
+          fill="url(#linux-svgIDh)"
           d="M71.027 145.684c6.52-14.785 20.386-40.772 20.662-60.883c0-15.978 47.843-19.835 51.7-3.856c3.856 15.978 13.59 39.853 19.834 51.424c6.245 11.478 24.335 48.118 5.051 80.074c-17.356 28.284-69.973 50.69-98.073-3.856c-9.55-18.917-7.806-42.333.826-62.903Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDi)"
+          fill="url(#linux-svgIDi)"
           d="M65.15 134.664c-5.601 10.56-17.172 38.293 11.112 53.445c30.395 16.162 30.303 49.312-6.245 33.517c-33.425-14.233-18.641-71.902-9.274-85.676c6.06-9.642 15.243-21.488 4.407-1.286Z"
           transform="translate(10)"
         />
@@ -461,51 +461,51 @@ export function Linux({ className }: { className: string }) {
           d="M79.925 122.727c-8.907 14.509-30.211 48.669-1.652 66.484c38.384 23.6 27.548 47.108-7.53 25.895c-49.404-29.568-5.97-89.257 13.774-112.03c22.59-25.529 4.316 4.683-4.592 19.65Z"
         />
         <path
-          fill="url(#svgIDj)"
+          fill="url(#linux-svgIDj)"
           d="M156.428 151.285c0 16.162-15.519 37.1-42.15 36.916c-27.456.183-39.118-20.754-39.118-36.916c0-16.161 18.182-29.293 40.588-29.293c22.498.092 40.68 13.132 40.68 29.293Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDk)"
+          fill="url(#linux-svgIDk)"
           d="M141.92 100.504c-.276 16.713-11.204 20.662-24.978 20.662c-13.775 0-23.784-2.48-24.978-20.662c0-11.387 11.203-17.998 24.978-17.998c13.774-.092 24.977 6.52 24.977 17.998Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDl)"
+          fill="url(#linux-svgIDl)"
           d="M58.63 126.216c9-13.682 28.008-34.711 3.582 2.939c-19.835 31.038-7.346 50.965-.918 56.474c18.549 16.53 17.814 27.64 3.214 18.917c-31.314-18.641-24.794-50.047-5.878-78.33Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDm)"
+          fill="url(#linux-svgIDm)"
           d="M188.936 131.818c-7.806-16.07-32.6-56.842 1.193-9.459c30.763 42.884 9.183 72.729 5.326 75.667c-3.856 2.939-16.804 8.908-13.04-1.469c3.858-10.377 22.958-30.028 6.52-64.74Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDn)"
+          fill="url(#linux-svgIDn)"
           stroke="#E68C3F"
           stroke-width="6.25"
           d="M51.835 258.542c-20.57-10.928-50.414 2.112-39.578-27.457c2.204-6.704-3.214-16.805.275-23.325c4.133-7.989 13.04-6.244 18.366-11.57c5.234-5.51 8.54-15.06 18.366-13.59c9.734 1.468 16.254 13.406 23.049 28.099c5.05 10.468 22.865 25.253 21.672 37.007c-1.47 17.998-21.948 21.396-42.15 10.836Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDo)"
+          fill="url(#linux-svgIDo)"
           d="M201.608 189.119c-3.122 5.877-16.162 15.335-24.886 12.856c-8.815-2.388-12.856-15.795-11.111-25.988c1.653-11.386 11.111-12.03 23.05-6.336c12.855 6.336 16.712 11.662 12.947 19.468Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDp)"
+          fill="url(#linux-svgIDp)"
           stroke="#E68C3F"
           stroke-width="6.251"
           d="M194.445 253.49c15.06-18.273 48.578-14.508 25.988-39.577c-4.775-5.418-3.306-16.989-9.183-21.947c-6.887-6.061-14.509-1.102-21.488-4.224c-6.979-3.398-14.325-9.918-22.865-5.327c-8.54 4.684-9.459 16.805-10.285 32.783c-.735 11.479-11.203 30.671-5.602 41.231c8.081 16.346 29.11 14.142 43.435-2.938Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDq)"
+          fill="url(#linux-svgIDq)"
           d="M187.925 229.064c23.325-34.435 5.97-34.16.092-36.823c-5.877-2.755-12.03-8.173-18.916-4.408c-6.888 3.857-7.255 13.775-7.439 26.814c-.275 9.367-8.08 25.07-3.397 33.793c5.693 10.193 19.467-4.591 29.66-19.376Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDr)"
+          fill="url(#linux-svgIDr)"
           d="M47.06 234.023c-34.895-22.59-18.55-30.303-13.315-33.885c6.336-4.591 6.428-13.407 14.233-12.58c7.806.826 12.397 10.468 17.631 22.406c3.857 8.54 17.264 19.927 16.254 29.753c-1.285 11.57-19.743 3.948-34.803-5.694Z"
           transform="translate(10)"
         />
@@ -514,12 +514,12 @@ export function Linux({ className }: { className: string }) {
           d="M209.588 188.843c-2.755 4.776-13.958 12.306-21.396 10.285c-7.622-1.928-11.112-12.672-9.55-20.753c1.377-9.183 9.55-9.642 19.834-5.05c10.928 4.958 14.326 9.182 11.112 15.518Z"
         />
         <path
-          fill="url(#svgIDs)"
+          fill="url(#linux-svgIDs)"
           d="M192.058 186.18c-1.745 3.306-9.091 8.54-14.234 7.163c-5.142-1.377-7.713-8.815-6.887-14.417c.735-6.336 6.244-6.704 13.223-3.581c7.53 3.49 9.918 6.428 7.898 10.835Z"
           transform="translate(10)"
         />
         <path
-          fill="url(#svgIDt)"
+          fill="url(#linux-svgIDt)"
           stroke="#E68C3F"
           stroke-width="3.75"
           d="M97.107 66.344c3.673-3.398 12.58-13.774 29.477-2.939c3.122 2.02 5.693 2.204 11.662 4.775c12.03 4.96 6.336 16.897-6.52 20.937c-5.51 1.745-10.468 8.449-20.386 7.806c-8.54-.46-10.744-6.06-15.978-9.091c-9.275-5.234-10.652-12.305-5.602-16.07c5.051-3.765 6.98-5.143 7.347-5.418Z"
@@ -527,7 +527,7 @@ export function Linux({ className }: { className: string }) {
         />
         <path stroke="#E68C3F" stroke-width="2.5" d="M148.43 75.986c-5.05.275-15.979 11.203-27.457 11.203c-11.479 0-18.366-10.652-20.11-10.652" />
         <path
-          fill="url(#svgIDu)"
+          fill="url(#linux-svgIDu)"
           d="M102.8 65.426c1.837-1.653 7.622-6.153 15.244-1.562c1.653.919 3.306 1.929 5.693 3.306c4.867 2.847 2.48 6.98-3.398 9.55c-2.663 1.102-7.07 3.49-10.376 3.306c-3.673-.367-6.153-2.755-8.54-4.316c-4.5-2.938-4.224-5.418-2.112-7.346c1.56-1.47 3.305-2.847 3.49-2.938Z"
           transform="translate(10)"
         />
@@ -651,11 +651,11 @@ export function Insomnia({ className }: { className?: string }) {
       />
       <path
         d="M17.181,5.61c6.29,0 11.39,5.1 11.39,11.39c0,6.291 -5.1,11.39 -11.39,11.39c-6.291,0 -11.39,-5.099 -11.39,-11.39c0,-1.537 0.305,-3.004 0.857,-4.342c0.806,1.098 2.106,1.811 3.572,1.811c2.447,0 4.43,-1.983 4.43,-4.429c0,-1.467 -0.713,-2.767 -1.811,-3.573c1.338,-0.552 2.804,-0.857 4.342,-0.857Z"
-        style={{ fill: 'url(#_Linear1)' }}
+        style={{ fill: 'url(#insomnia-_Linear1)' }}
       />
       <defs>
         <linearGradient
-          id="_Linear1"
+          id="insomnia-_Linear1"
           x1="0"
           y1="0"
           x2="1"
@@ -682,7 +682,7 @@ export function DuckDuckGo({ className }: { className?: string }) {
       className={className}
     >
       <defs>
-        <linearGradient id="svgIDa" x1="71.005%" x2="0%" y1="100%" y2="100%">
+        <linearGradient id="ddg-svgIDa" x1="71.005%" x2="0%" y1="100%" y2="100%">
           <stop offset="0%" stopColor="#394A9F" />
           <stop offset="100%" stopColor="#6176B9" />
         </linearGradient>
@@ -720,7 +720,7 @@ export function DuckDuckGo({ className }: { className?: string }) {
         d="M154.124 101.049c-.975 0-1.78.807-1.78 1.79c0 .996.805 1.789 1.78 1.789a1.773 1.773 0 0 0 1.797-1.789c0-.983-.78-1.79-1.797-1.79"
       />
       <path
-        fill="url(#svgIDa)"
+        fill="url(#ddg-svgIDa)"
         d="M33.586 44.601s-4.065-5.363-12.413-1.945c-8.339 3.417-5.21 10.39-5.21 10.39s-.217-3.783 5.667-7.483c5.894-3.704 11.956-.962 11.956-.962m49.105-5.688c-8.885-1.468-10.051 5.85-10.051 5.85s1.892-3.07 8.84-3.161c3.381-.042 7.738 2.447 7.738 2.447s-1.71-4.335-6.527-5.136"
         transform="translate(66 42)"
       />
@@ -771,13 +771,13 @@ export function Telegram({ className }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 256" className={className}>
       <defs>
-        <linearGradient id="telegram-a" x1="50%" x2="50%" y1="0%" y2="100%">
+        <linearGradient id="telegram-telegram-a" x1="50%" x2="50%" y1="0%" y2="100%">
           <stop offset="0%" stopColor="#2AABEE" />
           <stop offset="100%" stopColor="#229ED9" />
         </linearGradient>
       </defs>
       <path
-        fill="url(#telegram-a)"
+        fill="url(#telegram-telegram-a)"
         d="M128 0C94.06 0 61.48 13.494 37.5 37.49A128.038 128.038 0 0 0 0 128c0 33.934 13.5 66.514 37.5 90.51C61.48 242.506 94.06 256 128 256s66.52-13.494 90.5-37.49c24-23.996 37.5-56.576 37.5-90.51c0-33.934-13.5-66.514-37.5-90.51C194.52 13.494 161.94 0 128 0Z"
       />
       <path
