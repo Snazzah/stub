@@ -292,6 +292,18 @@ export const handleDeviceEdgeCases = (ua: string): string => {
     return 'DuckDuckGo Bot';
   } else if (ua.includes('MetaInspector')) {
     return 'MetaTags Bot';
+  } else if (ua.includes('CensysInspect')) {
+    return 'Censys Bot';
+  } else if (ua.includes('CheckMarkNetwork')) {
+    return 'CheckMarkNetwork Bot';
+  } else if (ua.includes('python-requests') || ua.includes('aiohttp')) {
+    return 'Python Request';
+  } else if (ua.includes('Apache-HttpClient')) {
+    return 'Java Request';
+  } else if (ua.includes('sindresorhus/got') || ua.includes('axios')) {
+    return 'Node.js Request';
+  } else if (ua.includes('Go-http-client')) {
+    return 'Go Request';
   } else {
     return 'Unknown';
   }
