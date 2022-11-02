@@ -20,7 +20,7 @@ export function getGeo(ip?: string): IpGeo {
     };
 
   return {
-    city: lookup.city?.names.en ?? 'Unknown',
+    city: lookup.city?.names.en ?? lookup?.country?.names.en ?? 'Unknown',
     region: lookup.subdivisions?.[0]?.iso_code ?? lookup?.country?.names.en ?? 'Unknown',
     country: lookup.country?.iso_code ?? 'Unknown'
   };
