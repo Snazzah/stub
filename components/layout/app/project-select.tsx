@@ -101,7 +101,7 @@ function ProjectList({
           className={`relative flex items-center space-x-2 p-2 rounded-md w-full hover:bg-gray-100 active:bg-gray-200 ${
             selected.slug === slug ? 'font-medium' : ''
           } transition-all duration-75`}
-          onClick={() => router.push(`/${slug}`)}
+          onClick={() => router.push(`/p/${slug}`)}
         >
           <BlurImage
             src={`https://www.google.com/s2/favicons?sz=64&domain_url=${domain}`}
