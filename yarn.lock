@@ -3089,14 +3089,14 @@ gauge@^3.0.0:
     strip-ansi "^6.0.1"
     wide-align "^1.1.2"
 
-geolite2-redist@3.0.3:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/geolite2-redist/-/geolite2-redist-3.0.3.tgz#b4298c38a5e2b2747580e58c3d0ce5d9133c9554"
-  integrity sha512-BDIiWWsr45f9mQvIsBfgHPbP0MuxjaQKFN+hVCoa4kDVJ7up5tWtXF5XGTyAqv5BRiRvFYhRz1+QA9nxHiHQRQ==
+geolite2-redist@3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/geolite2-redist/-/geolite2-redist-3.0.4.tgz#9529b5084bc7cb3fe0a3347f3bd81d225d0e616a"
+  integrity sha512-obWlTe52dZVMapX3vluSLrXcvbgVBt6fjFu3bcv5iHLTqBuC//dsHqZsKwR3uDpYRx/fM8N+croxHzBn+N/uWQ==
   dependencies:
-    got "^12.4.1"
+    got "^12.5.2"
     rimraf "^3.0.2"
-    tar "^6.1.11"
+    tar "^6.1.12"
 
 get-caller-file@^2.0.5:
   version "2.0.5"
@@ -3196,7 +3196,7 @@ globby@^11.1.0:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
-got@^12.4.1:
+got@^12.5.2:
   version "12.5.2"
   resolved "https://registry.yarnpkg.com/got/-/got-12.5.2.tgz#2c1b390918961cf50e61cb02d2085ba203d0df45"
   integrity sha512-guHGMSEcsA5m1oPRweXUJnug0vuvlkX9wx5hzOka+ZBrBUOJHU0Z1JcNu3QE5IPGnA5aXUsQHdWOD4eJg9/v3A==
@@ -5631,6 +5631,18 @@ tar@^6.1.11:
   version "6.1.11"
   resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.11.tgz#6760a38f003afa1b2ffd0ffe9e9abbd0eab3d621"
   integrity sha512-an/KZQzQUkZCkuoAA64hM92X0Urb6VpRhAFllDzz44U2mcD5scmT3zBc4VgVpkugF580+DQn8eAFSyoQt0tznA==
+  dependencies:
+    chownr "^2.0.0"
+    fs-minipass "^2.0.0"
+    minipass "^3.0.0"
+    minizlib "^2.1.1"
+    mkdirp "^1.0.3"
+    yallist "^4.0.0"
+
+tar@^6.1.12:
+  version "6.1.12"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.12.tgz#3b742fb05669b55671fb769ab67a7791ea1a62e6"
+  integrity sha512-jU4TdemS31uABHd+Lt5WEYJuzn+TJTCBLljvIAHZOz6M9Os5pJ4dD+vRFLxPa/n3T0iEFzpi+0x1UfuDZYbRMw==
   dependencies:
     chownr "^2.0.0"
     fs-minipass "^2.0.0"
