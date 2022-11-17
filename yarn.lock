@@ -3726,10 +3726,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-mailing-core@0.8.17, mailing-core@^0.8.17:
-  version "0.8.17"
-  resolved "https://registry.yarnpkg.com/mailing-core/-/mailing-core-0.8.17.tgz#43e460102db9d0e712df3dd631118353ee35760f"
-  integrity sha512-BtTJHc4uxZe4H1KKzGs9KGvFnf+HPfiED8gN4nE0g35QK4+LDOz5qx/XpleOKPIAiHBwlY7KPZHrVPdTa3ul9A==
+mailing-core@0.8.18, mailing-core@^0.8.18:
+  version "0.8.18"
+  resolved "https://registry.yarnpkg.com/mailing-core/-/mailing-core-0.8.18.tgz#769d2dc58ecf11febb45fc8d90c6c2ee3c1969e3"
+  integrity sha512-56Rb9x2sJfLzEBKMk6iKCQUL31/c3FrnMXqmFcOfI4mIKiiZQ6kl+r8X6ehRT2gfjRP5+DJYfs4rPjTFXoHlQw==
   dependencies:
     chalk "^4.1.2"
     fs-extra "^10.1.0"
@@ -3740,10 +3740,10 @@ mailing-core@0.8.17, mailing-core@^0.8.17:
     open "^8.4.0"
     posthog-node "^2.0.2"
 
-mailing@0.8.17:
-  version "0.8.17"
-  resolved "https://registry.yarnpkg.com/mailing/-/mailing-0.8.17.tgz#ea39fc7ec2db1347619b0c2193e53a98657c24bd"
-  integrity sha512-gypXo93vnXc0ivgtr/vTV823d3O3LglmPXpPrPgZYig+BoQo8pUpbEsqiOJo//5efKSmxeZEv0ceO12rFnzZHA==
+mailing@0.8.18:
+  version "0.8.18"
+  resolved "https://registry.yarnpkg.com/mailing/-/mailing-0.8.18.tgz#2a03b59392ed0f20a8d6604237571456bf86cbfe"
+  integrity sha512-SBInhlexJnXp61/XslezPOivnQsgpcyceeZ+psxp9or9FO258CZqNFd5hlPpD+OlDF97bGgSrICs2HLtWnK4Rg==
   dependencies:
     "@babel/parser" "^7.18.11"
     "@prisma/client" "^4.4.0"
@@ -3774,7 +3774,7 @@ mailing@0.8.17:
     html-minifier-terser "^7.0.0"
     iron-session "^6.2.1"
     lodash "^4.17.21"
-    mailing-core "^0.8.17"
+    mailing-core "^0.8.18"
     mjml "^4.12.0"
     mjml-react "^2.0.7"
     node-fetch "^2.6.7"
