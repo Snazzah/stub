@@ -13,10 +13,10 @@ export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse,
   if (req.method === 'GET') {
     const { id: projectId } = project;
     const users = await prisma.projectUsers.findMany({
-      where: { projectId },
+      where: {
+        projectId
+      },
       select: {
-        role: true,
-        createdAt: true,
         user: {
           select: {
             id: true,
@@ -24,10 +24,16 @@ export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse,
             email: true,
             image: true
           }
-        }
+        },
+        createdAt: true
       }
     });
-    return res.status(200).json(users);
+    return res.status(200).json(
+      users.map((u) => ({
+        ...u.user,
+        joinedAt: u.createdAt
+      }))
+    );
   } else {
     res.setHeader('Allow', ['GET']);
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });

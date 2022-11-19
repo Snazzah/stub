@@ -103,13 +103,7 @@ function ProjectList({
           } transition-all duration-75`}
           onClick={() => router.push(`/p/${slug}`)}
         >
-          <BlurImage
-            src={getFaviconFromDomain(domain)}
-            alt={slug}
-            className="w-7 h-7 rounded-full overflow-hidden"
-            width={48}
-            height={48}
-          />
+          <BlurImage src={getFaviconFromDomain(domain)} alt={slug} className="w-7 h-7 rounded-full overflow-hidden" width={48} height={48} />
           <span className={`block truncate text-sm ${selected.slug === slug ? 'font-medium' : 'font-normal'}`}>{name}</span>
           {selected.slug === slug ? (
             <span className="absolute inset-y-0 right-0 flex items-center pr-3 text-black">

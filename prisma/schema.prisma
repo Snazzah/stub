@@ -97,6 +97,7 @@ model ProjectUsers {
 
   @@unique([userId, projectId])
 }
+
 model Link {
   id              String    @id @default(cuid())
   domain          String    // domain of the link (e.g. dub.sh) – also stored on Redis

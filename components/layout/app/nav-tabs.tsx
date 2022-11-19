@@ -44,7 +44,10 @@ export default function NavTabs() {
         <Link key={href} href={href}>
           <a
             className={`border-b-2 p-1 ${
-              router.asPath.split('?')[0] === href ? 'border-black text-black' : 'border-transparent text-gray-600 hover:text-black'
+              // hacky approach to getting the current tab – will replace with useSelectedLayoutSegments when upgrading to Next.js 13
+              router.asPath.split('?')[0].split('/').slice(0, 3).join('/') === href
+                ? 'border-black text-black'
+                : 'border-transparent text-gray-600 hover:text-black'
             }`}
           >
             <div className="rounded-md px-3 py-2 hover:bg-gray-100 active:bg-gray-200 transition-all duration-75">

@@ -58,7 +58,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
   const expired = expiresAt && new Date() > new Date(expiresAt);
 
   return (
-    <div className="relative bg-white p-3 pr-1 sm:p-4 rounded-lg shadow hover:shadow-md transition-all">
+    <div className="relative rounded-lg border border-gray-100 bg-white p-3 pr-1 shadow transition-all hover:shadow-md sm:p-4">
       <LinkQRModal />
       <AddEditLinkModal />
       <ArchiveLinkModal />
@@ -70,9 +70,7 @@ export default function LinkCard({ props }: { props: LinkProps }) {
       <li className="relative flex justify-between items-center">
         <div className="relative flex items-center space-x-2 sm:space-x-4 shrink">
           <BlurImage
-          
-          src={getFaviconFromDomain(apexDomain)}
-            src={`https://www.google.com/s2/favicons?sz=64&domain_url=${apexDomain}`}
+            src={getFaviconFromDomain(apexDomain)}
             alt={apexDomain}
             className="w-8 h-8 sm:w-10 sm:h-10 rounded-full"
             width={20}

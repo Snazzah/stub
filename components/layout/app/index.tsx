@@ -14,7 +14,7 @@ const NavTabs = dynamic(() => import('./nav-tabs'), {
   loading: () => <div className="w-full h-12 -mb-0.5" />
 }); // dynamic import to avoid react hydration mismatch error
 
-export default function AppLayout({ children, pageTitle }: { children: ReactNode; pageTitle?: string }) {
+export default function AppLayout({ children, pageTitle, bgWhite }: { children: ReactNode; pageTitle?: string; bgWhite?: boolean }) {
   const router = useRouter();
   const { slug, key } = router.query as {
     slug?: string;
@@ -24,7 +24,7 @@ export default function AppLayout({ children, pageTitle }: { children: ReactNode
   return (
     <div>
       <Meta pageTitle={pageTitle} />
-      <div className="min-h-screen w-full bg-gray-50">
+      <div className={`min-h-screen w-full ${bgWhite ? 'bg-white' : 'bg-gray-50'}`}>
         <div className="sticky top-0 left-0 right-0 border-b bg-white border-gray-200 z-30">
           <div className="flex flex-col gap-3 pt-3 max-w-screen-xl mx-auto px-5 md:px-20">
             <div className="h-10 flex justify-between items-center">

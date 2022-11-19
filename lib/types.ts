@@ -76,7 +76,9 @@ export interface UserProps {
   id: string;
   name: string;
   email: string;
+  image?: string;
   stripeId: string;
   usageLimit: number;
+  joinedAt?: Date;
   projects?: { projectId: string }[];
 }
