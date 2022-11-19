@@ -16,7 +16,7 @@ import Popover from '@/components/shared/popover';
 import Tooltip from '@/components/shared/tooltip';
 import useProject from '@/lib/swr/use-project';
 import { LinkProps } from '@/lib/types';
-import { fetcher, getApexDomain, getQueryString, linkConstructor, nFormatter, timeAgo } from '@/lib/utils';
+import { fetcher, getApexDomain, getFaviconFromDomain, getQueryString, linkConstructor, nFormatter, timeAgo } from '@/lib/utils';
 
 export default function LinkCard({ props }: { props: LinkProps }) {
   const { key, url, createdAt, archived, expiresAt } = props;
@@ -70,6 +70,8 @@ export default function LinkCard({ props }: { props: LinkProps }) {
       <li className="relative flex justify-between items-center">
         <div className="relative flex items-center space-x-2 sm:space-x-4 shrink">
           <BlurImage
+          
+          src={getFaviconFromDomain(apexDomain)}
             src={`https://www.google.com/s2/favicons?sz=64&domain_url=${apexDomain}`}
             alt={apexDomain}
             className="w-8 h-8 sm:w-10 sm:h-10 rounded-full"

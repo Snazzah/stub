@@ -9,7 +9,7 @@ import Tooltip from '@/components/shared/tooltip';
 import { getQRAsCanvas, getQRAsSVGDataUri, QRCodeSVG } from '@/lib/qr';
 import useProject from '@/lib/swr/use-project';
 import { SimpleLinkProps } from '@/lib/types';
-import { getApexDomain, linkConstructor } from '@/lib/utils';
+import { getApexDomain, getFaviconFromDomain, linkConstructor } from '@/lib/utils';
 
 function LinkQRModalHelper({
   showLinkQRModal,
@@ -26,7 +26,7 @@ function LinkQRModalHelper({
   const { avatarUrl, apexDomain } = useMemo(() => {
     try {
       const apexDomain = getApexDomain(props.url);
-      return { avatarUrl: `https://www.google.com/s2/favicons?sz=64&domain_url=${apexDomain}`, apexDomain };
+      return { avatarUrl: getFaviconFromDomain(apexDomain), apexDomain };
     } catch (e) {
       return null;
     }

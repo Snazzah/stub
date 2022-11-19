@@ -7,7 +7,7 @@ import LoadingDots from '@/components/shared/icons/loading-dots';
 import Modal from '@/components/shared/modal';
 import useProject from '@/lib/swr/use-project';
 import { LinkProps } from '@/lib/types';
-import { getApexDomain, getQueryString, linkConstructor } from '@/lib/utils';
+import { getApexDomain, getFaviconFromDomain, getQueryString, linkConstructor } from '@/lib/utils';
 
 function ArchiveLinkModal({
   showArchiveLinkModal,
@@ -37,7 +37,7 @@ function ArchiveLinkModal({
       <div className="inline-block w-full sm:max-w-md overflow-hidden align-middle transition-all transform bg-white sm:border sm:border-gray-200 shadow-xl sm:rounded-2xl">
         <div className="flex flex-col justify-center items-center space-y-3 sm:px-16 px-4 pt-8 py-4 border-b border-gray-200">
           <BlurImage
-            src={`https://www.google.com/s2/favicons?sz=64&domain_url=${apexDomain}`}
+            src={getFaviconFromDomain(apexDomain)}
             alt={apexDomain}
             className="w-10 h-10 rounded-full"
             width={20}

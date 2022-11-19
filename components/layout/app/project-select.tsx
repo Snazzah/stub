@@ -8,7 +8,7 @@ import BlurImage from '@/components/shared/blur-image';
 import { ChevronUpDown, PlusCircle, Tick } from '@/components/shared/icons';
 import Popover from '@/components/shared/popover';
 import { ProjectProps } from '@/lib/types';
-import { fetcher } from '@/lib/utils';
+import { fetcher, getFaviconFromDomain } from '@/lib/utils';
 
 export default function ProjectSelect() {
   const { data: projects } = useSWR<ProjectProps[]>('/api/projects', fetcher);
@@ -104,7 +104,7 @@ function ProjectList({
           onClick={() => router.push(`/p/${slug}`)}
         >
           <BlurImage
-            src={`https://www.google.com/s2/favicons?sz=64&domain_url=${domain}`}
+            src={getFaviconFromDomain(domain)}
             alt={slug}
             className="w-7 h-7 rounded-full overflow-hidden"
             width={48}

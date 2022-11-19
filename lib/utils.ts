@@ -197,6 +197,8 @@ export const getQueryString = (router: NextRouter) => {
   return `${queryString ? '?' : ''}${queryString}`;
 };
 
+export const getFaviconFromDomain = (domain: string) => `https://www.google.com/s2/favicons?sz=64&domain_url=${domain}`;
+
 export const validDomainRegex = new RegExp('^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$');
 
 const providerKeyMap: Record<string, string[]> = {
