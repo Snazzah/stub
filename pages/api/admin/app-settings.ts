@@ -1,7 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
 
-import { getSession } from '@/lib/auth';
+import { withUserAuth } from '@/lib/auth';
 import { getAppSettings, setAppSettings } from '@/lib/prisma';
 
 const schema = z.object({
@@ -14,32 +13,32 @@ const schema = z.object({
     .optional()
 });
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const session = await getSession(req, res);
-  if (!session?.user.id || !session?.user?.superadmin) return res.status(401).send({ error: 'Unauthorized' });
+export default withUserAuth(
+  async (req, res) => {
+    // GET /api/admin/app-settings
+    if (req.method === 'GET') {
+      const [appSettings] = await getAppSettings();
+      return res.status(200).json({
+        appId: appSettings.appId,
+        allowNewUsers: appSettings.allowNewUsers,
+        registerEmailFilters: appSettings.registerEmailFilters
+      });
 
-  // GET /api/admin/app-settings
-  if (req.method === 'GET') {
-    const [appSettings] = await getAppSettings();
-    return res.status(200).json({
-      appId: appSettings.appId,
-      allowNewUsers: appSettings.allowNewUsers,
-      registerEmailFilters: appSettings.registerEmailFilters
-    });
+      // PUT /api/admin/app-settings – edit app settings
+    } else if (req.method === 'PUT') {
+      const data = schema.safeParse(req.body);
+      if (data.success === false) return res.status(400).send({ message: 'Schema validation error', data: data.error.format() });
 
-    // PUT /api/admin/app-settings – edit app settings
-  } else if (req.method === 'PUT') {
-    const data = schema.safeParse(req.body);
-    if (data.success === false) return res.status(400).send({ message: 'Schema validation error', data: data.error.format() });
-
-    const appSettings = await setAppSettings(data.data);
-    return res.status(200).json({
-      appId: appSettings.appId,
-      allowNewUsers: appSettings.allowNewUsers,
-      registerEmailFilters: appSettings.registerEmailFilters
-    });
-  } else {
-    res.setHeader('Allow', ['GET', 'PUT']);
-    return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
-  }
-}
+      const appSettings = await setAppSettings(data.data);
+      return res.status(200).json({
+        appId: appSettings.appId,
+        allowNewUsers: appSettings.allowNewUsers,
+        registerEmailFilters: appSettings.registerEmailFilters
+      });
+    } else {
+      res.setHeader('Allow', ['GET', 'PUT']);
+      return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
+    }
+  },
+  { needSuperadmin: true }
+);

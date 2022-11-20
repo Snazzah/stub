@@ -17,13 +17,13 @@ export default function UserFilter() {
   });
   const { userId } = router.query as { userId?: string };
 
-  const currentUser = useMemo(() => members.find((member) => member.user.id === userId) || null, [members, userId]);
+  const currentUser = useMemo(() => members.find((member) => member.id === userId) || null, [members, userId]);
 
   return (
     <Popover
       content={
         <div className="w-full p-2 md:w-56">
-          {members.map(({ user: { id, name, email, image } }) => (
+          {members.map(({ id, name, email, image }) => (
             <button
               key={id}
               onClick={() => {
@@ -55,7 +55,7 @@ export default function UserFilter() {
       >
         <div className="flex w-44 items-center space-x-2 text-gray-700">
           <Search className="h-4 w-4 shrink-0" />
-          <p className="truncate text-sm">{currentUser?.user.name || currentUser?.user.email || 'All Users...'}</p>
+          <p className="truncate text-sm">{currentUser?.name || currentUser?.email || 'All Users...'}</p>
         </div>
         {currentUser ? (
           <div

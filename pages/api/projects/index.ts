@@ -1,13 +1,8 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-
-import { getSession } from '@/lib/auth';
+import { withUserAuth } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 import { validDomainRegex } from '@/lib/utils';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const session = await getSession(req, res);
-  if (!session?.user.id) return res.status(401).send({ error: 'Unauthorized' });
-
+export default withUserAuth(async (req, res, session) => {
   // GET /api/projects – get all projects associated with the authenticated user
   if (req.method === 'GET') {
     const response = await prisma.project.findMany({
@@ -57,4 +52,4 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.setHeader('Allow', ['GET', 'POST']);
     return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
   }
-}
+});

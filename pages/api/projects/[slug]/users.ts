@@ -25,13 +25,15 @@ export default withProjectAuth(async (req: NextApiRequest, res: NextApiResponse,
             image: true
           }
         },
-        createdAt: true
+        createdAt: true,
+        role: true
       }
     });
     return res.status(200).json(
       users.map((u) => ({
         ...u.user,
-        joinedAt: u.createdAt
+        joinedAt: u.createdAt,
+        role: u.role
       }))
     );
   } else {

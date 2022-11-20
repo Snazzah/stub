@@ -16,13 +16,13 @@ export default function LinksContainer({ AddEditLinkButton }: { AddEditLinkButto
     slug: string;
   };
 
-  const { data: links } = useSWR<LinkProps[]>(`/api/projects/${slug}/links${getQueryString(router)}`, fetcher);
+  const { data: links, isValidating } = useSWR<LinkProps[]>(`/api/projects/${slug}/links${getQueryString(router)}`, fetcher);
 
   return (
     <MaxWidthWrapper className="pb-10">
       <LinkFilters />
       <ul className="py-10 grid grid-cols-1 gap-3">
-        {links ? (
+        {links && !isValidating ? (
           links.length > 0 ? (
             links.map((props) => <LinkCard key={props.key} props={props} />)
           ) : (

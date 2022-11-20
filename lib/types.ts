@@ -62,14 +62,12 @@ export interface AdminUserProps {
 }
 
 export interface ProjectUserProps {
+  id: string;
+  name: string;
+  email: string;
+  image?: string;
+  joinedAt: Date;
   role: 'viewer' | 'member' | 'manager' | 'owner';
-  createdAt: string;
-  user: {
-    id: string;
-    name: string;
-    email: string;
-    image?: string;
-  };
 }
 
 export interface UserProps {
@@ -77,8 +75,6 @@ export interface UserProps {
   name: string;
   email: string;
   image?: string;
-  stripeId: string;
-  usageLimit: number;
   joinedAt?: Date;
   projects?: { projectId: string }[];
 }

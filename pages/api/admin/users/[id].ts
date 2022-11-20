@@ -1,7 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { z } from 'zod';
 
-import { getSession } from '@/lib/auth';
+import { getSession, withUserAuth } from '@/lib/auth';
 import prisma from '@/lib/prisma';
 
 const schema = z
@@ -14,59 +13,62 @@ const schema = z
   })
   .strict();
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const session = await getSession(req, res);
-  if (!session?.user.id || !session?.user?.superadmin) return res.status(401).send({ error: 'Unauthorized' });
-  const { id } = req.query;
+export default withUserAuth(
+  async (req, res) => {
+    const session = await getSession(req, res);
+    if (!session?.user.id || !session?.user?.superadmin) return res.status(401).send({ error: 'Unauthorized' });
+    const { id } = req.query;
 
-  // GET /api/admin/users/[id]
-  if (req.method === 'GET') {
-    if (!id || typeof id !== 'string') return res.status(400).json({ error: 'Missing or misconfigured user id' });
+    // GET /api/admin/users/[id]
+    if (req.method === 'GET') {
+      if (!id || typeof id !== 'string') return res.status(400).json({ error: 'Missing or misconfigured user id' });
 
-    const userInfo = await prisma.user.findUnique({
-      where: { id },
-      include: {
-        accounts: {
-          select: {
-            id: true,
-            provider: true,
-            providerAccountId: true
+      const userInfo = await prisma.user.findUnique({
+        where: { id },
+        include: {
+          accounts: {
+            select: {
+              id: true,
+              provider: true,
+              providerAccountId: true
+            }
+          },
+          sessions: {
+            select: { createdAt: true },
+            orderBy: { createdAt: 'desc' },
+            take: 1
           }
-        },
-        sessions: {
-          select: { createdAt: true },
-          orderBy: { createdAt: 'desc' },
-          take: 1
         }
-      }
-    });
+      });
 
-    if (!userInfo) return res.status(404).json({ error: 'User not found' });
+      if (!userInfo) return res.status(404).json({ error: 'User not found' });
 
-    const { sessions, accounts, ...user } = userInfo;
+      const { sessions, accounts, ...user } = userInfo;
 
-    return res.status(200).json({ user, accounts, lastLogin: sessions[0]?.createdAt });
-  } else if (req.method === 'PUT') {
-    // PUT /api/admin/users/[id]
-    if (!id || typeof id !== 'string') return res.status(400).json({ error: 'Missing or misconfigured user id' });
+      return res.status(200).json({ user, accounts, lastLogin: sessions[0]?.createdAt });
+    } else if (req.method === 'PUT') {
+      // PUT /api/admin/users/[id]
+      if (!id || typeof id !== 'string') return res.status(400).json({ error: 'Missing or misconfigured user id' });
 
-    const user = await prisma.user.findUnique({
-      where: { id }
-    });
+      const user = await prisma.user.findUnique({
+        where: { id }
+      });
 
-    if (!user) return res.status(404).json({ error: 'User not found' });
+      if (!user) return res.status(404).json({ error: 'User not found' });
 
-    const data = schema.safeParse(req.body);
-    if (data.success === false) return res.status(400).send({ message: 'Schema validation error', data: data.error.format() });
+      const data = schema.safeParse(req.body);
+      if (data.success === false) return res.status(400).send({ message: 'Schema validation error', data: data.error.format() });
 
-    await prisma.user.update({
-      where: { id: user.id },
-      data: data.data
-    });
+      await prisma.user.update({
+        where: { id: user.id },
+        data: data.data
+      });
 
-    return res.status(200).json({ user });
-  } else {
-    res.setHeader('Allow', ['GET', 'PUT']);
-    return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
-  }
-}
+      return res.status(200).json({ user });
+    } else {
+      res.setHeader('Allow', ['GET', 'PUT']);
+      return res.status(405).json({ error: `Method ${req.method} Not Allowed` });
+    }
+  },
+  { needSuperadmin: true }
+);

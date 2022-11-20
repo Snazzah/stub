@@ -2,11 +2,10 @@ import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
 import useSWR, { mutate } from 'swr';
 
+import { useEditDomainModal } from '@/components/app/modals/edit-domain-modal';
 import { AlertCircleFill, CheckCircleFill, ExternalLink, LoadingDots } from '@/components/shared/icons';
 import useProject from '@/lib/swr/use-project';
 import { fetcher } from '@/lib/utils';
-
-import { useEditDomainModal } from './modals/edit-domain-modal';
 
 export default function CustomDomain() {
   const router = useRouter();

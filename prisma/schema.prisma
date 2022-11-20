@@ -75,13 +75,14 @@ model VerificationToken {
 }
 
 model Project {
-  id        String         @id @default(cuid())
+  id        String          @id @default(cuid())
   name      String
-  slug      String         @unique
-  domain    String         @unique
-  createdAt DateTime       @default(now())
-  updatedAt DateTime       @updatedAt
+  slug      String          @unique
+  domain    String          @unique
+  createdAt DateTime        @default(now())
+  updatedAt DateTime        @updatedAt
   users     ProjectUsers[]
+  invites   ProjectInvite[]
   links     Link[]
 }
 
@@ -96,6 +97,14 @@ model ProjectUsers {
   projectId String
 
   @@unique([userId, projectId])
+}
+model ProjectInvite {
+  email       String
+  expires     DateTime
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId   String
+  createdAt   DateTime @default(now())
+  @@unique([email, projectId])
 }
 
 model Link {
