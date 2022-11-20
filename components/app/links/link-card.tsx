@@ -8,9 +8,9 @@ import { useAddEditLinkModal } from '@/components/app/modals/add-edit-link-modal
 import { useArchiveLinkModal } from '@/components/app/modals/archive-link-modal';
 import { useDeleteLinkModal } from '@/components/app/modals/delete-link-modal';
 import { useLinkQRModal } from '@/components/app/modals/link-qr-modal';
-import IconMenu from '@/components/layout/app/icon-menu';
 import BlurImage from '@/components/shared/blur-image';
 import CopyButton from '@/components/shared/copy-button';
+import IconMenu from '@/components/shared/icon-menu';
 import { Archive, Chart, Delete, Edit, LoadingDots, QR, ThreeDots } from '@/components/shared/icons';
 import Popover from '@/components/shared/popover';
 import Tooltip from '@/components/shared/tooltip';

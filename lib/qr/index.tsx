@@ -386,8 +386,7 @@ function waitUntilImageLoaded(img: HTMLImageElement, src: string) {
     img.loading = 'eager';
   });
 }
-
-export async function getQRAsCanvas(props: QRProps, type: string) {
+export async function getQRAsCanvas(props: QRProps, type: string, getCanvas?: boolean): Promise<HTMLCanvasElement | string> {
   const {
     value,
     size = DEFAULT_SIZE,
@@ -448,6 +447,8 @@ export async function getQRAsCanvas(props: QRProps, type: string) {
       calculatedImageSettings.h
     );
   }
+
+  if (getCanvas) return canvas;
 
   const url = canvas.toDataURL(type, 1.0);
   canvas.remove();

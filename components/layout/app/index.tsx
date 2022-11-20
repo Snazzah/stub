@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 import { Divider, Logo } from '@/components/shared/icons';
 
@@ -24,6 +25,7 @@ export default function AppLayout({ children, pageTitle, bgWhite }: { children: 
   return (
     <div>
       <Meta pageTitle={pageTitle} />
+      <Toaster />
       <div className={`min-h-screen w-full ${bgWhite ? 'bg-white' : 'bg-gray-50'}`}>
         <div className="sticky top-0 left-0 right-0 border-b bg-white border-gray-200 z-30">
           <div className="flex flex-col gap-3 pt-3 max-w-screen-xl mx-auto px-5 md:px-20">

@@ -6,7 +6,7 @@ import { Logout, SuperAdmin } from '@/components/shared/icons';
 import Popover from '@/components/shared/popover';
 import Tooltip from '@/components/shared/tooltip';
 
-import IconMenu from './icon-menu';
+import IconMenu from '../../shared/icon-menu';
 
 export default function UserDropdown() {
   const { data: session } = useSession();

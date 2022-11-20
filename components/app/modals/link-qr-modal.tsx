@@ -1,9 +1,12 @@
 import { Dispatch, SetStateAction, useCallback, useMemo, useRef, useState } from 'react';
 import { HexColorInput, HexColorPicker } from 'react-colorful';
+import toast from 'react-hot-toast';
 
 import BlurImage from '@/components/shared/blur-image';
-import { ChevronRight, Download, Logo } from '@/components/shared/icons';
+import IconMenu from '@/components/shared/icon-menu';
+import { ChevronRight, Clipboard, Download, Logo, Photo } from '@/components/shared/icons';
 import Modal from '@/components/shared/modal';
+import Popover from '@/components/shared/popover';
 import Switch from '@/components/shared/switch';
 import Tooltip from '@/components/shared/tooltip';
 import { getQRAsCanvas, getQRAsSVGDataUri, QRCodeSVG } from '@/lib/qr';
@@ -52,6 +55,14 @@ function LinkQRModalHelper({
     })
   });
 
+  const copyToClipboard = async () => {
+    const canvas = await getQRAsCanvas(qrData, 'image/png', true);
+    (canvas as HTMLCanvasElement).toBlob(async function (blob) {
+      const item = new ClipboardItem({ 'image/png': blob });
+      await navigator.clipboard.write([item]);
+    });
+  };
+
   function download(url: string, extension: string) {
     if (!anchorRef.current) return;
     anchorRef.current.href = url;
@@ -92,25 +103,20 @@ function LinkQRModalHelper({
 
           <AdvancedSettings qrData={qrData} setQrData={setQrData} setShowLogo={setShowLogo} />
 
-          <div className="flex gap-2 sm:px-16 px-4">
+          <div className="grid grid-cols-2 gap-2 px-4 sm:px-16">
             <button
-              onClick={() => download(getQRAsSVGDataUri({ value: qrDestUrl, ...qrData }), 'svg')}
-              className="py-1.5 px-5 bg-black hover:bg-white rounded-md border border-black text-sm text-white hover:text-black transition-all w-full flex items-center gap-2 justify-center"
+              onClick={async () => {
+                toast.promise(copyToClipboard(), {
+                  loading: 'Copying...',
+                  success: 'Copied!',
+                  error: 'Failed to copy'
+                });
+              }}
+              className="flex items-center justify-center gap-2 rounded-md border border-black bg-black py-1.5 px-5 text-sm text-white transition-all hover:bg-white hover:text-black"
             >
-              <Download /> SVG
+              <Clipboard className="h-4 w-4" /> Copy
             </button>
-            <button
-              onClick={async () => download(await getQRAsCanvas({ value: qrDestUrl, ...qrData }, 'image/png'), 'png')}
-              className="py-1.5 px-5 bg-black hover:bg-white rounded-md border border-black text-sm text-white hover:text-black transition-all w-full flex items-center gap-2 justify-center"
-            >
-              <Download /> PNG
-            </button>
-            <button
-              onClick={async () => download(await getQRAsCanvas({ value: qrDestUrl, ...qrData }, 'image/jpeg'), 'jpg')}
-              className="py-1.5 px-5 bg-black hover:bg-white rounded-md border border-black text-sm text-white hover:text-black transition-all w-full flex items-center gap-2 justify-center"
-            >
-              <Download /> JPEG
-            </button>
+            <QrDropdown download={download} qrData={qrData} qrDestUrl={qrDestUrl} />
           </div>
 
           {/* This will be used to prompt downloads. */}
@@ -120,6 +126,7 @@ function LinkQRModalHelper({
     </Modal>
   );
 }
+
 function AdvancedSettings({ qrData, setQrData, setShowLogo }) {
   const [expanded, setExpanded] = useState(false);
 
@@ -189,6 +196,53 @@ function AdvancedSettings({ qrData, setQrData, setShowLogo }) {
         </div>
       )}
     </div>
+  );
+}
+
+function QrDropdown({ download, qrData, qrDestUrl }) {
+  const [openPopover, setOpenPopover] = useState(false);
+  return (
+    <>
+      <Popover
+        content={
+          <div className="grid w-full gap-1 p-2 sm:w-40">
+            <button
+              onClick={() => download(getQRAsSVGDataUri({ value: qrDestUrl, ...qrData }), 'svg')}
+              className="w-full rounded-md p-2 text-left text-sm font-medium text-gray-500 transition-all duration-75 hover:bg-gray-100"
+            >
+              <IconMenu text="SVG" icon={<Photo className="h-4 w-4" />} />
+            </button>
+            <button
+              onClick={async () => {
+                download(await getQRAsCanvas({ value: qrDestUrl, ...qrData }, 'image/png'), 'png');
+              }}
+              className="w-full rounded-md p-2 text-left text-sm font-medium text-gray-500 transition-all duration-75 hover:bg-gray-100"
+            >
+              <IconMenu text="PNG" icon={<Photo className="h-4 w-4" />} />
+            </button>
+            <button
+              onClick={async () => {
+                download(await getQRAsCanvas({ value: qrDestUrl, ...qrData }, 'image/jpeg'), 'jpg');
+              }}
+              className="w-full rounded-md p-2 text-left text-sm font-medium text-gray-500 transition-all duration-75 hover:bg-gray-100"
+            >
+              <IconMenu text="JPEG" icon={<Photo className="h-4 w-4" />} />
+            </button>
+          </div>
+        }
+        align="center"
+        openPopover={openPopover}
+        setOpenPopover={setOpenPopover}
+      >
+        <button
+          onClick={() => setOpenPopover(!openPopover)}
+          className="flex w-full items-center justify-center gap-2 rounded-md border border-black bg-black py-1.5 px-5 text-sm text-white transition-all hover:bg-white hover:text-black"
+        >
+          <Download />
+          Export
+        </button>
+      </Popover>
+    </>
   );
 }
 
