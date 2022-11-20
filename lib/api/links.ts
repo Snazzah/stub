@@ -213,18 +213,42 @@ export async function archiveLink(domain: string, key: string, archived = true) 
   });
 }
 
-export async function changeDomain(project: { id: string; domain: string }, newDomain: string) {
+/* Change the domain for every link and its respective stats when the project domain is changed */
+export async function changeDomainForLinks(projectId: string, domain: string, newDomain: string) {
   const links = await prisma.link.findMany({
     where: {
       project: {
-        id: project.id
+        id: projectId
       }
     }
   });
   const pipeline = redis.pipeline();
+  pipeline.rename(`${domain}:root:clicks`, `${newDomain}:root:clicks`);
   links.forEach(({ key }) => {
-    pipeline.rename(`${project.domain}:clicks:${key}`, `${newDomain}:clicks:${key}`);
-    pipeline.rename(`${project.domain}:${key}`, `${newDomain}:${key}`);
+    pipeline.rename(`${domain}:${key}`, `${newDomain}:${key}`);
+    pipeline.rename(`${domain}:clicks:${key}`, `${newDomain}:clicks:${key}`);
+  });
+  try {
+    return await pipeline.exec();
+  } catch (e) {
+    return null;
+  }
+}
+
+/* Delete all links & stats associated with a project when it's deleted */
+export async function deleteProjectLinks(domain: string) {
+  const links = await prisma.link.findMany({
+    where: {
+      project: {
+        domain
+      }
+    }
+  });
+  const pipeline = redis.pipeline();
+  pipeline.del(`${domain}:root:clicks`);
+  links.forEach(({ key }) => {
+    pipeline.del(`${domain}:${key}`);
+    pipeline.del(`${domain}:clicks:${key}`);
   });
   try {
     return await pipeline.exec();

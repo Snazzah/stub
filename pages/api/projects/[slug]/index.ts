@@ -1,8 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
+import { deleteProjectLinks } from '@/lib/api/links';
 import { getSession } from '@/lib/auth';
 import prisma from '@/lib/prisma';
-import { deleteProject } from '@/lib/redis';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const session = await getSession(req, res);
@@ -60,10 +60,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!project || !project.users.length) return res.status(404).json({ error: 'Project not found' });
     if (project.users[0].role !== 'owner' && !session.user.superadmin) return res.status(401).json({ error: 'Missing permissions' });
     await Promise.all([
-      deleteProject(project.domain),
       prisma.project.delete({
         where: { id: project.id }
-      })
+      }),
+      deleteProjectLinks(project.domain)
     ]);
     return res.status(204).end();
   } else {
