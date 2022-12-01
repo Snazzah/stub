@@ -3720,6 +3720,13 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
+lambdafs@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/lambdafs/-/lambdafs-2.1.1.tgz#4bf8d3037b6c61bbb4a22ab05c73ee47964c25ed"
+  integrity sha512-x5k8JcoJWkWLvCVBzrl4pzvkEHSgSBqFjg3Dpsc4AcTMq7oUMym4cL/gRTZ6VM4mUMY+M0dIbQ+V1c1tsqqanQ==
+  dependencies:
+    tar-fs "*"
+
 levn@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.4.1.tgz#ae4562c007473b932a6200d403268dd2fffc6ade"
@@ -3804,10 +3811,10 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-mailing-core@0.8.19, mailing-core@^0.8.19:
-  version "0.8.19"
-  resolved "https://registry.yarnpkg.com/mailing-core/-/mailing-core-0.8.19.tgz#8e6faa10133dd303327996f1cf79ef0fd4b8c134"
-  integrity sha512-QhAT0SU4NUCppsyPxxmjTCEEauu09GDpJewSuOjdcI9iWTNGFJcV36XHKtGVEBULIx2LZKsheC6Qnq2HnHvImg==
+mailing-core@0.9.3, mailing-core@^0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/mailing-core/-/mailing-core-0.9.3.tgz#86aab074e6b66e898474c55206478d4af9fb53b1"
+  integrity sha512-b+6ZRmMwkzFrCMPY+chBNQ8vdmenWKkCj/u8HfsEjbmw7fb99UqQeE0lwfa+78po5WtiVMtY9gCzpuvs5uuX9w==
   dependencies:
     chalk "^4.1.2"
     fs-extra "^10.1.0"
@@ -3818,10 +3825,10 @@ mailing-core@0.8.19, mailing-core@^0.8.19:
     open "^8.4.0"
     posthog-node "^2.0.2"
 
-mailing@0.8.19:
-  version "0.8.19"
-  resolved "https://registry.yarnpkg.com/mailing/-/mailing-0.8.19.tgz#7ba8a423fd6b2e7d7879f1d89553666768e1706b"
-  integrity sha512-IBrM5LsMe0nIeqBxVdVb66XFh5lDWEdSrsdB3Xq8krx/PPmSnEM0JR1j9+IFJHvRXNOR7IsQNjLY/RTRPVEXWw==
+mailing@0.9.3:
+  version "0.9.3"
+  resolved "https://registry.yarnpkg.com/mailing/-/mailing-0.9.3.tgz#607420fb116dbcda6bf59cc6e66928271b5c7c18"
+  integrity sha512-fJMCPhxtpxSGJ6Aaz6Kc8xVxIqIQir4JrPf8pmF8G5xs4GAgh9cu3ASvXe6aoVfiac4bd/1mWOxSzWgAVgZ/CA==
   dependencies:
     "@babel/parser" "^7.18.11"
     "@prisma/client" "^4.4.0"
@@ -3852,13 +3859,15 @@ mailing@0.8.19:
     html-minifier-terser "^7.0.0"
     iron-session "^6.2.1"
     lodash "^4.17.21"
-    mailing-core "^0.8.19"
+    mailing-core "^0.9.3"
     mjml "^4.12.0"
     mjml-react "^2.0.7"
     node-fetch "^2.6.7"
     node-html-parser "^6.1.1"
     nodemailer "6.8.0"
     open "^8.4.0"
+    playwright-aws-lambda "^0.9.0"
+    playwright-core "^1.28.1"
     postcss "^8.4.16"
     posthog-node "^2.0.2"
     prettier "^2.7.1"
@@ -4730,6 +4739,18 @@ pify@^2.3.0:
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
   integrity sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==
 
+playwright-aws-lambda@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/playwright-aws-lambda/-/playwright-aws-lambda-0.9.0.tgz#1fd621c92e328040c36f920e36de699479d8d901"
+  integrity sha512-MnzLTZ4B9I4JdWJ+eq7BbrhFjL6VyT0bF+ccNjBCwjwlBNQaTEXOcrkAe+p8YkOXnYUqBbsrZj5Ene8PqKosiw==
+  dependencies:
+    lambdafs "^2.1.1"
+
+playwright-core@^1.28.1:
+  version "1.28.1"
+  resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.28.1.tgz#8400be9f4a8d1c0489abdb9e75a4cc0ffc3c00cb"
+  integrity sha512-3PixLnGPno0E8rSBJjtwqTwJe3Yw72QwBBBxNoukIj3lEeBNXwbNiKrNuB1oyQgTBw5QHUhNO3SteEtHaMK6ag==
+
 popmotion@11.0.5:
   version "11.0.5"
   resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-11.0.5.tgz#8e3e014421a0ffa30ecd722564fd2558954e1f7d"
@@ -5569,7 +5590,7 @@ tailwindcss@^3.1.8:
     quick-lru "^5.1.1"
     resolve "^1.22.1"
 
-tar-fs@^2.0.0, tar-fs@^2.1.1:
+tar-fs@*, tar-fs@^2.0.0, tar-fs@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/tar-fs/-/tar-fs-2.1.1.tgz#489a15ab85f1f0befabb370b7de4f9eb5cbe8784"
   integrity sha512-V0r2Y9scmbDRLCNex/+hYzvp/zyYjvFbHPNgVTKfQvVrb6guiE/fxP+XblDNR011utopbkex2nM4dHNV6GDsng==
