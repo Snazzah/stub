@@ -115,7 +115,7 @@ export default function Login({ providers }: Props) {
             </form>
           </>
         )}
-        <p className="text-gray-600 text-sm">Don't have an account? Using any of the sign-in above methods will make an account for you!</p>
+        <p className="text-gray-600 text-sm">Don't have an account? Using any of the sign-in methods above will make an account for you!</p>
       </div>
     </div>
   );
