@@ -22,7 +22,7 @@
     "preload-geolite": "node -e \"import('geolite2-redist').then(geolite => geolite.downloadDbs({ dbList: ['GeoLite2-City'] }))\""
   },
   "dependencies": {
-    "@headlessui/react": "1.7.4",
+    "@headlessui/react": "1.7.5",
     "@next-auth/prisma-adapter": "1.0.5",
     "@prisma/client": "4.6.1",
     "@radix-ui/react-accordion": "1.0.1",
