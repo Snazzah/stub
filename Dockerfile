@@ -1,7 +1,9 @@
 # syntax=docker/dockerfile:1
 
 # ---- Builder ----
-FROM node:18-alpine AS builder
+FROM node:18-slim AS builder
+
+RUN apt-get update && apt-get install -y openssl
 
 ARG GIT_REVISION
 ENV GIT_REVISION=${GIT_REVISION}
@@ -19,7 +21,9 @@ RUN yarn generate
 RUN yarn build
 
 # ---- Dependencies ----
-FROM node:18-alpine AS deps
+FROM node:18-slim AS deps
+
+RUN apt-get update && apt-get install -y openssl
 
 WORKDIR /deps
 
@@ -32,9 +36,9 @@ RUN yarn generate
 RUN yarn preload-geolite
 
 # ---- Runner ----
-FROM node:18-alpine
+FROM node:18-slim
 
-RUN apk add dumb-init
+RUN apt-get update && apt-get install -y openssl dumb-init
 
 WORKDIR /app
 
