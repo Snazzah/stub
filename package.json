@@ -65,6 +65,7 @@
     "zod": "3.19.1"
   },
   "devDependencies": {
+    "@rushstack/eslint-patch": "^1.2.0",
     "@tailwindcss/line-clamp": "0.4.2",
     "@types/cookie": "0.5.1",
     "@types/html-escaper": "3.0.0",
