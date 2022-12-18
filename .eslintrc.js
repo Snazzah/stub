@@ -1,3 +1,5 @@
+require('@rushstack/eslint-patch/modern-module-resolution');
+
 module.exports = {
   extends: ['snazzah'],
   overrides: [
@@ -7,5 +9,6 @@ module.exports = {
         browser: true
       }
     }
-  ]
+  ],
+  parserOptions: { tsconfigRootDir: __dirname }
 };

@@ -32,7 +32,7 @@ jobs:
           node-version: 18.x
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable
 
       - name: Run ESLint
         run: yarn lint
