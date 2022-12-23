@@ -5259,23 +5259,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mailing-core@npm:0.9.3":
-  version: 0.9.3
-  resolution: "mailing-core@npm:0.9.3"
-  dependencies:
-    chalk: ^4.1.2
-    fs-extra: ^10.1.0
-    mjml: ^4.12.0
-    mjml-react: ^2.0.7
-    node-fetch: ^2.6.7
-    node-html-parser: ^6.1.1
-    open: ^8.4.0
-    posthog-node: ^2.0.2
-  checksum: fd89b8950c05bc2c91162c3314c666a1c66e50a4e8ecbe1ac6236f8d1f22dc712cabbab4c6b06b2edbedff8e6322b67f0da80bb0c91642495f6d51a0db3d9ad3
-  languageName: node
-  linkType: hard
-
-"mailing-core@npm:^0.9.3":
+"mailing-core@npm:0.9.7, mailing-core@npm:^0.9.7":
   version: 0.9.7
   resolution: "mailing-core@npm:0.9.7"
   dependencies:
@@ -5291,9 +5275,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mailing@npm:0.9.3":
-  version: 0.9.3
-  resolution: "mailing@npm:0.9.3"
+"mailing@npm:0.9.7":
+  version: 0.9.7
+  resolution: "mailing@npm:0.9.7"
   dependencies:
     "@babel/parser": ^7.18.11
     "@prisma/client": ^4.4.0
@@ -5324,7 +5308,7 @@ __metadata:
     html-minifier-terser: ^7.0.0
     iron-session: ^6.2.1
     lodash: ^4.17.21
-    mailing-core: ^0.9.3
+    mailing-core: ^0.9.7
     mjml: ^4.12.0
     mjml-react: ^2.0.7
     node-fetch: ^2.6.7
@@ -5334,7 +5318,7 @@ __metadata:
     playwright-aws-lambda: ^0.9.0
     playwright-core: ^1.28.1
     postcss: ^8.4.16
-    posthog-node: ^2.0.2
+    posthog-node: ^2.2.3
     prettier: ^2.7.1
     prisma: ^4.4.0
     prompts: ^2.4.2
@@ -5353,7 +5337,7 @@ __metadata:
   bin:
     mailing: bin.js
     mm: bin.js
-  checksum: 4d4869b96a1ff7152a0961b988af0ce702134cfaab482f924a0991d5c649c10a50ab8795618c33938c2d371e32cb71ab99dbb8e6df9466ebc8897bfc75725b51
+  checksum: 77ccedf65670d44ad60ff0b692941be0bd7775b73357d47e29bf5282d21b5291ffca42df5d06f7dee28045fd06c8b24b24c143b475a1c7e52ad6a17da746ff83
   languageName: node
   linkType: hard
 
@@ -6760,7 +6744,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"posthog-node@npm:^2.0.2":
+"posthog-node@npm:^2.0.2, posthog-node@npm:^2.2.3":
   version: 2.2.3
   resolution: "posthog-node@npm:2.2.3"
   dependencies:
@@ -7794,8 +7778,8 @@ __metadata:
     geolite2-redist: 3.0.4
     html-escaper: 3.0.3
     ioredis: 5.2.4
-    mailing: 0.9.3
-    mailing-core: 0.9.3
+    mailing: 0.9.7
+    mailing-core: 0.9.7
     matcher: 5.0.0
     maxmind: 4.3.8
     ms: 2.1.3
