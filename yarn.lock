@@ -1713,21 +1713,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/grid@npm:2.12.2":
-  version: 2.12.2
-  resolution: "@visx/grid@npm:2.12.2"
+"@visx/grid@npm:2.18.0":
+  version: 2.18.0
+  resolution: "@visx/grid@npm:2.18.0"
   dependencies:
     "@types/react": "*"
-    "@visx/curve": 2.1.0
-    "@visx/group": 2.10.0
-    "@visx/point": 2.6.0
-    "@visx/scale": 2.2.2
-    "@visx/shape": 2.12.2
+    "@visx/curve": 2.17.0
+    "@visx/group": 2.17.0
+    "@visx/point": 2.17.0
+    "@visx/scale": 2.18.0
+    "@visx/shape": 2.18.0
     classnames: ^2.3.1
     prop-types: ^15.6.2
   peerDependencies:
     react: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
-  checksum: 4ad8f288abc5f2e08294eb04db1dcba73ece50b8e367f60f84a8fc2d0ac63da35ed814c427dd16f095cc5df6c69a7653c5651f0a36221d0ed479ef090ebea3a7
+  checksum: b5459b4b3276cff163f3dd5dfbf299b483e31983926fdb41ac5ab79bcaf83f840a67d513383742be3fbc4f88a15531d26d3014acbc96a6ce70757f938f5251bc
   languageName: node
   linkType: hard
 
@@ -1761,13 +1761,6 @@ __metadata:
   version: 2.17.0
   resolution: "@visx/point@npm:2.17.0"
   checksum: 9cb18e41f1f47e46b85bdbbdd1c930a654ed8b731b3a5da0920e2b3a261d887c066ec97079293d4f5195a1e04d842faa2f2bf0519876cb27ea6ee82fc5ff8855
-  languageName: node
-  linkType: hard
-
-"@visx/point@npm:2.6.0":
-  version: 2.6.0
-  resolution: "@visx/point@npm:2.6.0"
-  checksum: 56be8e31abaf10a182d328141a0929ea28d2956d4c06469fc51cde3f30f64ae035aaa0771f44010c3484ae63c7cd1bc9b782cde6cfcf9713190c20b301ab181e
   languageName: node
   linkType: hard
 
@@ -7838,7 +7831,7 @@ __metadata:
     "@types/ua-parser-js": 0.7.36
     "@visx/axis": 2.18.0
     "@visx/event": 2.17.0
-    "@visx/grid": 2.12.2
+    "@visx/grid": 2.18.0
     "@visx/responsive": 2.10.0
     "@visx/shape": 2.12.2
     "@visx/tooltip": 2.16.0
