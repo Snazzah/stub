@@ -1764,9 +1764,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/responsive@npm:2.10.0":
-  version: 2.10.0
-  resolution: "@visx/responsive@npm:2.10.0"
+"@visx/responsive@npm:2.17.0":
+  version: 2.17.0
+  resolution: "@visx/responsive@npm:2.17.0"
   dependencies:
     "@juggle/resize-observer": ^3.3.1
     "@types/lodash": ^4.14.172
@@ -1775,7 +1775,7 @@ __metadata:
     prop-types: ^15.6.1
   peerDependencies:
     react: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
-  checksum: 05271fe02c7fbf76ccb727694ebb418c79e9cce597804086d2a4523360f58af522ffb9a0f58acaa35c46c72fec569ff92833ed22671fdea09a7666f1fed80184
+  checksum: effa85bc6a90420e53a170459e8434024c5fa1c399ad4b5d2f325c14dfac8923be30b4cdaf30e8acc4de1e9c63f8b25cbae780b3f14aca7bb1ed92e8324e493b
   languageName: node
   linkType: hard
 
@@ -7832,7 +7832,7 @@ __metadata:
     "@visx/axis": 2.18.0
     "@visx/event": 2.17.0
     "@visx/grid": 2.18.0
-    "@visx/responsive": 2.10.0
+    "@visx/responsive": 2.17.0
     "@visx/shape": 2.12.2
     "@visx/tooltip": 2.16.0
     autoprefixer: 10.4.13
