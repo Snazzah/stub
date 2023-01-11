@@ -5327,9 +5327,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mailing-core@npm:0.9.7, mailing-core@npm:^0.9.7":
-  version: 0.9.7
-  resolution: "mailing-core@npm:0.9.7"
+"mailing-core@npm:0.9.8, mailing-core@npm:^0.9.8":
+  version: 0.9.8
+  resolution: "mailing-core@npm:0.9.8"
   dependencies:
     chalk: ^4.1.2
     fs-extra: ^10.1.0
@@ -5339,13 +5339,13 @@ __metadata:
     node-html-parser: ^6.1.1
     open: ^8.4.0
     posthog-node: ^2.0.2
-  checksum: 0b8c1824a204b8810ed3f1daecae6ca9f2ae317da14b4ec1f585752c0eb4028f7176fa307f03ad11bafa9eadacae4ada9fd6db85d794266b8a2d6bee499080c1
+  checksum: 685b0e1bf81a2071d4fabf8c904e5d8c86dc930cc560d964c622daf9f02a00fea56524d0754c745d945df25433bf9d25168ec83d7547be11466d8296ef309bf2
   languageName: node
   linkType: hard
 
-"mailing@npm:0.9.7":
-  version: 0.9.7
-  resolution: "mailing@npm:0.9.7"
+"mailing@npm:0.9.8":
+  version: 0.9.8
+  resolution: "mailing@npm:0.9.8"
   dependencies:
     "@babel/parser": ^7.18.11
     "@prisma/client": ^4.4.0
@@ -5376,7 +5376,7 @@ __metadata:
     html-minifier-terser: ^7.0.0
     iron-session: ^6.2.1
     lodash: ^4.17.21
-    mailing-core: ^0.9.7
+    mailing-core: ^0.9.8
     mjml: ^4.12.0
     mjml-react: ^2.0.7
     node-fetch: ^2.6.7
@@ -5405,7 +5405,7 @@ __metadata:
   bin:
     mailing: bin.js
     mm: bin.js
-  checksum: 77ccedf65670d44ad60ff0b692941be0bd7775b73357d47e29bf5282d21b5291ffca42df5d06f7dee28045fd06c8b24b24c143b475a1c7e52ad6a17da746ff83
+  checksum: 8e4122b8c5f210cabaf8019cfd4913d87af342ed9b2005c0200e2f45e5dc838f03c10ead91cb059bd9b42c2710d2ef6de05598f82988f795ddd322713c6a9230
   languageName: node
   linkType: hard
 
@@ -7846,8 +7846,8 @@ __metadata:
     geolite2-redist: 3.0.4
     html-escaper: 3.0.3
     ioredis: 5.2.4
-    mailing: 0.9.7
-    mailing-core: 0.9.7
+    mailing: 0.9.8
+    mailing-core: 0.9.8
     matcher: 5.0.0
     maxmind: 4.3.8
     ms: 2.1.3
