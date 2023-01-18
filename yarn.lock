@@ -754,9 +754,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-popover@npm:1.0.2":
-  version: 1.0.2
-  resolution: "@radix-ui/react-popover@npm:1.0.2"
+"@radix-ui/react-popover@npm:1.0.3":
+  version: 1.0.3
+  resolution: "@radix-ui/react-popover@npm:1.0.3"
   dependencies:
     "@babel/runtime": ^7.13.10
     "@radix-ui/primitive": 1.0.0
@@ -766,7 +766,7 @@ __metadata:
     "@radix-ui/react-focus-guards": 1.0.0
     "@radix-ui/react-focus-scope": 1.0.1
     "@radix-ui/react-id": 1.0.0
-    "@radix-ui/react-popper": 1.0.1
+    "@radix-ui/react-popper": 1.1.0
     "@radix-ui/react-portal": 1.0.1
     "@radix-ui/react-presence": 1.0.0
     "@radix-ui/react-primitive": 1.0.1
@@ -777,7 +777,7 @@ __metadata:
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 191412c29c40121eb0d9aaed3be34f265b17c6e50333aa74609d706e16eda7cae1ab9bfefc9022e3e909e55de74d98ef3c84f9c052247db1ca129479e2f16bc6
+  checksum: 8191a0e16b8a230299227e59bfaa5750401e2504bcfc5a7f0855a03f6af409f484452a73e13354b97d921b67daeb08ba6280bbcb77d93474cb7dc0af9f400e00
   languageName: node
   linkType: hard
 
@@ -799,6 +799,28 @@ __metadata:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
   checksum: 8216f8fd5ee5de41206ec89a7c66152f55a8d6ba905f8a2575581f3d42e8a032c3dd66b1529c813f3addc9178e1d13d4262ac25296fd395f8361fcfb160590d4
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-popper@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@radix-ui/react-popper@npm:1.1.0"
+  dependencies:
+    "@babel/runtime": ^7.13.10
+    "@floating-ui/react-dom": 0.7.2
+    "@radix-ui/react-arrow": 1.0.1
+    "@radix-ui/react-compose-refs": 1.0.0
+    "@radix-ui/react-context": 1.0.0
+    "@radix-ui/react-primitive": 1.0.1
+    "@radix-ui/react-use-callback-ref": 1.0.0
+    "@radix-ui/react-use-layout-effect": 1.0.0
+    "@radix-ui/react-use-rect": 1.0.0
+    "@radix-ui/react-use-size": 1.0.0
+    "@radix-ui/rect": 1.0.0
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+  checksum: 1e73fb1aa4337b0c9cb165e40b68716cfeae76490bc97ce3a75daafae1f1bbd54547c8dcae180fb7553032fc695b221c84cc19ae40020be216fb987ed6726dc9
   languageName: node
   linkType: hard
 
@@ -7766,7 +7788,7 @@ __metadata:
     "@next-auth/prisma-adapter": 1.0.5
     "@prisma/client": 4.6.1
     "@radix-ui/react-accordion": 1.0.1
-    "@radix-ui/react-popover": 1.0.2
+    "@radix-ui/react-popover": 1.0.3
     "@radix-ui/react-switch": 1.0.1
     "@radix-ui/react-tooltip": 1.0.2
     "@rushstack/eslint-patch": ^1.2.0
