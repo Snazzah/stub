@@ -781,27 +781,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-popper@npm:1.0.1":
-  version: 1.0.1
-  resolution: "@radix-ui/react-popper@npm:1.0.1"
-  dependencies:
-    "@babel/runtime": ^7.13.10
-    "@floating-ui/react-dom": 0.7.2
-    "@radix-ui/react-arrow": 1.0.1
-    "@radix-ui/react-compose-refs": 1.0.0
-    "@radix-ui/react-context": 1.0.0
-    "@radix-ui/react-primitive": 1.0.1
-    "@radix-ui/react-use-layout-effect": 1.0.0
-    "@radix-ui/react-use-rect": 1.0.0
-    "@radix-ui/react-use-size": 1.0.0
-    "@radix-ui/rect": 1.0.0
-  peerDependencies:
-    react: ^16.8 || ^17.0 || ^18.0
-    react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 8216f8fd5ee5de41206ec89a7c66152f55a8d6ba905f8a2575581f3d42e8a032c3dd66b1529c813f3addc9178e1d13d4262ac25296fd395f8361fcfb160590d4
-  languageName: node
-  linkType: hard
-
 "@radix-ui/react-popper@npm:1.1.0":
   version: 1.1.0
   resolution: "@radix-ui/react-popper@npm:1.1.0"
@@ -7836,7 +7815,7 @@ __metadata:
     react-hot-toast: 2.4.0
     react-textarea-autosize: 8.4.0
     sharp: 0.31.3
-    swr: 2.0.0
+    swr: 2.0.3
     tailwind-scrollbar-hide: 1.1.7
     tailwindcss: 3.2.4
     tsx: 3.12.2
@@ -7887,14 +7866,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swr@npm:2.0.0":
-  version: 2.0.0
-  resolution: "swr@npm:2.0.0"
+"swr@npm:2.0.3":
+  version: 2.0.3
+  resolution: "swr@npm:2.0.3"
   dependencies:
     use-sync-external-store: ^1.2.0
   peerDependencies:
     react: ^16.11.0 || ^17.0.0 || ^18.0.0
-  checksum: 4852d8318ed022a681b40a384e675f65e211104d62075c1250b02f47cc8b739cb9138a954e2191c700e2de22b010b9bd05a113c71b193abe0c351d3c4f4646d8
+  checksum: 968071e3336b81194879fd94553777793314e773cd2a27665617131403dca6b7e4d3697ab00d0b0aa456c107c0c8d86f9ce52bac22f8533e8421099870d46b17
   languageName: node
   linkType: hard
 
