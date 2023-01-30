@@ -5202,17 +5202,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lambdafs@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "lambdafs@npm:2.1.1"
-  dependencies:
-    tar-fs: "*"
-  bin:
-    lambdafs: bin/brotli.js
-  checksum: e277462851769dbb9062096e793d0da67f8bada78be9988bb177ddab91f9335ba1f67ea9fc0768c966dc52381301575945211b6e34061a068b82f127e6848e4e
-  languageName: node
-  linkType: hard
-
 "levn@npm:^0.4.1":
   version: 0.4.1
   resolution: "levn@npm:0.4.1"
@@ -5334,9 +5323,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mailing-core@npm:0.9.8, mailing-core@npm:^0.9.8":
-  version: 0.9.8
-  resolution: "mailing-core@npm:0.9.8"
+"mailing-core@npm:0.9.10, mailing-core@npm:^0.9.10":
+  version: 0.9.10
+  resolution: "mailing-core@npm:0.9.10"
   dependencies:
     chalk: ^4.1.2
     fs-extra: ^10.1.0
@@ -5346,13 +5335,13 @@ __metadata:
     node-html-parser: ^6.1.1
     open: ^8.4.0
     posthog-node: ^2.0.2
-  checksum: 685b0e1bf81a2071d4fabf8c904e5d8c86dc930cc560d964c622daf9f02a00fea56524d0754c745d945df25433bf9d25168ec83d7547be11466d8296ef309bf2
+  checksum: 274c5af1a715d65192891101fd61ab1b3bae84c10232d73eb4550adef7e23b557a8141ce4a1aad036e2c8f43b45455d5efeb9ae0e731c6a0cd6069a8a00d4048
   languageName: node
   linkType: hard
 
-"mailing@npm:0.9.8":
-  version: 0.9.8
-  resolution: "mailing@npm:0.9.8"
+"mailing@npm:0.9.10":
+  version: 0.9.10
+  resolution: "mailing@npm:0.9.10"
   dependencies:
     "@babel/parser": ^7.18.11
     "@prisma/client": ^4.4.0
@@ -5383,15 +5372,13 @@ __metadata:
     html-minifier-terser: ^7.0.0
     iron-session: ^6.2.1
     lodash: ^4.17.21
-    mailing-core: ^0.9.8
+    mailing-core: ^0.9.10
     mjml: ^4.12.0
     mjml-react: ^2.0.7
     node-fetch: ^2.6.7
     node-html-parser: ^6.1.1
     nodemailer: 6.8.0
     open: ^8.4.0
-    playwright-aws-lambda: ^0.9.0
-    playwright-core: ^1.28.1
     postcss: ^8.4.16
     posthog-node: ^2.2.3
     prettier: ^2.7.1
@@ -5412,7 +5399,7 @@ __metadata:
   bin:
     mailing: bin.js
     mm: bin.js
-  checksum: 8e4122b8c5f210cabaf8019cfd4913d87af342ed9b2005c0200e2f45e5dc838f03c10ead91cb059bd9b42c2710d2ef6de05598f82988f795ddd322713c6a9230
+  checksum: b05a6abc77258451ba87ea5c92aa70e9b0074c7e697ce6a87197cc938780ca35f6efdf8b92c90fc3af15042af79b9103537f96c330694a6776ae8b4dda67bb22
   languageName: node
   linkType: hard
 
@@ -6700,26 +6687,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-aws-lambda@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "playwright-aws-lambda@npm:0.9.0"
-  dependencies:
-    lambdafs: ^2.1.1
-  peerDependencies:
-    playwright-core: ^1
-  checksum: 1083bec4fe0f5c88246a8ef934ca05eccfe45735dcf23ba42269d3cc5f1b1badd4b497f9b36558548fa9ea8ccba9f77d4510049b0fad8dc7f1704a3df0b070b8
-  languageName: node
-  linkType: hard
-
-"playwright-core@npm:^1.28.1":
-  version: 1.29.2
-  resolution: "playwright-core@npm:1.29.2"
-  bin:
-    playwright: cli.js
-  checksum: 19e00e162a24eb99878408518930346c1d2c8ce83bb02993e3dd890c99df4530240cfebe4ec4e5aca01656462695b6328fb8f913cf2e229c2c73941623ac524e
-  languageName: node
-  linkType: hard
-
 "postcss-import@npm:^14.1.0":
   version: 14.1.0
   resolution: "postcss-import@npm:14.1.0"
@@ -7846,8 +7813,8 @@ __metadata:
     geolite2-redist: 3.0.4
     html-escaper: 3.0.3
     ioredis: 5.2.5
-    mailing: 0.9.8
-    mailing-core: 0.9.8
+    mailing: 0.9.10
+    mailing-core: 0.9.10
     matcher: 5.0.0
     maxmind: 4.3.8
     ms: 2.1.3
@@ -7974,7 +7941,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tar-fs@npm:*, tar-fs@npm:^2.0.0, tar-fs@npm:^2.1.1":
+"tar-fs@npm:^2.0.0, tar-fs@npm:^2.1.1":
   version: 2.1.1
   resolution: "tar-fs@npm:2.1.1"
   dependencies:
