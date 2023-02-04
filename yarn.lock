@@ -608,9 +608,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-accordion@npm:1.0.1":
-  version: 1.0.1
-  resolution: "@radix-ui/react-accordion@npm:1.0.1"
+"@radix-ui/react-accordion@npm:1.1.0":
+  version: 1.1.0
+  resolution: "@radix-ui/react-accordion@npm:1.1.0"
   dependencies:
     "@babel/runtime": ^7.13.10
     "@radix-ui/primitive": 1.0.0
@@ -618,13 +618,14 @@ __metadata:
     "@radix-ui/react-collection": 1.0.1
     "@radix-ui/react-compose-refs": 1.0.0
     "@radix-ui/react-context": 1.0.0
+    "@radix-ui/react-direction": 1.0.0
     "@radix-ui/react-id": 1.0.0
     "@radix-ui/react-primitive": 1.0.1
     "@radix-ui/react-use-controllable-state": 1.0.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: fe38705efa5b43129250f535542e5d379503c0499b6eca568fcca7bbf6d11645370bfaa017e509ffa20c404a9b3e1eb954c63e2b6323909ef4cd47933311be2b
+  checksum: c35353c5870f3de2ab180de7df3d5d0886fa35b5b9b0f187820c487c3875a73d175715c36bc21c49ac5208516adf4dd1b050174ecd7005f5cb15a4fcef696311
   languageName: node
   linkType: hard
 
@@ -696,6 +697,17 @@ __metadata:
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
   checksum: 43c6b6f2183398161fe6b109e83fff240a6b7babbb27092b815932342a89d5ca42aa9806bfae5927970eed5ff90feed04c67aa29c6721f84ae826f17fcf34ce0
+  languageName: node
+  linkType: hard
+
+"@radix-ui/react-direction@npm:1.0.0":
+  version: 1.0.0
+  resolution: "@radix-ui/react-direction@npm:1.0.0"
+  dependencies:
+    "@babel/runtime": ^7.13.10
+  peerDependencies:
+    react: ^16.8 || ^17.0 || ^18.0
+  checksum: 92a40de4087b161a56957872daf204a7735bd21f2fccbd42deff322d759977d085ad3dcdae05af437b7e64e628e939e0d67e5bc468a3027e1b02e0a7dc90c485
   languageName: node
   linkType: hard
 
@@ -7780,7 +7792,7 @@ __metadata:
     "@headlessui/react": 1.7.9
     "@next-auth/prisma-adapter": 1.0.5
     "@prisma/client": 4.6.1
-    "@radix-ui/react-accordion": 1.0.1
+    "@radix-ui/react-accordion": 1.1.0
     "@radix-ui/react-popover": 1.0.3
     "@radix-ui/react-switch": 1.0.1
     "@radix-ui/react-tooltip": 1.0.3
