@@ -161,15 +161,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@headlessui/react@npm:1.7.9":
-  version: 1.7.9
-  resolution: "@headlessui/react@npm:1.7.9"
+"@headlessui/react@npm:1.7.10":
+  version: 1.7.10
+  resolution: "@headlessui/react@npm:1.7.10"
   dependencies:
     client-only: ^0.0.1
   peerDependencies:
     react: ^16 || ^17 || ^18
     react-dom: ^16 || ^17 || ^18
-  checksum: e19338daba65853337f3f4a7e8f0fab8ed24be2b753ec2d6e6a051f9da7a6194ea8febf84d1b8b0a36262878628db7c085f9e176ac5ff627474abbc4f370916e
+  checksum: 39b50fb07bd5482611720d292f1db6ca79a52ccea304aa24a21fdca693d983e212d7493c52ece8921581222206f9cbb8f1a91485efa17cc36a7a9a44d8df1547
   languageName: node
   linkType: hard
 
@@ -7789,7 +7789,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "stub-app@workspace:."
   dependencies:
-    "@headlessui/react": 1.7.9
+    "@headlessui/react": 1.7.10
     "@next-auth/prisma-adapter": 1.0.5
     "@prisma/client": 4.6.1
     "@radix-ui/react-accordion": 1.1.0
