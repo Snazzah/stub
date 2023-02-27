@@ -766,9 +766,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-popover@npm:1.0.3":
-  version: 1.0.3
-  resolution: "@radix-ui/react-popover@npm:1.0.3"
+"@radix-ui/react-popover@npm:1.0.4":
+  version: 1.0.4
+  resolution: "@radix-ui/react-popover@npm:1.0.4"
   dependencies:
     "@babel/runtime": ^7.13.10
     "@radix-ui/primitive": 1.0.0
@@ -789,7 +789,7 @@ __metadata:
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 8191a0e16b8a230299227e59bfaa5750401e2504bcfc5a7f0855a03f6af409f484452a73e13354b97d921b67daeb08ba6280bbcb77d93474cb7dc0af9f400e00
+  checksum: e6f73df9aaca02b9fb75c202a7e1d6663f7dcbf352c8dbee25b47ce1f7d68979d757801a46a74dd381bc6f3cc39ce6ecb19f4a42bad9d9bf519845c57e915fd7
   languageName: node
   linkType: hard
 
@@ -7820,7 +7820,7 @@ __metadata:
     "@next-auth/prisma-adapter": 1.0.5
     "@prisma/client": 4.6.1
     "@radix-ui/react-accordion": 1.1.0
-    "@radix-ui/react-popover": 1.0.3
+    "@radix-ui/react-popover": 1.0.4
     "@radix-ui/react-switch": 1.0.1
     "@radix-ui/react-tooltip": 1.0.3
     "@rushstack/eslint-patch": ^1.2.0
