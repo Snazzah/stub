@@ -886,9 +886,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-tooltip@npm:1.0.3":
-  version: 1.0.3
-  resolution: "@radix-ui/react-tooltip@npm:1.0.3"
+"@radix-ui/react-tooltip@npm:1.0.4":
+  version: 1.0.4
+  resolution: "@radix-ui/react-tooltip@npm:1.0.4"
   dependencies:
     "@babel/runtime": ^7.13.10
     "@radix-ui/primitive": 1.0.0
@@ -906,7 +906,7 @@ __metadata:
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 683a30661363da7db9af72166ffca50545e6f16ff75eb6c07a9b811c2a338d8ba737d600004ff7fb9aab9423b31dd5fc87768f4260ac3984109e9e96e547a7a2
+  checksum: 431b66b545dc48f8d5f76500e2635dd5617f250d2757cc6dcad6bf7ebb90743d0f8d041701bb7533cbef6fd72df2754a97f996d23f660285e5d54573148c2c72
   languageName: node
   linkType: hard
 
@@ -7822,7 +7822,7 @@ __metadata:
     "@radix-ui/react-accordion": 1.1.0
     "@radix-ui/react-popover": 1.0.3
     "@radix-ui/react-switch": 1.0.1
-    "@radix-ui/react-tooltip": 1.0.3
+    "@radix-ui/react-tooltip": 1.0.4
     "@rushstack/eslint-patch": ^1.2.0
     "@tailwindcss/forms": 0.5.3
     "@tailwindcss/line-clamp": 0.4.2
