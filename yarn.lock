@@ -28,12 +28,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.16.3":
+"@babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.13.10, @babel/runtime@npm:^7.14.6":
   version: 7.20.13
   resolution: "@babel/runtime@npm:7.20.13"
   dependencies:
     regenerator-runtime: ^0.13.11
   checksum: 09b7a97a05c80540db6c9e4ddf8c5d2ebb06cae5caf3a87e33c33f27f8c4d49d9c67a2d72f1570e796045288fad569f98a26ceba0c4f5fad2af84b6ad855c4fb
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.20.13":
+  version: 7.21.0
+  resolution: "@babel/runtime@npm:7.21.0"
+  dependencies:
+    regenerator-runtime: ^0.13.11
+  checksum: 7b33e25bfa9e0e1b9e8828bb61b2d32bdd46b41b07ba7cb43319ad08efc6fda8eb89445193e67d6541814627df0ca59122c0ea795e412b99c5183a0540d338ab
   languageName: node
   linkType: hard
 
@@ -503,10 +512,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@panva/hkdf@npm:^1.0.1":
-  version: 1.0.2
-  resolution: "@panva/hkdf@npm:1.0.2"
-  checksum: 75183b4d5ea816ef516dcea70985c610683579a9e2ac540c2d59b9a3ed27eedaff830a43a1c43c1683556a457c92ac66e09109ee995ab173090e4042c4c4bb03
+"@panva/hkdf@npm:^1.0.2":
+  version: 1.0.4
+  resolution: "@panva/hkdf@npm:1.0.4"
+  checksum: d93b511eba76f5f1f1525834c3effb86e236e6a7d08d0abc067075694c6814909e172b7bed94b9eaeceb074306a6edd7981eb6a2a46922dd36b2f3d30ee9764e
   languageName: node
   linkType: hard
 
@@ -5110,10 +5119,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^4.10.0, jose@npm:^4.9.3":
+"jose@npm:^4.10.0":
   version: 4.11.2
   resolution: "jose@npm:4.11.2"
   checksum: bc9b2271c31683603857b2fd2903afa29f826fffd4bcefc0845355ed86995def87eaadf502033207996109d76698c912e5a986e279326d9629321a50504fe466
+  languageName: node
+  linkType: hard
+
+"jose@npm:^4.11.4":
+  version: 4.13.1
+  resolution: "jose@npm:4.13.1"
+  checksum: 89be959573beee69bd443493887d78799fd42340b45afa2c6681beda30314bcdfa5575f6977203c199e4c3e0ec2fc18d3c94745e7f0d59db51dedfae0efee63d
   languageName: node
   linkType: hard
 
@@ -6180,16 +6196,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-auth@npm:4.17.0":
-  version: 4.17.0
-  resolution: "next-auth@npm:4.17.0"
+"next-auth@npm:4.20.1":
+  version: 4.20.1
+  resolution: "next-auth@npm:4.20.1"
   dependencies:
-    "@babel/runtime": ^7.16.3
-    "@panva/hkdf": ^1.0.1
+    "@babel/runtime": ^7.20.13
+    "@panva/hkdf": ^1.0.2
     cookie: ^0.5.0
-    jose: ^4.9.3
+    jose: ^4.11.4
     oauth: ^0.9.15
-    openid-client: ^5.1.0
+    openid-client: ^5.4.0
     preact: ^10.6.3
     preact-render-to-string: ^5.1.19
     uuid: ^8.3.2
@@ -6201,7 +6217,7 @@ __metadata:
   peerDependenciesMeta:
     nodemailer:
       optional: true
-  checksum: 86293b35ab07a9cdfb0b01d76db5a636beba6c98587667ee38c33c2a8337e6785894ac29635012ed24fe76787d42ad80654e6ab63751c424157fd61beabb7960
+  checksum: f3414533716e7cc4f80bf070e4eec95e4dced331694e6dd446704b73145804585962be6e107946bdedab05d392b20dad7a7b62ac6cd0bfade0482a0a9d741c0b
   languageName: node
   linkType: hard
 
@@ -6537,15 +6553,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"openid-client@npm:^5.1.0":
-  version: 5.3.2
-  resolution: "openid-client@npm:5.3.2"
+"openid-client@npm:^5.4.0":
+  version: 5.4.0
+  resolution: "openid-client@npm:5.4.0"
   dependencies:
     jose: ^4.10.0
     lru-cache: ^6.0.0
     object-hash: ^2.0.1
     oidc-token-hash: ^5.0.1
-  checksum: 59dc58d5b5cb795f3500f2d9d7ce604f6fb4c00623b16660fdf635d2789c3b2bb32e328ff10c918f9fa4e7fb269c768658d00769761d301be2d96d6150e07051
+  checksum: d198dbcaf0aa1d8b9f0f1d99ae30e90ec594eaf9ae668b5d61f2ee9af94a4460968d8dea7e53bd18903a1fb9c445e05aefca965bb88be3688a4bac273d1634d9
   languageName: node
   linkType: hard
 
@@ -7858,7 +7874,7 @@ __metadata:
     maxmind: 4.3.8
     ms: 2.1.3
     next: 12.3.4
-    next-auth: 4.17.0
+    next-auth: 4.20.1
     nodemailer: 6.8.0
     postcss: 8.4.21
     prisma: 4.6.1
