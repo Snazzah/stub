@@ -617,24 +617,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-accordion@npm:1.1.0":
-  version: 1.1.0
-  resolution: "@radix-ui/react-accordion@npm:1.1.0"
+"@radix-ui/react-accordion@npm:1.1.1":
+  version: 1.1.1
+  resolution: "@radix-ui/react-accordion@npm:1.1.1"
   dependencies:
     "@babel/runtime": ^7.13.10
     "@radix-ui/primitive": 1.0.0
-    "@radix-ui/react-collapsible": 1.0.1
-    "@radix-ui/react-collection": 1.0.1
+    "@radix-ui/react-collapsible": 1.0.2
+    "@radix-ui/react-collection": 1.0.2
     "@radix-ui/react-compose-refs": 1.0.0
     "@radix-ui/react-context": 1.0.0
     "@radix-ui/react-direction": 1.0.0
     "@radix-ui/react-id": 1.0.0
-    "@radix-ui/react-primitive": 1.0.1
+    "@radix-ui/react-primitive": 1.0.2
     "@radix-ui/react-use-controllable-state": 1.0.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: c35353c5870f3de2ab180de7df3d5d0886fa35b5b9b0f187820c487c3875a73d175715c36bc21c49ac5208516adf4dd1b050174ecd7005f5cb15a4fcef696311
+  checksum: a666da8abca778a150e2cb6d2c0e19fa32912b2cd9aca04359a7a50f238d30b056d46a3119f93376da5ee964262a7fe1174f16e34096d9f51d6639beb9f0e8cd
   languageName: node
   linkType: hard
 
@@ -664,9 +664,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-collapsible@npm:1.0.1":
-  version: 1.0.1
-  resolution: "@radix-ui/react-collapsible@npm:1.0.1"
+"@radix-ui/react-collapsible@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@radix-ui/react-collapsible@npm:1.0.2"
   dependencies:
     "@babel/runtime": ^7.13.10
     "@radix-ui/primitive": 1.0.0
@@ -674,29 +674,29 @@ __metadata:
     "@radix-ui/react-context": 1.0.0
     "@radix-ui/react-id": 1.0.0
     "@radix-ui/react-presence": 1.0.0
-    "@radix-ui/react-primitive": 1.0.1
+    "@radix-ui/react-primitive": 1.0.2
     "@radix-ui/react-use-controllable-state": 1.0.0
     "@radix-ui/react-use-layout-effect": 1.0.0
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 24c4611c06b258cf1710c9978a0ad529f25f074e7654dd6fdf615f1e43dc100bbc9f8b2acd7a318153f2e27f3c4670d209c12a336004ff43f73cd05278e9a754
+  checksum: a0fcfd3aad5159e1fb6fc54fd09210d7de9c1ee1e19739a5a82af81d3f2233e4e5eb204da326f32e2f2a4740aa4c3b42530b61e36b7ced9f857801809d1d3527
   languageName: node
   linkType: hard
 
-"@radix-ui/react-collection@npm:1.0.1":
-  version: 1.0.1
-  resolution: "@radix-ui/react-collection@npm:1.0.1"
+"@radix-ui/react-collection@npm:1.0.2":
+  version: 1.0.2
+  resolution: "@radix-ui/react-collection@npm:1.0.2"
   dependencies:
     "@babel/runtime": ^7.13.10
     "@radix-ui/react-compose-refs": 1.0.0
     "@radix-ui/react-context": 1.0.0
-    "@radix-ui/react-primitive": 1.0.1
+    "@radix-ui/react-primitive": 1.0.2
     "@radix-ui/react-slot": 1.0.1
   peerDependencies:
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 4922b358baf54aa343da5235fd061a289bedef9488254696bb4eb09b320da9da91bf55e148d89f07df80afa5429804f8a203159978cddeea423e58fdea703cd0
+  checksum: f7d92f52c7f92b53c055370a5cbf077eea54366706eec9100973737577d841c0cc76a2a577fec67dd85b2853d03c20c4810058f0f511821052358439017e9e5d
   languageName: node
   linkType: hard
 
@@ -7913,7 +7913,7 @@ __metadata:
     "@headlessui/react": 1.7.13
     "@next-auth/prisma-adapter": 1.0.5
     "@prisma/client": 4.6.1
-    "@radix-ui/react-accordion": 1.1.0
+    "@radix-ui/react-accordion": 1.1.1
     "@radix-ui/react-popover": 1.0.5
     "@radix-ui/react-switch": 1.0.1
     "@radix-ui/react-tooltip": 1.0.4
