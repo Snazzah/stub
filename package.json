@@ -55,7 +55,7 @@
     "react-colorful": "5.6.1",
     "react-dom": "18.2.0",
     "react-hot-toast": "2.4.0",
-    "react-textarea-autosize": "8.4.0",
+    "react-textarea-autosize": "8.4.1",
     "sharp": "0.31.3",
     "swr": "2.0.3",
     "tailwind-scrollbar-hide": "1.1.7",
