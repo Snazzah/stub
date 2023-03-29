@@ -72,7 +72,7 @@
     "@types/ioredis": "4.28.10",
     "@types/minimatch": "5.1.2",
     "@types/ms": "0.7.31",
-    "@types/node": "18.15.6",
+    "@types/node": "18.15.11",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@types/ua-parser-js": "0.7.36",
