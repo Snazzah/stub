@@ -41,7 +41,7 @@
     "framer-motion": "7.6.19",
     "geolite2-redist": "3.0.4",
     "html-escaper": "3.0.3",
-    "ioredis": "5.2.5",
+    "ioredis": "5.3.1",
     "mailing": "0.9.12",
     "mailing-core": "0.9.12",
     "matcher": "5.0.0",
