@@ -23,7 +23,7 @@
   "dependencies": {
     "@headlessui/react": "1.7.13",
     "@next-auth/prisma-adapter": "1.0.5",
-    "@prisma/client": "4.6.1",
+    "@prisma/client": "4.12.0",
     "@radix-ui/react-accordion": "1.1.1",
     "@radix-ui/react-popover": "1.0.5",
     "@radix-ui/react-switch": "1.0.2",
@@ -50,7 +50,7 @@
     "next": "12.3.4",
     "next-auth": "4.20.1",
     "nodemailer": "6.9.1",
-    "prisma": "4.6.1",
+    "prisma": "4.12.0",
     "react": "18.2.0",
     "react-colorful": "5.6.1",
     "react-dom": "18.2.0",
