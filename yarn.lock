@@ -5676,13 +5676,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"maxmind@npm:4.3.10":
-  version: 4.3.10
-  resolution: "maxmind@npm:4.3.10"
+"maxmind@npm:4.3.11":
+  version: 4.3.11
+  resolution: "maxmind@npm:4.3.11"
   dependencies:
     mmdb-lib: 2.0.2
-    tiny-lru: 10.4.1
-  checksum: 7733caa051f12633340b71e54f3c28f9257f5b076337e11e2e8ca4a2e1093bc8e65d5753329bd5dde57182405a0486c03ad3c5d9755ca56a0b054c10fdd0178b
+    tiny-lru: 11.0.1
+  checksum: a4953147dc39221b229295581a8ecb57e6ac29f288d347c8e8577ebcb807975f6d41a10824753e72a99a7ac6a762722281de6d0454216957348ea7abbdd036e1
   languageName: node
   linkType: hard
 
@@ -8081,7 +8081,7 @@ __metadata:
     mailing: 0.9.12
     mailing-core: 0.9.12
     matcher: 5.0.0
-    maxmind: 4.3.10
+    maxmind: 4.3.11
     ms: 2.1.3
     next: 12.3.4
     next-auth: 4.22.0
@@ -8329,10 +8329,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tiny-lru@npm:10.4.1":
-  version: 10.4.1
-  resolution: "tiny-lru@npm:10.4.1"
-  checksum: ec2ce11278ff5ecd094823d9d6fcc16fe0aa250bf25cb533d40b997452a113a9ecd9cccbf503ac459a17bb812d94c5ef05cbdfe94b5b8ad03d7cf4fadb78a905
+"tiny-lru@npm:11.0.1":
+  version: 11.0.1
+  resolution: "tiny-lru@npm:11.0.1"
+  checksum: 709ab58a454028eae15dd249518a1e348520e22514e52fd625ef89ba04a42599522e9f6cc89f50f76d3809cc46cac352bd0b63f052d23562e7adafe3e728531a
   languageName: node
   linkType: hard
 
