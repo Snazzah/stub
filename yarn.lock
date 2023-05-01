@@ -4991,9 +4991,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ioredis@npm:5.3.1":
-  version: 5.3.1
-  resolution: "ioredis@npm:5.3.1"
+"ioredis@npm:5.3.2":
+  version: 5.3.2
+  resolution: "ioredis@npm:5.3.2"
   dependencies:
     "@ioredis/commands": ^1.1.1
     cluster-key-slot: ^1.1.0
@@ -5004,7 +5004,7 @@ __metadata:
     redis-errors: ^1.2.0
     redis-parser: ^3.0.0
     standard-as-callback: ^2.1.0
-  checksum: 6c98cb8f8772ad4bb2b6b7a0a224e4a63f4759f9a28e84205f18788552f08221d51f391c10892dca01a1b10b2804d0a7e6082b0b7decd65538a5fb6b0f4f1f82
+  checksum: 9a23559133e862a768778301efb68ae8c2af3c33562174b54a4c2d6574b976e85c75a4c34857991af733e35c48faf4c356e7daa8fb0a3543d85ff1768c8754bc
   languageName: node
   linkType: hard
 
@@ -8077,7 +8077,7 @@ __metadata:
     framer-motion: 7.10.3
     geolite2-redist: 3.0.4
     html-escaper: 3.0.3
-    ioredis: 5.3.1
+    ioredis: 5.3.2
     mailing: 0.9.12
     mailing-core: 0.9.12
     matcher: 5.0.0
