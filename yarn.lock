@@ -8125,7 +8125,7 @@ __metadata:
     swr: 2.1.5
     tailwind-scrollbar-hide: 1.1.7
     tailwindcss: 3.3.2
-    tsx: 3.12.6
+    tsx: 3.12.7
     typescript: 4.9.5
     ua-parser-js: 1.0.35
     use-debounce: 8.0.4
@@ -8420,9 +8420,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsx@npm:3.12.6":
-  version: 3.12.6
-  resolution: "tsx@npm:3.12.6"
+"tsx@npm:3.12.7":
+  version: 3.12.7
+  resolution: "tsx@npm:3.12.7"
   dependencies:
     "@esbuild-kit/cjs-loader": ^2.4.2
     "@esbuild-kit/core-utils": ^3.0.0
@@ -8433,7 +8433,7 @@ __metadata:
       optional: true
   bin:
     tsx: dist/cli.js
-  checksum: f503096f3b56ea521eaf8ed65bf7ad6f04749f9251ce168981d7b7483fadd4a6247a35184099c3bc5d43574c6f4eef6f2a58e45e31f002e78ba94120765f95c5
+  checksum: ddec149ad263e5c75fc8fde5c6ba7ec2ee390934c0a2e2c23897bacab83bc8c665955a23b608a19c42f49c14a7362cf74ad793b52cc94eda684be5c2c13fdb4d
   languageName: node
   linkType: hard
 
