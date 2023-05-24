@@ -6635,10 +6635,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nodemailer@npm:6.9.1":
-  version: 6.9.1
-  resolution: "nodemailer@npm:6.9.1"
-  checksum: b1b9670afc170b4454665abae3fc9acd7e781adb9f579d1c2cd991bf75c647ebe345593f8a057e48d7bf9e4c9a9218869f87db8fb7171c614f557000ab654572
+"nodemailer@npm:6.9.2":
+  version: 6.9.2
+  resolution: "nodemailer@npm:6.9.2"
+  checksum: 76a7ea0cff221914d3ebb666f26f30c9374f84dd80c1b95bb186873295ecf8dea887ed36a1e8d5d90930c36b30f85ceac062fc9efb7bc75821fe497be4103d25
   languageName: node
   linkType: hard
 
@@ -8171,7 +8171,7 @@ __metadata:
     ms: 2.1.3
     next: 12.3.4
     next-auth: 4.22.1
-    nodemailer: 6.9.1
+    nodemailer: 6.9.2
     postcss: 8.4.23
     prisma: 4.14.1
     react: 18.2.0
