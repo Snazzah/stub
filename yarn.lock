@@ -1336,22 +1336,29 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-switch@npm:1.0.2":
-  version: 1.0.2
-  resolution: "@radix-ui/react-switch@npm:1.0.2"
+"@radix-ui/react-switch@npm:1.0.3":
+  version: 1.0.3
+  resolution: "@radix-ui/react-switch@npm:1.0.3"
   dependencies:
     "@babel/runtime": ^7.13.10
-    "@radix-ui/primitive": 1.0.0
-    "@radix-ui/react-compose-refs": 1.0.0
-    "@radix-ui/react-context": 1.0.0
-    "@radix-ui/react-primitive": 1.0.2
-    "@radix-ui/react-use-controllable-state": 1.0.0
-    "@radix-ui/react-use-previous": 1.0.0
-    "@radix-ui/react-use-size": 1.0.0
+    "@radix-ui/primitive": 1.0.1
+    "@radix-ui/react-compose-refs": 1.0.1
+    "@radix-ui/react-context": 1.0.1
+    "@radix-ui/react-primitive": 1.0.3
+    "@radix-ui/react-use-controllable-state": 1.0.1
+    "@radix-ui/react-use-previous": 1.0.1
+    "@radix-ui/react-use-size": 1.0.1
   peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
     react: ^16.8 || ^17.0 || ^18.0
     react-dom: ^16.8 || ^17.0 || ^18.0
-  checksum: 51dda47620938504e540383435a1b8f038fa8ce1e0179a0ce32be500fa39e7a40ac518d9a2f223f7cac4d5fac1c1b8a1a8c5f75104c54bea1431dfdfa76cb1e5
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: de18a802f317804d94315b1035d03a9cabef53317c148027f0f382bc2653723532691b65090596140737bb055e3affff977f5d73fe6caf8c526c6158baa811cc
   languageName: node
   linkType: hard
 
@@ -1487,14 +1494,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@radix-ui/react-use-previous@npm:1.0.0":
-  version: 1.0.0
-  resolution: "@radix-ui/react-use-previous@npm:1.0.0"
+"@radix-ui/react-use-previous@npm:1.0.1":
+  version: 1.0.1
+  resolution: "@radix-ui/react-use-previous@npm:1.0.1"
   dependencies:
     "@babel/runtime": ^7.13.10
   peerDependencies:
+    "@types/react": "*"
     react: ^16.8 || ^17.0 || ^18.0
-  checksum: b45bbc8a7e7dbe29f4c11922e807666ec98979ec7a2696618ceb2c60ade44f695892216a90e1f5d7a457b458b3c95f0a4ce971d5143a6a80646b6b00fda16fb5
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 66b4312e857c58b75f3bf62a2048ef090b79a159e9da06c19a468c93e62336969c33dbef60ff16969f00b20386cc25d138f6a353f1658b35baac0a6eff4761b9
   languageName: node
   linkType: hard
 
@@ -8454,7 +8465,7 @@ __metadata:
     "@prisma/client": 4.14.1
     "@radix-ui/react-accordion": 1.1.2
     "@radix-ui/react-popover": 1.0.6
-    "@radix-ui/react-switch": 1.0.2
+    "@radix-ui/react-switch": 1.0.3
     "@radix-ui/react-tooltip": 1.0.5
     "@rushstack/eslint-patch": ^1.2.0
     "@tailwindcss/forms": 0.5.3
