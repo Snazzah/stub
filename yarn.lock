@@ -558,13 +558,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next-auth/prisma-adapter@npm:1.0.6":
-  version: 1.0.6
-  resolution: "@next-auth/prisma-adapter@npm:1.0.6"
+"@next-auth/prisma-adapter@npm:1.0.7":
+  version: 1.0.7
+  resolution: "@next-auth/prisma-adapter@npm:1.0.7"
   peerDependencies:
     "@prisma/client": ">=2.26.0 || >=3"
     next-auth: ^4
-  checksum: 353036805c60be595a83f7fcced49298c7efee41b38f75c0f691c4982c920f49d3e42a9d85d83dd8ceda8a3609b9fa89fcf0435d60bcf6a73161528edfebcdd7
+  checksum: dea44185c0de109b4b2f0a9fd84c0cab40b248c70bc9f44af516d895d22442a69fd7d85f7894e47fa506f122a5c6631b7002b0371520970289eb9d7618709e06
   languageName: node
   linkType: hard
 
@@ -8231,7 +8231,7 @@ __metadata:
   resolution: "stub-app@workspace:."
   dependencies:
     "@headlessui/react": 1.7.15
-    "@next-auth/prisma-adapter": 1.0.6
+    "@next-auth/prisma-adapter": 1.0.7
     "@prisma/client": 4.14.1
     "@radix-ui/react-accordion": 1.1.2
     "@radix-ui/react-popover": 1.0.6
