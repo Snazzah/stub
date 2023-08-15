@@ -2515,25 +2515,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:10.4.14":
-  version: 10.4.14
-  resolution: "autoprefixer@npm:10.4.14"
-  dependencies:
-    browserslist: ^4.21.5
-    caniuse-lite: ^1.0.30001464
-    fraction.js: ^4.2.0
-    normalize-range: ^0.1.2
-    picocolors: ^1.0.0
-    postcss-value-parser: ^4.2.0
-  peerDependencies:
-    postcss: ^8.1.0
-  bin:
-    autoprefixer: bin/autoprefixer
-  checksum: e9f18e664a4e4a54a8f4ec5f6b49ed228ec45afaa76efcae361c93721795dc5ab644f36d2fdfc0dea446b02a8067b9372f91542ea431994399e972781ed46d95
-  languageName: node
-  linkType: hard
-
-"autoprefixer@npm:^10.4.8":
+"autoprefixer@npm:10.4.15, autoprefixer@npm:^10.4.8":
   version: 10.4.15
   resolution: "autoprefixer@npm:10.4.15"
   dependencies:
@@ -2693,7 +2675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.21.10, browserslist@npm:^4.21.5":
+"browserslist@npm:^4.21.10":
   version: 4.21.10
   resolution: "browserslist@npm:4.21.10"
   dependencies:
@@ -2834,7 +2816,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001406, caniuse-lite@npm:^1.0.30001464, caniuse-lite@npm:^1.0.30001517, caniuse-lite@npm:^1.0.30001520":
+"caniuse-lite@npm:^1.0.30001406, caniuse-lite@npm:^1.0.30001517, caniuse-lite@npm:^1.0.30001520":
   version: 1.0.30001520
   resolution: "caniuse-lite@npm:1.0.30001520"
   checksum: 59991ad8f36cf282f81abbcc6074c3097c21914cdd54bd2b3f73ac9462f57fc74e90371cd22bcdff4d085d09da42a07dcea384cb81e4ac260496e1bd79e1fe7c
@@ -8445,7 +8427,7 @@ __metadata:
     "@visx/responsive": 2.17.0
     "@visx/shape": 2.18.0
     "@visx/tooltip": 2.17.0
-    autoprefixer: 10.4.14
+    autoprefixer: 10.4.15
     cookie: 0.5.0
     dotenv: 16.3.1
     enquirer: 2.3.6
