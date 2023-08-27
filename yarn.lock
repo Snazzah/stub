@@ -1430,14 +1430,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/forms@npm:0.5.3":
-  version: 0.5.3
-  resolution: "@tailwindcss/forms@npm:0.5.3"
+"@tailwindcss/forms@npm:0.5.5":
+  version: 0.5.5
+  resolution: "@tailwindcss/forms@npm:0.5.5"
   dependencies:
     mini-svg-data-uri: ^1.2.3
   peerDependencies:
     tailwindcss: ">=3.0.0 || >= 3.0.0-alpha.1"
-  checksum: 9eddb4dbd06d01b1068138ff52a54ed0e35a28e7bfd3c72e226fc28658ecd92a9c078c4abe9c83db090984672040644d7ae2e035933fb619dd703df1d87aa275
+  checksum: 2748699d2d182e6c565afc38f927cc86544f349e6ab939cda9a97952f405fed00152cb00454a0c586f41ff0dc6854f1044c59523f31564b5f8027facbd2302e9
   languageName: node
   linkType: hard
 
@@ -8441,7 +8441,7 @@ __metadata:
     "@radix-ui/react-switch": 1.0.3
     "@radix-ui/react-tooltip": 1.0.6
     "@rushstack/eslint-patch": ^1.2.0
-    "@tailwindcss/forms": 0.5.3
+    "@tailwindcss/forms": 0.5.5
     "@tailwindcss/line-clamp": 0.4.4
     "@types/cookie": 0.5.1
     "@types/html-escaper": 3.0.0
