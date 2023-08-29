@@ -7384,7 +7384,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.27, postcss@npm:^8.4.16, postcss@npm:^8.4.23":
+"postcss@npm:8.4.29":
+  version: 8.4.29
+  resolution: "postcss@npm:8.4.29"
+  dependencies:
+    nanoid: ^3.3.6
+    picocolors: ^1.0.0
+    source-map-js: ^1.0.2
+  checksum: dd6daa25e781db9ae5b651d9b7bfde0ec6e60e86a37da69a18eb4773d5ddd51e28fc4ff054fbdc04636a31462e6bf09a1e50986f69ac52b10d46b7457cd36d12
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.4.16, postcss@npm:^8.4.23":
   version: 8.4.27
   resolution: "postcss@npm:8.4.27"
   dependencies:
@@ -8477,7 +8488,7 @@ __metadata:
     next: 12.3.4
     next-auth: 4.22.3
     nodemailer: 6.9.4
-    postcss: 8.4.27
+    postcss: 8.4.29
     prisma: 4.14.1
     react: 18.2.0
     react-colorful: 5.6.1
