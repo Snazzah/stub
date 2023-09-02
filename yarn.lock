@@ -1784,10 +1784,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.17.5":
-  version: 18.17.5
-  resolution: "@types/node@npm:18.17.5"
-  checksum: b8c658a99234b99425243c324b641ed7b9ceb6bee6b06421fdc9bb7c58f9a5552e353225cc549e6982462ac384abe1985022ed76e2e4728797f59b21f659ca2b
+"@types/node@npm:18.17.14":
+  version: 18.17.14
+  resolution: "@types/node@npm:18.17.14"
+  checksum: f96ce1e588426a26cf82440193084f8bbab47bfb3c2e668cf174095f99ce808a20654b2137448c7e88cfd7b6c2b8521ffb6f714f521b3502ac595a0df0bff679
   languageName: node
   linkType: hard
 
@@ -8459,7 +8459,7 @@ __metadata:
     "@types/ioredis": 4.28.10
     "@types/minimatch": 5.1.2
     "@types/ms": 0.7.31
-    "@types/node": 18.17.5
+    "@types/node": 18.17.14
     "@types/react": 18.0.34
     "@types/react-dom": 18.0.11
     "@types/ua-parser-js": 0.7.36
