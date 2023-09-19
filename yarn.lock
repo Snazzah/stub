@@ -88,7 +88,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild-kit/core-utils@npm:^3.0.0, @esbuild-kit/core-utils@npm:^3.2.3, @esbuild-kit/core-utils@npm:^3.3.2":
+"@esbuild-kit/core-utils@npm:^3.2.3, @esbuild-kit/core-utils@npm:^3.3.0, @esbuild-kit/core-utils@npm:^3.3.2":
   version: 3.3.2
   resolution: "@esbuild-kit/core-utils@npm:3.3.2"
   dependencies:
@@ -98,7 +98,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild-kit/esm-loader@npm:^2.5.5":
+"@esbuild-kit/esm-loader@npm:^2.6.3":
   version: 2.6.5
   resolution: "@esbuild-kit/esm-loader@npm:2.6.5"
   dependencies:
@@ -8508,7 +8508,7 @@ __metadata:
     swr: 2.1.5
     tailwind-scrollbar-hide: 1.1.7
     tailwindcss: 3.3.3
-    tsx: 3.12.7
+    tsx: 3.12.10
     typescript: 4.9.5
     ua-parser-js: 1.0.35
     use-debounce: 8.0.4
@@ -8824,20 +8824,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsx@npm:3.12.7":
-  version: 3.12.7
-  resolution: "tsx@npm:3.12.7"
+"tsx@npm:3.12.10":
+  version: 3.12.10
+  resolution: "tsx@npm:3.12.10"
   dependencies:
     "@esbuild-kit/cjs-loader": ^2.4.2
-    "@esbuild-kit/core-utils": ^3.0.0
-    "@esbuild-kit/esm-loader": ^2.5.5
+    "@esbuild-kit/core-utils": ^3.3.0
+    "@esbuild-kit/esm-loader": ^2.6.3
     fsevents: ~2.3.2
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     tsx: dist/cli.js
-  checksum: ddec149ad263e5c75fc8fde5c6ba7ec2ee390934c0a2e2c23897bacab83bc8c665955a23b608a19c42f49c14a7362cf74ad793b52cc94eda684be5c2c13fdb4d
+  checksum: 84fbbdbb90a05ecc764aee92fbe234b45939ccba34a08298fcec2bb9cb2ecb7676b21e676dd12681279490a7ac55bb81897ce503775cbcce0f76703eb282bb37
   languageName: node
   linkType: hard
 
