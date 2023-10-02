@@ -6718,9 +6718,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-auth@npm:4.22.3":
-  version: 4.22.3
-  resolution: "next-auth@npm:4.22.3"
+"next-auth@npm:4.23.2":
+  version: 4.23.2
+  resolution: "next-auth@npm:4.23.2"
   dependencies:
     "@babel/runtime": ^7.20.13
     "@panva/hkdf": ^1.0.2
@@ -6739,7 +6739,7 @@ __metadata:
   peerDependenciesMeta:
     nodemailer:
       optional: true
-  checksum: 2ab79f91c417320a514250a8ccd1753fe0779992b9d4c949c22704f2375ec30a221c72a0e817bb6372ca422c56a0a84280f6b8d97156265370ef9ca7d5636624
+  checksum: 4820fdc8d9f066afd2dfe64012d7aba727fd7b82fec3a94e85ea5c1651cb4bf532d8742bfd253d9910055833f00c1c8f8f17212661f7648ecff4dd1f3e002e80
   languageName: node
   linkType: hard
 
@@ -8488,7 +8488,7 @@ __metadata:
     maxmind: 4.3.11
     ms: 2.1.3
     next: 12.3.4
-    next-auth: 4.22.3
+    next-auth: 4.23.2
     nodemailer: 6.9.5
     postcss: 8.4.29
     prisma: 4.14.1
