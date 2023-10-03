@@ -62,7 +62,7 @@
     "tsx": "3.12.10",
     "ua-parser-js": "1.0.35",
     "use-debounce": "8.0.4",
-    "zod": "3.21.4"
+    "zod": "3.22.3"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
