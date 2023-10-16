@@ -4569,26 +4569,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"focus-trap-react@npm:10.2.1":
-  version: 10.2.1
-  resolution: "focus-trap-react@npm:10.2.1"
+"focus-trap-react@npm:10.2.3":
+  version: 10.2.3
+  resolution: "focus-trap-react@npm:10.2.3"
   dependencies:
-    focus-trap: ^7.5.2
+    focus-trap: ^7.5.4
     tabbable: ^6.2.0
   peerDependencies:
     prop-types: ^15.8.1
     react: ">=16.3.0"
     react-dom: ">=16.3.0"
-  checksum: 0abd094e4497adc88f5d206f695f4451ad05db03f21f3b61aa49d919fb02476a0fb15f6857c7485c80456a865732b80e456d457e37fda752591fc1aac3e94633
+  checksum: 5efbde5af1cdd5873b1a58f04832099b10f4acdaab6d144f03b7414c77f71e54b68907e790349043d8faa89375c85186b6565b3b35d8e1c98efff8fece301c70
   languageName: node
   linkType: hard
 
-"focus-trap@npm:^7.5.2":
-  version: 7.5.2
-  resolution: "focus-trap@npm:7.5.2"
+"focus-trap@npm:^7.5.4":
+  version: 7.5.4
+  resolution: "focus-trap@npm:7.5.4"
   dependencies:
     tabbable: ^6.2.0
-  checksum: 1eee29d18c152ef08849a5cfd6d462a6741ec15f08938a9d87336d47807f07dbfff2e6405b16b5ce96745eb86b60f3dcdd87b63f0ad240e47252254d2c248d40
+  checksum: 9589ae0c8ad2f0bb0610c23e949571ef956424f1e7f7e1981c0d95ce518ea97b8bdd3d43b68c6113cbbcf35c9d36d521ffc2841610f7d5cc1746e2aa84faf578
   languageName: node
   linkType: hard
 
@@ -8477,7 +8477,7 @@ __metadata:
     enquirer: 2.3.6
     eslint: 8.44.0
     eslint-config-snazzah: 1.2.1
-    focus-trap-react: 10.2.1
+    focus-trap-react: 10.2.3
     framer-motion: 7.10.3
     geolite2-redist: 3.0.4
     html-escaper: 3.0.3
