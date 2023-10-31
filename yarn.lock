@@ -1501,10 +1501,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cookie@npm:0.5.2, @types/cookie@npm:^0.5.1":
-  version: 0.5.2
-  resolution: "@types/cookie@npm:0.5.2"
-  checksum: 4a1e46379d877f5a3cc687a9799dd72e5f7e68c4764d45cb469789dec92b4b4a7a5bb8b10a08c90be15939fa7b9b402f87ed339dfac0cabf43699c5189880e88
+"@types/cookie@npm:0.5.3":
+  version: 0.5.3
+  resolution: "@types/cookie@npm:0.5.3"
+  checksum: b785618f6b2fdceb6a20a17e1dfe99651b1e5c2c079f486de76dfb21b508f09d91913755e4a6dbdfe628882ea32466bb2e9318b114ce34efa5e624356494fcab
   languageName: node
   linkType: hard
 
@@ -1512,6 +1512,13 @@ __metadata:
   version: 0.4.1
   resolution: "@types/cookie@npm:0.4.1"
   checksum: 3275534ed69a76c68eb1a77d547d75f99fedc80befb75a3d1d03662fb08d697e6f8b1274e12af1a74c6896071b11510631ba891f64d30c78528d0ec45a9c1a18
+  languageName: node
+  linkType: hard
+
+"@types/cookie@npm:^0.5.1":
+  version: 0.5.2
+  resolution: "@types/cookie@npm:0.5.2"
+  checksum: 4a1e46379d877f5a3cc687a9799dd72e5f7e68c4764d45cb469789dec92b4b4a7a5bb8b10a08c90be15939fa7b9b402f87ed339dfac0cabf43699c5189880e88
   languageName: node
   linkType: hard
 
@@ -8458,7 +8465,7 @@ __metadata:
     "@rushstack/eslint-patch": ^1.2.0
     "@tailwindcss/forms": 0.5.6
     "@tailwindcss/line-clamp": 0.4.4
-    "@types/cookie": 0.5.2
+    "@types/cookie": 0.5.3
     "@types/html-escaper": 3.0.0
     "@types/ioredis": 4.28.10
     "@types/minimatch": 5.1.2
