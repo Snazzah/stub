@@ -68,7 +68,7 @@
     "@rushstack/eslint-patch": "^1.2.0",
     "@tailwindcss/line-clamp": "0.4.4",
     "@types/cookie": "0.5.3",
-    "@types/html-escaper": "3.0.0",
+    "@types/html-escaper": "3.0.2",
     "@types/ioredis": "4.28.10",
     "@types/minimatch": "5.1.2",
     "@types/ms": "0.7.33",
