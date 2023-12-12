@@ -6070,13 +6070,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"maxmind@npm:4.3.17":
-  version: 4.3.17
-  resolution: "maxmind@npm:4.3.17"
+"maxmind@npm:4.3.18":
+  version: 4.3.18
+  resolution: "maxmind@npm:4.3.18"
   dependencies:
-    mmdb-lib: 2.0.2
+    mmdb-lib: 2.1.0
     tiny-lru: 11.2.5
-  checksum: 25dbf89703de5d91acf235c160d5bf5758e16c9bb488d699e5796b1fcdc7f355a905bb98016ca45496c7b984820c8d147518b69f5724c86ff88f829236d74303
+  checksum: 204f7a435427be6fd5e90461d3d823e9b1e75f57b0ee749fb1e4c9fb2775fee37b587ff3545478e75364d64db7583e8c48391673218cc2e3afe2f6547db72b6f
   languageName: node
   linkType: hard
 
@@ -6724,10 +6724,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mmdb-lib@npm:2.0.2":
-  version: 2.0.2
-  resolution: "mmdb-lib@npm:2.0.2"
-  checksum: a8e3b6c81300915e351a34e46d89471f32d9ff2ee35b857901afed563d261cad90d8dd395898528d9430dfe6e015507c0bf290f56341efd691eec2ce21507c7b
+"mmdb-lib@npm:2.1.0":
+  version: 2.1.0
+  resolution: "mmdb-lib@npm:2.1.0"
+  checksum: dbb33fc8e2e174082eb7b0805f3ae264ffd993571a3b5879196f5ce2e442086bc1f363b16689665299614730fdb66da1ef64da8f8ff52521444838eabbe78083
   languageName: node
   linkType: hard
 
@@ -8560,7 +8560,7 @@ __metadata:
     mailing: 0.9.15
     mailing-core: 0.9.15
     matcher: 5.0.0
-    maxmind: 4.3.17
+    maxmind: 4.3.18
     ms: 2.1.3
     next: 12.3.4
     next-auth: 4.24.5
