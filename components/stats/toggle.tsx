@@ -30,7 +30,7 @@ export default function Toggle({
   const basePath = linkKey ? `/p/${slug}/link/${encodeURIComponent(linkKey)}` : `/p/${slug}/analytics`;
 
   return (
-    <div className={`z-50 mb-5 top-[6.5rem] sticky p-5 -mx-2.5 lg:mx-0 bg-gray-50 ${atTop ? 'shadow-md' : ''}`}>
+    <div className={`z-20 mb-5 top-[6.5rem] sticky p-5 -mx-2.5 lg:mx-0 bg-gray-50 ${atTop ? 'shadow-md' : ''}`}>
       <div className="max-w-4xl mx-auto flex flex-col sm:flex-row gap-4 justify-between items-center">
         {linkKey ? ( // Render link-specific UI if linkKey is present
           <div className="flex text-xl text-gray-800 font-semibold gap-2">
