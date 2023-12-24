@@ -12,7 +12,8 @@ const TabsHelper = (router: NextRouter): { name: string; href: string }[] => {
   else if (slug)
     return [
       { name: 'Links', href: `/p/${slug}` },
-      { name: 'Settings', href: `/p/${slug}/settings` }
+      { name: 'Settings', href: `/p/${slug}/settings` },
+      { name: 'Analytics', href: `/p/${slug}/analytics` }
     ];
   else if (router.pathname.startsWith('/admin/users/') && id)
     return [
