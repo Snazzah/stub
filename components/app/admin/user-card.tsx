@@ -10,7 +10,7 @@ export default function UserCard({ user }: { user: User }) {
         <div className="bg-white shadow rounded-lg p-6 flex justify-between hover:shadow-md transition-all">
           <div className="flex items-center gap-3 w-full overflow-hidden relative">
             <img
-              src={user?.image || `https://avatars.dicebear.com/api/micah/${user?.email}.svg`}
+              src={user?.image || `https://api.dicebear.com/7.x/pixel-art/svg?seed=${user?.email}`}
               alt={user.name}
               className="w-12 h-12 flex-none rounded-full overflow-hidden border border-gray-300"
               width={48}

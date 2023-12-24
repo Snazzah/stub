@@ -131,7 +131,7 @@ function EditProfile({ user }: { user: User }) {
             id="image"
             type="url"
             className="border-gray-300 text-gray-900 placeholder-gray-300 focus:border-gray-500 focus:ring-gray-500 block w-full rounded-md focus:outline-none sm:text-sm"
-            placeholder={`https://avatars.dicebear.com/api/micah/${user?.email}.svg`}
+            placeholder={`https://api.dicebear.com/7.x/pixel-art/svg?seed=${user?.email}`}
             value={data.image || ''}
             onChange={(e) => {
               setData({ ...data, image: e.target.value || null });
@@ -213,7 +213,7 @@ export default function AdminUserProfile() {
             <>
               <div className="flex gap-4 items-center md:flex-row flex-col">
                 <img
-                  src={user?.image || `https://avatars.dicebear.com/api/micah/${user?.email}.svg`}
+                  src={user?.image || `https://api.dicebear.com/7.x/pixel-art/svg?seed=${user?.email}`}
                   alt={user.name}
                   className="w-24 h-24 flex-none rounded-full overflow-hidden border border-gray-300"
                   draggable={false}

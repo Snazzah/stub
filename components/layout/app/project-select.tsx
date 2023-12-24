@@ -25,7 +25,7 @@ export default function ProjectSelect() {
         name: session?.user?.name || session?.user?.email || 'User',
         slug: '/',
         domain: '',
-        logo: session?.user?.image || `https://avatars.dicebear.com/api/micah/${session?.user?.email}.svg`
+        logo: session?.user?.image || `https://api.dicebear.com/7.x/pixel-art/svg?seed=${session?.user?.email}`
       }
     );
   }, [router, projects, session]);
@@ -54,7 +54,7 @@ export default function ProjectSelect() {
             {selected.slug === '/' ? (
               <img
                 alt={session?.user?.email || 'Avatar for logged in user'}
-                src={session?.user?.image || `https://avatars.dicebear.com/api/micah/${session?.user?.email}.svg`}
+                src={session?.user?.image || `https://api.dicebear.com/7.x/pixel-art/svg?seed=${session?.user?.email}`}
                 className="w-8 h-8 flex-shrink-0 rounded-full overflow-hidden"
               />
             ) : (
