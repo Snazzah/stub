@@ -150,7 +150,7 @@ export default function DeviceIcon({ display, tab, className }: { display: strin
       return <MetaTags className={className} />;
     }
 
-    return <img alt={display} src={`https://avatars.dicebear.com/api/bottts/${display}.svg`} className={className} />;
+    return <img alt={display} src={`https://api.dicebear.com/7.x/pixel-art/svg?seed=${display}`} className={className} />;
   } else {
     return (
       <BlurImage

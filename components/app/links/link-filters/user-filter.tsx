@@ -40,7 +40,7 @@ export default function UserFilter() {
               }}
               className="flex w-full items-center space-x-2 rounded-md p-2 hover:bg-gray-100 active:bg-gray-200"
             >
-              <img alt={email} src={image || `https://avatars.dicebear.com/api/micah/${email}.svg`} className="w-7 h-7 rounded-full" />
+              <img alt={email} src={image || `https://api.dicebear.com/7.x/pixel-art/svg?seed=${email}`} className="w-7 h-7 rounded-full" />
               <p className="truncate text-sm text-gray-700">{name || email}</p>
             </button>
           ))}

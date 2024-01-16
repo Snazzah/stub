@@ -51,7 +51,7 @@ export default function UserDropdown() {
             {session && (
               <img
                 alt={session?.user?.email || 'Avatar for logged in user'}
-                src={session?.user?.image || `https://avatars.dicebear.com/api/micah/${session?.user?.email}.svg`}
+                src={session?.user?.image || `https://api.dicebear.com/7.x/pixel-art/svg?seed=${session?.user?.email}`}
               />
             )}
           </button>
@@ -74,7 +74,7 @@ export default function UserDropdown() {
           {session && (
             <img
               alt={session?.user?.email || 'Avatar for logged in user'}
-              src={session?.user?.image || `https://avatars.dicebear.com/api/micah/${session?.user?.email}.svg`}
+              src={session?.user?.image || `https://api.dicebear.com/7.x/pixel-art/svg?seed=${session?.user?.email}`}
             />
           )}
         </Menu.Button>

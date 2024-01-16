@@ -57,7 +57,7 @@ export default function ProjectSettingsPeople() {
                 <div className="flex items-center justify-between space-x-3 px-8 py-3">
                   <div className="flex items-center space-x-3">
                     <img
-                      src={image || `https://avatars.dicebear.com/api/micah/${email}.svg`}
+                      src={image || `https://api.dicebear.com/7.x/pixel-art/svg?seed=${email}`}
                       alt={email}
                       width={40}
                       height={40}
