@@ -8615,7 +8615,7 @@ __metadata:
     react-hot-toast: 2.4.1
     react-textarea-autosize: 8.5.3
     sharp: 0.32.6
-    swr: 2.1.5
+    swr: 2.2.5
     tailwind-scrollbar-hide: 1.1.7
     tailwindcss: 3.3.6
     tsx: 3.12.10
@@ -8674,14 +8674,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"swr@npm:2.1.5":
-  version: 2.1.5
-  resolution: "swr@npm:2.1.5"
+"swr@npm:2.2.5":
+  version: 2.2.5
+  resolution: "swr@npm:2.2.5"
   dependencies:
+    client-only: ^0.0.1
     use-sync-external-store: ^1.2.0
   peerDependencies:
     react: ^16.11.0 || ^17.0.0 || ^18.0.0
-  checksum: f2ef9b83ec4b2ebf4d520578ab847307700db01ffcab64b3aec6ea94feaf96ca10e38e8b08bc8adfab8eaa6ec1bdfd64f82b6f5c14cc4cb5cf11e6fd22b405a4
+  checksum: c6e6a5bd254951b22e5fd0930a95c7f79b5d0657f803c41ba1542cd6376623fb70b1895049d54ddde26da63b91951ae9d62a06772f82be28c1014d421e5b7aa9
   languageName: node
   linkType: hard
 
