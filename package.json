@@ -76,7 +76,7 @@
     "@types/react": "18.0.34",
     "@types/react-dom": "18.0.11",
     "@types/ua-parser-js": "0.7.39",
-    "autoprefixer": "10.4.16",
+    "autoprefixer": "10.4.19",
     "enquirer": "2.3.6",
     "eslint": "8.56.0",
     "eslint-config-snazzah": "1.2.1",
