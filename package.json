@@ -59,7 +59,7 @@
     "sharp": "0.33.3",
     "swr": "2.2.5",
     "tailwind-scrollbar-hide": "1.1.7",
-    "tsx": "4.7.2",
+    "tsx": "4.19.1",
     "ua-parser-js": "1.0.37",
     "use-debounce": "8.0.4",
     "zod": "3.22.4"
