@@ -77,7 +77,7 @@
     "@types/ua-parser-js": "0.7.39",
     "autoprefixer": "10.4.19",
     "enquirer": "2.4.1",
-    "eslint": "8.56.0",
+    "eslint": "8.57.1",
     "eslint-config-snazzah": "1.2.1",
     "postcss": "8.4.38",
     "tailwindcss": "3.4.3",
