@@ -35,7 +35,7 @@
     "@visx/responsive": "2.17.0",
     "@visx/shape": "2.18.0",
     "@visx/tooltip": "2.17.0",
-    "cookie": "0.6.0",
+    "cookie": "0.7.0",
     "dotenv": "16.4.5",
     "focus-trap-react": "10.2.3",
     "framer-motion": "7.10.3",
