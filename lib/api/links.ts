@@ -3,6 +3,21 @@ import { redis } from '@/lib/redis';
 import { LinkProps } from '@/lib/types';
 import { getParamsFromURL, nanoid } from '@/lib/utils';
 
+import { hashPassword, isHashedPassword } from '../../server/password-hash';
+
+/**
+ * The edit form pre-fills its password field with whatever is currently
+ * stored, so resaving a link without touching that field resubmits the value
+ * unchanged. Hashing it again there would hash an already-hashed password,
+ * breaking every future login for that link -- so a value already in stub's
+ * hashed format is stored as-is, and only a genuinely new (or still-legacy
+ * plaintext) value gets hashed.
+ */
+function preparePassword(password: string | null | undefined): string | null | undefined {
+  if (!password) return password;
+  return isHashedPassword(password) ? password : hashPassword(password);
+}
+
 const getFiltersFromStatus = (status: string) => {
   if (status === 'all' || status === 'none') {
     return {
@@ -122,6 +137,7 @@ export async function addLink(link: LinkProps) {
     prisma.link.create({
       data: {
         ...link,
+        password: preparePassword(password),
         utm_source,
         utm_medium,
         utm_campaign,
@@ -163,6 +179,7 @@ export async function editLink(link: LinkProps, oldKey: string) {
       },
       data: {
         ...link,
+        password: preparePassword(password),
         utm_source,
         utm_medium,
         utm_campaign,

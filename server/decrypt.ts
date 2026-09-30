@@ -2,6 +2,7 @@ import { IncomingMessage } from 'node:http';
 
 import { parse } from 'cookie';
 
+import { verifyPassword } from './password-hash';
 import { prisma } from './prisma';
 
 export async function validPasswordCookie(req: IncomingMessage, domain: string, key: string) {
@@ -31,8 +32,8 @@ export async function passwordValid(domain: string, key: string, password: strin
       where: { domain_key: { domain, key } },
       select: { url: true, password: true }
     });
-    if (!url) return false;
-    return realPassword === password;
+    if (!url || !realPassword) return false;
+    return verifyPassword(password, realPassword);
   } catch (e) {
     return false;
   }
