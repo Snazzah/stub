@@ -36,3 +36,10 @@ test('verifyPassword still accepts a legacy plaintext password unchanged', () =>
 test('isHashedPassword is false for a legacy plaintext value', () => {
   assert.equal(isHashedPassword('some-plain-password'), false);
 });
+
+test('a plaintext password that starts with the scrypt prefix is not treated as a hash', () => {
+  const plain = 'scrypt:my-own-password';
+  assert.equal(isHashedPassword(plain), false);
+  assert.equal(verifyPassword(plain, plain), true);
+  assert.equal(verifyPassword('other', plain), false);
+});

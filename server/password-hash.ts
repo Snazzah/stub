@@ -3,6 +3,9 @@ import { randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
 const SCRYPT_KEYLEN = 64;
 const SALT_BYTES = 16;
 const HASH_PREFIX = 'scrypt:';
+const HASH_FORMAT = new RegExp(
+  `^${HASH_PREFIX}[0-9a-f]{${SALT_BYTES * 2}}:[0-9a-f]{${SCRYPT_KEYLEN * 2}}$`
+);
 
 /**
  * Link passwords used to be written to the database (and compared with `===`)
@@ -13,7 +16,7 @@ const HASH_PREFIX = 'scrypt:';
  * password is next set (which upgrades them to the hashed format).
  */
 export function isHashedPassword(value: string): boolean {
-  return value.startsWith(HASH_PREFIX);
+  return HASH_FORMAT.test(value);
 }
 
 export function hashPassword(password: string): string {
