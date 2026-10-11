@@ -13,7 +13,7 @@ import { hashPassword, isHashedPassword } from '../../server/password-hash';
  * hashed format is stored as-is, and only a genuinely new (or still-legacy
  * plaintext) value gets hashed.
  */
-function preparePassword(password: string | null | undefined): string | null | undefined {
+async function preparePassword(password: string | null | undefined): Promise<string | null | undefined> {
   if (!password) return password;
   return isHashedPassword(password) ? password : hashPassword(password);
 }
@@ -137,7 +137,7 @@ export async function addLink(link: LinkProps) {
     prisma.link.create({
       data: {
         ...link,
-        password: preparePassword(password),
+        password: await preparePassword(password),
         utm_source,
         utm_medium,
         utm_campaign,
@@ -179,7 +179,7 @@ export async function editLink(link: LinkProps, oldKey: string) {
       },
       data: {
         ...link,
-        password: preparePassword(password),
+        password: await preparePassword(password),
         utm_source,
         utm_medium,
         utm_campaign,

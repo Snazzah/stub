@@ -33,7 +33,7 @@ export async function passwordValid(domain: string, key: string, password: strin
       select: { url: true, password: true }
     });
     if (!url || !realPassword) return false;
-    return verifyPassword(password, realPassword);
+    return await verifyPassword(password, realPassword);
   } catch (e) {
     return false;
   }

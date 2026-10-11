@@ -1,4 +1,7 @@
-import { randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
+import { randomBytes, scrypt, timingSafeEqual } from 'node:crypto';
+import { promisify } from 'node:util';
+
+const scryptAsync = promisify(scrypt);
 
 const SCRYPT_KEYLEN = 64;
 const SALT_BYTES = 16;
@@ -14,25 +17,31 @@ const HASH_FORMAT = new RegExp(
  * scrypt hash instead. `isHashedPassword` distinguishes the new format from a
  * password saved before this fix, so existing links keep working until their
  * password is next set (which upgrades them to the hashed format).
+ *
+ * scrypt runs on the libuv threadpool via the async `scrypt()` API rather
+ * than `scryptSync()`, so verifying a password candidate against a
+ * password-protected link doesn't block the Node event loop -- a sync call
+ * here would let anyone hitting that link with bad guesses stall every other
+ * request this process is serving.
  */
 export function isHashedPassword(value: string): boolean {
   return HASH_FORMAT.test(value);
 }
 
-export function hashPassword(password: string): string {
+export async function hashPassword(password: string): Promise<string> {
   const salt = randomBytes(SALT_BYTES).toString('hex');
-  const hash = scryptSync(password, salt, SCRYPT_KEYLEN).toString('hex');
+  const hash = ((await scryptAsync(password, salt, SCRYPT_KEYLEN)) as Buffer).toString('hex');
   return `${HASH_PREFIX}${salt}:${hash}`;
 }
 
-export function verifyPassword(password: string, stored: string): boolean {
+export async function verifyPassword(password: string, stored: string): Promise<boolean> {
   if (!isHashedPassword(stored)) return timingSafeStringsEqual(password, stored);
 
   const [salt, hashHex] = stored.slice(HASH_PREFIX.length).split(':');
   if (!salt || !hashHex) return false;
 
   const expected = Buffer.from(hashHex, 'hex');
-  const actual = scryptSync(password, salt, SCRYPT_KEYLEN);
+  const actual = (await scryptAsync(password, salt, SCRYPT_KEYLEN)) as Buffer;
   return actual.length === expected.length && timingSafeEqual(actual, expected);
 }
 
