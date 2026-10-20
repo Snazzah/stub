@@ -3326,10 +3326,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:0.6.0":
-  version: 0.6.0
-  resolution: "cookie@npm:0.6.0"
-  checksum: f56a7d32a07db5458e79c726b77e3c2eff655c36792f2b6c58d351fb5f61531e5b1ab7f46987150136e366c65213cbe31729e02a3eaed630c3bf7334635fb410
+"cookie@npm:0.7.0":
+  version: 0.7.0
+  resolution: "cookie@npm:0.7.0"
+  checksum: c57551593f20212aaf8128433ace5bab788072100c0f3dec284392fec6ad013fb69f8ff1344b20a778df049d538c1951a892e8cb5632bbeeec24b59b7e59f94c
   languageName: node
   linkType: hard
 
@@ -8678,7 +8678,7 @@ __metadata:
     "@visx/shape": 2.18.0
     "@visx/tooltip": 2.17.0
     autoprefixer: 10.4.19
-    cookie: 0.6.0
+    cookie: 0.7.0
     dotenv: 16.4.5
     enquirer: 2.4.1
     eslint: 8.56.0
