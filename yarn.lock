@@ -1626,14 +1626,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tailwindcss/forms@npm:0.5.7":
-  version: 0.5.7
-  resolution: "@tailwindcss/forms@npm:0.5.7"
+"@tailwindcss/forms@npm:0.5.11":
+  version: 0.5.11
+  resolution: "@tailwindcss/forms@npm:0.5.11"
   dependencies:
     mini-svg-data-uri: ^1.2.3
   peerDependencies:
-    tailwindcss: ">=3.0.0 || >= 3.0.0-alpha.1"
-  checksum: 406fe102a44f89d896c9a945b705a40b926520472ffd8613d9fbfb9e63c23d600629f54096b8ba78316ce1278b79ae6070c166b820328256cf359e80f9d2146f
+    tailwindcss: ">=3.0.0 || >= 3.0.0-alpha.1 || >= 4.0.0-alpha.20 || >= 4.0.0-beta.1"
+  checksum: 7f0f9e87fb0f780066012fc24671a2237f182201b8a9f9ba4b5f3ddff421d22d906172c4d3446ad89dad913bd1a4505afb4522f9d5ecd3b909fd11902157d3d8
   languageName: node
   linkType: hard
 
@@ -8661,7 +8661,7 @@ __metadata:
     "@radix-ui/react-switch": 1.0.3
     "@radix-ui/react-tooltip": 1.0.7
     "@rushstack/eslint-patch": ^1.2.0
-    "@tailwindcss/forms": 0.5.7
+    "@tailwindcss/forms": 0.5.11
     "@tailwindcss/line-clamp": 0.4.4
     "@types/cookie": 0.6.0
     "@types/html-escaper": 3.0.2
