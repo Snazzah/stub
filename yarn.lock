@@ -3778,10 +3778,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:16.4.5":
-  version: 16.4.5
-  resolution: "dotenv@npm:16.4.5"
-  checksum: 301a12c3d44fd49888b74eb9ccf9f07a1f5df43f489e7fcb89647a2edcd84c42d6bc349dc8df099cd18f07c35c7b04685c1a4f3e6a6a9e6b30f8d48c15b7f49c
+"dotenv@npm:16.6.1":
+  version: 16.6.1
+  resolution: "dotenv@npm:16.6.1"
+  checksum: e8bd63c9a37f57934f7938a9cf35de698097fadf980cb6edb61d33b3e424ceccfe4d10f37130b904a973b9038627c2646a3365a904b4406514ea94d7f1816b69
   languageName: node
   linkType: hard
 
@@ -8679,7 +8679,7 @@ __metadata:
     "@visx/tooltip": 2.17.0
     autoprefixer: 10.4.19
     cookie: 0.6.0
-    dotenv: 16.4.5
+    dotenv: 16.6.1
     enquirer: 2.4.1
     eslint: 8.56.0
     eslint-config-snazzah: 1.2.1
