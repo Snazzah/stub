@@ -8711,7 +8711,7 @@ __metadata:
     typescript: 4.9.5
     ua-parser-js: 1.0.37
     use-debounce: 8.0.4
-    zod: 3.22.4
+    zod: 4.6.6
   languageName: unknown
   linkType: soft
 
@@ -9619,9 +9619,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:3.22.4":
-  version: 3.22.4
-  resolution: "zod@npm:3.22.4"
-  checksum: 80bfd7f8039b24fddeb0718a2ec7c02aa9856e4838d6aa4864335a047b6b37a3273b191ef335bf0b2002e5c514ef261ffcda5a589fb084a48c336ffc4cdbab7f
+"zod@npm:4.6.6":
+  version: 4.6.6
+  resolution: "zod@npm:4.6.6"
+  checksum: 9274ef2492f25549ade182f5142dff1093c7a9578152eb91a18d891f0b4a86445ac1b2dde37f457e749c1f8fba32f708a733c39017cf51a3bf18aebf294f5db6
   languageName: node
   linkType: hard
